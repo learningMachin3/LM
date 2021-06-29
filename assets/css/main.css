@@ -2284,7 +2284,7 @@ input, select, textarea {
 		#hero h2 {
 			color: #eee;
 			font-family:"Avenir", "Nunito", sans-serif;
-			font-size: 4em;
+			font-size: 5em;
 			line-height: 0em;
 			margin-bottom: 0px;
 		}
@@ -2298,11 +2298,11 @@ input, select, textarea {
 		}
 
 		#hero p {
-			margin-top: 0.5em;
-			font-size: 1em;
+			margin-top: 0.75em;
+			font-size: 2em;
 			font-family:"New Century Schoolbook","Garamond", serif;
 			line-height: 0em;
-			color: #ddd
+			color: #ccc
 		}
 /*button hover effects based on the work by Anna Danilec. https://www.blog.duomly.com/html-button-hover-effects/*/
 		#hero .button1{
