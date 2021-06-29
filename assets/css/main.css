@@ -2298,24 +2298,63 @@ input, select, textarea {
 		}
 
 		#hero p {
-			margin-top: 0px;
+			margin-top: 0.5em;
 			font-size: 1em;
 			font-family:"New Century Schoolbook","Garamond", serif;
 			line-height: 0em;
 			color: #ddd
 		}
-
-		#hero .button {
-			background: #fff;
-			border-color: rgba(255, 255, 255, 0);
-			color: #f08c89;
-			font-size: 1.25em;
+/*button hover effects based on the work by Anna Danilec. https://www.blog.duomly.com/html-button-hover-effects/*/
+		#hero .button1{
+			border: 0;
+			border-radius: 0px;
+			background: #7920a0;
+			text-transform: uppercase;
+			color: white;
+			font-size: 1em;
+			/*font-weight: bold;*/
+			padding: 0.5em 1em;
+			outline: none;
+			position: relative;
+			transition: border-radius 3s;
+			-webkit-transition: border-radius 3s;
 		}
 
-			#hero .button:hover {
-				border-color: rgba(255, 255, 255, 0.75);
-				background-color: rgba(255, 255, 255, 0.15);
-				color: #fff;
+			#hero .button1:hover {
+				border-bottom-right-radius: 50px;
+		    border-top-left-radius: 50px;
+		    border-bottom-left-radius: 20px;
+		    border-top-right-radius: 20px;
+			}
+			#hero .button2{
+			  border: 3px solid #007d5b;
+			  background: transparent;
+				font-size: 1em;
+			  text-transform: uppercase;
+			  color: white;
+			  padding: 0.5em 1em;
+			  outline: none;
+			  overflow: hidden;
+			  position: relative;
+			}
+
+			#hero .button2:after {
+			  content: '';
+			    display: block;
+			    position: absolute;
+			    top: -36px;
+			    left: -100px;
+			    background: white;
+			    width: 50px;
+			    height: 125px;
+			    opacity: 20%;
+			    transform: rotate(-45deg);
+			}
+
+			#hero .button2:hover:after {
+			  left: 120%;
+			  transition: all 600ms cubic-bezier(0.3, 1, 0.2, 1);
+			   -webkit-transition: all 600ms cubic-bezier(0.3, 1, 0.2, 1);
 			}
 
 		#hero a {
