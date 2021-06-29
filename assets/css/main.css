@@ -2277,13 +2277,16 @@ input, select, textarea {
 	#hero {
 		position: relative;
 		color: #fff;
-		text-align: center;
+		text-align: left;
 		z-index: 1;
 	}
 
 		#hero h2 {
-			color: #fff;
-			font-size: 3em;
+			color: #eee;
+			font-family:"Avenir", "Nunito", sans-serif;
+			font-size: 4em;
+			line-height: 0em;
+			margin-bottom: 0px;
 		}
 
 		#hero strong {
@@ -2295,8 +2298,11 @@ input, select, textarea {
 		}
 
 		#hero p {
-			font-size: 1.5em;
-			line-height: 1.5em;
+			margin-top: 0px;
+			font-size: 1em;
+			font-family:"New Century Schoolbook","Garamond", serif;
+			line-height: 0em;
+			color: #ddd
 		}
 
 		#hero .button {
