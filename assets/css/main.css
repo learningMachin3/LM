@@ -2430,9 +2430,34 @@ input, select, textarea {
 			margin-bottom: 3em;
 		}
 
+/* Navbar */
+#navbar {
+	background-color: #333;
+	position: fixed;
+	top: -50px;
+	width: 100%;
+	display: block;
+	z-index: 3;
+	transition: top 0.3s;
+}
+
+#navbar a {
+	float: left;
+	display: block;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 15px;
+	text-decoration: none;
+	font-size: 17px;
+}
+
+#navbar a:hover {
+	background-color: #ddd;
+	color: black;
+}
 /* Copyright */
 
-	#copyright {
+#copyright {
 		position: relative;
 		z-index: 1;
 		text-align: center;
@@ -2556,6 +2581,7 @@ input, select, textarea {
 				}
 
 				#hero p br {
+					font-size: 1.25em;
 					display: none;
 				}
 
@@ -2662,6 +2688,11 @@ input, select, textarea {
 
 			#hero h2 {
 				font-size: 2.5em;
+			}
+
+			#hero p br {
+				font-size: 1.25em;
+				display: none;
 			}
 
 		/* Main */
@@ -2812,7 +2843,7 @@ input, select, textarea {
 					}
 
 				#hero p {
-					font-size: 1em;
+					font-size: 0.75em;
 				}
 
 		/* Nav */
@@ -3066,9 +3097,9 @@ input, select, textarea {
 			input[type="reset"],
 			button,
 			.button {
-				display: block;
-				width: 100%;
-				text-align: center;
+				display: inline;
+				width: 20%;
+				text-align: left;
 			}
 
 		/* Header */
@@ -3086,6 +3117,13 @@ input, select, textarea {
 			#hero {
 				padding: 2.5em 0 0 0;
 			}
+			#hero .button1{
+				font-size: 0.45em;
+			}
+			#hero .button2{
+				font-size: 0.45em;
+			}
+
 
 		/* Promo */
 
