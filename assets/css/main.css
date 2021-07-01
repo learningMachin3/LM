@@ -2297,9 +2297,9 @@ input, select, textarea {
 			color: #fff;
 		}
 		#hero p {
-			margin-top: 0.75em;
-			margin-left: 1.9em;
-			font-size: 2em;
+			margin-top: 0.5em;
+			margin-left: 2.5em;
+			font-size: 1.5em;
 			/*font-family:"Nunito","Garamond", sans-serif;*/
 			line-height: 0em;
 			color: #ccc
@@ -2390,6 +2390,8 @@ input, select, textarea {
 				color: #fff;
 			}
 
+/* Mail Chimp */
+	#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
 /* Main */
 
 	#main {
