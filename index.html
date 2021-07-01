@@ -14,19 +14,22 @@
 	</head>
 	<body class="homepage is-preload">
 		<div id="navbar">
-			<a href="#home">Home</a>
-			<a href="#news">News</a>
-			<a href="#contact">Contact</a>
+				<a href ="index.html"><img src="images/Round_Logo_White.png"></a>	
+				<a href="episodes.html">Episodes</a>
+			 	<a href="about.html">About</a>
+				<a href='contact.html'>Contact</a>
+				<button class="button button1"> Listen For Free </button>
+				<button class ="button button2"> Support Us </button>
 		</div>
 		<script>
-		// When the user scrolls down 20px from the top of the document, slide down the navbar
+		// When the user scrolls down 300px from the top of the document, slide down the navbar
 		window.onscroll = function() {scrollFunction()};
 
 		function scrollFunction() {
-			if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+			if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
 				document.getElementById("navbar").style.top = "0";
 			} else {
-				document.getElementById("navbar").style.top = "-50px";
+				document.getElementById("navbar").style.top = "-150px";
 			}
 		}
 		</script>
