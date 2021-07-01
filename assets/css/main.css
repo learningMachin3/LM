@@ -2283,7 +2283,7 @@ input, select, textarea {
 
 		#hero h2 {
 			color: #eee;
-			font-family:"Avenir", "Nunito", sans-serif;
+			/*font-family:"Avenir", "Nunito", sans-serif;*/
 			font-size: 5em;
 			line-height: 0em;
 			margin-bottom: 0px;
@@ -2296,11 +2296,11 @@ input, select, textarea {
 		#hero header > span {
 			color: #fff;
 		}
-
 		#hero p {
 			margin-top: 0.75em;
+			margin-left: 1.9em;
 			font-size: 2em;
-			font-family:"New Century Schoolbook","Garamond", serif;
+			/*font-family:"Nunito","Garamond", sans-serif;*/
 			line-height: 0em;
 			color: #ccc
 		}
@@ -2318,6 +2318,7 @@ input, select, textarea {
 		}
 			#hero .button2{
 			  border: 3px solid #007d5b;
+				margin-left: 3.5em;
 			  background: transparent;
 				font-size: 1em;
 			  text-transform: uppercase;
