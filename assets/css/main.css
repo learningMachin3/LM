@@ -2429,13 +2429,19 @@ input, select, textarea {
 
 /* Navbar */
 #navbar {
-	background-color: #0C4536;
+	background-image: linear-gradient(to bottom right, #7920a0, #ffffff);
 	position: fixed;
 	top: -150px;
 	width: 100%;
 	display: inline;
+	text-decoration:none;
+	outline:none;
 	z-index: 3;
 	transition: top 0.3s;
+}
+#navbar div{
+	outline: none;
+	text-decoration: none;
 }
 
 #navbar a,a:active,a:focus {
@@ -2450,6 +2456,8 @@ input, select, textarea {
 }
 #navbar a.nav_logo {
 	width:3em;
+	text-decoration: none;
+	outline: none;
 }
 #navbar a > img {
 	display: inline;
