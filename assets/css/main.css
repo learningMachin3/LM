@@ -2123,10 +2123,9 @@ input, select, textarea {
 	}
 
 	#mailing-wrapper {
-		position: center;
-		background:#ddd
-		padding: 1em,5em, 1em, 5em
-		display:inline
+		position: relative;
+		background:#ddd;
+		padding: 3em 0 3em 0;
 	}
 
 
@@ -2400,22 +2399,19 @@ input, select, textarea {
 	#mc_embed_signup{
 		background:#eee;
 		clear:left;
-		font:14px Helvetica,Arial,sans-serif;
+		font:3em Helvetica,Arial,sans-serif;
+		font-weight:bold;
 		display: inline;
 	}
 	#mc_embed_signup .mc-field-group input{
 		display:inline;
-		width: 70%;
+		width: 60%;
 	}
-	#mc_embed_signup .mc_embedded_subscribe{
+	#mc_embed_signup .mc-field-group input#mc-embedded-subscribe{
 		display:inline;
-		width: 30%;
+		width: 20%;
 	}
-	#mc_embedded_subscribe
-	{
-		display:inline;
-		width:30%;
-	}
+
 	#mc_field_group
 	{
 		display:inline;
