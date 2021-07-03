@@ -1,5 +1,8 @@
 @import url("fontawesome-all.min.css");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,400italic,600");
+<!-- Begin Mailchimp Signup Form -->
+<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+
 
 /*
 	Telephasic by HTML5 UP
@@ -2119,6 +2122,13 @@ input, select, textarea {
 		padding: 3em 0 3em 0;
 	}
 
+	#mailing-wrapper {
+		position: center;
+		background:#ddd
+		padding: 1em,5em, 1em, 5em
+		display:inline
+	}
+
 
 	#footer-wrapper {
 		-webkit-transform: translate3d(0, 0, 0);
@@ -2387,10 +2397,29 @@ input, select, textarea {
 			}
 
 /* Mail Chimp */
-	#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+	#mc_embed_signup{
+		background:#eee;
+		clear:left;
+		font:14px Helvetica,Arial,sans-serif;
+		display: inline;
+	}
+	#mc_embed_signup .mc-field-group input{
+		display:inline;
+		width: 70%;
+	}
+	#mc_embed_signup .mc_embedded_subscribe{
+		display:inline;
+		width: 30%;
+	}
+	#mc_embedded_subscribe
+	{
+		display:inline;
+		width:30%;
+	}
 	#mc_field_group
 	{
-		background:#;
+		display:inline;
+		background:#999;
 	}
 /* Main */
 
