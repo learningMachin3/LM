@@ -2185,6 +2185,7 @@ input, select, textarea {
 		line-height: 4em;
 	}
 
+
 		#nav > ul {
 			margin: 0;
 		}
@@ -2216,7 +2217,14 @@ input, select, textarea {
 				#nav > ul > li.active > span, #nav > ul > li.active > a {
 					border-color: rgba(255, 255, 255, 0.75);
 					background-color: rgba(255, 255, 255, 0.15);
+
 					color: #fff;
+				}
+				#nav > a.active
+				{
+					padding: 0.3em 1em 0.3em 1em;
+					height:35px;
+					width: 79px;
 				}
 
 				#nav > ul > li:first-child {
