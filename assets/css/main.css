@@ -2220,7 +2220,7 @@ input, select, textarea {
 
 					color: #fff;
 				}
-				#nav > a.active
+				#nav > a:active
 				{
 					padding: 0.3em 1em 0.3em 1em;
 					height:35px;
