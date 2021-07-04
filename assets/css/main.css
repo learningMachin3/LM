@@ -1,7 +1,5 @@
 @import url("fontawesome-all.min.css");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,400italic,600");
-<!-- Begin Mailchimp Signup Form -->
-<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
 
 
 /*
@@ -280,6 +278,7 @@ input, select, textarea {
 			}
 
 		}
+
 
 /* Row */
 
@@ -2125,6 +2124,7 @@ input, select, textarea {
 	#mailing-wrapper {
 		position: relative;
 		background:#ddd;
+		background-position: top left, center center;
 		padding: 3em 0 3em 0;
 	}
 
@@ -2440,14 +2440,40 @@ input, select, textarea {
 /* Footer */
 
 	#footer {
-		position: relative;
+		display:inline;
+		margin: 0 auto;
+		width:60%;
 		z-index: 1;
 	}
 
 		#footer header.major {
 			margin-bottom: 3em;
 		}
+		#footer .image
+		{
+			position:relative;
+			height: 2em;
+		}
+		#footer .overlay
+		{
+		  position:absolute;
+			top:0;
+		  height: 100%;
+		  width: 100%;
+		  opacity: 0;
+		  transition: .5s ease;
+		}
 
+		#footer .icon:hover .overlay {
+  		opacity: 1;
+		}
+		/* icon */
+		#footer .icon{
+			position: relative;
+			float: left;
+			width: 5%;
+			margin: 0 auto;
+		}
 /* Navbar */
 #navbar {
 	background-image: linear-gradient(to bottom right, #7920a0, #ffffff);
