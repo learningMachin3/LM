@@ -24,14 +24,14 @@ section, summary, time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;}
+	vertical-align: baseline;
+	border-bottom: none;}
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;}
 
 body {
-	height:100%;
 	line-height: 1;
 }
 
@@ -108,6 +108,9 @@ input, select, textarea {
 			transition: none !important;
 		}
 
+ html,body{
+	 height: 100%;
+ }
 	input, textarea, select {
 		font-family: 'Source Sans Pro', sans-serif;
 		font-weight: 300;
@@ -2133,12 +2136,11 @@ input, select, textarea {
 	#footer-wrapper {
 		-webkit-transform: translate3d(0, 0, 0);
 		position: relative;
-		height:200px;
 		border-top: solid 1px #c2c7cc;
 		padding: 6em 0 6em 0;
-		display:flex;
-		align-items:center;
-		justify-content:center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		background-image: url("images/overlay.png"), url("images/footer.svg");
 		background-size: 128px 128px,				100% 100%;
 	}
@@ -2446,8 +2448,10 @@ input, select, textarea {
 
 	#footer {
 		display:inline;
-		width:100%;
+		width:60%;
+		height:60%;
 		z-index: 1;
+		border-bottom: none;
 	}
 
 		#footer header.major {
@@ -2455,8 +2459,10 @@ input, select, textarea {
 		}
 		#footer .image
 		{
+			float:center;
 			position:relative;
-			height: 2em;
+			height: 3em;
+			border-bottom: none;
 		}
 		#footer .overlay
 		{
@@ -2476,7 +2482,8 @@ input, select, textarea {
 			position: relative;
 			float: left;
 			width: 5%;
-			margin: 0 auto;
+			margin-left: 10%;
+			margin-right:10%;
 		}
 /* Navbar */
 #navbar {
