@@ -2189,35 +2189,37 @@ input, select, textarea {
 	}
 	#nav a
 	{
+		float:none;
 		margin: 2em;
 		border-bottom: 3px solid #7920a0;
 		color: white;
 		font-weight: bold;
 		border-radius:3px;
 		border-width:2px;
-		border-color:#007d5b
+		border-color:#007d5b;
 		padding: 7px;
 	}
 
 	#nav a:visited{
+		float:none;
 		margin: 2em;
 		border-bottom: 3px solid #7920a0;
 		color: white;
 		font-weight: bold;
 		border-radius:3px;
 		border-width:2px;
-		border-color:#007d5b
+		border-color:#007d5b;
 		padding: 7px;
 	}
 	#nav  a:active
 	{
-		margin: 2em;
+		float:none;
 		border-bottom: 3px solid #7920a0;
 		color: white;
 		font-weight: bold;
 		border-radius:3px;
 		border-width:2px;
-		border-color:#007d5b
+		border-color:#007d5b;
 		padding: 7px;
 	}
 
