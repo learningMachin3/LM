@@ -31,6 +31,7 @@ footer, header, hgroup, menu, nav, section {
 	display: block;}
 
 body {
+	height:100%;
 	line-height: 1;
 }
 
@@ -2132,8 +2133,12 @@ input, select, textarea {
 	#footer-wrapper {
 		-webkit-transform: translate3d(0, 0, 0);
 		position: relative;
+		height:200px;
 		border-top: solid 1px #c2c7cc;
 		padding: 6em 0 6em 0;
+		display:flex;
+		align-items:center;
+		justify-content:center;
 		background-image: url("images/overlay.png"), url("images/footer.svg");
 		background-size: 128px 128px,				100% 100%;
 	}
@@ -2441,8 +2446,7 @@ input, select, textarea {
 
 	#footer {
 		display:inline;
-		margin: 0 auto;
-		width:60%;
+		width:100%;
 		z-index: 1;
 	}
 
