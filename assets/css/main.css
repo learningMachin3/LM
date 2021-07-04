@@ -2137,7 +2137,7 @@ input, select, textarea {
 		-webkit-transform: translate3d(0, 0, 0);
 		position: relative;
 		border-top: solid 1px #c2c7cc;
-		padding: 3em 0 1em 0;
+		padding: 1em 0 1em 0;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -2461,7 +2461,6 @@ input, select, textarea {
 		}
 		#footer .image
 		{
-			float:center;
 			position:relative;
 			height: 3em;
 			border-bottom: none;
@@ -2478,6 +2477,28 @@ input, select, textarea {
 
 		#footer .icon:hover .overlay {
   		opacity: 1;
+		}
+		#footer a:hover{
+			position:relative;
+			top:0;
+			left:0;
+			float:left;
+			padding:0;
+		}
+		#footer a:focus{
+			position:relative;
+			top:0;
+			left:0;
+			float:none;
+			padding:0;
+		}
+		#footer a:active
+		{
+			position:relative;
+			top:0;
+			left:0;
+			float:none;
+			padding:0;
 		}
 		/* icon */
 		#footer .icon{
@@ -2527,7 +2548,7 @@ input, select, textarea {
 }
 
 #navbar a:hover {
-	color: #aaa;
+	color: #000;
 }
 #navbar button {
 	padding:0.75em;
@@ -2623,7 +2644,7 @@ input, select, textarea {
 			}
 
 			#footer-wrapper {
-				padding: 5em 0 5em 0;
+				padding: 2em 0 2em 0;
 			}
 
 	}
