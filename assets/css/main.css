@@ -2102,13 +2102,17 @@ input, select, textarea {
 		position: relative;
 		padding: 4em 0 2em 0;
 		background-image: url("images/overlay.png"), url("images/top_bg_darkest.jpg");
-		/*background-image: url("images/overlay.png"), url("images/header.svg"), -moz-linear-gradient(75deg, #007d5b 15%, #84ab9e 55%);
-		background-image: url("images/overlay.png"), url("images/header.svg"), -webkit-linear-gradient(75deg, #007d5b 15%, #84ab9e 55%);
-		background-image: url("images/overlay.png"), url("images/header.svg"), -ms-linear-gradient(75deg, #007d5b 15%, #84ab9e 55%);
-		background-image: url("images/overlay.png"), url("images/header.svg"), linear-gradient(75deg, #007d5b 15%, #84ab9e 55%);
-		background-color: #84ab9e;*/
 		background-size: 128px 128px, 100% 620%;
 		background-repeat: repeat, no-repeat;
+	}
+	#about-header-wrapper{
+		position: relative;
+		padding: 4em 0 2em 0;
+		background-image: url("images/overlay.png"), url("images/AboutUs_bg.png");
+		background-size: auto;
+		height: 500px;
+		background-repeat: repeat, no-repeat;
+		margin-bottom:1em;
 	}
 
 	.homepage #header-wrapper {
@@ -2131,6 +2135,10 @@ input, select, textarea {
 		background-position: top left, center center;
 		padding: 3em 0 3em 0;
 	}
+	#mailing-wrapper h2
+	{
+		color: #7920a0;
+	}
 
 
 	#footer-wrapper {
@@ -2144,6 +2152,34 @@ input, select, textarea {
 		background-image: url("images/overlay.png"), url("images/footer.svg");
 		background-size: 128px 128px,				100% 100%;
 	}
+
+/* About */
+
+#about
+{
+	margin-top:1em;
+	padding:1em 2em 1em 2em;
+	font-size:1em;
+}
+
+#about h2
+{
+	color: #7920a0;
+}
+
+#us .image_and_text .profile
+{
+	display:inline-block;
+	width:25%;
+	vertical-align:middle;
+}
+#us .image_and_text .bio
+{
+	display:inline-block;
+	vertical-align:middle;
+	padding-left:0.5em;
+	width:65%;
+}
 
 /* Header */
 
@@ -2412,6 +2448,7 @@ input, select, textarea {
 		font-weight:bold;
 		display: inline;
 	}
+
 	#mc_embed_signup .mc-field-group input{
 		display:inline;
 		width: 60%;
@@ -2419,12 +2456,40 @@ input, select, textarea {
 	#mc_embed_signup .mc-field-group input#mc-embedded-subscribe{
 		display:inline;
 		width: 20%;
+		vertical-align: inherit;
 	}
+
+	#mc_embed_signup .button
+	{
+		font-weight:bold;
+		border: 3px solid #7920a0;
+		background: transparent;
+		font-size: 0.35em;
+		text-transform: uppercase;
+		color: black;
+		padding: 0.5em 1em;
+		outline: none;
+		overflow: hidden;
+		position: relative;
+	}
+	#mc_embed_signup .button:hover {
+		background:#ccc;
+		color:#007d5b;
+	}
+
+
 
 	#mc_field_group
 	{
 		display:inline;
 		background:#999;
+	}
+
+	#mc_embed_signup div.response
+	{
+		margin:0;
+		font-size:0.35em;
+		padding:0;
 	}
 /* Main */
 
@@ -2581,7 +2646,7 @@ input, select, textarea {
 }
 
 #navbar .button2:after, .button1.after {
-	content: '';
+		content: '';
 		display: block;
 		position: absolute;
 		top: -36px;
@@ -2606,9 +2671,17 @@ input, select, textarea {
 		text-align: center;
 		border-top: solid 1px #d2d7dc;
 		color: #a2a7ac;
-		padding-top: 4em;
-		margin-top: 6em;
+		padding-top: 0em;
+		margin-top: 4em;
+		margin-bottom:1em;
 	}
+#copyright a:hover
+{
+	float: none;
+	display: inline;
+	padding:0;
+}
+
 
 /* Normal */
 
