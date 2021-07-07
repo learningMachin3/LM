@@ -2156,11 +2156,28 @@ input, select, textarea {
 		background-size: 128px 128px,				100% 100%;
 	}
 
+/*Episodes*/
+
+#episodes
+{
+	display:block;
+	text-align:center;
+}
+#episodes h2
+{
+	color: #7920a0;
+}
+
+#episodes img
+{
+	size:10em;
+
+}
 /* About */
 
 #about
 {
-	margin-top:1em;
+	margin-top:0em;
 	padding:1em 2em 1em 2em;
 	font-size:1em;
 }
