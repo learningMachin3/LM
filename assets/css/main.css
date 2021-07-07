@@ -2534,13 +2534,7 @@ input, select, textarea {
 		background:#999;
 	}
 
-	#mce-error-response
-	{
-		margin:0;
-		font-size:0.35em;
-		padding:0;
-	}
-	#mce-success-response
+	#mce-responses .cldear
 	{
 		margin:0;
 		font-size:0.35em;
