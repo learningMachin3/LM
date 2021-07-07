@@ -2547,10 +2547,9 @@ input, select, textarea {
 		font-size:0.35em;
 		padding:0;
 	}
-	#mce-error-response.response a{
+	#mce-error-response.response a,a:active,a:visited{
 		padding:0;
-		float:none;
-
+		float:left;
 	}
 	#mce-success-response.response
 	{
@@ -2570,16 +2569,7 @@ input, select, textarea {
 		font-size:0.35em;
 		padding:0;
 	}
-	#mce-responses a:active{
-		padding:0;
-		font-size:0.35em;
-		float:none;
-	}
-	#mce-responses a:visited{
-		padding:0;
-		font-size:0.35em;
-		float:none;
-	}
+
 /* Main */
 
 	#main {
