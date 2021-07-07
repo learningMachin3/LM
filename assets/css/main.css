@@ -2549,7 +2549,7 @@ input, select, textarea {
 	}
 	#mce-error-response.response a{
 		padding:0;
-		float:left;
+		float:none;
 
 	}
 	#mce-success-response.response
@@ -2572,11 +2572,13 @@ input, select, textarea {
 	}
 	#mce-responses a:active{
 		padding:0;
-		float:left;
+		font-size:0.35em;
+		float:none;
 	}
 	#mce-responses a:visited{
 		padding:0;
-		float:left;
+		font-size:0.35em;
+		float:none;
 	}
 /* Main */
 
@@ -2765,6 +2767,13 @@ input, select, textarea {
 	}
 #copyright a:hover
 {
+	float: none;
+	display: inline;
+	padding:0;
+}
+#copyright a:visited
+{
+	color: #a2a7ac;
 	float: none;
 	display: inline;
 	padding:0;
