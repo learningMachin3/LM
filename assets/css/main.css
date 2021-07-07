@@ -2543,6 +2543,7 @@ input, select, textarea {
 
 	#mce-responses.response
 	{
+		display:inline;
 		margin:0;
 		font-size:0.35em;
 		padding:0;
