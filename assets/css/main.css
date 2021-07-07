@@ -2763,6 +2763,10 @@ input, select, textarea {
 	display: inline;
 	padding:0;
 }
+#copyright a:active
+{
+	color: #a2a7ac;
+}
 
 
 /* Normal */
