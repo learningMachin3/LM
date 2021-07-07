@@ -2550,8 +2550,7 @@ input, select, textarea {
 	}
 	#mce-error-response.response a,a:active,a:visited{
 		padding:0;
-		font-size:0.35em;
-		float:left;
+		float:none;
 	}
 	#mce-success-response.response
 	{
