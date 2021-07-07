@@ -2177,8 +2177,16 @@ input, select, textarea {
 {
 	display:inline-block;
 	vertical-align:middle;
-	padding-left:0.5em;
-	width:65%;
+	border-radius:10px;
+	background-color: rgba(200,200,200,0.5);
+	margin-left:1em;
+	padding:1em;
+	width:60%;
+}
+#us .image_and_text
+{
+	margin-bottom:1em;
+	margin-top:1em;
 }
 
 /* Header */
