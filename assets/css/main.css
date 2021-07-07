@@ -2534,13 +2534,17 @@ input, select, textarea {
 		background:#999;
 	}
 
-	#mce-responses .cldear
+	#mce-responses .clear
 	{
 		margin:0;
 		font-size:0.35em;
 		padding:0;
 	}
 	#mce-responses a:active{
+		padding:0;
+		float:left;
+	}
+	#mce-responses a:visited{
 		padding:0;
 		float:left;
 	}
