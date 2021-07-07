@@ -2533,8 +2533,32 @@ input, select, textarea {
 		display:inline;
 		background:#999;
 	}
+	#mc_embed_signup div.mce_inline_error
+	{
+		margin:0;
+		font-size:0.35em;
+		padding:0;
+	}
 
-	#mce-responses .response
+
+	#mce-responses.response
+	{
+		margin:0;
+		font-size:0.35em;
+		padding:0;
+	}
+	#mce-error-response.response a{
+		padding:0;
+		float:left;
+
+	}
+	#mce-success-response.response
+	{
+		margin:0;
+		font-size:0.35em;
+		padding:0;
+	}
+	#mce-error-response.response
 	{
 		margin:0;
 		font-size:0.35em;
