@@ -2211,6 +2211,49 @@ input, select, textarea {
 			text-transform: uppercase;
 		}
 
+		#featured_episode a
+		{
+			float:none;
+			margin: 2em;
+			border:transparent;
+			border-bottom: 3px solid #7920a0;
+			background-color:#84ab9e;
+			color: #7920a0;
+			font-weight: bold;
+			border-radius:10px;
+			border-width:2px;
+			border-color:#007d5b;
+			padding: 7px;
+		}
+
+		#featured_episode a:visited{
+			float:none;
+			margin: 2em;
+			border-bottom: 3px solid #7920a0;
+			color: #7920a0;
+			font-weight: bold;
+			border-radius:10px;
+			border-width:2px;
+			border-color:#007d5b;
+			padding: 7px;
+		}
+		#featured_episode  a:active
+		{
+			float:none;
+			border-bottom: 3px solid #7920a0;
+			color: white;
+			font-weight: bold;
+			border-radius:10px;
+			border-width:2px;
+			border-color:#007d5b;
+			padding: 7px;
+		}
+
+		#featured_episode a:hover
+		{
+			background-color:#7920a0;
+			color: white;
+		}
 	#nav {
 		text-align: center;
 		position: absolute;
@@ -2228,9 +2271,10 @@ input, select, textarea {
 		float:none;
 		margin: 2em;
 		border-bottom: 3px solid #7920a0;
-		color: white;
+		background-color:#84ab9e;
+		color: #7920a0;
 		font-weight: bold;
-		border-radius:3px;
+		border-radius:10px;
 		border-width:2px;
 		border-color:#007d5b;
 		padding: 7px;
@@ -2240,9 +2284,9 @@ input, select, textarea {
 		float:none;
 		margin: 2em;
 		border-bottom: 3px solid #7920a0;
-		color: white;
+		color: #7920a0;
 		font-weight: bold;
-		border-radius:3px;
+		border-radius:10px;
 		border-width:2px;
 		border-color:#007d5b;
 		padding: 7px;
@@ -2253,7 +2297,7 @@ input, select, textarea {
 		border-bottom: 3px solid #7920a0;
 		color: white;
 		font-weight: bold;
-		border-radius:3px;
+		border-radius:10px;
 		border-width:2px;
 		border-color:#007d5b;
 		padding: 7px;
@@ -2261,7 +2305,8 @@ input, select, textarea {
 
 	#nav a:hover
 	{
-		color: black;
+		background-color:#7920a0;
+		color: white;
 	}
 
 
@@ -2461,35 +2506,43 @@ input, select, textarea {
 
 	#mc_embed_signup .button
 	{
+
+		padding: 7px;
 		font-weight:bold;
-		border: 3px solid #7920a0;
-		background: transparent;
 		font-size: 0.35em;
 		text-transform: uppercase;
-		color: black;
+		border:transparent;
+		border-bottom: 3px solid #7920a0;
+		background-color:#84ab9e;
+		color: #7920a0;
+		font-weight: bold;
+		border-radius:10px;
+		border-width:2px;
+		border-color:#007d5b;
 		padding: 0.5em 1em;
 		outline: none;
 		overflow: hidden;
 		position: relative;
 	}
 	#mc_embed_signup .button:hover {
-		background:#ccc;
-		color:#007d5b;
+		background-color:#7920a0;
+		color: white;
 	}
-
-
-
 	#mc_field_group
 	{
 		display:inline;
 		background:#999;
 	}
 
-	#mc_embed_signup div.response
+	#mce_responses .response
 	{
 		margin:0;
 		font-size:0.35em;
 		padding:0;
+	}
+	#mce_responses a:active{
+		padding:0;
+		float:left;
 	}
 /* Main */
 
@@ -2598,6 +2651,7 @@ input, select, textarea {
 	text-align: center;
 	padding: 0.75em;
 	text-decoration: none;
+	font-weight:bold;
 	font-size: 1em;
 	border-bottom: none;
 }
@@ -2613,7 +2667,7 @@ input, select, textarea {
 }
 
 #navbar a:hover {
-	color: #000;
+	color: #007d5b;
 }
 #navbar button {
 	padding:0.75em;
