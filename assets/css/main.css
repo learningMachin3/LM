@@ -2536,7 +2536,7 @@ input, select, textarea {
 	#mc_embed_signup div.mce_inline_error
 	{
 		margin:0;
-		font-size:0.35em;
+		font-size:0.35em !important;
 		padding:0;
 	}
 
