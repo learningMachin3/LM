@@ -2232,6 +2232,12 @@ input, select, textarea {
 #us ol{
 	margin-top:1em;
 }
+#us a,a:active,a:focus {
+	float: none;
+	font-weight:normal;
+	padding:0;
+	display: inline;
+}
 
 
 /* Header */
