@@ -2441,8 +2441,8 @@ input, select, textarea {
 /* Promo */
 
 	#promo {
-		display: inline-block;
-		width:80%;
+		display: inline;
+		width:90%;
 		position: relative;
 		z-index: 1;
 	}
@@ -2467,17 +2467,21 @@ input, select, textarea {
 				background-color: rgba(255, 255, 255, 0.15);
 				color: #fff;
 			}
-		#promo p{
-			display:inline;
-			margin-top:0em;
+		#promo p
+		{
+			vertical-align:middle;
+			display:inline-block;
+			font-size:1em;
+			margin-top:2em;
 			color:black;
-			width:40%;
+			width:65%;
 		}
 	#guest
 	{
-		display:inline;
+		vertical-align:middle;
+		display:inline-block;
 		margin-top:2em;
-		width:20%;
+		width:15%;
 	}
 	#listen {
 		position: relative;

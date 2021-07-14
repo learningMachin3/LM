@@ -17,24 +17,17 @@
 	<body class="about is-preload">
 		<div id="navbar">
 				<a class="nav_logo" href ="index.html"><img src="images/Round_Logo_White.png"></a>
-				<a href="about.html">About</a>
+			 	<a href="about.html">About</a>
 				<a href='contact.html'>Contact</a>
-				<button class="button button1"> Listen For Free </button>
-				<button class ="button button2"> Support Us </button>
+				<a href="listen.html" class="button button1"> Listen For Free</a>
+				<a href="support.html" class ="button button2"> Support Us </a>
 		</div>
 		<script>
 		// When the user scrolls down 300px from the top of the document, slide down the navbar
-		window.onscroll = function() {scrollFunction()};
+		document.onscroll = function() {scrollFunction()};
 
 		function scrollFunction() {
-			var vp_width;
-			if(typeof window.innerWidth != 'undefined'){
-				vp_width = window.innerWidth;
-			}
-			else {
-				vp_width = 1600;
-			}
-			if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+			if (window.pageYOffset > 300 || document.documentElement.scrollTop > 300) {
 				document.getElementById("navbar").style.top = "0";
 			} else {
 				document.getElementById("navbar").style.top = "-150px";
@@ -67,7 +60,7 @@
 				<div id = "promo">
 					<h2> We Should All Be Lurkers with Nia Dowell </h2>
 					<div id='buzzsprout-small-player-1720583'></div><script type='text/javascript' charset='utf-8' src='https://www.buzzsprout.com/1720583.js?container_id=buzzsprout-small-player-1720583&player=small'></script>
-					<div class="image_and_text">
+					<div class=image_and_text>
 					<img src="images/Nia_Oval.png" class="profile" id="guest">
 					<p class="bio"> Dr. Nia Dowell, a learning analytics researcher who does fascinating
 						work with her team at the Language and Learning analytics lab at
