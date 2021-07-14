@@ -2156,6 +2156,53 @@ input, select, textarea {
 		background-size: 128px 128px,				100% 100%;
 	}
 
+
+/*listen link*/
+#buzz_link a
+{
+	float:none;
+	margin: 2em;
+	border:transparent;
+	border-bottom: 3px solid #7920a0;
+	background-color:#84ab9e;
+	color: #7920a0;
+	font-weight: bold;
+	border-radius:10px;
+	border-width:2px;
+	border-color:#007d5b;
+	padding: 7px;
+}
+#buzz_link a:hover
+{
+	background-color:#7920a0;
+	color: white;
+}
+#buzz_link a:visited{
+	float:none;
+	display:inline;
+	margin: 2em;
+	border-bottom: 3px solid #7920a0;
+	color: #7920a0;
+	font-weight: bold;
+	border-radius:10px;
+	border-width:2px;
+	border-color:#007d5b;
+	padding: 7px;
+}
+#buzz_link  a:focus,a:active
+{
+	float:none;
+	display:inline;
+	border-bottom: 3px solid #7920a0;
+	margin:2em;
+	color: white;
+	font-weight: bold;
+	font-size:1em;
+	border-radius:10px;
+	border-width:2px;
+	border-color:#007d5b;
+	padding: 7px;
+}
 /*Episodes*/
 
 #episodes
@@ -2256,11 +2303,11 @@ input, select, textarea {
   flex-grow: 1;
   flex-basis: 0;
   padding: 10px;
-  color: white;
+  color: #84ab9e;
   text-decoration: none;
   text-align: center;
 }
-#hamitems a:hover { color: #ddd; }
+#hamitems a:hover { color: #999; }
 #hamitems a:active { font-weight:bold; }
 
 /* (C) HIDE HAMBURGER */
@@ -2309,9 +2356,14 @@ input, select, textarea {
 			border-color:#007d5b;
 			padding: 7px;
 		}
-
+		#featured_episode a:hover
+		{
+			background-color:#7920a0;
+			color: white;
+		}
 		#featured_episode a:visited{
 			float:none;
+			display:inline;
 			margin: 2em;
 			border-bottom: 3px solid #7920a0;
 			color: #7920a0;
@@ -2321,23 +2373,22 @@ input, select, textarea {
 			border-color:#007d5b;
 			padding: 7px;
 		}
-		#featured_episode  a:active
+		#featured_episode  a:focus,a:active
 		{
 			float:none;
+			display:inline;
 			border-bottom: 3px solid #7920a0;
+			margin:2em;
 			color: white;
 			font-weight: bold;
+			font-size:1em;
 			border-radius:10px;
 			border-width:2px;
 			border-color:#007d5b;
 			padding: 7px;
 		}
 
-		#featured_episode a:hover
-		{
-			background-color:#7920a0;
-			color: white;
-		}
+
 
 /* Hero */
 
@@ -2448,6 +2499,7 @@ input, select, textarea {
 			font-variant: small-caps;
 			font-size: 3em;
 		}
+
 
 		#promo .button {
 			background: #fff;
