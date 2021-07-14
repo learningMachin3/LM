@@ -2244,8 +2244,8 @@ input, select, textarea {
 	top: 0;
 	left: 0;
 	width: 100%;
-	margin-top:0.5em;
-	padding-top:0.75em;
+	margin-top:0.1em;
+	padding-top:0.2em;
 	height: 3em;
 	background: linear-gradient(148deg, rgba(121,32,160,0.2) 0%, rgba(255,255,255,0.15216508966867992) 100%);
 }
@@ -3206,7 +3206,7 @@ input, select, textarea {
 					line-height: 3em;
 				}
 				/* (A) BREAK INTO VERTICAL MENU */
-			  #hamitems a {
+			#hamitems a {
 			    box-sizing: border-box;
 			    display: block;
 			    width: 100%;
@@ -3225,7 +3225,6 @@ input, select, textarea {
 			  /* (C) TOGGLE SHOW/HIDE MENU */
 			  #hamitems { display: none; }
 			  #hamnav input:checked ~ #hamitems { display: block; }
-			}
 		/* Nav */
 			#nav {
 				display: none;
