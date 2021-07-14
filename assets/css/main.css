@@ -2242,7 +2242,7 @@ input, select, textarea {
 #hamnav {
 	position: absolute;
 	top: 0;
-	left: 0;
+	left:0;
 	width: 100%;
 	margin-top:0.1em;
 	padding-top:0.2em;
@@ -3131,10 +3131,6 @@ input, select, textarea {
 
 /* Mobile */
 
-	#navPanel, #navButton {
-		display: none;
-	}
-
 	@media screen and (max-width: 736px) {
 		/* (A) BREAK INTO VERTICAL MENU */
 	  #hamitems a {
@@ -3151,6 +3147,7 @@ input, select, textarea {
 	    font-style: normal;
 	    font-size: 1.2em;
 	    padding: 10px;
+			z-index:3;
 	  }
 
 	  /* (C) TOGGLE SHOW/HIDE MENU */
