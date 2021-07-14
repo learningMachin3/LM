@@ -2467,14 +2467,22 @@ input, select, textarea {
 				background-color: rgba(255, 255, 255, 0.15);
 				color: #fff;
 			}
-		#promo p
+		#promo .blurb
 		{
 			vertical-align:middle;
 			display:inline-block;
 			font-size:1em;
 			margin-top:2em;
+			margin-right:0;
+			padding-right:0;
 			color:black;
 			width:65%;
+		}
+		#promo .blurb a{
+			color:blue;
+		}
+		#promo .blurb a:hover{
+			color:red;
 		}
 	#guest
 	{
