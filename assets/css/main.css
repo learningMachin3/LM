@@ -2240,7 +2240,7 @@ input, select, textarea {
 #us ol{
 	margin-top:1em;
 }
-#us a,a:active,a:focus {
+#us a, #us a:active, #us a:focus {
 	float: none;
 	font-weight:normal;
 	padding:0;
@@ -2264,7 +2264,7 @@ input, select, textarea {
   flex-grow: 1;
   flex-basis: 0;
   padding: 10px;
-  color: white;
+  color: #84ab9e;
   text-decoration: none;
   text-align: center;
 }
@@ -2426,17 +2426,15 @@ input, select, textarea {
 		#hero a {
 			color: #fff;
 		}
-		#hero a,a:active,a:focus {
+		#hero a, #hero a:focus, #hero a:active {
 			float: left;
 			display: inline;
 			outline: none;
 			color: #fff;
 			text-align: center;
-			padding: 0.75em;
 			text-decoration: none;
 			font-weight:bold;
 			font-size: 1em;
-			border-bottom: none;
 		}
 
 
@@ -2478,24 +2476,18 @@ input, select, textarea {
 	#listen  a
 	{
 		font-family:inherit;
-		background-color: rgba(100,100,100,0.2);
 	}
 	#listen  a:hover
 	{
 		color: #7920a0;
 		background-color: rgba(200,200,200,0.2);
 	}
-	#listen  a:focus,a:active
+	#listen  a:focus, #listen a:active
 	{
-		display:block;
-		clear:none;
 		margin:0;
 		padding:0;
-		font-weight:normal;
-		font-variant:normal;
-		font-family:inherit;
 		color: #7920a0;
-		background-color: rgba(200,200,200,0.2);
+		background-color: rgba(200,200,200,0.4);
 	}
 
 
@@ -2563,7 +2555,7 @@ input, select, textarea {
 		font-size:0.35em;
 		padding:0;
 	}
-	#mce-error-response.response a,a:active,a:visited{
+	#mce-error-response.response a,#mce-error-response.response a:active,#mce-error-response.response a:visited{
 		padding:0;
 		float:right;
 	}
@@ -2679,7 +2671,7 @@ input, select, textarea {
 	text-decoration: none;
 }
 
-#navbar a,a:active,a:focus {
+#navbar a, #navbar a:active, #navbar a:focus {
 	float: left;
 	display: inline;
 	outline: none;
@@ -3122,7 +3114,7 @@ input, select, textarea {
 			z-index: 5;
 			transition: top 0.3s;
 		}
-		#navbar a,a:active,a:focus {
+		#navbar a, #navbar a:focus, #navbar a:active,{
 			padding: 0.25em;
 			text-decoration: none;
 			font-weight:bold;
@@ -3197,7 +3189,7 @@ input, select, textarea {
 		    width: 20%;
 		    border-top: 1px solid #333;
 		  }
-			#hamitems a:visited,a:focus,a:active{
+			#hamitems a:visited, #hamitems a:focus,#hamitems a:active{
 				float:none;
 				display: inline-block;
 			}
