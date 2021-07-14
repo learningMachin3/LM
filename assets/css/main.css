@@ -2239,7 +2239,32 @@ input, select, textarea {
 	display: inline;
 }
 
+#hamnav {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	margin-top:0.5em;
+	padding-top:0.75em;
+	height: 3em;
+	background: linear-gradient(148deg, rgba(121,32,160,0.2) 0%, rgba(255,255,255,0.15216508966867992) 100%);
+}
 
+/* (B) HORIZONTAL MENU ITEMS */
+#hamitems { display: flex; }
+#hamitems a {
+  flex-grow: 1;
+  flex-basis: 0;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+}
+#hamitems a:hover { color: #ddd; }
+#hamitems a:active { font-weight:bold; }
+
+/* (C) HIDE HAMBURGER */
+#hamnav label, #hamburger { display: none; }
 /* Header */
 
 	#logo {
@@ -3180,9 +3205,28 @@ input, select, textarea {
 					height: 3em;
 					line-height: 3em;
 				}
+				/* (A) BREAK INTO VERTICAL MENU */
+			  #hamitems a {
+			    box-sizing: border-box;
+			    display: block;
+			    width: 100%;
+			    border-top: 1px solid #333;
+			  }
+			  //* (B) SHOW HAMBURGER ICON */
+			  #hamnav label {
+			    display: inline-block;
+			    color: white;
+			    background: #a02620;
+			    font-style: normal;
+			    font-size: 1.2em;
+			    padding: 10px;
+			  }
 
+			  /* (C) TOGGLE SHOW/HIDE MENU */
+			  #hamitems { display: none; }
+			  #hamnav input:checked ~ #hamitems { display: block; }
+			}
 		/* Nav */
-
 			#nav {
 				display: none;
 			}
@@ -3305,7 +3349,7 @@ input, select, textarea {
 				-moz-transform: translateY(-50vh);
 				-webkit-transform: translateY(-50vh);
 				-ms-transform: translateY(-50vh);
-				transform: translateY(-50vh);
+				transform: translateY(-10vh);
 				-moz-transition: -moz-transform 0.5s ease;
 				-webkit-transition: -webkit-transform 0.5s ease;
 				-ms-transition: -ms-transform 0.5s ease;
@@ -3320,7 +3364,7 @@ input, select, textarea {
 				position: fixed;
 				top: 0;
 				width: 100%;
-				height: 50vh;
+				height: 10vh;
 				z-index: 10002;
 				box-shadow: inset 0px -2px 5px 0px rgba(0, 0, 0, 0.25);
 				font-size: 1em;
@@ -3339,10 +3383,37 @@ input, select, textarea {
 					border-top: dotted 1px rgba(255, 255, 255, 0.1);
 				}
 
-					#navPanel .link.depth-0 {
-						color: #fff;
-						font-weight: 400;
-					}
+				#navPanel .link.depth-0 {
+					color: #fff;
+					font-weight: 400;
+				}
+				#navPanel .link.depth-0:active
+				{
+					color: #ddd;
+				}
+				nav .link.depth-0
+				{
+					position: relative;
+					z-index: 1;
+					display: block;
+					float:left;
+					margin:0;
+					text-decoration: none;
+					padding: 0.75em;
+				}
+				nav .link.depth-0:active
+				{
+					position: relative;
+					z-index: 1;
+					display: block;
+					float:left;
+					margin:0;
+					text-decoration: none;
+					padding: 0.75em;
+					color: #ddd;
+					border: 0;
+					border-top: dotted 1px rgba(255, 255, 255, 0.1);
+				}
 
 				#navPanel .indent-1 {
 					display: inline-block;
@@ -3478,6 +3549,8 @@ input, select, textarea {
 				width: 30%;
 				text-align: left;
 			}
+
+
 
 		/* Header */
 
