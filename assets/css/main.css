@@ -2131,6 +2131,14 @@ input, select, textarea {
 		text-align: center;
 		padding: 3em 0 3em 0;
 	}
+	#listen-wrapper {
+		position: relative;
+		background:linear-gradient(100deg,#ccc 50%, #007d5b 100%);
+		background-position: top left, center center;
+		color: #fff;
+		text-align: center;
+		padding: 3em 0 3em 0;
+	}
 
 	#mailing-wrapper {
 		position: relative;
@@ -2461,6 +2469,35 @@ input, select, textarea {
 				background-color: rgba(255, 255, 255, 0.15);
 				color: #fff;
 			}
+	#listen {
+		display: inline-block;
+		width:80%;
+		position: relative;
+		z-index: 1;
+	}
+	#listen  a
+	{
+		font-family:inherit;
+		background-color: rgba(100,100,100,0.2);
+	}
+	#listen  a:hover
+	{
+		color: #7920a0;
+		background-color: rgba(200,200,200,0.2);
+	}
+	#listen  a:focus,a:active
+	{
+		display:block;
+		clear:none;
+		margin:0;
+		padding:0;
+		font-weight:normal;
+		font-variant:normal;
+		font-family:inherit;
+		color: #7920a0;
+		background-color: rgba(200,200,200,0.2);
+	}
+
 
 /* Mail Chimp */
 	#mc_embed_signup{
