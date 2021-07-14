@@ -2468,12 +2468,18 @@ input, select, textarea {
 				color: #fff;
 			}
 		#promo p{
-			margin-top:2em;
+			display:inline;
+			margin-top:0em;
 			color:black;
+			width:40%;
 		}
+	#guest
+	{
+		display:inline;
+		margin-top:2em;
+		width:20%;
+	}
 	#listen {
-		display: inline-block;
-		width:80%;
 		position: relative;
 		z-index: 1;
 	}
@@ -3118,15 +3124,18 @@ input, select, textarea {
 			z-index: 5;
 			transition: top 0.3s;
 		}
+		#navbar a:hover {
+			color: #007d5b;
+		}
 		#navbar a, #navbar a:focus, #navbar a:active,{
 			padding: 0.25em;
 			text-decoration: none;
 			font-weight:bold;
-			font-size: 0.75em;
+			font-size: 0.5em;
 			border-bottom: none;
 		}
 		#navbar a.nav_logo {
-			width:2em;
+			width:3em;
 			text-decoration: none;
 			outline: none;
 		}
@@ -3136,9 +3145,7 @@ input, select, textarea {
 			width: 100%;
 		}
 
-		#navbar a:hover {
-			color: #007d5b;
-		}
+
 		#navbar a.button {
 			padding:0.1em 0.1em 0.1em 0.1em;
 			width:20%;
