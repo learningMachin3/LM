@@ -2303,7 +2303,7 @@ input, select, textarea {
 			text-transform: uppercase;
 		}
 
-		#featured_episode a
+		#featured_episode #more_info
 		{
 			float:none;
 			margin: 2em;
@@ -2318,7 +2318,7 @@ input, select, textarea {
 			padding: 7px;
 		}
 
-		#featured_episode a:visited{
+		#featured_episode #more_info:visited{
 			float:none;
 			margin: 2em;
 			border-bottom: 3px solid #7920a0;
@@ -2329,7 +2329,7 @@ input, select, textarea {
 			border-color:#007d5b;
 			padding: 7px;
 		}
-		#featured_episode  a:active
+		#featured_episode #more_info:active
 		{
 			float:none;
 			border-bottom: 3px solid #7920a0;
@@ -2341,10 +2341,27 @@ input, select, textarea {
 			padding: 7px;
 		}
 
-		#featured_episode a:hover
+		#featured_episode #more_info:hover
 		{
 			background-color:#7920a0;
 			color: white;
+		}
+		#featured_episode .blurb
+		{
+			vertical-align:middle;
+			display:inline-block;
+			font-size:1em;
+			margin-top:2em;
+			margin-right:0;
+			padding-right:0;
+			color:black;
+			width:65%;
+		}
+		#featured_episode .blurb a{
+			color:blue;
+		}
+		#featured_episode .blurb a:hover{
+			color:red;
 		}
 
 /* Hero */
@@ -2484,6 +2501,7 @@ input, select, textarea {
 		#promo .blurb a:hover{
 			color:red;
 		}
+
 	#guest
 	{
 		vertical-align:middle;
