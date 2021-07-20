@@ -2372,13 +2372,21 @@ input, select, textarea {
 		text-align: left;
 		z-index: 1;
 	}
-
+	#hero h1 {
+		color: #eee;
+		/*font-family:"Avenir", "Nunito", sans-serif;*/
+		font-size: 3em;
+		line-height: 0em;
+		margin-bottom: 0px;
+	}
 		#hero h2 {
-			color: #eee;
-			/*font-family:"Avenir", "Nunito", sans-serif;*/
-			font-size: 5em;
+			color: #ccc;
+			font-size: 1.5em;
+			margin-top: 1em;
+			margin-bottom: 1.75em;
+			margin-left: 2.5em;
+			/*font-family:"Nunito","Garamond", sans-serif;*/
 			line-height: 0em;
-			margin-bottom: 0px;
 		}
 
 		#hero strong {
