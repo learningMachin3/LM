@@ -2073,7 +2073,7 @@ input, select, textarea {
 		position: relative;
 		background: #fff;
 		overflow-x: hidden;
-		padding: 6em 0 6em 0;
+		padding: 1em 0 1em 0;
 	}
 
 	.image-wrapper {
@@ -2129,7 +2129,8 @@ input, select, textarea {
 		background-position: top left, center center;
 		color: #fff;
 		text-align: center;
-		padding: 3em 0 3em 0;
+		margin:1em;
+		padding: 1em 0 1em 0;
 	}
 	#listen-wrapper {
 		position: relative;
@@ -2144,6 +2145,7 @@ input, select, textarea {
 		position: relative;
 		background:linear-gradient(100deg,#ccc 50%, #007d5b 100%);
 		background-position: top left, center center;
+		margin:1em;
 		padding: 3em 1em 3em 1em;
 	}
 	#mailing-wrapper h2
@@ -2467,8 +2469,10 @@ input, select, textarea {
 
 	#promo {
 		display: inline;
-		width:90%;
+		width:100%;
 		position: relative;
+		vertical-align:middle;
+		padding-right:0;
 		z-index: 1;
 	}
 
@@ -2477,6 +2481,7 @@ input, select, textarea {
 			color: #7920a0;
 			display: inline-block;
 			font-variant: small-caps;
+			width:100%;
 			font-size: 3em;
 		}
 
@@ -2498,8 +2503,6 @@ input, select, textarea {
 			display:inline-block;
 			font-size:1em;
 			margin-top:2em;
-			margin-right:0;
-			padding-right:0;
 			color:black;
 			width:65%;
 		}
@@ -2515,6 +2518,8 @@ input, select, textarea {
 		vertical-align:middle;
 		display:inline-block;
 		margin-top:2em;
+		margin-left:1em;
+		margin-bottom:1em;
 		width:15%;
 	}
 	#listen {
@@ -2860,7 +2865,7 @@ input, select, textarea {
 			}
 
 			#promo-wrapper {
-				padding: 5em 0 5em 0;
+				padding: 1em 0 1em 0;
 			}
 
 			#footer-wrapper {
@@ -2905,7 +2910,8 @@ input, select, textarea {
 			}
 
 			#promo-wrapper {
-				padding: 2em;
+				margin:2em;
+				padding: 1em;
 			}
 
 			#footer-wrapper {
@@ -3143,6 +3149,7 @@ input, select, textarea {
 			}
 
 			#promo-wrapper {
+				margin:1em;
 				padding: 20px;
 			}
 
