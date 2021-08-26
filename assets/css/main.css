@@ -2765,6 +2765,7 @@ input, select, textarea {
 #navbar a.button:focus {
 	font-size: 0.75em;
 	padding:0.2em 0.75em 0.2em 0.75em;
+	border: 3px solid;
 	margin:0.75em;
 	color: black;
 	float: right;
@@ -2772,6 +2773,7 @@ input, select, textarea {
 #navbar a.button:active {
 	font-size: 0.75em;
 	padding:0.2em 0.75em 0.2em 0.75em;
+	border: 3px solid;
 	margin:0.75em;
 	float: right;
 }
