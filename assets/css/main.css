@@ -2146,7 +2146,7 @@ input, select, textarea {
 		background:linear-gradient(100deg,#ccc 50%, #007d5b 100%);
 		background-position: top left, center center;
 		margin:1em;
-		padding: 3em 1em 3em 1em;
+		padding: 1em 1em 1em 1em;
 	}
 	#mailing-wrapper h2
 	{
@@ -2752,16 +2752,30 @@ input, select, textarea {
 }
 #navbar a.button {
 	padding:0.2em 0.75em 0.2em 0.75em;
-	margin-top:0.75em;
-	margin-right:0.75em;
+	margin:0.75em;
+	float: right;
+}
+#navbar a.button:visited {
+	font-size: 0.75em;
+	padding:0.2em 0.75em 0.2em 0.75em;
+	margin:0.75em;
+	color: black;
+	float: right;
+}
+#navbar a.button:focus {
+	font-size: 0.75em;
+	padding:0.2em 0.75em 0.2em 0.75em;
+	margin:0.75em;
+	color: black;
 	float: right;
 }
 #navbar a.button:active {
+	font-size: 0.75em;
 	padding:0.2em 0.75em 0.2em 0.75em;
-	margin-top:0.75em;
-	margin-right:0.75em;
+	margin:0.75em;
 	float: right;
 }
+
 #navbar .button1{
 	border: 3px solid #7920a0;
 	background: transparent;
@@ -2787,6 +2801,7 @@ input, select, textarea {
 }
 
 #navbar .button2:after, .button1:after {
+		font-size: 0.75em;
 		content: '';
 		display: block;
 		position: absolute;
