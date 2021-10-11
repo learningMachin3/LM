@@ -2521,6 +2521,7 @@ input, select, textarea {
 		margin-left:1em;
 		margin-bottom:1em;
 		width:15%;
+		min-width: 200px;
 	}
 	#listen {
 		position: relative;
@@ -2901,16 +2902,7 @@ input, select, textarea {
 				display: none;
 			}
 
-		/* Button */
-
-			input[type="button"],
-			input[type="submit"],
-			input[type="reset"],
-			button,
-			.button {
-				padding-left: 1.25em;
-				padding-right: 1.25em;
-			}
+	
 
 		/* Wrappers */
 
@@ -2934,6 +2926,8 @@ input, select, textarea {
 			#footer-wrapper {
 				padding: 4em 2em 4em 2em;
 			}
+
+			
 
 		/* Header */
 
@@ -2962,8 +2956,12 @@ input, select, textarea {
 				padding: 3.5em 4em 0 4em;
 			}
 
+				#hero h1 {
+					font-size: 2.5em;
+				}
+				
 				#hero h2 {
-					font-size: 2.75em;
+					font-size: 1.5em;
 				}
 
 				#hero p br {
@@ -2979,7 +2977,7 @@ input, select, textarea {
 			}
 
 				#promo .button {
-					font-size: 1.25em;
+					font-size: 1.0em;
 				}
 
 				#promo h2 {
@@ -3072,13 +3070,24 @@ input, select, textarea {
 
 		/* Hero */
 
+			#hero h1 {
+				font-size: 2.0em;
+			}
+			
 			#hero h2 {
-				font-size: 2.5em;
+				font-size: 1.25em;
 			}
 
 			#hero p br {
 				font-size: 1.25em;
 				display: none;
+			}
+
+			#hero .button1{
+				font-size: 0.7em;
+			}
+			#hero .button2{
+				font-size: 0.7em;
 			}
 
 		/* Main */
@@ -3131,6 +3140,14 @@ input, select, textarea {
 			h2 {
 				font-size: 1.5em;
 				line-height: 1.25em;
+
+			}
+
+			/* Promo */
+
+			
+			#promo .button {
+				font-size: 0.8em;
 			}
 
 		/* Sections/Article */
@@ -3323,13 +3340,26 @@ input, select, textarea {
 					margin: 0 0 1.25em 0;
 				}
 
-					#hero header h2 {
-						font-size: 1.5em;
+					
+				#hero h1 {
+					font-size: 1.25em;		
 					}
+
+
+				#hero header h2 {
+					font-size: 0.75em;			}
 
 				#hero p {
 					font-size: 0.75em;
 				}
+
+				#hero .button1{
+					font-size: 0.7em;
+				}
+				#hero .button2{
+					font-size: 0.7em;
+				}
+	
 
 		/* Nav */
 
@@ -3584,6 +3614,10 @@ input, select, textarea {
 
 			#promo {
 				padding: 20px;
+			}
+
+			#promo .button {
+				font-size: 0.8em;
 			}
 
 		/* Content */
