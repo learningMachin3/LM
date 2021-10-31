@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+    <title>Season 2 Trailer</title>
+
+    <style>
+    body { margin: 0; }
+    #title, #subtitle, #info, #summary { text-align: center; }
+    #summary { margin: 0 10%; }
+    #chapter { margin-top: 1em; }
+
+    #edit-bar {
+        margin-top: 2em; display: flex; justify-content: space-between; flex-wrap: wrap;
+        position: -webkit-sticky; position: sticky; top: 0; left: 0;
+        background: white; z-index: 999;
+        font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+        -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; text-size-adjust: 100%;
+    }
+    #edit-bar-spacer { flex-grow: 1; }
+    .button {
+        background-color: #f5f5f5; color: #363636;
+        border: 1px solid #dbdbdb; border-radius: 4px; box-shadow: none;
+        margin: 0.5em; padding: 5px 12px;
+        cursor:pointer;font-size: 0.9em;
+        justify-content:center; text-align:center; white-space:nowrap;
+        display: inline-flex; position: relative; vertical-align: top;
+        user-select: none; text-decoration: none;
+    }
+    .button:hover{border-color:#b5b5b5;color:#363636;background-color:#eee;}
+    .button:active{border-color:#4a4a4a;color:#363636;background-color:#e8e8e8;}
+    .button.export-option { margin: 0.5em 0.2em 0.5em auto; }
+    .button.export-buttons-shown { margin-left: 0.2em; margin-left: auto; }
+
+    span.active { font-weight: bold; }
+    span.listened { font-weight: bold; font-style: italic; }
+    #transcript.edit-mode { border-style: dashed; padding: 10px; }
+    #transcript span { cursor: pointer; }
+    #transcript.edit-mode span { cursor: text; }
+    .transcript-base { margin: 0.5em; }
+
+    @media all and (max-width: 900px) {
+      .button.export-buttons-shown { margin: 0.5em; margin-left: auto; }
+      .button.export-option { margin: 0.5em; margin-left: auto; }
+    }
+
+    @media all and (max-width: 340px) {
+      .button { margin: 0.2em; }
+    }
+
+    @media print {
+        #edit-bar { display: none; }
+        .button { display: none; }
+        span { background: white; }
+        #transcript { border-style: none !important; padding: 0px !important; }
+    }
+    </style>
+</head>
+
+<body>
+
+
+<div id="metadata">
+<h1 id="title">Season 2 Trailer</h1>
+<h4 id="subtitle">Critical Race Theory and Equity in Education</h4>
+
+<p id="info">
+2021, Learning Machine Podcast<br>
+Series 2<br>
+<a href="http://www.learningmachinepodcast.com" target="_blank">http://www.learningmachinepodcast.com</a>
+</p>
+
+<p id="summary">
+In season 2 we are talking about Critical Race Theory, also known as CRT - what it is and why it has become such a politicized hot-button issue.
+
+We’re also exploring Culturally Responsive Teaching and equity in education. 
+
+Just like in Season 1 we reached out to education experts from all walks of life and asked them to share their insights with all of you.
+</p>
+
+
+</div>
+
+<div id="edit-bar">
+    <a class="button" id="edit-transcript" onclick="enableEdit();" title="Enable/disable edit mode.">Edit Transcript</a>
+    <a class="button" id="toggle-styling" onclick="removeStyling();" title="Words with low recognition confidence will be highlighted in red.">Remove Highlighting</a>
+    <a class="button" id="add-audio-file" onclick="addAudioFile();" title="Add audio file which should be played along the transcript.">Add Audio File</a>
+    <a class="button" id="toggle-play-on-click" title="Enable/disable click on word for audio playback." style="display: none;">Stop Play-on-click</a>
+
+    <div id="edit-bar-spacer"></div>
+
+    <a class="button export-option" id="save-changes" onclick="saveChanges();" style="display: none;" title="Save transcript editor with current changes for further editing or sharing.">Save Editor</a>
+    <a class="button export-option" id="export-html" onclick="exportHTML();" style="display: none;" title="Export transcript as HTML for Word, Wordpress, etc.">Export HTML</a>
+    <a class="button export-option" id="export-pdf" onclick="window.print(); hideExportButtons();" style="display: none;" title="Export transcript as PDF or to printer.">Export PDF</a>
+    <a class="button export-option" id="export-webvtt" onclick="exportWebVTT();" style="display: none;" title="Export transcript as WebVTT for web players.">Export WebVTT</a>
+    <a class="button" id="show-export-buttons" onclick="showExportButtons();">Export...</a>
+    <a class="button" id="show-help" href="https://auphonic.com/help/algorithms/speech_recognition.html#auphonic-transcript-editor" target="_blank" title="Show transcript editor help.">?</a>
+
+    <audio id="audio-player" preload="auto" style="display: none;">
+        <source src="https://auphonic.com/engine/download/audio-result/2dxKNTWGZ3xTcRrMG7ak8K/RDB.mp3?ms=953248">
+    </audio>
+</div>
+
+<div id="transcript" class="transcript-base">
+
+<h2 id="chapter">Transcript</h2>
+<b data-spk="3">Music</b><br>
+<br>
+<b data-spk="2">Sam:</b><br>
+<small style="opacity: 0.5;">[0:15]</small> <span title="0:15 - 0:24" data-start="00:00:15.173" data-end="00:00:23.885" data-spk="2" data-label="Sam">In season two we're talking about critical race Theory also known as CR t-- what it is and why it has become such a politicized hot-button issue.</span><br>
+<br>
+<b data-spk="0">Raven:</b><br>
+<small style="opacity: 0.5;">[0:25]</small> <span title="0:25 - 0:29" data-start="00:00:24.823" data-end="00:00:29.480" data-spk="0" data-label="Raven">We're also exploring culturally responsive teaching and equity in education.</span><br>
+<br>
+<b data-spk="1">Nathan:</b><br>
+<small style="opacity: 0.5;">[0:30]</small> <span title="0:30 - 0:40" data-start="00:00:30.009" data-end="00:00:39.545" data-spk="1" data-label="Nathan">Just like in season one we reached out to education experts from all walks of life and ask them to share their insights with all of you thanks for listening.</span><br>
+<br>
+<b data-spk="3">Music</b><br>
+<br>
+<b data-spk="0">Raven:</b><br>
+<small style="opacity: 0.5;">[0:48]</small> <span title="0:48 - 1:01" data-start="00:00:48.421" data-end="00:01:00.973" data-spk="0" data-label="Raven">This season we focused our conversations around a few guiding questions we're going to share a bit of the background and context for these questions the first guided question is what is critical race Theory.</span><br>
+<br>
+<b data-spk="1">Nathan:</b><br>
+<small style="opacity: 0.5;">[1:02]</small> <span title="1:02 - 1:12" data-start="00:01:01.935" data-end="00:01:11.886" data-spk="1" data-label="Nathan">So in 1998 Gloria ladson-billings wrote this essay called just what is critical race Theory and what's it doing in a nice field like education,</span><br>
+<span title="1:12 - 1:25" data-start="00:01:12.048" data-end="00:01:25.424" data-spk="1" data-label="Nathan">she took the tenants of a legal Theory called critical race Theory and applied them to thinking about education now had no point did she say that critical race Theory should be taught in elementary middle or high schools.</span><br>
+<span title="1:26 - 1:30" data-start="00:01:26.248" data-end="00:01:29.504" data-spk="1" data-label="Nathan">Gloria ladson-billings politely declined to be on this podcast.</span><br>
+<br>
+<b data-spk="2">Sam:</b><br>
+<small style="opacity: 0.5;">[1:31]</small> <span title="1:31 - 1:44" data-start="00:01:31.085" data-end="00:01:43.890" data-spk="2" data-label="Sam">On April 27th 2021 conservative activists and documentarian Christopher rufo released in 11-part investigative series on what he called political indoctrination in American schools</span><br>
+<span title="1:44 - 1:53" data-start="00:01:43.752" data-end="00:01:52.874" data-spk="2" data-label="Sam">a one-hour special on his work on Tucker Carlson tonight sparked a national political Wildfire around CRT in schools.</span><br>
+<span title="1:54 - 2:01" data-start="00:01:53.505" data-end="00:02:01.443" data-spk="2" data-label="Sam">Christopher rufo also politely declined to be on this podcast
+the second guiding question,</span><br>
+<span title="2:02 - 2:04" data-start="00:02:01.768" data-end="00:02:04.291" data-spk="2" data-label="Sam">what is culturally responsive teaching.</span><br>
+<br>
+<b data-spk="0">Raven:</b><br>
+<small style="opacity: 0.5;">[2:06]</small> <span title="2:06 - 2:15" data-start="00:02:05.595" data-end="00:02:14.596" data-spk="0" data-label="Raven">Culturally responsive teaching is a pedagogy that recognizes the importance of including students cultural references in all aspects of learning,</span><br>
+<span title="2:15 - 2:23" data-start="00:02:14.927" data-end="00:02:23.460" data-spk="0" data-label="Raven">some characteristics of culturally responsive teaching include learning within the context of culture reshaping the curriculum.</span><br>
+<span title="2:25 - 2:36" data-start="00:02:24.548" data-end="00:02:35.538" data-spk="0" data-label="Raven">And positive perspectives on parents families and communities simply put culturally responsive teaching should include issues and topics related to students backgrounds and culture.</span><br>
+<br>
+<b data-spk="1">Nathan:</b><br>
+<small style="opacity: 0.5;">[2:37]</small> <span title="2:37 - 2:50" data-start="00:02:37.179" data-end="00:02:49.810" data-spk="1" data-label="Nathan">Paulo Freire a argued that students must be educated about their oppression in order to attain critical Consciousness or the ability to see and understand the power structures within which they live.</span><br>
+<span title="2:50 - 3:00" data-start="00:02:50.423" data-end="00:02:59.670" data-spk="1" data-label="Nathan">The California Department of Education recently voted to adopt a new ethnic studies curriculum that advocates for decolonizing American society.</span><br>
+<span title="3:00 - 3:06" data-start="00:03:00.092" data-end="00:03:05.505" data-spk="1" data-label="Nathan">Conservative critics of the curriculum argue that under the guise of equity and empowerment,</span><br>
+<span title="3:06 - 3:10" data-start="00:03:05.644" data-end="00:03:10.403" data-spk="1" data-label="Nathan">this curriculum would turn schools into factories for left-wing political activism.</span><br>
+<span title="3:12 - 3:17" data-start="00:03:11.959" data-end="00:03:17.343" data-spk="1" data-label="Nathan">Our third guiding question is what are the politics of zrt in the.</span><br>
+<br>
+<b data-spk="2">Sam:</b><br>
+<small style="opacity: 0.5;">[3:18]</small> <span title="3:18 - 3:32" data-start="00:03:18.287" data-end="00:03:31.729" data-spk="2" data-label="Sam">In the last year more than 22 states have proposed laws to ban critical race Theory and any curriculum which discusses subjects related to racial Equity the history of racism and the concept of privilege.</span><br>
+<span title="3:32 - 3:40" data-start="00:03:32.246" data-end="00:03:40.298" data-spk="2" data-label="Sam">Five states have signed these laws including Idaho where lawmakers have said that critical race Theory tries to make kids feel bad.</span><br>
+<span title="3:41 - 3:50" data-start="00:03:40.851" data-end="00:03:50.014" data-spk="2" data-label="Sam">On the other side a group of New York Times writers have argued that these laws threaten the basic purpose of a historical education in a liberal democracy.</span><br>
+<br>
+<b data-spk="0">Raven:</b><br>
+<small style="opacity: 0.5;">[3:51]</small> <span title="3:51 - 4:02" data-start="00:03:51.199" data-end="00:04:02.267" data-spk="0" data-label="Raven">Kimberle Crenshaw describes CR t-- as a way of looking at why after so many decades centuries actually since the Emancipation we have patterns of inequality that are enduring,</span><br>
+<span title="4:03 - 4:13" data-start="00:04:02.610" data-end="00:04:12.572" data-spk="0" data-label="Raven">Ted Cruz claim that critical race Theory says every white person is racist but CRT theorist explicitly state that CR t-- isn't about individuals,</span><br>
+<span title="4:13 - 4:20" data-start="00:04:12.879" data-end="00:04:19.807" data-spk="0" data-label="Raven">instead it's about structural disadvantage and the historical events that lead to inequality as it exists today.</span><br>
+<span title="4:20 - 4:33" data-start="00:04:20.247" data-end="00:04:32.775" data-spk="0" data-label="Raven">In that same vein Chicago Public Schools announced in September that it would use Nicole Hanna Jones's 1619 project in history classrooms to highlight how America's past has influenced the present.</span><br>
+<br>
+<b data-spk="1">Nathan:</b><br>
+<small style="opacity: 0.5;">[4:34]</small> <span title="4:34 - 4:43" data-start="00:04:34.386" data-end="00:04:43.417" data-spk="1" data-label="Nathan">As we mentioned CRT has become a contentious issue and everyone is entitled to their own opinions about CR t-- in education.</span><br>
+<span title="4:44 - 4:56" data-start="00:04:44.187" data-end="00:04:56.150" data-spk="1" data-label="Nathan">But before you make up your mind we invite you to engage with us this season as we discuss with people who have spent years studying teaching and learning about CR t--</span><br>
+<span title="4:57 - 5:05" data-start="00:04:56.878" data-end="00:05:05.362" data-spk="1" data-label="Nathan">To the three of us on this podcast it seems clear that there at least needs to be a space to talk about race and racism in the,</span><br>
+<span title="5:06 - 5:09" data-start="00:05:05.747" data-end="00:05:08.763" data-spk="1" data-label="Nathan">and this season we hope to dig into the reasons why.</span><br>
+<br>
+<b data-spk="3">Music</b><br>
+<br>
+<b data-spk="1">Nathan:</b><br>
+<small style="opacity: 0.5;">[5:20]</small> <span title="5:20 - 5:31" data-start="00:05:19.971" data-end="00:05:31.075" data-spk="1" data-label="Nathan">We can't wait to share all the guests on our show this season but we wanted to give you a little teaser of a few of the guests and episodes that were particularly excited about.</span><br>
+<br>
+<b data-spk="0">Raven:</b><br>
+<small style="opacity: 0.5;">[5:32]</small> <span title="5:32 - 5:40" data-start="00:05:32.169" data-end="00:05:40.161" data-spk="0" data-label="Raven">I'm really ready for all of you to hear our episode with Elena Silva and Jasmine Owens from the Ed policy team at new America</span><br>
+<span title="5:40 - 5:50" data-start="00:05:40.083" data-end="00:05:49.799" data-spk="0" data-label="Raven">they'll be decoding some of the messy language around the CRT debate to get to what's really happening with critical race theory in schools and in state legislation.</span><br>
+<br>
+<b data-spk="1">Nathan:</b><br>
+<small style="opacity: 0.5;">[5:51]</small> <span title="5:51 - 6:02" data-start="00:05:50.851" data-end="00:06:01.859" data-spk="1" data-label="Nathan">I'm super excited for the episode with dr. Catherine page hardened from the University of Texas Austin discussing her new book the genetic Lottery y-dna matters for social equality.</span><br>
+<span title="6:02 - 6:08" data-start="00:06:02.293" data-end="00:06:08.481" data-spk="1" data-label="Nathan">Paige gives this Whirlwind introduction to genetics research that went completely over my head,</span><br>
+<span title="6:09 - 6:18" data-start="00:06:08.650" data-end="00:06:18.402" data-spk="1" data-label="Nathan">but then she brought me back in by quickly drawing this Line in the Sand and justifying the vital importance of genetics in education research,</span><br>
+<span title="6:19 - 6:24" data-start="00:06:18.721" data-end="00:06:24.075" data-spk="1" data-label="Nathan">and then she talked about the impact this will have on Equity driven interventions that we design in the future.</span><br>
+<br>
+<b data-spk="2">Sam:</b><br>
+<small style="opacity: 0.5;">[6:25]</small> <span title="6:25 - 6:38" data-start="00:06:25.379" data-end="00:06:38.310" data-spk="2" data-label="Sam">Wow I'm excited for a lot of the episodes this season but I wanted to tell you guys about the upcoming episode with dr. David rozas he's an assistant principal at the castle Bridge School in the Bronx</span><br>
+<span title="6:38 - 6:49" data-start="00:06:38.251" data-end="00:06:49.487" data-spk="2" data-label="Sam">David and I are going to discuss the role of critical race theory in the classroom from the perspective of a teacher and administrator who is listening to students and families and their thoughts and opinions about this issue every day.</span><br>
+<span title="6:51 - 7:02" data-start="00:06:50.623" data-end="00:07:01.986" data-spk="2" data-label="Sam">David does a nice job of Bridging the Divide between the academic research on this issue and the on-the-ground experience the teachers have and he can speak to why the race really matters in the classroom</span><br>
+<span title="7:02 - 7:10" data-start="00:07:01.848" data-end="00:07:10.279" data-spk="2" data-label="Sam">we're also going to dive into the impact that the legislation that bans critical race theory in the classroom actually has on students and teachers.</span><br>
+<br>
+<b data-spk="0">Raven:</b><br>
+<small style="opacity: 0.5;">[7:12]</small> <span title="7:12 - 7:18" data-start="00:07:11.799" data-end="00:07:17.670" data-spk="0" data-label="Raven">Plus we're introducing a brand new segment to the podcast this season called Data town.</span><br>
+<br>
+<b data-spk="3">Music</b><br>
+<br>
+<b data-spk="0">Raven:</b><br>
+<small style="opacity: 0.5;">[7:28]</small> <span title="7:28 - 7:43" data-start="00:07:28.384" data-end="00:07:43.269" data-spk="0" data-label="Raven">It's our newest segment where we look at what the data says about the current state of education will share a chart table or data set related to whatever we're talking about in that episode to add concrete details to our discussion.</span><br>
+<br>
+<b data-spk="1">Nathan:</b><br>
+<small style="opacity: 0.5;">[7:45]</small> <span title="7:45 - 7:51" data-start="00:07:45.078" data-end="00:07:50.552" data-spk="1" data-label="Nathan">That brings us to the end of today's trailer and we can't wait for you to join us this season.</span><br>
+<br>
+<b data-spk="3">Music</b><br>
+<br>
+<b data-spk="0">Raven:</b><br>
+<small style="opacity: 0.5;">[7:50]</small> <span title="7:50 - 7:56" data-start="00:07:50.264" data-end="00:07:56.074" data-spk="0" data-label="Raven">Don't forget join us on Reddit or Twitter and tell us what you think about each episode.</span><br>
+<br>
+<b data-spk="2">Sam:</b><br>
+<small style="opacity: 0.5;">[7:57]</small> <span title="7:57 - 8:04" data-start="00:07:57.156" data-end="00:08:04.282" data-spk="2" data-label="Sam">To learn more about the upcoming season and to find out how to support the podcast visit learning machine podcast.com.</span><br>
+<br>
+<b data-spk="1">Nathan:</b><br>
+<small style="opacity: 0.5;">[8:05]</small> <span title="8:05 - 8:09" data-start="00:08:05.136" data-end="00:08:09.426" data-spk="1" data-label="Nathan">Thank you to all those who teach listen and learn see you next time.</span><br>
+
+<br>
+</div>
+
+
+<script type="text/javascript">
+
+function getBgAlpha(element) {
+    var currentColor = getComputedStyle(element).getPropertyValue('background-color');
+    var parts = currentColor.match(/[\d.]+/g);
+    var alpha = "0"
+
+    try {
+        alpha = parts[3];
+    }
+    catch(err) {
+        // on edge we don't get a color if RGBA is completely 0
+    }
+
+    return alpha;
+}
+
+function removeStyling() {
+    var elements = document.getElementsByTagName('span');
+    var newColorBase = 'rgba(255, 255, 255, ';
+    for (var i=0; i<elements.length; i++) {
+        var currentAlpha = getBgAlpha(elements[i]);
+        var newColor = newColorBase + currentAlpha + ')';
+        elements[i].style = 'background: ' + newColor + ';';
+    }
+
+    try {
+        var button = document.getElementById('toggle-styling');
+        button.innerText = 'Add Highlighting';
+        button.onclick = function() { addStyling(); } ;
+    }
+    catch(err) {
+        // no confidence available
+    }
+}
+
+function addStyling() {
+    var elements = document.getElementsByTagName('span');
+    var newColorBase = 'rgba(209, 72, 54, ';
+    for (var i=0; i<elements.length; i++) {
+        var currentAlpha = getBgAlpha(elements[i]);
+        var newColor = newColorBase + currentAlpha + ')';
+        elements[i].style = 'background: ' + newColor + ';';
+    }
+
+    try {
+        var button = document.getElementById('toggle-styling');
+        button.innerText = 'Remove Highlighting';
+        button.onclick = function() { removeStyling(); } ;
+    }
+    catch(err) {
+        // no confidence available
+    }
+}
+
+function enableEdit() {
+    var transcript = document.getElementById('transcript');
+    transcript.contentEditable = true;
+    transcript.classList.add("edit-mode");
+
+    var button = document.getElementById('edit-transcript');
+    button.innerText = 'Close Edit Mode';
+    button.onclick = function() { disableEdit(); } ;
+
+    var elements = document.querySelectorAll('b[data-spk]');
+    for (var i=0; i<elements.length; i++) {
+        elements[i].title = 'Change speaker name to edit all speakers at once!';
+    }
+}
+
+function disableEdit() {
+    var transcript = document.getElementById('transcript');
+    transcript.contentEditable = false;
+    transcript.classList.remove("edit-mode");
+
+    var button = document.getElementById('edit-transcript');
+    button.innerText = 'Edit Transcript';
+    button.onclick = function() { enableEdit(); } ;
+
+    var elements = document.querySelectorAll('b[data-spk]');
+    for (var i=0; i<elements.length; i++) {
+        elements[i].title = '';
+    }
+}
+
+function removeSpans(transcript) {
+    var removeSpans = new RegExp('</?span[^>]*>','gm');
+    transcript = transcript.replace(removeSpans, '');
+    transcript = transcript.replace(/&nbsp;/g, ' ');
+    return transcript;
+}
+
+function showExportButtons() {
+    var button = document.getElementById('show-export-buttons');
+    button.innerText = '>';
+    button.title = 'Close export buttons.';
+    button.classList.add("export-buttons-shown");
+    button.onclick = function() { hideExportButtons(); } ;
+
+    document.getElementById('export-html').style = '';
+    document.getElementById('export-pdf').style = '';
+    document.getElementById('export-webvtt').style = '';
+    document.getElementById('save-changes').style = '';
+    document.getElementById('show-help').style = 'display: none;';
+}
+
+function hideExportButtons() {
+    var button = document.getElementById('show-export-buttons');
+    button.innerText = 'Export...';
+    button.title = '';
+    button.classList.remove("export-buttons-shown");
+    button.onclick = function() { showExportButtons(); } ;
+
+    document.getElementById('export-html').style = 'display: none;';
+    document.getElementById('export-pdf').style = 'display: none;';
+    document.getElementById('export-webvtt').style = 'display: none;';
+    document.getElementById('save-changes').style = 'display: none;';
+    document.getElementById('show-help').style = '';
+}
+
+function saveChanges() {
+    disableEdit();
+    hideExportButtons();
+
+    var head = document.head.innerHTML;
+    var body = document.body.innerHTML;
+
+    var pageSource = '<!DOCTYPE html><html><head>' + head + '</head><body>' + body + '</body></html>';
+    var filename = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+
+    var bl = new Blob([pageSource], {type: "text/html"});
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(bl);
+    a.download = filename;
+    a.hidden = true;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+}
+
+function exportHTML() {
+    disableEdit();
+    removeStyling();
+
+    var head = document.head.innerHTML;
+    var metadata = document.getElementById('metadata').innerHTML;
+    var transcript = document.getElementById('transcript').innerHTML;
+
+    transcript = removeSpans(transcript);
+
+    var pageSource = '<!DOCTYPE html><html><head>' + head + '</head><body>' + metadata + '<div class="transcript-base">' + transcript + '</div></body></html>';
+    var filename = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+
+    var bl = new Blob([pageSource], {type: "text/html"});
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(bl);
+    a.download = filename;
+    a.hidden = true;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    hideExportButtons();
+}
+
+function exportWebVTT() {
+    disableEdit();
+
+    var pageSource = 'WEBVTT\n\n';
+
+    var segments = document.querySelectorAll('span[data-start]');
+    for (var i=0; i<segments.length; i++) {
+        pageSource += segments[i].getAttribute('data-start') + ' --> ';
+        pageSource += segments[i].getAttribute('data-end') + '\n';
+        if (segments[i].getAttribute('data-spk') !== null) {
+            pageSource += '<v ' + segments[i].getAttribute('data-label') + '>';
+        }
+        pageSource += removeSpans(segments[i].innerHTML);
+        pageSource += '\n\n';
+    }
+
+    var filename = location.pathname.substring(location.pathname.lastIndexOf('/') + 1);
+    filename = filename.substring(0, filename.lastIndexOf('.')) + '.vtt';
+
+    var bl = new Blob([pageSource], {type: 'text/vtt'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(bl);
+    a.download = filename;
+    a.hidden = true;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    hideExportButtons();
+}
+
+function getSecondsFromString(timeString) {
+    var splitStrg = timeString.split(":");
+    var seconds = 0;
+    for (var i=0; i<splitStrg.length; i++) {
+        if (i == 0) { seconds += parseInt(splitStrg[splitStrg.length - 1]); }
+        if (i == 1) { seconds += parseInt(splitStrg[splitStrg.length - 2]) * 60; }
+        if (i == 2) { seconds += parseInt(splitStrg[splitStrg.length - 3]) * 3600; }
+    }
+    return seconds;
+}
+
+function pad(num, size) {
+    var s = num + "";
+    while (s.length < size) s = "0" + s;
+    return s;
+}
+
+function secToTimeString(seconds) {
+    var ss = Math.round(seconds);
+    var cmin = Math.floor(ss / 60);
+    var csec = ss % 60;
+
+    if (cmin < 60) {
+        return cmin + ":" + pad(csec, 2);
+    } else {
+        var ch = Math.floor(cmin / 60);
+        var cm = cmin % 60;
+        return ch + ":" + pad(cm, 2) + ":" + pad(csec, 2);
+    }
+}
+
+function removeActiveClass() {
+    var elements = document.querySelectorAll('span.active');
+    for (var i=0; i<elements.length; i++) {
+        elements[i].classList.remove("active");
+        // elements[i].classList.add("listened");
+    }
+}
+
+function addAudioFile() {
+    var txt;
+    var url = prompt(
+        'Please enter complete URL for the audio file, which should be played along the transcript\n(a local path should start with "file:///"):',
+        'https://auphonic.com/media/audio-examples/03.auphonic-demo-denoise-100.m4a'
+    );
+    if (url == null || url == "") { return; }
+
+    var audio = document.getElementById('audio-player');
+    var oldSources = document.querySelectorAll('source');
+    for (var i=0; i<oldSources.length; i++) {
+        oldSources[i].remove();
+    }
+
+    var source = document.createElement('source');
+    source.src = url;
+    audio.appendChild(source);
+
+    addAudioPlayer();
+}
+
+function addAudioPlayer() {
+    var audio = document.getElementById('audio-player');
+
+    document.getElementById('add-audio-file').style = '';
+    document.getElementById('toggle-play-on-click').style = 'display: none;';
+
+    audio.oncanplay = function() {
+        AUDIO_PLAYER = audio;
+
+        // highlight current audio segment
+        if (HAVE_TIMESTAMPS) {
+            AUDIO_PLAYER.ontimeupdate = function() {
+                if (ARE_PLAYING) {
+                    removeActiveClass();
+                    var curTime = secToTimeString(AUDIO_PLAYER.currentTime);
+                    elements = document.querySelectorAll('span[title="' + curTime + '"]');
+                    for (var i=0; i<elements.length; i++) {
+                        elements[i].classList.add("active");
+                    }
+                }
+            };
+        }
+
+        // setup click handlers to play audio on mouse click
+        if (HAVE_TIMESTAMPS) {
+            var elements = document.getElementsByTagName('span');
+            for (var i=0; i<elements.length; i++) {
+                if (elements[i].getAttribute('data-start') === null) {  // no data-start attribute
+                    try {
+                        elements[i].removeEventListener("click", clickHandlerTimestamp);
+                    } catch(err) { }
+                    elements[i].addEventListener("click", clickHandlerTimestamp);
+                }
+            }
+        } else {
+            var elements = document.querySelectorAll('span[data-start]');
+            for (var i=0; i<elements.length; i++) {
+                try {
+                    elements[i].removeEventListener("click", clickHandlerSegment);
+                } catch(err) { }
+                elements[i].addEventListener("click", clickHandlerSegment);
+            }
+        }
+
+        enableAudioClickPlayback();
+
+        var button = document.getElementById('add-audio-file');
+        button.style = "display: none;";
+    }
+
+    audio.load();
+}
+
+function clickHandlerTimestamp(e) {
+    var target = (e.target) ? e.target : e.srcElement;
+    var timeString = target.title;
+    var timeSec = getSecondsFromString(timeString);
+    playAudioSegment(timeSec -0.6, timeSec + 3.4);
+}
+
+function clickHandlerSegment(e) {
+    if (PLAYBACK_ON_CLICK) {
+        var target = (e.target) ? e.target : e.srcElement;
+        removeActiveClass();
+        target.classList.add("active");
+        var startTimeStrg = target.getAttribute("data-start").split(".")[0];
+        var endTimeStrg = target.getAttribute("data-end").split(".")[0];
+        var startSec = getSecondsFromString(startTimeStrg);
+        var endSec = getSecondsFromString(endTimeStrg) + 1;
+        playAudioSegment(startSec, endSec);
+    }
+}
+
+function enableAudioClickPlayback() {
+    var button = document.getElementById('toggle-play-on-click');
+    button.innerText = 'Stop Play-on-click';
+    button.style = "";
+    button.onclick = function() { disableAudioClickPlayback(); } ;
+    PLAYBACK_ON_CLICK = true;
+}
+
+function disableAudioClickPlayback() {
+    AUDIO_PLAYER.pause();
+    ARE_PLAYING = false;
+    removeActiveClass();
+    var button = document.getElementById('toggle-play-on-click');
+    button.innerText = 'Activate Play-on-click';
+    button.style = "";
+    button.onclick = function() { enableAudioClickPlayback(); } ;
+    PLAYBACK_ON_CLICK = false;
+}
+
+function playAudioSegment(start_sec, end_sec) {
+    if (AUDIO_PLAYER !== null && PLAYBACK_ON_CLICK) {
+        if (PAUSE_TIMEOUT !== null) { clearTimeout(PAUSE_TIMEOUT); }
+
+        AUDIO_PLAYER.currentTime = start_sec;
+        AUDIO_PLAYER.play();
+        ARE_PLAYING = true;
+
+        var length_ms = (end_sec - start_sec) * 1000;
+        PAUSE_TIMEOUT= setTimeout(function(){
+            AUDIO_PLAYER.pause();
+            PAUSE_TIMEOUT = null;
+            ARE_PLAYING = false;
+            removeActiveClass();
+        }, length_ms);
+    }
+}
+
+function setupTranscriptChangeListeners() {
+    var trans = document.getElementById('transcript');
+    trans.addEventListener("keyup", function(e){
+        var editedNode = window.getSelection().anchorNode.parentNode;
+
+        // set background of already edited spans back to white
+        if (HAVE_TIMESTAMPS && HAVE_CONFIDENCE) {
+            var clearNode = editedNode;
+            if (clearNode.tagName == "SPAN") {
+                if (clearNode.getAttribute("data-start") !== null) {
+                    // if we click into the parent span, we have to get the next node!
+                    clearNode = window.getSelection().anchorNode.nextSibling;
+                }
+                if (clearNode.tagName == "SPAN" && clearNode.getAttribute("title") !== null) {
+                    clearNode.style = 'background: white;';
+                }
+            }
+        }
+
+        // change all speaker names if we change one speaker
+        if (editedNode.tagName == "B" && editedNode.getAttribute("data-spk") !== null) {
+            var curSpeaker = editedNode.getAttribute("data-spk");
+
+            var elements = document.querySelectorAll('b[data-spk="' + curSpeaker + '"]');
+            for (var i=0; i<elements.length; i++) {
+                if (elements[i] !== editedNode) {
+                    elements[i].innerText = editedNode.innerText;
+                }
+            }
+
+            // for WebVTT export
+            var elements = document.querySelectorAll('span[data-spk="' + curSpeaker + '"]');
+            var label = editedNode.innerText;
+            if (label[label.length -1] == ":") {
+                label = label.substring(0, label.length - 1);
+            }
+            for (var i=0; i<elements.length; i++) {
+                elements[i].setAttribute("data-label", label);
+            }
+        }
+    });
+}
+
+HAVE_CONFIDENCE = false;
+HAVE_TIMESTAMPS = HAVE_CONFIDENCE;  // for now ...
+
+AUDIO_PLAYER = null;
+PAUSE_TIMEOUT = null;
+PLAYBACK_ON_CLICK = false;
+ARE_PLAYING = false;
+
+window.addEventListener("load", function(){
+    if(!HAVE_CONFIDENCE) {
+        var button = document.getElementById('toggle-styling');
+        if (button !== null) { button.remove(); }
+    }
+
+    addAudioPlayer();
+    setupTranscriptChangeListeners();
+});
+</script>
+
+
+</body>
+</html>
