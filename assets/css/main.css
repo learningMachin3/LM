@@ -2484,16 +2484,37 @@ input, select, textarea {
 			width:100%;
 			font-size: 3em;
 		}
+		#promo h3 {
+			color: #0C4536;
+			display: inline-block;
+			font-variant: small-caps;
+			width:100%;
+			font-size: 3em;
+		}
+
+		#promo p {
+			color:#000;
+		}
 
 		#promo .button {
 			background: #fff;
 			border-color: rgba(255, 255, 255, 0);
+			margin: 2em;
 			color: #27636B;
-			font-size: 1.25em;
+			font-size: 5em;
+		}
+		#promo #season_1{
+			background: #7920a0;
+			color: #fff;
+
+		}
+		#promo #season_2{
+			background: #007d5b;
+			color: #fff;
 		}
 
 			#promo .button:hover {
-				border-color: rgba(255, 255, 255, 0.75);
+				border-color: rgba(255, 255, 255, 1);
 				background-color: rgba(255, 255, 255, 0.15);
 				color: #fff;
 			}
@@ -2506,12 +2527,13 @@ input, select, textarea {
 			color:black;
 			width:65%;
 		}
-		#promo .blurb a{
+		#promo  a{
 			color:blue;
 		}
-		#promo .blurb a:hover{
+		#promo  a:hover{
 			color:red;
 		}
+
 
 	#guest
 	{
@@ -2902,7 +2924,7 @@ input, select, textarea {
 				display: none;
 			}
 
-	
+
 
 		/* Wrappers */
 
@@ -2927,7 +2949,7 @@ input, select, textarea {
 				padding: 4em 2em 4em 2em;
 			}
 
-			
+
 
 		/* Header */
 
@@ -2959,7 +2981,7 @@ input, select, textarea {
 				#hero h1 {
 					font-size: 2.5em;
 				}
-				
+
 				#hero h2 {
 					font-size: 1.5em;
 				}
@@ -3073,7 +3095,7 @@ input, select, textarea {
 			#hero h1 {
 				font-size: 2.0em;
 			}
-			
+
 			#hero h2 {
 				font-size: 1.25em;
 			}
@@ -3145,7 +3167,7 @@ input, select, textarea {
 
 			/* Promo */
 
-			
+
 			#promo .button {
 				font-size: 0.8em;
 			}
@@ -3340,9 +3362,9 @@ input, select, textarea {
 					margin: 0 0 1.25em 0;
 				}
 
-					
+
 				#hero h1 {
-					font-size: 1.25em;		
+					font-size: 1.25em;
 					}
 
 
@@ -3359,7 +3381,7 @@ input, select, textarea {
 				#hero .button2{
 					font-size: 0.7em;
 				}
-	
+
 
 		/* Nav */
 
