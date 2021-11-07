@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+    <title>What Is Crt Doing In A Nice Field Like Education?</title>
+
+    <style>
+    body { margin: 0; }
+    #title, #subtitle, #info, #summary { text-align: center; }
+    #summary { margin: 0 10%; }
+    #chapter { margin-top: 1em; }
+
+    #edit-bar {
+        margin-top: 2em; display: flex; justify-content: space-between; flex-wrap: wrap;
+        position: -webkit-sticky; position: sticky; top: 0; left: 0;
+        background: white; z-index: 999;
+        font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+        -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; text-size-adjust: 100%;
+    }
+    #edit-bar-spacer { flex-grow: 1; }
+    .button {
+        background-color: #f5f5f5; color: #363636;
+        border: 1px solid #dbdbdb; border-radius: 4px; box-shadow: none;
+        margin: 0.5em; padding: 5px 12px;
+        cursor:pointer;font-size: 0.9em;
+        justify-content:center; text-align:center; white-space:nowrap;
+        display: inline-flex; position: relative; vertical-align: top;
+        user-select: none; text-decoration: none;
+    }
+    .button:hover{border-color:#b5b5b5;color:#363636;background-color:#eee;}
+    .button:active{border-color:#4a4a4a;color:#363636;background-color:#e8e8e8;}
+    .button.export-option { margin: 0.5em 0.2em 0.5em auto; }
+    .button.export-buttons-shown { margin-left: 0.2em; margin-left: auto; }
+
+    span.active { font-weight: bold; }
+    span.listened { font-weight: bold; font-style: italic; }
+    #transcript.edit-mode { border-style: dashed; padding: 10px; }
+    #transcript span { cursor: pointer; }
+    #transcript.edit-mode span { cursor: text; }
+    .transcript-base { margin: 0.5em; }
+
+    @media all and (max-width: 900px) {
+      .button.export-buttons-shown { margin: 0.5em; margin-left: auto; }
+      .button.export-option { margin: 0.5em; margin-left: auto; }
+    }
+
+    @media all and (max-width: 340px) {
+      .button { margin: 0.2em; }
+    }
+
+    @media print {
+        #edit-bar { display: none; }
+        .button { display: none; }
+        span { background: white; }
+        #transcript { border-style: none !important; padding: 0px !important; }
+    }
+    </style>
+</head>
+
+<body>
+
+
+<div id="metadata">
+<h1 id="title">What Is Crt Doing In A Nice Field Like Education?</h1>
+
+<p id="info">
+2021, Learning Machine<br>
+Series two<br>
+
+</p>
+
+<p id="summary">
+ 00000000 00000210 0000087D 000000000011FE73 00000000 0009BD10 00000000 00000000 00000000 00000000 00000000 00000000
+</p>
+
+
+</div>
+
+<div id="edit-bar">
+    <a class="button" id="edit-transcript" onclick="enableEdit();" title="Enable/disable edit mode.">Edit Transcript</a>
+    <a class="button" id="toggle-styling" onclick="removeStyling();" title="Words with low recognition confidence will be highlighted in red.">Remove Highlighting</a>
+    <a class="button" id="add-audio-file" onclick="addAudioFile();" title="Add audio file which should be played along the transcript.">Add Audio File</a>
+    <a class="button" id="toggle-play-on-click" title="Enable/disable click on word for audio playback." style="display: none;">Stop Play-on-click</a>
+
+    <div id="edit-bar-spacer"></div>
+
+    <a class="button export-option" id="save-changes" onclick="saveChanges();" style="display: none;" title="Save transcript editor with current changes for further editing or sharing.">Save Editor</a>
+    <a class="button export-option" id="export-html" onclick="exportHTML();" style="display: none;" title="Export transcript as HTML for Word, Wordpress, etc.">Export HTML</a>
+    <a class="button export-option" id="export-pdf" onclick="window.print(); hideExportButtons();" style="display: none;" title="Export transcript as PDF or to printer.">Export PDF</a>
+    <a class="button export-option" id="export-webvtt" onclick="exportWebVTT();" style="display: none;" title="Export transcript as WebVTT for web players.">Export WebVTT</a>
+    <a class="button" id="show-export-buttons" onclick="showExportButtons();">Export...</a>
+    <a class="button" id="show-help" href="https://auphonic.com/help/algorithms/speech_recognition.html#auphonic-transcript-editor" target="_blank" title="Show transcript editor help.">?</a>
+
+    <audio id="audio-player" preload="auto" style="display: none;">
+        <source src="https://auphonic.com/engine/download/audio-result/s7yXHtbJKyQLKYZ8QV7dhe/Dr. George Interview Track.mp3?ms=203474">
+    </audio>
+</div>
+
+<div id="transcript" class="transcript-base">
+
+<h2 id="chapter">Transcript</h2>
+<b data-spk="3">Music</b><br>
+<br>
+<b data-spk="1">Nathan:</b><br>
+<small style="opacity: 0.5;">[0:06]</small> <span title="0:06 - 0:07" data-start="00:00:06.045" data-end="00:00:07.354" data-spk="1" data-label="Nathan">Nathan Levin here.</span><br>
+<br>
+<b data-spk="4">Raven:</b><br>
+<small style="opacity: 0.5;">[0:07]</small> <span title="0:07 - 0:14" data-start="00:00:07.379" data-end="00:00:13.730" data-spk="4" data-label="Raven">And I'm Raven derive aspires Our Guest today is Professor Janelle George from Georgetown University.</span><br>
+<br>
+<b data-spk="0">Guest:</b><br>
+<small style="opacity: 0.5;">[0:15]</small> <span title="0:15 - 0:28" data-start="00:00:15.407" data-end="00:00:28.422" data-spk="0" data-label="Guest">I don't think any race of people in there are many people of color who have fought for access to educational Equity many have died for it but I don't think that you can say people of color.</span><br>
+<span title="0:29 - 0:32" data-start="00:00:28.699" data-end="00:00:31.889" data-spk="0" data-label="Guest">It collectively have never cared about</span><br>
+<span title="0:32 - 0:44" data-start="00:00:31.758" data-end="00:00:44.142" data-spk="0" data-label="Guest">education again people have literally died for it people don't even think about the bombing and the Birmingham church with the four little girls that followed a federal desegregation order,</span><br>
+<span title="0:44 - 0:53" data-start="00:00:44.160" data-end="00:00:53.029" data-spk="0" data-label="Guest">that violence was attached to anti integration right black people have died</span><br>
+<span title="0:53 - 1:07" data-start="00:00:52.934" data-end="00:01:07.018" data-spk="0" data-label="Guest">for the right to be educated in slave black people died because they wanted to learn how to read or write Mexican-American families Puerto Rican families have fought for the right to education,</span><br>
+<span title="1:07 - 1:20" data-start="00:01:07.049" data-end="00:01:20.046" data-spk="0" data-label="Guest">as have Asian American families there's a whole series of cases lung versus rice Mendez versus Westminster that preceded Brown and I think we often forget about that,</span><br>
+<span title="1:20 - 1:22" data-start="00:01:20.047" data-end="00:01:22.047" data-spk="0" data-label="Guest">right so I think.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[1:22]</small> <span title="1:22 - 1:31" data-start="00:01:22.342" data-end="00:01:30.562" data-spk="0" data-label="Guest">If the purpose of Education in American society is to engage in democracy as full citizens.</span><br>
+<span title="1:31 - 1:40" data-start="00:01:30.785" data-end="00:01:40.188" data-spk="0" data-label="Guest">Why do we continue to deny that to so many students of color and what does it say about us as an American society,</span><br>
+<span title="1:40 - 1:49" data-start="00:01:40.303" data-end="00:01:49.160" data-spk="0" data-label="Guest">so many people and part of the anti CRT pushback is that individuals don't want to be labeled as racist.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[1:50]</small> <span title="1:50 - 1:59" data-start="00:01:49.551" data-end="00:01:59.159" data-spk="0" data-label="Guest">But we really have to step back and think what are our policies and practices historically currently collectively what are they doing.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[2:00]</small> <span title="2:00 - 2:02" data-start="00:01:59.628" data-end="00:02:02.380" data-spk="0" data-label="Guest">And how it is subordinated people of color</span><br>
+<span title="2:02 - 2:17" data-start="00:02:02.290" data-end="00:02:16.946" data-spk="0" data-label="Guest">right I love this quote from James Baldwin he delivered this in his 1963 speech called a talk to teachers and he says it's not really black Revolution that is upsetting the country,</span><br>
+<span title="2:17 - 2:21" data-start="00:02:17.013" data-end="00:02:20.882" data-spk="0" data-label="Guest">what is upsetting the country is a sense of its own identity.</span><br>
+<span title="2:21 - 2:30" data-start="00:02:21.327" data-end="00:02:29.926" data-spk="0" data-label="Guest">If for example one manage to change the curriculum in all the schools so that black students learn more about themselves,</span><br>
+<span title="2:30 - 2:38" data-start="00:02:30.034" data-end="00:02:38.122" data-spk="0" data-label="Guest">in their real contributions to this culture you would be liberating not only black students but you'd be liberating white people</span><br>
+<span title="2:38 - 2:48" data-start="00:02:38.068" data-end="00:02:48.019" data-spk="0" data-label="Guest">who know nothing about their own history so again I think we really have to ask what do we really as a country want and who do we want to be.</span><br>
+<br>
+<b data-spk="3">Music</b><br>
+<br>
+<b data-spk="2">Sam:</b><br>
+<small style="opacity: 0.5;">[2:54]</small> <span title="2:54 - 3:01" data-start="00:02:53.836" data-end="00:03:01.167" data-spk="2" data-label="Sam">Hey y'all we're back after a short break with a new series where we'll be focusing on two major topics in education that often get conflated.</span><br>
+<span title="3:02 - 3:11" data-start="00:03:01.594" data-end="00:03:10.619" data-spk="2" data-label="Sam">Critical race Theory and culturally responsive teaching they both get abbreviated CR t-- and there are arguably some important overlaps between the two.</span><br>
+<span title="3:11 - 3:17" data-start="00:03:11.106" data-end="00:03:17.343" data-spk="2" data-label="Sam">Today we'll be focusing on understanding what critical race Theory really is and why it's such a hot-button topic.</span><br>
+<br>
+<b data-spk="4">Raven:</b><br>
+<small style="opacity: 0.5;">[3:18]</small> <span title="3:18 - 3:32" data-start="00:03:18.239" data-end="00:03:31.729" data-spk="4" data-label="Raven">The voice you just heard is today's guest Professor Janelle George Professor George is an associate professor of law and the founding director of the racial equity and education law and policy clinic at Georgetown University.</span><br>
+<br>
+<b data-spk="1">Nathan:</b><br>
+<small style="opacity: 0.5;">[3:32]</small> <span title="3:32 - 3:43" data-start="00:03:32.234" data-end="00:03:42.978" data-spk="1" data-label="Nathan">As a law professor and educational policy expert Professor George is here to help us explain what critical race theory is from the perspective where it started of legal scholarship.</span><br>
+<span title="3:43 - 3:51" data-start="00:03:43.225" data-end="00:03:50.904" data-spk="1" data-label="Nathan">And also to help us to understand why critical race theory has become a Target within the politics of public education in this cultural moment.</span><br>
+<br>
+<b data-spk="3">Music</b><br>
+<br>
+<b data-spk="2">Sam:</b><br>
+<small style="opacity: 0.5;">[4:00]</small> <span title="4:00 - 4:02" data-start="00:03:59.635" data-end="00:04:02.315" data-spk="2" data-label="Sam">Okay so Nathan Raven.</span><br>
+<span title="4:03 - 4:16" data-start="00:04:02.994" data-end="00:04:15.523" data-spk="2" data-label="Sam">In our discussion with Professor George we talked a lot about CRT and what it really is and what it's doing in the classroom is it in the classroom should it be in the classroom.</span><br>
+<span title="4:16 - 4:25" data-start="00:04:15.950" data-end="00:04:24.879" data-spk="2" data-label="Sam">And I wanted to ask just sort of a baseline question here to get us started and we're going to be putting a</span><br>
+<span title="4:25 - 4:39" data-start="00:04:24.771" data-end="00:04:39.397" data-spk="2" data-label="Sam">question a discussion question or debate question at the beginning of every episode this season and will be posting those questions on Twitter and Reddit on the day that the episode comes out so if you want to join us in this conversation please jump on those platforms and let us know what you think.</span><br>
+<span title="4:40 - 4:50" data-start="00:04:40.197" data-end="00:04:50.195" data-spk="2" data-label="Sam">And for this week the question I want to ask is if you're a teacher you're working in the classroom and you have discussions with students about.</span><br>
+<span title="4:51 - 5:02" data-start="00:04:51.079" data-end="00:05:01.997" data-spk="2" data-label="Sam">Racial inequality the hit the history the very real and factual history of racial inequality and inequity in this country
+are you engaging in critical race Theory.</span><br>
+<span title="5:03 - 5:11" data-start="00:05:02.622" data-end="00:05:10.957" data-spk="2" data-label="Sam">Just by having that conversation like is that what people are what the right wing is up in arms about is that the concern.</span><br>
+<span title="5:12 - 5:19" data-start="00:05:11.852" data-end="00:05:19.021" data-spk="2" data-label="Sam">Like is that what CRT is what do you guys think Raven I'll start with you.</span><br>
+<br>
+<b data-spk="4">Raven:</b><br>
+<small style="opacity: 0.5;">[5:20]</small> <span title="5:20 - 5:34" data-start="00:05:19.760" data-end="00:05:33.641" data-spk="4" data-label="Raven">I don't think so not necessarily but I do think that they would be engaging in the goals of critical race Theory and and that way they would be doing exactly what they're supposed to be doing in the classroom.</span><br>
+<br>
+<b data-spk="1">Nathan:</b><br>
+<small style="opacity: 0.5;">[5:34]</small> <span title="5:34 - 5:44" data-start="00:05:34.284" data-end="00:05:44.013" data-spk="1" data-label="Nathan">Right I mean in my own experience I have taught a lesson about racial inequality in my own classroom but I would not call myself a critical race Theory rest--</span><br>
+<span title="5:44 - 5:55" data-start="00:05:44.440" data-end="00:05:54.558" data-spk="1" data-label="Nathan">And at the time I had never even heard the phrase or taking a class on a critical race Theory so I think the two things are separate but.</span><br>
+<span title="5:55 - 6:04" data-start="00:05:55.292" data-end="00:06:04.191" data-spk="1" data-label="Nathan">If now that I have done some research and have you no talk to some people about critical race Theory I'm beginning to understand that critical race Theory.</span><br>
+<span title="6:04 - 6:12" data-start="00:06:04.396" data-end="00:06:12.441" data-spk="1" data-label="Nathan">Compels us to begin talking about and to include conversations about racial inequality in the history of racial inequality in our country.</span><br>
+<br>
+<b data-spk="2">Sam:</b><br>
+<small style="opacity: 0.5;">[6:13]</small> <span title="6:13 - 6:19" data-start="00:06:13.457" data-end="00:06:19.196" data-spk="2" data-label="Sam">I've been thinking about this as I had the conversation with Professor George and thought about the way that</span><br>
+<span title="6:19 - 6:29" data-start="00:06:19.124" data-end="00:06:29.225" data-spk="2" data-label="Sam">that folks who think about education and responding this idea of critical race Theory and the question I have for you guys sort of as a follow-up is do you think that this would be do you think that there would be a different response,</span><br>
+<span title="6:29 - 6:38" data-start="00:06:29.285" data-end="00:06:38.316" data-spk="2" data-label="Sam">from people if instead of saying there's critical race Theory being taught in schools which seems like maybe not the most accurate later describe it instead we said,</span><br>
+<span title="6:38 - 6:44" data-start="00:06:38.347" data-end="00:06:44.296" data-spk="2" data-label="Sam">in schools were having very real conversations about the history of racial inequality in this country.</span><br>
+<br>
+<b data-spk="4">Raven:</b><br>
+<small style="opacity: 0.5;">[6:45]</small> <span title="6:45 - 6:51" data-start="00:06:44.909" data-end="00:06:50.942" data-spk="4" data-label="Raven">I don't think so I would like to be hopeful and in things that but.</span><br>
+<span title="6:53 - 7:03" data-start="00:06:52.534" data-end="00:07:03.308" data-spk="4" data-label="Raven">I think people will still find a problem with it I think people have found a problem with that before which is partly how we get you know banned books and.</span><br>
+<span title="7:04 - 7:11" data-start="00:07:03.741" data-end="00:07:10.603" data-spk="4" data-label="Raven">Partly how teachers of color lose their jobs or get pushed out of certain districts I think that.</span><br>
+<span title="7:11 - 7:15" data-start="00:07:11.253" data-end="00:07:14.707" data-spk="4" data-label="Raven">Push towards censorship would happen anyway.</span><br>
+<br>
+<b data-spk="1">Nathan:</b><br>
+<small style="opacity: 0.5;">[7:15]</small> <span title="7:15 - 7:19" data-start="00:07:15.357" data-end="00:07:19.154" data-spk="1" data-label="Nathan">Yeah I was going to say something fairly similar which is that.</span><br>
+<span title="7:20 - 7:32" data-start="00:07:20.453" data-end="00:07:31.653" data-spk="1" data-label="Nathan">You know this is a question you almost asking a question of branding here right and unfortunately I think that as Professor George was describing theirs.</span><br>
+<span title="7:32 - 7:39" data-start="00:07:32.278" data-end="00:07:39.212" data-spk="1" data-label="Nathan">A real fear in our country about addressing.</span><br>
+<span title="7:40 - 7:52" data-start="00:07:39.567" data-end="00:07:51.621" data-spk="1" data-label="Nathan">Our own history and and and dealing with the history of racism and inequality and oppression that has shaped the system in which we live today and it seems like.</span><br>
+<span title="7:52 - 7:57" data-start="00:07:52.096" data-end="00:07:57.390" data-spk="1" data-label="Nathan">Politicians are taking advantage of this fear and really using that.</span><br>
+<span title="7:58 - 8:08" data-start="00:07:57.805" data-end="00:08:08.416" data-spk="1" data-label="Nathan">Corral groups of people together under and you know the name they're using currently is critical race Theory but I'm not sure that it would be any different if we called it something else.</span><br>
+<br>
+<b data-spk="2">Sam:</b><br>
+<small style="opacity: 0.5;">[8:10]</small> <span title="8:10 - 8:15" data-start="00:08:10.418" data-end="00:08:15.357" data-spk="2" data-label="Sam">Hmm well that seems like a good place to bring in the perspective of Professor George.</span><br>
+<span title="8:16 - 8:28" data-start="00:08:16.030" data-end="00:08:27.633" data-spk="2" data-label="Sam">Before we serve over the interview just to remind her that in our episodes we release about a 20-minute section of what is an hour-long conversation that goes more in-depth with each of our guests.</span><br>
+<span title="8:28 - 8:34" data-start="00:08:27.970" data-end="00:08:34.346" data-spk="2" data-label="Sam">If you'd like to find out more about those longer conversations or find out how you can support the podcast or follow us or,</span><br>
+<span title="8:34 - 8:43" data-start="00:08:34.424" data-end="00:08:43.023" data-spk="2" data-label="Sam">join us in conversation on a variety of social media platforms visit our website at www.learningstationmusic.com.</span><br>
+<span title="8:44 - 8:46" data-start="00:08:43.642" data-end="00:08:45.775" data-spk="2" data-label="Sam">All right let's get to the interview.</span><br>
+<br>
+<b data-spk="3">Music</b><br>
+<br>
+<b data-spk="0">Guest:</b><br>
+<small style="opacity: 0.5;">[8:53]</small> <span title="8:53 - 9:01" data-start="00:08:52.926" data-end="00:09:01.158" data-spk="0" data-label="Guest">So when we even look back at the origins of the Contemporary education system during this period of reconstruction.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[9:01]</small> <span title="9:01 - 9:09" data-start="00:09:01.339" data-end="00:09:09.048" data-spk="0" data-label="Guest">There was talk about creating this Federal right embedding it in the Constitution,</span><br>
+<span title="9:09 - 9:13" data-start="00:09:09.072" data-end="00:09:13.429" data-spk="0" data-label="Guest">there was some opposition there was race-based frankly.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[9:14]</small> <span title="9:14 - 9:19" data-start="00:09:13.531" data-end="00:09:19.366" data-spk="0" data-label="Guest">Because of Education had to be provided for all it had to be provided for the formerly enslaved</span><br>
+<span title="9:19 - 9:32" data-start="00:09:19.186" data-end="00:09:31.762" data-spk="0" data-label="Guest">and by the way it was the impact emancipated black congressman who were elected During the period of reconstruction and we did have several about 16 congressman and there were a couple senators</span><br>
+<span title="9:32 - 9:38" data-start="00:09:31.631" data-end="00:09:38.030" data-spk="0" data-label="Guest">Herman Revels was the first one who really champion,</span><br>
+<span title="9:38 - 9:49" data-start="00:09:38.096" data-end="00:09:48.546" data-spk="0" data-label="Guest">this establishment of the public education system and so they actually worked with a lot of their home states to craft the language</span><br>
+<span title="9:48 - 9:58" data-start="00:09:48.408" data-end="00:09:58.467" data-spk="0" data-label="Guest">to outline a right to education and it was so the the availability of Education was so revered it became a condition</span><br>
+<span title="9:58 - 10:07" data-start="00:09:58.317" data-end="00:10:07.474" data-spk="0" data-label="Guest">for Southern States to include an education cause clause in their constitutions to be readmitted to the union after the Civil War</span><br>
+<span title="10:07 - 10:12" data-start="00:10:07.445" data-end="00:10:12.360" data-spk="0" data-label="Guest">and so now all states all 50 states have an education</span><br>
+<span title="10:12 - 10:27" data-start="00:10:12.174" data-end="00:10:26.853" data-spk="0" data-label="Guest">claws but again it's differs right so should we have a federal articulation of that right I think it's hard to say there's a scholar Kimberly Robinson who's explored that question and a lot of her work I think she just,</span><br>
+<span title="10:27 - 10:33" data-start="00:10:26.914" data-end="00:10:33.319" data-spk="0" data-label="Guest">release a lot of review article about that issue and I've talked with her about that I think that.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[10:34]</small> <span title="10:34 - 10:37" data-start="00:10:33.554" data-end="00:10:37.123" data-spk="0" data-label="Guest">It can be difficult again because we know that</span><br>
+<span title="10:37 - 10:47" data-start="00:10:37.099" data-end="00:10:47.272" data-spk="0" data-label="Guest">the federal Administration can take positions on certain issues which by the way you raise the question about this backlash to critical race Theory,</span><br>
+<span title="10:47 - 10:57" data-start="00:10:47.351" data-end="00:10:56.652" data-spk="0" data-label="Guest">a lot of that was triggered by an executive order that Donald Trump issued in October 20 20 based on,</span><br>
+<span title="10:57 - 11:11" data-start="00:10:56.761" data-end="00:11:10.756" data-spk="0" data-label="Guest">the influence of conservative activists including Christopher rufo and I'm going to read a quote that that he noted he said we have successfully Frozen their brand critical race Theory,</span><br>
+<span title="11:11 - 11:20" data-start="00:11:10.906" data-end="00:11:19.643" data-spk="0" data-label="Guest">into the public conversation in are steadily drawing up negative perceptions we will eventually turn it toxic.</span><br>
+<span title="11:20 - 11:24" data-start="00:11:19.866" data-end="00:11:24.138" data-spk="0" data-label="Guest">As we put all the various cultural insanities under that brand,</span><br>
+<span title="11:24 - 11:34" data-start="00:11:24.265" data-end="00:11:34.017" data-spk="0" data-label="Guest">the goal is to have a public read something crazy in the newspaper and immediately thing critical race Theory so this was a real.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[11:34]</small> <span title="11:34 - 11:48" data-start="00:11:34.390" data-end="00:11:48.330" data-spk="0" data-label="Guest">Orchestrated campaign to use critical race Theory as a catch-all for anything related to race and is a lightning rod really to capture a lot of white people's discontent,</span><br>
+<span title="11:48 - 11:50" data-start="00:11:48.379" data-end="00:11:49.658" data-spk="0" data-label="Guest">with the political</span><br>
+<span title="11:50 - 12:04" data-start="00:11:49.599" data-end="00:12:03.690" data-spk="0" data-label="Guest">progress at a lot of people of color have achieved with the racial Reckoning that follow the killing of George Floyd and that we saw in the summer 2020 and it's really what we see this kind of magnet ology this</span><br>
+<span title="12:04 - 12:17" data-start="00:12:03.576" data-end="00:12:17.156" data-spk="0" data-label="Guest">willful misinformation campaign we don't care what critical race Theory actually is we just want you to dislike it and by the way critical race series not Todd and K through 12 schools I wish it were</span><br>
+<span title="12:17 - 12:26" data-start="00:12:17.108" data-end="00:12:26.296" data-spk="0" data-label="Guest">it probably should be I would love to teach an AP critical race Theory course I think that would be great right but it's widely it's just not.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[12:27]</small> <span title="12:27 - 12:30" data-start="00:12:26.531" data-end="00:12:30.424" data-spk="0" data-label="Guest">And it is something that has lived in the legal Academy,</span><br>
+<span title="12:31 - 12:38" data-start="00:12:30.551" data-end="00:12:37.953" data-spk="0" data-label="Guest">and so it's purposely mischaracterized but I think what we have to focus on and what's more</span><br>
+<span title="12:38 - 12:45" data-start="00:12:37.858" data-end="00:12:45.278" data-spk="0" data-label="Guest">concerning to me particularly as a policy Advocate is a legislation that's being passed</span><br>
+<span title="12:45 - 12:55" data-start="00:12:45.267" data-end="00:12:55.356" data-spk="0" data-label="Guest">across the country in several States I think 27 as of at least earlier this month 27 states have either introduced bills</span><br>
+<span title="12:55 - 13:05" data-start="00:12:55.350" data-end="00:13:05.006" data-spk="0" data-label="Guest">to limit discussions of racism or sexism in classrooms and I think it looks like 12 12 or so of actually enacted.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[13:06]</small> <span title="13:06 - 13:13" data-start="00:13:05.800" data-end="00:13:13.197" data-spk="0" data-label="Guest">And these range from findings Arizona fine school districts five thousand dollars.</span><br>
+<span title="13:14 - 13:27" data-start="00:13:13.551" data-end="00:13:27.186" data-spk="0" data-label="Guest">Two firing or otherwise reprimanding Educators for talking about these topics and a lot of these bills which draw from that same Playbook because I mentioned again this is carefully orchestrated</span><br>
+<span title="13:27 - 13:33" data-start="00:13:27.174" data-end="00:13:33.165" data-spk="0" data-label="Guest">don't even really Define what can't be taught so you have this ambiguity as well,</span><br>
+<span title="13:33 - 13:45" data-start="00:13:33.243" data-end="00:13:44.558" data-spk="0" data-label="Guest">but you see this dangerous use again I mentioned that your of massive resistance and state legislation this dangerous use of legislative power.</span><br>
+<span title="13:45 - 13:53" data-start="00:13:44.835" data-end="00:13:53.373" data-spk="0" data-label="Guest">Two further white supremacy and maintain racial subordination of people of color.</span><br>
+<br>
+<b data-spk="5">Nathan (Interviewer):</b><br>
+<small style="opacity: 0.5;">[13:54]</small> <span title="13:54 - 14:03" data-start="00:13:54.293" data-end="00:14:03.048" data-spk="5" data-label="Nathan (Interviewer)">Right and so today you know we recently I think in the last year or so we've started to see.</span><br>
+<span title="14:03 - 14:14" data-start="00:14:03.397" data-end="00:14:14.062" data-spk="5" data-label="Nathan (Interviewer)">Critical race theory in education that sort of you know what I would say is an acknowledgment of racism and racial inequality in education as really coming under Fire.</span><br>
+<span title="14:14 - 14:19" data-start="00:14:14.363" data-end="00:14:18.509" data-spk="5" data-label="Nathan (Interviewer)">And why do you think that is coming to the Forefront right now.</span><br>
+<br>
+<b data-spk="0">Guest:</b><br>
+<small style="opacity: 0.5;">[14:18]</small> <span title="14:18 - 14:26" data-start="00:14:18.233" data-end="00:14:26.099" data-spk="0" data-label="Guest">So I think that's very intentional right these the vilification if you will</span><br>
+<span title="14:26 - 14:38" data-start="00:14:25.919" data-end="00:14:38.387" data-spk="0" data-label="Guest">of critical race Theory and what it is and what it means so I mentioned the Bell was one of The Originators of critical race Theory critical race Theory grew out of the legal Academy</span><br>
+<span title="14:38 - 14:43" data-start="00:14:38.285" data-end="00:14:43.104" data-spk="0" data-label="Guest">right it's a school of legal thought right</span><br>
+<span title="14:43 - 14:57" data-start="00:14:43.039" data-end="00:14:56.763" data-spk="0" data-label="Guest">legal theories seek to examine the way the law impacts Society the interactions between law and Society so there were a couple of other legal movements that,</span><br>
+<span title="14:57 - 15:01" data-start="00:14:56.799" data-end="00:15:01.198" data-spk="0" data-label="Guest">critical race Theory right so there were the legal realist who said look.</span><br>
+<span title="15:01 - 15:13" data-start="00:15:01.438" data-end="00:15:13.005" data-spk="0" data-label="Guest">The law is not this objective kind of mathematical thing you have critical legal studies whose proponents said we agree the laws not this objective thing the judges and,</span><br>
+<span title="15:13 - 15:23" data-start="00:15:13.090" data-end="00:15:22.548" data-spk="0" data-label="Guest">Court decisions have our influence right by the social conflict local context in which they are made but critical race theory is</span><br>
+<span title="15:22 - 15:30" data-start="00:15:22.464" data-end="00:15:30.372" data-spk="0" data-label="Guest">also recognize yes the laws not objective but they saw to examine.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[15:31]</small> <span title="15:31 - 15:42" data-start="00:15:30.636" data-end="00:15:42.047" data-spk="0" data-label="Guest">How what role the law played in reproducing racial inequality right they they asserted that the law Not only was not objectively,</span><br>
+<span title="15:42 - 15:47" data-start="00:15:42.198" data-end="00:15:46.836" data-spk="0" data-label="Guest">but was actively shaping race</span><br>
+<span title="15:47 - 16:00" data-start="00:15:46.771" data-end="00:16:00.483" data-spk="0" data-label="Guest">that's right so this is so there are a couple of tenants of critical race theory that I'll just briefly flag one is that race is not genetically real and we know that from the Human Genome Project that we all share,</span><br>
+<span title="16:01 - 16:06" data-start="00:16:00.646" data-end="00:16:05.891" data-spk="0" data-label="Guest">99.9% of the same da DNA but it's socially real.</span><br>
+<span title="16:06 - 16:19" data-start="00:16:06.318" data-end="00:16:18.727" data-spk="0" data-label="Guest">That you're perceived race has social consequences and Gloria ladson-billings talks about conceptual categories of race so if I said that a school was a bad quote-unquote bad school.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[16:19]</small> <span title="16:19 - 16:30" data-start="00:16:19.238" data-end="00:16:29.951" data-spk="0" data-label="Guest">You'd probably have a conceptual idea of the race of the students who attend that school I said a school was a good school you would also have a conceptual cat you know idea of,</span><br>
+<span title="16:30 - 16:38" data-start="00:16:30.054" data-end="00:16:37.595" data-spk="0" data-label="Guest">two right there's also this idea recognition that racism is a permanent feature of American society.</span><br>
+<span title="16:38 - 16:41" data-start="00:16:37.824" data-end="00:16:41.369" data-spk="0" data-label="Guest">As much as we wish it weren't it actually is.</span><br>
+<span title="16:42 - 16:55" data-start="00:16:41.712" data-end="00:16:54.649" data-spk="0" data-label="Guest">It has been embedded into the fabric of our country and racism is not like an aberration it's not this rare thing it's actually more normalized racism can actually seem rational.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[16:55]</small> <span title="16:55 - 17:04" data-start="00:16:55.334" data-end="00:17:03.897" data-spk="0" data-label="Guest">And that systems and institutions like the law or like the education system more so than individual people</span><br>
+<span title="17:04 - 17:08" data-start="00:17:03.747" data-end="00:17:07.712" data-spk="0" data-label="Guest">can do the bulk of replicating racial inequality</span><br>
+<span title="17:08 - 17:18" data-start="00:17:07.509" data-end="00:17:17.982" data-spk="0" data-label="Guest">so those are just a couple of features of critical race Theory right you mentioned Kimberly crenshaw's point that critical race</span><br>
+<span title="17:18 - 17:33" data-start="00:17:17.802" data-end="00:17:32.722" data-spk="0" data-label="Guest">series of verb it's not a noun it's a way of examining that interaction between law and society and for the critical race theory is how long again what role does a law play.</span><br>
+<span title="17:33 - 17:47" data-start="00:17:33.005" data-end="00:17:47.042" data-spk="0" data-label="Guest">In replicating racial inequality how have we come to this point after the Civil Rights Act of 1964 after Brown versus Board of Education were racial inequality continues to endure</span><br>
+<span title="17:47 - 17:51" data-start="00:17:46.916" data-end="00:17:51.086" data-spk="0" data-label="Guest">and what systems and policies allow it to do so.</span><br>
+<br>
+<b data-spk="5">Nathan (Interviewer):</b><br>
+<small style="opacity: 0.5;">[17:51]</small> <span title="17:51 - 17:55" data-start="00:17:50.804" data-end="00:17:55.064" data-spk="5" data-label="Nathan (Interviewer)">Right yeah I would love to hear you know you mentioned earlier some of the.</span><br>
+<span title="17:55 - 18:06" data-start="00:17:55.305" data-end="00:18:06.175" data-spk="5" data-label="Nathan (Interviewer)">Specific things in the law that compound inequality what are some of those specific policies or legal.</span><br>
+<span title="18:07 - 18:08" data-start="00:18:06.584" data-end="00:18:08.464" data-spk="5" data-label="Nathan (Interviewer)">Frameworks for decisions.</span><br>
+<br>
+<b data-spk="0">Guest:</b><br>
+<small style="opacity: 0.5;">[18:09]</small> <span title="18:09 - 18:18" data-start="00:18:08.945" data-end="00:18:18.361" data-spk="0" data-label="Guest">Sure someone illustration is residential segregation so if we think about residential segregation.</span><br>
+<span title="18:19 - 18:25" data-start="00:18:19.155" data-end="00:18:25.103" data-spk="0" data-label="Guest">In this is also again why it's important to look at through historical context right and lens</span><br>
+<span title="18:25 - 18:32" data-start="00:18:25.074" data-end="00:18:32.044" data-spk="0" data-label="Guest">you know all the black people didn't get together and decide let's move to this one area so there were actual</span><br>
+<span title="18:32 - 18:41" data-start="00:18:31.912" data-end="00:18:41.370" data-spk="0" data-label="Guest">practices of which many of which the federal government was complicit in in terms of determining where people could live,</span><br>
+<span title="18:41 - 18:49" data-start="00:18:41.382" data-end="00:18:49.410" data-spk="0" data-label="Guest">right and I'm mentioning specifically black people because I'm referring to policies that targeted black,</span><br>
+<span title="18:49 - 18:59" data-start="00:18:49.447" data-end="00:18:59.019" data-spk="0" data-label="Guest">people what are known as racially restrictive covenants where the owner of a Homewood right into the housing deed,</span><br>
+<span title="18:59 - 19:11" data-start="00:18:59.193" data-end="00:19:11.085" data-spk="0" data-label="Guest">and I know this is a podcast we're not you know live and visual but I have this great slide that I show students of text of one of these covenants and it says you cannot sell this home</span><br>
+<span title="19:11 - 19:20" data-start="00:19:11.067" data-end="00:19:19.594" data-spk="0" data-label="Guest">to a black person you can't and so those kind of practices and policies.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[19:20]</small> <span title="19:20 - 19:33" data-start="00:19:19.810" data-end="00:19:33.000" data-spk="0" data-label="Guest">Zoning redlining in which Realtors literally drew a red line around areas where black people and other people of color lived assign them lower property values which man</span><br>
+<span title="19:33 - 19:37" data-start="00:19:32.850" data-end="00:19:37.092" data-spk="0" data-label="Guest">people were not incentivised to move there or live there</span><br>
+<span title="19:37 - 19:47" data-start="00:19:36.954" data-end="00:19:46.628" data-spk="0" data-label="Guest">and higher property valuations were given to White areas which have had consequences for Education funding because many</span><br>
+<span title="19:46 - 19:56" data-start="00:19:46.485" data-end="00:19:55.564" data-spk="0" data-label="Guest">education systems a lot of Education funding revenue is raised through property taxes.</span><br>
+<span title="19:56 - 20:02" data-start="00:19:55.841" data-end="00:20:01.663" data-spk="0" data-label="Guest">So if you have a lower property valuation you can even tax yourself at a higher rate.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[20:02]</small> <span title="20:02 - 20:17" data-start="00:20:02.030" data-end="00:20:16.998" data-spk="0" data-label="Guest">And still not Garner the same kind of Revenue that a high value property area would and also you know and again that perpetuates school segregation because people tend to go to school where they live,</span><br>
+<span title="20:17 - 20:25" data-start="00:20:17.173" data-end="00:20:24.792" data-spk="0" data-label="Guest">so you have not only your school segregation and resource and equities which by the way often accompany each other,</span><br>
+<span title="20:25 - 20:36" data-start="00:20:24.840" data-end="00:20:35.885" data-spk="0" data-label="Guest">but they're rooted in these long long-standing policies Gloria ladson-billings also mentions a couple other ways we might see.</span><br>
+<span title="20:36 - 20:45" data-start="00:20:36.180" data-end="00:20:44.610" data-spk="0" data-label="Guest">If we look through this lens of critical race Theory write the ways we might see this racial inequality play out so curriculum.</span><br>
+<span title="20:45 - 20:55" data-start="00:20:44.809" data-end="00:20:54.765" data-spk="0" data-label="Guest">What we deem worthy of learning right which this current debate about critical race theory is really about can we whose history do we learn.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[20:55]</small> <span title="20:55 - 21:04" data-start="00:20:55.114" data-end="00:21:04.314" data-spk="0" data-label="Guest">Right what is valued and what is not valued what does that tell us instruction whom do we deem worthy of learning,</span><br>
+<span title="21:04 - 21:17" data-start="00:21:04.476" data-end="00:21:16.692" data-spk="0" data-label="Guest">the kind of deficit mindset instruction that's often delivered to students of color right assessments deems who has learned right so.</span><br>
+<span title="21:17 - 21:31" data-start="00:21:16.909" data-end="00:21:31.355" data-spk="0" data-label="Guest">View of narrow assessments and they're given to students of color and under-resourced schools the results are often used to justify right these characterizations are mischaracterization,</span><br>
+<span title="21:32 - 21:36" data-start="00:21:31.535" data-end="00:21:35.657" data-spk="0" data-label="Guest">of The Limited intellectual capacity of students of color,</span><br>
+<span title="21:36 - 21:45" data-start="00:21:35.802" data-end="00:21:44.514" data-spk="0" data-label="Guest">school funding which I just described a little bit about where we deem students can learn and under what conditions.</span><br>
+<span title="21:45 - 21:51" data-start="00:21:44.863" data-end="00:21:50.644" data-spk="0" data-label="Guest">And then persistent segregation who we deem students can learn with.</span><br>
+<span title="21:51 - 21:55" data-start="00:21:50.915" data-end="00:21:55.162" data-spk="0" data-label="Guest">Right and what policies and practices and laws.</span><br>
+<span title="21:56 - 22:04" data-start="00:21:55.596" data-end="00:22:03.515" data-spk="0" data-label="Guest">Allow racial inequality to continue right in these kind of system so yes you can have a ruling,</span><br>
+<span title="22:04 - 22:10" data-start="00:22:03.642" data-end="00:22:10.395" data-spk="0" data-label="Guest">like the Brown versus Board of Education case in which the highest court in the land says separate but equal.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[22:11]</small> <span title="22:11 - 22:18" data-start="00:22:10.907" data-end="00:22:17.871" data-spk="0" data-label="Guest">Has no place in the public education system but then you can have a school funding system.</span><br>
+<span title="22:18 - 22:23" data-start="00:22:18.123" data-end="00:22:22.534" data-spk="0" data-label="Guest">That again is based on property taxes,</span><br>
+<span title="22:23 - 22:32" data-start="00:22:22.684" data-end="00:22:31.571" data-spk="0" data-label="Guest">and so you have under-resourced schools in the neighborhood schools that are disproportionately intended by children of color,</span><br>
+<span title="22:32 - 22:41" data-start="00:22:31.716" data-end="00:22:40.879" data-spk="0" data-label="Guest">versus the white schools which are given higher property values values and can have Garner more resources right.</span><br>
+<span title="22:41 - 22:47" data-start="00:22:41.102" data-end="00:22:46.828" data-spk="0" data-label="Guest">And then there's this idea while all you know students should be able to do less with more etcetera,</span><br>
+<span title="22:47 - 22:55" data-start="00:22:46.907" data-end="00:22:55.139" data-spk="0" data-label="Guest">I know that that's absolutely not true all students need resources inputs in order to learn.</span><br>
+<br>
+<b data-spk="1">Nathan:</b><br>
+<small style="opacity: 0.5;">[22:57]</small> <span title="22:57 - 23:07" data-start="00:22:57.044" data-end="00:23:06.911" data-spk="1" data-label="Nathan">To hear the full interview with Professor George please consider supporting us on patreon if you have the means and would like to support us our subscribers get access to full interviews stickers</span><br>
+<span title="23:07 - 23:14" data-start="00:23:06.767" data-end="00:23:13.947" data-spk="1" data-label="Nathan">handwritten thank-you notes and of course our undying gratitude for helping us offset some of the costs of continuing to create this podcast.</span><br>
+<span title="23:14 - 23:19" data-start="00:23:14.417" data-end="00:23:18.616" data-spk="1" data-label="Nathan">Not to mention helping Sam realize his lifelong dream of becoming a goat farmer.</span><br>
+<br>
+<b data-spk="3">Music</b><br>
+<br>
+<b data-spk="2">Sam:</b><br>
+<small style="opacity: 0.5;">[23:20]</small> <span title="23:20 - 23:27" data-start="00:23:19.933" data-end="00:23:27.288" data-spk="2" data-label="Sam">All right and that brings us to a city of numbers and charts population you it's time for data town.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[23:36]</small> <span title="23:36 - 23:50" data-start="00:23:35.941" data-end="00:23:50.284" data-spk="2" data-label="Sam">So in our discussion with Professor George about CR t-- we actually started doing a little bit of CRT ourselves by examining the link between segregated schools and the inequality of resources,</span><br>
+<span title="23:50 - 23:52" data-start="00:23:50.339" data-end="00:23:52.466" data-spk="2" data-label="Sam">that is connected to segregation.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[23:53]</small> <span title="23:53 - 24:00" data-start="00:23:52.941" data-end="00:24:00.494" data-spk="2" data-label="Sam">And so I wanted us to take a look at some data from dr. Georges 2019 Report with Linda darling-hammond.</span><br>
+<span title="24:01 - 24:07" data-start="00:24:00.710" data-end="00:24:07.080" data-spk="2" data-label="Sam">In it they discussed the Legacy and unfulfilled promise of Brown versus Board of Education and we can see some</span><br>
+<span title="24:07 - 24:18" data-start="00:24:07.014" data-end="00:24:17.740" data-spk="2" data-label="Sam">interesting statistics that concretely show that even though we have Brown versus Board of Education and the Civil Rights Act and a variety of pieces of legislation that are supposed to have given us.</span><br>
+<span title="24:18 - 24:29" data-start="00:24:18.029" data-end="00:24:28.616" data-spk="2" data-label="Sam">Desegregation and access to an equal education for people of all Races we have de facto segregation happening.</span><br>
+<span title="24:29 - 24:42" data-start="00:24:28.923" data-end="00:24:42.058" data-spk="2" data-label="Sam">In our school so I'm just going to describe we are podcast and so we don't have any way to show you guys what these graphs look like but we'll tweet these out when the episode is released so check our Twitter.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[24:42]</small> <span title="24:42 - 24:50" data-start="00:24:42.407" data-end="00:24:49.822" data-spk="2" data-label="Sam">To take a look at these graphs but the the first figure that we have is a graph that shows an increase in,</span><br>
+<span title="24:50 - 24:58" data-start="00:24:50.003" data-end="00:24:58.030" data-spk="2" data-label="Sam">proportion of black students attending majority white schools and you see that after the Brown versus Board of Education and civil rights.</span><br>
+<span title="24:58 - 25:07" data-start="00:24:58.223" data-end="00:25:07.128" data-spk="2" data-label="Sam">You see a dramatic increase in proportion of black students attending majority white schools because we have policy mandated</span><br>
+<span title="25:07 - 25:22" data-start="00:25:07.032" data-end="00:25:21.844" data-spk="2" data-label="Sam">desegregation and you see proportion of black students getting up to about forty percent a little bit over 40 percent through the 80s but you see this pretty steady decline after the mid 80s and now in the 2010s which is the last time we have data for,</span><br>
+<span title="25:22 - 25:31" data-start="00:25:21.941" data-end="00:25:31.182" data-spk="2" data-label="Sam">black students are making up an even lower proportion of majority white schools and so we're seeing in the data.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[25:32]</small> <span title="25:32 - 25:45" data-start="00:25:32.235" data-end="00:25:45.472" data-spk="2" data-label="Sam">A re-segregation that's happening in the years after Brown V board and then I will just look at one other graph here that again will tweet out and you know thank you for sticking with me as I try to describe these visually.</span><br>
+<span title="25:46 - 25:48" data-start="00:25:46.163" data-end="00:25:48.242" data-spk="2" data-label="Sam">The second graph shows that.</span><br>
+<span title="25:49 - 26:03" data-start="00:25:49.072" data-end="00:26:02.628" data-spk="2" data-label="Sam">In the years after policy was put in place to enforce segregation we see a drop in metrics of segregation we see that schools are becoming more integrated but at some point.</span><br>
+<span title="26:03 - 26:13" data-start="00:26:03.145" data-end="00:26:13.090" data-spk="2" data-label="Sam">Schools are courts stopped enforcing that schools and school districts desegregate there is a sense that the desegregation had happened and.</span><br>
+<span title="26:14 - 26:20" data-start="00:26:13.907" data-end="00:26:19.796" data-spk="2" data-label="Sam">The school's didn't need the oversight and what you see is a sharp increase after that point.</span><br>
+<span title="26:21 - 26:29" data-start="00:26:21.467" data-end="00:26:28.797" data-spk="2" data-label="Sam">In re-segregation of the schools
+and so you know I'll turn to you guys Nathan and Raven,</span><br>
+<span title="26:29 - 26:35" data-start="00:26:28.984" data-end="00:26:34.812" data-spk="2" data-label="Sam">what is what impact does this data and the conversation with Professor George have on you what reactions do you have.</span><br>
+<br>
+<b data-spk="1">Nathan:</b><br>
+<small style="opacity: 0.5;">[26:36]</small> <span title="26:36 - 26:44" data-start="00:26:35.913" data-end="00:26:43.544" data-spk="1" data-label="Nathan">My first reaction is just that policy Works to combat racial inequality.</span><br>
+<span title="26:44 - 26:49" data-start="00:26:44.013" data-end="00:26:49.288" data-spk="1" data-label="Nathan">And it's clear from both of these graphs that we had policy that was working and once.</span><br>
+<span title="26:50 - 26:59" data-start="00:26:50.437" data-end="00:26:59.450" data-spk="1" data-label="Nathan">You know the pedal was taken off the gas that we as a society have structures that continue to push.</span><br>
+<span title="27:00 - 27:07" data-start="00:26:59.937" data-end="00:27:06.949" data-spk="1" data-label="Nathan">You know in the first case black students away from majority white school districts and we have forces that continue to.</span><br>
+<span title="27:07 - 27:11" data-start="00:27:07.310" data-end="00:27:10.915" data-spk="1" data-label="Nathan">Desegregate or rather to segregate our school systems,</span><br>
+<span title="27:11 - 27:23" data-start="00:27:11.006" data-end="00:27:22.903" data-spk="1" data-label="Nathan">and I think this is exactly what Professor George was talking about when she's describing all of the different historical ways that as a society and these are all the components of CRT CRT.</span><br>
+<span title="27:23 - 27:34" data-start="00:27:23.180" data-end="00:27:33.918" data-spk="1" data-label="Nathan">Of critical race Theory there are all these legal policies that we have in place that continue to reinforce and really to recreate or reaffirm,</span><br>
+<span title="27:34 - 27:35" data-start="00:27:34.080" data-end="00:27:34.927" data-spk="1" data-label="Nathan">inequality.</span><br>
+<br>
+<b data-spk="4">Raven:</b><br>
+<small style="opacity: 0.5;">[27:37]</small> <span title="27:37 - 27:40" data-start="00:27:37.337" data-end="00:27:40.179" data-spk="4" data-label="Raven">I will say that.</span><br>
+<span title="27:41 - 27:53" data-start="00:27:40.991" data-end="00:27:52.702" data-spk="4" data-label="Raven">Something that really bothers me about the graphs and about Brown versus Board anyway is how desegregation.</span><br>
+<span title="27:54 - 28:06" data-start="00:27:53.754" data-end="00:28:05.507" data-spk="4" data-label="Raven">Actually happened like it wasn't necessarily well okay it was desegregation I guess but basically the initial solution was too close.</span><br>
+<span title="28:06 - 28:15" data-start="00:28:06.019" data-end="00:28:14.683" data-spk="4" data-label="Raven">All of the black schools and then smash kids into majority white schools so what's really alarming about this is that.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[28:17]</small> <span title="28:17 - 28:21" data-start="00:28:16.859" data-end="00:28:20.698" data-spk="4" data-label="Raven">Even after that time period okay yes there are less.</span><br>
+<span title="28:21 - 28:35" data-start="00:28:21.456" data-end="00:28:34.892" data-spk="4" data-label="Raven">Black students attending majority white schools but that's not because people went back and rectify the black school situation and I just this is why critical race theory is needed so not only are they they had their schools.</span><br>
+<span title="28:35 - 28:40" data-start="00:28:35.115" data-end="00:28:39.771" data-spk="4" data-label="Raven">Taken away but they're also now being taken out of or pushed out of.</span><br>
+<span title="28:40 - 28:48" data-start="00:28:40.078" data-end="00:28:48.088" data-spk="4" data-label="Raven">Or prevent it from entering majority white schools and then they don't necessarily have other schools with.</span><br>
+<span title="28:48 - 28:59" data-start="00:28:48.467" data-end="00:28:58.928" data-spk="4" data-label="Raven">Teachers or administrators who look like them who understand them and grow up in those same communities and so what's happening with them where they going.</span><br>
+<span title="28:59 - 29:02" data-start="00:28:59.175" data-end="00:29:01.957" data-spk="4" data-label="Raven">And then we could talk about this all night but.</span><br>
+<span title="29:03 - 29:15" data-start="00:29:02.732" data-end="00:29:15.099" data-spk="4" data-label="Raven">This is where you know the school-to-prison pipeline comes in and then alternative schools and stuff like that like they are going somewhere but they're not going to places that necessarily serve them well and so.</span><br>
+<span title="29:16 - 29:26" data-start="00:29:15.622" data-end="00:29:26.185" data-spk="4" data-label="Raven">Critical race theory of course would help you see that it would help you see like this underlying story this tragedy to be behind these.</span><br>
+<span title="29:26 - 29:28" data-start="00:29:26.462" data-end="00:29:27.976" data-spk="4" data-label="Raven">Behind These two graphs.</span><br>
+<br>
+<b data-spk="1">Nathan:</b><br>
+<small style="opacity: 0.5;">[29:29]</small> <span title="29:29 - 29:37" data-start="00:29:28.691" data-end="00:29:37.488" data-spk="1" data-label="Nathan">I would like to see a graph sorry of the number of teachers in the black community before.</span><br>
+<span title="29:38 - 29:43" data-start="00:29:38.006" data-end="00:29:42.524" data-spk="1" data-label="Nathan">Brown V board and after Brown V board because I think that is one of the like.</span><br>
+<span title="29:43 - 29:53" data-start="00:29:42.969" data-end="00:29:52.655" data-spk="1" data-label="Nathan">Most devastating right travesties of desegregation was the number of African-American Educators who stopped teaching who no longer they got pushed out right.</span><br>
+<span title="29:53 - 29:58" data-start="00:29:53.082" data-end="00:29:57.571" data-spk="1" data-label="Nathan">And that's just I mean that's brutal I.</span><br>
+<span title="29:58 - 30:05" data-start="00:29:58.262" data-end="00:30:05.082" data-spk="1" data-label="Nathan">I think that you know CRT what we're hearing from Professor George see your T is such a small component of.</span><br>
+<br>
+<b data-spk="3">Music</b><br>
+<br>
+<b data-spk="1">Nathan:</b><br>
+<small style="opacity: 0.5;">[30:05]</small> <span title="30:05 - 30:18" data-start="00:30:05.179" data-end="00:30:18.224" data-spk="1" data-label="Nathan">What's happening inside of schools in terms of like the curriculum right she talks about the curriculum in some aspects of CRT that would impact that but it's much more important as a lens to view the education system so maybe.</span><br>
+<span title="30:19 - 30:22" data-start="00:30:19.023" data-end="00:30:21.811" data-spk="1" data-label="Nathan">This is wishful thinking but it is possible,</span><br>
+<span title="30:22 - 30:35" data-start="00:30:21.872" data-end="00:30:35.494" data-spk="1" data-label="Nathan">I just hope that a lot of people listen to this podcast because they get upset about CR t-- and then they learn oh maybe crt's not actually something that's going to be you know taught in the school and then they'll start to learn about it and then they'll start to see the world,</span><br>
+<span title="30:36 - 30:39" data-start="00:30:35.560" data-end="00:30:38.991" data-spk="1" data-label="Nathan">through that lens but maybe that won't actually happen.</span><br>
+<br>
+<b data-spk="4">Raven:</b><br>
+<small style="opacity: 0.5;">[30:39]</small> <span title="30:39 - 30:42" data-start="00:30:38.938" data-end="00:30:42.062" data-spk="4" data-label="Raven">But we can help.</span><br>
+<br>
+<b data-spk="2">Sam:</b><br>
+<small style="opacity: 0.5;">[30:43]</small> <span title="30:43 - 30:50" data-start="00:30:42.741" data-end="00:30:49.675" data-spk="2" data-label="Sam">Wishful thinking we'll have to see that's all the time that we have for today.</span><br>
+<br>
+<b data-spk="4">Raven:</b><br>
+<small style="opacity: 0.5;">[30:50]</small> <span title="30:50 - 30:55" data-start="00:30:50.048" data-end="00:30:55.191" data-spk="4" data-label="Raven">Don't forget to join Reddit or Twitter and share your opinion on this week's debate in education.</span><br>
+<br>
+<b data-spk="1">Nathan:</b><br>
+<small style="opacity: 0.5;">[30:56]</small> <span title="30:56 - 31:02" data-start="00:30:56.268" data-end="00:31:02.174" data-spk="1" data-label="Nathan">To learn more about this week's guests to find out how to support the podcast visit learning machine podcast.com.</span><br>
+<br>
+<b data-spk="2">Sam:</b><br>
+<small style="opacity: 0.5;">[31:03]</small> <span title="31:03 - 31:07" data-start="00:31:02.884" data-end="00:31:06.525" data-spk="2" data-label="Sam">And all who teach listen and learn we'll see you next time.</span><br>
+
+<br>
+</div>
+
+
+<script type="text/javascript">
+
+function getBgAlpha(element) {
+    var currentColor = getComputedStyle(element).getPropertyValue('background-color');
+    var parts = currentColor.match(/[\d.]+/g);
+    var alpha = "0"
+
+    try {
+        alpha = parts[3];
+    }
+    catch(err) {
+        // on edge we don't get a color if RGBA is completely 0
+    }
+
+    return alpha;
+}
+
+function removeStyling() {
+    var elements = document.getElementsByTagName('span');
+    var newColorBase = 'rgba(255, 255, 255, ';
+    for (var i=0; i<elements.length; i++) {
+        var currentAlpha = getBgAlpha(elements[i]);
+        var newColor = newColorBase + currentAlpha + ')';
+        elements[i].style = 'background: ' + newColor + ';';
+    }
+
+    try {
+        var button = document.getElementById('toggle-styling');
+        button.innerText = 'Add Highlighting';
+        button.onclick = function() { addStyling(); } ;
+    }
+    catch(err) {
+        // no confidence available
+    }
+}
+
+function addStyling() {
+    var elements = document.getElementsByTagName('span');
+    var newColorBase = 'rgba(209, 72, 54, ';
+    for (var i=0; i<elements.length; i++) {
+        var currentAlpha = getBgAlpha(elements[i]);
+        var newColor = newColorBase + currentAlpha + ')';
+        elements[i].style = 'background: ' + newColor + ';';
+    }
+
+    try {
+        var button = document.getElementById('toggle-styling');
+        button.innerText = 'Remove Highlighting';
+        button.onclick = function() { removeStyling(); } ;
+    }
+    catch(err) {
+        // no confidence available
+    }
+}
+
+function enableEdit() {
+    var transcript = document.getElementById('transcript');
+    transcript.contentEditable = true;
+    transcript.classList.add("edit-mode");
+
+    var button = document.getElementById('edit-transcript');
+    button.innerText = 'Close Edit Mode';
+    button.onclick = function() { disableEdit(); } ;
+
+    var elements = document.querySelectorAll('b[data-spk]');
+    for (var i=0; i<elements.length; i++) {
+        elements[i].title = 'Change speaker name to edit all speakers at once!';
+    }
+}
+
+function disableEdit() {
+    var transcript = document.getElementById('transcript');
+    transcript.contentEditable = false;
+    transcript.classList.remove("edit-mode");
+
+    var button = document.getElementById('edit-transcript');
+    button.innerText = 'Edit Transcript';
+    button.onclick = function() { enableEdit(); } ;
+
+    var elements = document.querySelectorAll('b[data-spk]');
+    for (var i=0; i<elements.length; i++) {
+        elements[i].title = '';
+    }
+}
+
+function removeSpans(transcript) {
+    var removeSpans = new RegExp('</?span[^>]*>','gm');
+    transcript = transcript.replace(removeSpans, '');
+    transcript = transcript.replace(/&nbsp;/g, ' ');
+    return transcript;
+}
+
+function showExportButtons() {
+    var button = document.getElementById('show-export-buttons');
+    button.innerText = '>';
+    button.title = 'Close export buttons.';
+    button.classList.add("export-buttons-shown");
+    button.onclick = function() { hideExportButtons(); } ;
+
+    document.getElementById('export-html').style = '';
+    document.getElementById('export-pdf').style = '';
+    document.getElementById('export-webvtt').style = '';
+    document.getElementById('save-changes').style = '';
+    document.getElementById('show-help').style = 'display: none;';
+}
+
+function hideExportButtons() {
+    var button = document.getElementById('show-export-buttons');
+    button.innerText = 'Export...';
+    button.title = '';
+    button.classList.remove("export-buttons-shown");
+    button.onclick = function() { showExportButtons(); } ;
+
+    document.getElementById('export-html').style = 'display: none;';
+    document.getElementById('export-pdf').style = 'display: none;';
+    document.getElementById('export-webvtt').style = 'display: none;';
+    document.getElementById('save-changes').style = 'display: none;';
+    document.getElementById('show-help').style = '';
+}
+
+function saveChanges() {
+    disableEdit();
+    hideExportButtons();
+
+    var head = document.head.innerHTML;
+    var body = document.body.innerHTML;
+
+    var pageSource = '<!DOCTYPE html><html><head>' + head + '</head><body>' + body + '</body></html>';
+    var filename = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+
+    var bl = new Blob([pageSource], {type: "text/html"});
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(bl);
+    a.download = filename;
+    a.hidden = true;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+}
+
+function exportHTML() {
+    disableEdit();
+    removeStyling();
+
+    var head = document.head.innerHTML;
+    var metadata = document.getElementById('metadata').innerHTML;
+    var transcript = document.getElementById('transcript').innerHTML;
+
+    transcript = removeSpans(transcript);
+
+    var pageSource = '<!DOCTYPE html><html><head>' + head + '</head><body>' + metadata + '<div class="transcript-base">' + transcript + '</div></body></html>';
+    var filename = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+
+    var bl = new Blob([pageSource], {type: "text/html"});
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(bl);
+    a.download = filename;
+    a.hidden = true;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    hideExportButtons();
+}
+
+function exportWebVTT() {
+    disableEdit();
+
+    var pageSource = 'WEBVTT\n\n';
+
+    var segments = document.querySelectorAll('span[data-start]');
+    for (var i=0; i<segments.length; i++) {
+        pageSource += segments[i].getAttribute('data-start') + ' --> ';
+        pageSource += segments[i].getAttribute('data-end') + '\n';
+        if (segments[i].getAttribute('data-spk') !== null) {
+            pageSource += '<v ' + segments[i].getAttribute('data-label') + '>';
+        }
+        pageSource += removeSpans(segments[i].innerHTML);
+        pageSource += '\n\n';
+    }
+
+    var filename = location.pathname.substring(location.pathname.lastIndexOf('/') + 1);
+    filename = filename.substring(0, filename.lastIndexOf('.')) + '.vtt';
+
+    var bl = new Blob([pageSource], {type: 'text/vtt'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(bl);
+    a.download = filename;
+    a.hidden = true;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    hideExportButtons();
+}
+
+function getSecondsFromString(timeString) {
+    var splitStrg = timeString.split(":");
+    var seconds = 0;
+    for (var i=0; i<splitStrg.length; i++) {
+        if (i == 0) { seconds += parseInt(splitStrg[splitStrg.length - 1]); }
+        if (i == 1) { seconds += parseInt(splitStrg[splitStrg.length - 2]) * 60; }
+        if (i == 2) { seconds += parseInt(splitStrg[splitStrg.length - 3]) * 3600; }
+    }
+    return seconds;
+}
+
+function pad(num, size) {
+    var s = num + "";
+    while (s.length < size) s = "0" + s;
+    return s;
+}
+
+function secToTimeString(seconds) {
+    var ss = Math.round(seconds);
+    var cmin = Math.floor(ss / 60);
+    var csec = ss % 60;
+
+    if (cmin < 60) {
+        return cmin + ":" + pad(csec, 2);
+    } else {
+        var ch = Math.floor(cmin / 60);
+        var cm = cmin % 60;
+        return ch + ":" + pad(cm, 2) + ":" + pad(csec, 2);
+    }
+}
+
+function removeActiveClass() {
+    var elements = document.querySelectorAll('span.active');
+    for (var i=0; i<elements.length; i++) {
+        elements[i].classList.remove("active");
+        // elements[i].classList.add("listened");
+    }
+}
+
+function addAudioFile() {
+    var txt;
+    var url = prompt(
+        'Please enter complete URL for the audio file, which should be played along the transcript\n(a local path should start with "file:///"):',
+        'https://auphonic.com/media/audio-examples/03.auphonic-demo-denoise-100.m4a'
+    );
+    if (url == null || url == "") { return; }
+
+    var audio = document.getElementById('audio-player');
+    var oldSources = document.querySelectorAll('source');
+    for (var i=0; i<oldSources.length; i++) {
+        oldSources[i].remove();
+    }
+
+    var source = document.createElement('source');
+    source.src = url;
+    audio.appendChild(source);
+
+    addAudioPlayer();
+}
+
+function addAudioPlayer() {
+    var audio = document.getElementById('audio-player');
+
+    document.getElementById('add-audio-file').style = '';
+    document.getElementById('toggle-play-on-click').style = 'display: none;';
+
+    audio.oncanplay = function() {
+        AUDIO_PLAYER = audio;
+
+        // highlight current audio segment
+        if (HAVE_TIMESTAMPS) {
+            AUDIO_PLAYER.ontimeupdate = function() {
+                if (ARE_PLAYING) {
+                    removeActiveClass();
+                    var curTime = secToTimeString(AUDIO_PLAYER.currentTime);
+                    elements = document.querySelectorAll('span[title="' + curTime + '"]');
+                    for (var i=0; i<elements.length; i++) {
+                        elements[i].classList.add("active");
+                    }
+                }
+            };
+        }
+
+        // setup click handlers to play audio on mouse click
+        if (HAVE_TIMESTAMPS) {
+            var elements = document.getElementsByTagName('span');
+            for (var i=0; i<elements.length; i++) {
+                if (elements[i].getAttribute('data-start') === null) {  // no data-start attribute
+                    try {
+                        elements[i].removeEventListener("click", clickHandlerTimestamp);
+                    } catch(err) { }
+                    elements[i].addEventListener("click", clickHandlerTimestamp);
+                }
+            }
+        } else {
+            var elements = document.querySelectorAll('span[data-start]');
+            for (var i=0; i<elements.length; i++) {
+                try {
+                    elements[i].removeEventListener("click", clickHandlerSegment);
+                } catch(err) { }
+                elements[i].addEventListener("click", clickHandlerSegment);
+            }
+        }
+
+        enableAudioClickPlayback();
+
+        var button = document.getElementById('add-audio-file');
+        button.style = "display: none;";
+    }
+
+    audio.load();
+}
+
+function clickHandlerTimestamp(e) {
+    var target = (e.target) ? e.target : e.srcElement;
+    var timeString = target.title;
+    var timeSec = getSecondsFromString(timeString);
+    playAudioSegment(timeSec -0.6, timeSec + 3.4);
+}
+
+function clickHandlerSegment(e) {
+    if (PLAYBACK_ON_CLICK) {
+        var target = (e.target) ? e.target : e.srcElement;
+        removeActiveClass();
+        target.classList.add("active");
+        var startTimeStrg = target.getAttribute("data-start").split(".")[0];
+        var endTimeStrg = target.getAttribute("data-end").split(".")[0];
+        var startSec = getSecondsFromString(startTimeStrg);
+        var endSec = getSecondsFromString(endTimeStrg) + 1;
+        playAudioSegment(startSec, endSec);
+    }
+}
+
+function enableAudioClickPlayback() {
+    var button = document.getElementById('toggle-play-on-click');
+    button.innerText = 'Stop Play-on-click';
+    button.style = "";
+    button.onclick = function() { disableAudioClickPlayback(); } ;
+    PLAYBACK_ON_CLICK = true;
+}
+
+function disableAudioClickPlayback() {
+    AUDIO_PLAYER.pause();
+    ARE_PLAYING = false;
+    removeActiveClass();
+    var button = document.getElementById('toggle-play-on-click');
+    button.innerText = 'Activate Play-on-click';
+    button.style = "";
+    button.onclick = function() { enableAudioClickPlayback(); } ;
+    PLAYBACK_ON_CLICK = false;
+}
+
+function playAudioSegment(start_sec, end_sec) {
+    if (AUDIO_PLAYER !== null && PLAYBACK_ON_CLICK) {
+        if (PAUSE_TIMEOUT !== null) { clearTimeout(PAUSE_TIMEOUT); }
+
+        AUDIO_PLAYER.currentTime = start_sec;
+        AUDIO_PLAYER.play();
+        ARE_PLAYING = true;
+
+        var length_ms = (end_sec - start_sec) * 1000;
+        PAUSE_TIMEOUT= setTimeout(function(){
+            AUDIO_PLAYER.pause();
+            PAUSE_TIMEOUT = null;
+            ARE_PLAYING = false;
+            removeActiveClass();
+        }, length_ms);
+    }
+}
+
+function setupTranscriptChangeListeners() {
+    var trans = document.getElementById('transcript');
+    trans.addEventListener("keyup", function(e){
+        var editedNode = window.getSelection().anchorNode.parentNode;
+
+        // set background of already edited spans back to white
+        if (HAVE_TIMESTAMPS && HAVE_CONFIDENCE) {
+            var clearNode = editedNode;
+            if (clearNode.tagName == "SPAN") {
+                if (clearNode.getAttribute("data-start") !== null) {
+                    // if we click into the parent span, we have to get the next node!
+                    clearNode = window.getSelection().anchorNode.nextSibling;
+                }
+                if (clearNode.tagName == "SPAN" && clearNode.getAttribute("title") !== null) {
+                    clearNode.style = 'background: white;';
+                }
+            }
+        }
+
+        // change all speaker names if we change one speaker
+        if (editedNode.tagName == "B" && editedNode.getAttribute("data-spk") !== null) {
+            var curSpeaker = editedNode.getAttribute("data-spk");
+
+            var elements = document.querySelectorAll('b[data-spk="' + curSpeaker + '"]');
+            for (var i=0; i<elements.length; i++) {
+                if (elements[i] !== editedNode) {
+                    elements[i].innerText = editedNode.innerText;
+                }
+            }
+
+            // for WebVTT export
+            var elements = document.querySelectorAll('span[data-spk="' + curSpeaker + '"]');
+            var label = editedNode.innerText;
+            if (label[label.length -1] == ":") {
+                label = label.substring(0, label.length - 1);
+            }
+            for (var i=0; i<elements.length; i++) {
+                elements[i].setAttribute("data-label", label);
+            }
+        }
+    });
+}
+
+HAVE_CONFIDENCE = false;
+HAVE_TIMESTAMPS = HAVE_CONFIDENCE;  // for now ...
+
+AUDIO_PLAYER = null;
+PAUSE_TIMEOUT = null;
+PLAYBACK_ON_CLICK = false;
+ARE_PLAYING = false;
+
+window.addEventListener("load", function(){
+    if(!HAVE_CONFIDENCE) {
+        var button = document.getElementById('toggle-styling');
+        if (button !== null) { button.remove(); }
+    }
+
+    addAudioPlayer();
+    setupTranscriptChangeListeners();
+});
+</script>
+
+
+</body>
+</html>
