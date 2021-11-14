@@ -3110,7 +3110,26 @@ input, select, textarea {
 			#hero .button2{
 				font-size: 0.7em;
 			}
-
+			#hero a, #hero a:focus, #hero a:active {
+				float: left;
+				display: inline;
+				outline: none;
+				color: #fff;
+				text-align: center;
+				text-decoration: none;
+				font-weight:bold;
+				font-size: 0.7em;
+			}
+			#navbar a, #navbar a:focus, #navbar a:active {
+				float: left;
+				display: inline;
+				outline: none;
+				color: #fff;
+				text-align: center;
+				text-decoration: none;
+				font-weight:bold;
+				font-size: 0.7em;
+			}
 		/* Main */
 
 			#main {
@@ -3166,11 +3185,33 @@ input, select, textarea {
 
 			/* Promo */
 
-
 			#promo .button {
-				font-size: 0.8em;
+				font-size: 0.5em;
+				margin: 0.5em;
+				padding: 1em
 			}
 
+			#guest
+			{
+				vertical-align:middle;
+				display:inline-block;
+				margin-top:2em;
+				margin-left:0.5em;
+				margin-bottom:1em;
+				width:15%;
+				min-width: 100px;
+			}
+			#promo .blurb
+			{
+				vertical-align:middle;
+				display:inline-block;
+				font-size:0.75em;
+				margin-top:2em;
+				margin-right:0;
+				padding-right:0;
+				color:black;
+				width:65%;
+			}
 		/* Sections/Article */
 
 			header {
@@ -3227,12 +3268,32 @@ input, select, textarea {
 		#navbar a:hover {
 			color: #007d5b;
 		}
-		#navbar a, #navbar a:focus, #navbar a:active,{
-			padding: 0.25em;
+		#hero a, #hero a:focus, #hero a:active {
+			float: left;
+			display: inline;
+			outline: none;
+			color: #fff;
+			text-align: center;
 			text-decoration: none;
 			font-weight:bold;
+			font-size: 0.7em;
+		}
+		#navbar a, #navbar a:focus, #navbar a:active {
+			float: left;
+			display: inline;
+			outline: none;
+			color: #fff;
+			text-align: center;
+			text-decoration: none;
+			font-weight:bold;
+			font-size: 0.7em;
+		}
+		#navbar a.button:active, #navbar a.button:focus {
+			padding:0.1em 0.1em 0.1em 0.1em;
 			font-size: 0.5em;
-			border-bottom: none;
+			margin-top:0.75em;
+			margin-right:0.75em;
+			float: right;
 		}
 		#navbar a.nav_logo {
 			width:3em;
@@ -3253,12 +3314,7 @@ input, select, textarea {
 			margin-right:0.75em;
 			float: right;
 		}
-		#navbar a.button:active {
-			padding:0.2em 0.75em 0.2em 0.75em;
-			margin-top:0.75em;
-			margin-right:0.75em;
-			float: right;
-		}
+
 		#navbar .button1{
 			border: 1px solid #7920a0;
 			background: transparent;
