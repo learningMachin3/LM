@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+    <title>Are Teachers Learning Crt?</title>
+
+    <style>
+    body { margin: 0; }
+    #title, #subtitle, #info, #summary { text-align: center; }
+    #summary { margin: 0 10%; }
+    #chapter { margin-top: 1em; }
+
+    #edit-bar {
+        margin-top: 2em; display: flex; justify-content: space-between; flex-wrap: wrap;
+        position: -webkit-sticky; position: sticky; top: 0; left: 0;
+        background: white; z-index: 999;
+        font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+        -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; text-size-adjust: 100%;
+    }
+    #edit-bar-spacer { flex-grow: 1; }
+    .button {
+        background-color: #f5f5f5; color: #363636;
+        border: 1px solid #dbdbdb; border-radius: 4px; box-shadow: none;
+        margin: 0.5em; padding: 5px 12px;
+        cursor:pointer;font-size: 0.9em;
+        justify-content:center; text-align:center; white-space:nowrap;
+        display: inline-flex; position: relative; vertical-align: top;
+        user-select: none; text-decoration: none;
+    }
+    .button:hover{border-color:#b5b5b5;color:#363636;background-color:#eee;}
+    .button:active{border-color:#4a4a4a;color:#363636;background-color:#e8e8e8;}
+    .button.export-option { margin: 0.5em 0.2em 0.5em auto; }
+    .button.export-buttons-shown { margin-left: 0.2em; margin-left: auto; }
+
+    span.active { font-weight: bold; }
+    span.listened { font-weight: bold; font-style: italic; }
+    #transcript.edit-mode { border-style: dashed; padding: 10px; }
+    #transcript span { cursor: pointer; }
+    #transcript.edit-mode span { cursor: text; }
+    .transcript-base { margin: 0.5em; }
+
+    @media all and (max-width: 900px) {
+      .button.export-buttons-shown { margin: 0.5em; margin-left: auto; }
+      .button.export-option { margin: 0.5em; margin-left: auto; }
+    }
+
+    @media all and (max-width: 340px) {
+      .button { margin: 0.2em; }
+    }
+
+    @media print {
+        #edit-bar { display: none; }
+        .button { display: none; }
+        span { background: white; }
+        #transcript { border-style: none !important; padding: 0px !important; }
+    }
+    </style>
+</head>
+
+<body>
+
+
+<div id="metadata">
+<h1 id="title">Are Teachers Learning Crt?</h1>
+<h4 id="subtitle">Featuring Dr. Amy Samuels</h4>
+
+<p id="info">
+2021, Learning Machine Podcast<br>
+Series 2<br>
+<a href="https://www.learningmachinepodcast.com" target="_blank">https://www.learningmachinepodcast.com</a>
+</p>
+
+<p id="summary">
+Should teachers be required to study Critical Race Theory as part of their training? At this point, the teaching workforce is still predominantly white and female and does not reflect the diversity of students in classrooms. Preparing teachers to understand the historical and cultural experiences students bring to the classroom is one solution to mismatched identities. Dr. Amy Samuels is an expert in teacher education and culturally responsive pedagogy and in this episode, she offers her perspective, wisdom, and a few tips for preparing the next generation of educators.
+
+You can follow Dr. Samuels on Twitter @ajsamuels27
+</p>
+
+
+</div>
+
+<div id="edit-bar">
+    <a class="button" id="edit-transcript" onclick="enableEdit();" title="Enable/disable edit mode.">Edit Transcript</a>
+    <a class="button" id="toggle-styling" onclick="removeStyling();" title="Words with low recognition confidence will be highlighted in red.">Remove Highlighting</a>
+    <a class="button" id="add-audio-file" onclick="addAudioFile();" title="Add audio file which should be played along the transcript.">Add Audio File</a>
+    <a class="button" id="toggle-play-on-click" title="Enable/disable click on word for audio playback." style="display: none;">Stop Play-on-click</a>
+
+    <div id="edit-bar-spacer"></div>
+
+    <a class="button export-option" id="save-changes" onclick="saveChanges();" style="display: none;" title="Save transcript editor with current changes for further editing or sharing.">Save Editor</a>
+    <a class="button export-option" id="export-html" onclick="exportHTML();" style="display: none;" title="Export transcript as HTML for Word, Wordpress, etc.">Export HTML</a>
+    <a class="button export-option" id="export-pdf" onclick="window.print(); hideExportButtons();" style="display: none;" title="Export transcript as PDF or to printer.">Export PDF</a>
+    <a class="button export-option" id="export-webvtt" onclick="exportWebVTT();" style="display: none;" title="Export transcript as WebVTT for web players.">Export WebVTT</a>
+    <a class="button" id="show-export-buttons" onclick="showExportButtons();">Export...</a>
+    <a class="button" id="show-help" href="https://auphonic.com/help/algorithms/speech_recognition.html#auphonic-transcript-editor" target="_blank" title="Show transcript editor help.">?</a>
+
+    <audio id="audio-player" preload="auto" style="display: none;">
+        <source src="https://pdcn.co/e/www.buzzsprout.com/1720583/9544971-are-teachers-learning-crt-w-dr-amy-samuels.mp3?download=true">
+    </audio>
+</div>
+
+<div id="transcript" class="transcript-base">
+
+<h2 id="chapter">Transcript</h2>
+<b data-spk="5">Music</b><br>
+<br>
+<b data-spk="1">Amy Samuels:</b><br>
+<small style="opacity: 0.5;">[0:16]</small> <span title="0:16 - 0:30" data-start="00:00:16.128" data-end="00:00:29.936" data-spk="1" data-label="Amy Samuels">So for a really long time I wanted to be a teacher I grew up in rural Pennsylvania in a town called clarion's about halfway between Pittsburgh and Erie and as a small child I wanted to be a marine biologist but you can imagine living in,</span><br>
+<span title="0:30 - 0:34" data-start="00:00:29.943" data-end="00:00:33.782" data-spk="1" data-label="Amy Samuels">Pennsylvania that's really not the best career aspiration</span><br>
+<span title="0:34 - 0:42" data-start="00:00:33.681" data-end="00:00:41.582" data-spk="1" data-label="Amy Samuels">but I do remember I was probably in second or third grade and for a Christmas gift I received a chalkboard and I remember in</span><br>
+<span title="0:41 - 0:52" data-start="00:00:41.486" data-end="00:00:52.200" data-spk="1" data-label="Amy Samuels">being in my parents basement and teaching to pretend students in pretend classrooms so it was definitely something that I always was drawn to an interested in and.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[0:52]</small> <span title="0:52 - 1:01" data-start="00:00:52.483" data-end="00:01:01.057" data-spk="1" data-label="Amy Samuels">Kind of as Nelson Mandela says education is the most powerful weapon you can use to change the world and I truly believe those sentiments,</span><br>
+<span title="1:01 - 1:03" data-start="00:01:01.166" data-end="00:01:03.371" data-spk="1" data-label="Amy Samuels">throughout my work and education I've,</span><br>
+<span title="1:03 - 1:13" data-start="00:01:03.443" data-end="00:01:13.172" data-spk="1" data-label="Amy Samuels">been in education for 20 years now this is my 20th year and I have found that experiences change people not just students but teachers and Educators as well,</span><br>
+<span title="1:13 - 1:25" data-start="00:01:13.370" data-end="00:01:24.517" data-spk="1" data-label="Amy Samuels">so I've worked in Baltimore city schools I was in Hillsborough County which is in Tampa Florida and now I'm at the University of Montevallo and I can say that I have grown tremendously.</span><br>
+<span title="1:25 - 1:32" data-start="00:01:24.776" data-end="00:01:31.571" data-spk="1" data-label="Amy Samuels">As I've had the opportunity to engage with and learn from hundreds probably at this point thousands of students,</span><br>
+<span title="1:32 - 1:45" data-start="00:01:31.674" data-end="00:01:44.665" data-spk="1" data-label="Amy Samuels">and whether it's a 7th grader and a social studies course that's what I taught when I was in a middle and high school teacher or now when I'm working with Master students or education specialist students who have Decades of experience,</span><br>
+<span title="1:45 - 1:52" data-start="00:01:44.732" data-end="00:01:52.165" data-spk="1" data-label="Amy Samuels">I really believe that everyone has something to bring to the table and we can all learn from one another if we're open to it,</span><br>
+<span title="1:52 - 1:58" data-start="00:01:52.357" data-end="00:01:57.717" data-spk="1" data-label="Amy Samuels">so what really draws me to the work and education is the people.</span><br>
+<br>
+<b data-spk="5">Music</b><br>
+<br>
+<b data-spk="3">Sss:</b><br>
+<small style="opacity: 0.5;">[2:07]</small> <span title="2:07 - 2:17" data-start="00:02:06.833" data-end="00:02:17.391" data-spk="3" data-label="SSS">Hey y'all it's Sam the voice you just heard was our education expert today dr. Amy Samuels who is an associate professor of instructional leadership at the University of Montevallo.</span><br>
+<br>
+<b data-spk="4">Rdb:</b><br>
+<small style="opacity: 0.5;">[2:18]</small> <span title="2:18 - 2:28" data-start="00:02:18.118" data-end="00:02:28.309" data-spk="4" data-label="RDB">And this is Raven dr. Samuels is research aligns with educational Justice culturally responsive pedagogy and issues of race and racism in education.</span><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[2:29]</small> <span title="2:29 - 2:44" data-start="00:02:28.904" data-end="00:02:43.897" data-spk="2" data-label="NAL">Today we're going to be focusing on teacher preparation programs now I know all three of us went through a teacher prep program although we all kind of went through different programs so I was wondering what programs did you both go through and.</span><br>
+<span title="2:44 - 2:46" data-start="00:02:44.366" data-end="00:02:46.469" data-spk="2" data-label="NAL">Did you talk about critical race Theory.</span><br>
+<br>
+<b data-spk="4">Rdb:</b><br>
+<small style="opacity: 0.5;">[2:48]</small> <span title="2:48 - 2:54" data-start="00:02:47.515" data-end="00:02:54.034" data-spk="4" data-label="RDB">I went through a traditional University teacher prep program at Princeton and we.</span><br>
+<span title="2:54 - 2:58" data-start="00:02:54.353" data-end="00:02:58.090" data-spk="4" data-label="RDB">Definitely learned about culturally responsive teaching</span><br>
+<span title="2:58 - 3:11" data-start="00:02:57.994" data-end="00:03:11.154" data-spk="4" data-label="RDB">and culturally responsive learning I learned about critical race Theory and some of my other classes like sociology and African American literature but my teacher prep program never taught me to teach critical race Theory to students.</span><br>
+<br>
+<b data-spk="3">Sss:</b><br>
+<small style="opacity: 0.5;">[3:13]</small> <span title="3:13 - 3:22" data-start="00:03:12.801" data-end="00:03:22.036" data-spk="3" data-label="SSS">Yeah such an important Point since I think that's part of the political discussion these days I went through a teacher prep program at cu-boulder in Colorado.</span><br>
+<span title="3:22 - 3:24" data-start="00:03:22.457" data-end="00:03:23.653" data-spk="3" data-label="SSS">And.</span><br>
+<span title="3:24 - 3:39" data-start="00:03:24.278" data-end="00:03:39.078" data-spk="3" data-label="SSS">Similarly we talked about culturally responsive teaching methods but we didn't address critically critical race theory in our classes and the discussions around race although they came up were not as big of a focus as I wonder that they might be,</span><br>
+<span title="3:39 - 3:41" data-start="00:03:39.253" data-end="00:03:41.001" data-spk="3" data-label="SSS">teacher prep programs today.</span><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[3:42]</small> <span title="3:42 - 3:47" data-start="00:03:42.161" data-end="00:03:46.721" data-spk="2" data-label="NAL">Yeah I also went through a program where,</span><br>
+<span title="3:47 - 3:57" data-start="00:03:46.794" data-end="00:03:57.430" data-spk="2" data-label="NAL">didn't come like critical race Theory didn't come up in any of the classes or any of the course work that we were doing I would through the New York City teaching fellows which is an alternative certification program which meant that</span><br>
+<span title="3:57 - 4:07" data-start="00:03:57.328" data-end="00:04:06.660" data-spk="2" data-label="NAL">all of us were teaching full time at the same time as taking our classes at night and what I thought was interesting is I remember there was one class we had,</span><br>
+<span title="4:07 - 4:15" data-start="00:04:06.750" data-end="00:04:15.253" data-spk="2" data-label="NAL">about race racism in education talking about implicit bias but it was never something that was like.</span><br>
+<span title="4:16 - 4:28" data-start="00:04:15.938" data-end="00:04:28.070" data-spk="2" data-label="NAL">Intended to be or like used as a lens through which to view curriculum or pedagogy or other classes it was more like here's the class once you finished that you know about race and then you're good to go.</span><br>
+<span title="4:29 - 4:38" data-start="00:04:28.641" data-end="00:04:38.261" data-spk="2" data-label="NAL">You know I think that today people are talking more about using it as a lens which seems to be where things are going especially based on what I heard and,</span><br>
+<span title="4:38 - 4:43" data-start="00:04:38.400" data-end="00:04:43.075" data-spk="2" data-label="NAL">my conversation with dr. Samuels so for today's episode we have a debate topic.</span><br>
+<span title="4:43 - 4:53" data-start="00:04:43.454" data-end="00:04:53.176" data-spk="2" data-label="NAL">And since you both have personal experience with this matter I wanted to ask you to weigh in on this topic which is should teachers be required to study critical race Theory,</span><br>
+<span title="4:53 - 5:01" data-start="00:04:53.302" data-end="00:05:00.651" data-spk="2" data-label="NAL">before entering the classroom and before you give your opinion remember we'd also love to hear from our listeners so,</span><br>
+<span title="5:01 - 5:10" data-start="00:05:00.796" data-end="00:05:10.067" data-spk="2" data-label="NAL">if you're listening to this and you have an opinion on this debate topic remember you can join the conversation on Reddit and Twitter simply go to learning machine podcast.com to find out more.</span><br>
+<br>
+<b data-spk="3">Sss:</b><br>
+<small style="opacity: 0.5;">[5:10]</small> <span title="5:10 - 5:17" data-start="00:05:10.440" data-end="00:05:16.984" data-spk="3" data-label="SSS">Yeah I have some thoughts on this topic I feel very strongly that.</span><br>
+<span title="5:18 - 5:31" data-start="00:05:17.501" data-end="00:05:31.267" data-spk="3" data-label="SSS">Folks who are entering the teaching World need to be exposed to questions of race and questions of two innocent think critically about race in their work and in the broader culture.</span><br>
+<span title="5:32 - 5:39" data-start="00:05:31.514" data-end="00:05:39.013" data-spk="3" data-label="SSS">And I also think that in some ways that's exactly what critical race Theory calls on people to do.</span><br>
+<span title="5:39 - 5:48" data-start="00:05:39.254" data-end="00:05:48.183" data-spk="3" data-label="SSS">I also want to just take the technical stance that critical race theory is an aspect of legal scholarship part of critical studies.</span><br>
+<span title="5:48 - 5:58" data-start="00:05:48.430" data-end="00:05:58.416" data-spk="3" data-label="SSS">And something that is a specific and sort of Deep dive that shouldn't necessarily be required of all teachers</span><br>
+<span title="5:58 - 6:10" data-start="00:05:58.279" data-end="00:06:09.653" data-spk="3" data-label="SSS">um and I worry that sometimes when we talk about critical race Theory capital c r t as this this way of thinking that we get a little off track from thinking about the idea that,</span><br>
+<span title="6:10 - 6:19" data-start="00:06:09.858" data-end="00:06:18.901" data-spk="3" data-label="SSS">definitely folks who want to become teachers need to be considerate of questions around race as they enter the classroom and think about their styles of teacher.</span><br>
+<br>
+<b data-spk="4">Rdb:</b><br>
+<small style="opacity: 0.5;">[6:19]</small> <span title="6:19 - 6:24" data-start="00:06:19.346" data-end="00:06:23.744" data-spk="4" data-label="RDB">The problem is that critical race Theory.</span><br>
+<span title="6:24 - 6:32" data-start="00:06:24.142" data-end="00:06:31.520" data-spk="4" data-label="RDB">Is such a complicated sort of topic and so I believe that teachers need to.</span><br>
+<span title="6:32 - 6:46" data-start="00:06:31.827" data-end="00:06:45.678" data-spk="4" data-label="RDB">Learn how to do the work of critical race Theory like definitely learn how to deal with their biases and learn how to like have uncomfortable discussions with their students and with each other and I do believe also that.</span><br>
+<span title="6:46 - 6:56" data-start="00:06:46.339" data-end="00:06:56.488" data-spk="4" data-label="RDB">Teacher prep programs whether traditional or alternative or anything in between definitely should be framed with that work in mind and with that lens but it is.</span><br>
+<span title="6:57 - 7:06" data-start="00:06:56.921" data-end="00:07:05.892" data-spk="4" data-label="RDB">Difficult to ask people especially if you're going through an undergraduate traditional teacher prep program to like.</span><br>
+<span title="7:07 - 7:16" data-start="00:07:06.511" data-end="00:07:16.408" data-spk="4" data-label="RDB">Be able to comprehend what critical race theory is because it's a graduate-level legal studies thing like you said so.</span><br>
+<span title="7:17 - 7:30" data-start="00:07:16.811" data-end="00:07:30.475" data-spk="4" data-label="RDB">I don't know I feel like I'm in the middle of the road I'll on that one like obviously is critical race theory is important to how we look at the world I wonder if there is a way for people to teach teachers.</span><br>
+<span title="7:31 - 7:37" data-start="00:07:31.155" data-end="00:07:36.935" data-spk="4" data-label="RDB">With the framework of critical race Theory but in a way that's more
+that's.</span><br>
+<span title="7:38 - 7:43" data-start="00:07:37.693" data-end="00:07:43.052" data-spk="4" data-label="RDB">More flexible for the classroom and makes more sense for students.</span><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[7:44]</small> <span title="7:44 - 7:55" data-start="00:07:43.996" data-end="00:07:55.251" data-spk="2" data-label="NAL">Yeah I love that ribbon I think there's there's you know we're sort of getting to this situation although we're were talking about like moving CRT further and further up the pipeline right the like maybe.</span><br>
+<span title="7:56 - 8:05" data-start="00:07:55.527" data-end="00:08:05.430" data-spk="2" data-label="NAL">Teacher Educators should be the ones who are taught are studying critical race Theory so that they make and translate it into something that is palatable or,</span><br>
+<span title="8:06 - 8:10" data-start="00:08:05.629" data-end="00:08:09.913" data-spk="2" data-label="NAL">you know understandable for for teachers but I do agree with you that I think.</span><br>
+<span title="8:10 - 8:21" data-start="00:08:10.334" data-end="00:08:20.537" data-spk="2" data-label="NAL">Much of the framework of CR T is defined you know if you read the original work of the CRT Scholars right it's very esoteric it's very,</span><br>
+<span title="8:21 - 8:24" data-start="00:08:20.754" data-end="00:08:23.992" data-spk="2" data-label="NAL">deep like theoretical.</span><br>
+<span title="8:24 - 8:34" data-start="00:08:24.209" data-end="00:08:33.607" data-spk="2" data-label="NAL">Language that frankly most teachers are not going to need to Grapple with what they are going to need like you said is the ability to feel comfortable having,</span><br>
+<span title="8:34 - 8:48" data-start="00:08:33.637" data-end="00:08:47.656" data-spk="2" data-label="NAL">difficult conversations talking about race being open to these conversations in their classroom where they can talk to students and say like hey it's okay for us to have these uncomfortable conversations and knowing enough of the history and having the tools to do that.</span><br>
+<br>
+<b data-spk="4">Rdb:</b><br>
+<small style="opacity: 0.5;">[8:48]</small> <span title="8:48 - 8:54" data-start="00:08:48.257" data-end="00:08:53.947" data-spk="4" data-label="RDB">Yeah the way that you described that is the way that I wish I had described.</span><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[8:55]</small> <span title="8:55 - 9:00" data-start="00:08:55.306" data-end="00:09:00.347" data-spk="2" data-label="NAL">Well I only had that description because I heard it from dr. Samuels so.</span><br>
+<span title="9:01 - 9:13" data-start="00:09:00.618" data-end="00:09:13.050" data-spk="2" data-label="NAL">Let's take now a minute to listen to there's a section of the interview the interview that I wanted to play for the podcast which is talking with dr. Samuels about CRT in the classroom and in teacher preparation program.</span><br>
+<br>
+<b data-spk="5">Music</b><br>
+<br>
+<b data-spk="1">Amy Samuels:</b><br>
+<small style="opacity: 0.5;">[9:27]</small> <span title="9:27 - 9:38" data-start="00:09:26.757" data-end="00:09:38.078" data-spk="1" data-label="Amy Samuels">So I guess the idea of things are always evolving and kind of in the current climate and culture the social political implications the,</span><br>
+<span title="9:38 - 9:51" data-start="00:09:38.168" data-end="00:09:50.769" data-spk="1" data-label="Amy Samuels">current polarized context I know one of the things we're probably going to be discussing this evening is culturally responsive teaching critical race Theory and really I've been struck recently by the.</span><br>
+<span title="9:52 - 10:02" data-start="00:09:51.539" data-end="00:10:02.439" data-spk="1" data-label="Amy Samuels">Passionate resistance I'll say of many communicators and I mean many community members many parents many legislators in relation to critical race Theory,</span><br>
+<span title="10:02 - 10:16" data-start="00:10:02.499" data-end="00:10:16.163" data-spk="1" data-label="Amy Samuels">I've seen some comments and social media lately where community members were encouraging imploring rather other community members to attend a school board meeting because critical race theory is quote unquote poisonous to children</span><br>
+<span title="10:16 - 10:21" data-start="00:10:16.110" data-end="00:10:20.922" data-spk="1" data-label="Amy Samuels">and I've seen claims that it is essentially racism against white people which</span><br>
+<span title="10:21 - 10:28" data-start="00:10:20.881" data-end="00:10:27.875" data-spk="1" data-label="Amy Samuels">simply is not true it isn't so while at times I'm completely confused by this backlash,</span><br>
+<span title="10:28 - 10:32" data-start="00:10:28.050" data-end="00:10:32.394" data-spk="1" data-label="Amy Samuels">I make the connection that this type of resistance isn't new.</span><br>
+<span title="10:33 - 10:42" data-start="00:10:32.641" data-end="00:10:41.738" data-spk="1" data-label="Amy Samuels">So when you think about Multicultural education for example and it's Evolution it didn't come without resistance and backlash either so.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[10:42]</small> <span title="10:42 - 10:53" data-start="00:10:42.393" data-end="00:10:52.729" data-spk="1" data-label="Amy Samuels">You had that a lot of people who deemed it to be controversial who deemed it to be divisive who deemed it to be polarizing Sonia Nieto and her work she said something to the effect that.</span><br>
+<span title="10:53 - 11:01" data-start="00:10:53.312" data-end="00:11:00.648" data-spk="1" data-label="Amy Samuels">At its core Multicultural education is a direct challenge to education's eurocentric focus in curriculum.</span><br>
+<span title="11:01 - 11:09" data-start="00:11:01.142" data-end="00:11:09.109" data-spk="1" data-label="Amy Samuels">And I think it's difficult to have to challenge something in such a way without having that resistance.</span><br>
+<span title="11:10 - 11:16" data-start="00:11:09.639" data-end="00:11:16.338" data-spk="1" data-label="Amy Samuels">So as we continue to see these stories unfold about CR t-- and you know dominating the headlines.</span><br>
+<span title="11:17 - 11:23" data-start="00:11:16.603" data-end="00:11:23.038" data-spk="1" data-label="Amy Samuels">I think it's important to draw parallels not just to the resistance but also to the counter resistance.</span><br>
+<span title="11:23 - 11:33" data-start="00:11:23.315" data-end="00:11:33.350" data-spk="1" data-label="Amy Samuels">It's really interesting for me to watch how educators in middle schools and high schools are who those who are strongly committed to dehii work to diversity equity and inclusion</span><br>
+<span title="11:33 - 11:37" data-start="00:11:33.314" data-end="00:11:36.991" data-spk="1" data-label="Amy Samuels">how they are beginning to shift their approaches and,</span><br>
+<span title="11:37 - 11:50" data-start="00:11:37.010" data-end="00:11:50.181" data-spk="1" data-label="Amy Samuels">remain committed to telling the truth remain committed to bringing in multi multiple perspectives into their literature courses or historical narratives into their social studies courses even in the face of criticism.</span><br>
+<span title="11:50 - 11:59" data-start="00:11:50.452" data-end="00:11:58.570" data-spk="1" data-label="Amy Samuels">So they're making sure that those hard conversations happen there ensuring those counter stories are happening and that inclusive representation.</span><br>
+<br>
+<b data-spk="0">Interviewer:</b><br>
+<small style="opacity: 0.5;">[11:59]</small> <span title="11:59 - 12:02" data-start="00:11:59.442" data-end="00:12:01.761" data-spk="0" data-label="Interviewer">That makes sense to me and.</span><br>
+<span title="12:02 - 12:12" data-start="00:12:02.170" data-end="00:12:11.700" data-spk="0" data-label="Interviewer">I think some of the national discourse has misrepresented critical race Theory as something that.</span><br>
+<span title="12:12 - 12:23" data-start="00:12:12.235" data-end="00:12:23.081" data-spk="0" data-label="Interviewer">Is intended or is being pushed like on to students like students are being taught critical race Theory and that doesn't seem to be the case based on how you're describing it.</span><br>
+<br>
+<b data-spk="1">Amy Samuels:</b><br>
+<small style="opacity: 0.5;">[12:24]</small> <span title="12:24 - 12:33" data-start="00:12:23.514" data-end="00:12:33.314" data-spk="1" data-label="Amy Samuels">Yeah it's interesting to see a lot of discussions happening because I think that you are right on.</span><br>
+<span title="12:35 - 12:47" data-start="00:12:35.039" data-end="00:12:46.733" data-spk="1" data-label="Amy Samuels">Dead center in the idea that it has been misrepresented so to be clear critical race Theory isn't in any K-12 curriculum standards and K12 teachers are not teaching content.</span><br>
+<span title="12:47 - 12:51" data-start="00:12:46.997" data-end="00:12:50.614" data-spk="1" data-label="Amy Samuels">Specifically related to the tenets of CRT per se</span><br>
+<span title="12:51 - 13:03" data-start="00:12:50.603" data-end="00:13:03.101" data-spk="1" data-label="Amy Samuels">I wasn't introduced into critical race Theory until my master's program there might be teachers who drawn tenants of CRT to inform instruction but as it being taught as a</span><br>
+<span title="13:03 - 13:12" data-start="00:13:02.988" data-end="00:13:11.502" data-spk="1" data-label="Amy Samuels">legal framework or as a framework how power connects to race I just don't see that happening.</span><br>
+<br>
+<b data-spk="0">Interviewer:</b><br>
+<small style="opacity: 0.5;">[13:13]</small> <span title="13:13 - 13:25" data-start="00:13:12.632" data-end="00:13:24.794" data-spk="0" data-label="Interviewer">Do you think that ladson-billings and Tate's work of transferring the tenets of critical race Theory to education should be taught to teachers in their preparation programs.</span><br>
+<br>
+<b data-spk="1">Amy Samuels:</b><br>
+<small style="opacity: 0.5;">[13:25]</small> <span title="13:25 - 13:29" data-start="00:13:25.443" data-end="00:13:28.736" data-spk="1" data-label="Amy Samuels">Yes because earlier your question about,</span><br>
+<span title="13:29 - 13:37" data-start="00:13:28.784" data-end="00:13:37.197" data-spk="1" data-label="Amy Samuels">how do we make schools more culturally responsive how do we prepare and equip teachers we need to ensure that teachers understand so,</span><br>
+<span title="13:37 - 13:44" data-start="00:13:37.305" data-end="00:13:43.608" data-spk="1" data-label="Amy Samuels">we need to ensure that teachers understand perhaps that some textbooks are framed</span><br>
+<span title="13:43 - 13:52" data-start="00:13:43.435" data-end="00:13:52.015" data-spk="1" data-label="Amy Samuels">in some textbooks are written where they tell a master narrative that isn't inclusive of multiple perspectives,</span><br>
+<span title="13:52 - 14:04" data-start="00:13:52.052" data-end="00:14:03.504" data-spk="1" data-label="Amy Samuels">we need to ensure for example that students like me aren't learning about WWII and never learning that Japanese Americans were interned on American soil so sometimes.</span><br>
+<span title="14:04 - 14:12" data-start="00:14:03.757" data-end="00:14:11.881" data-spk="1" data-label="Amy Samuels">We don't know what we don't know and if something isn't in our experience it's not that we're being malicious we might just</span><br>
+<span title="14:12 - 14:25" data-start="00:14:11.833" data-end="00:14:24.590" data-spk="1" data-label="Amy Samuels">Overlook something because it isn't naturally in our worldview so I think applying it to education is really important because we continue to see racial disparities.</span><br>
+<span title="14:25 - 14:32" data-start="00:14:25.276" data-end="00:14:31.711" data-spk="1" data-label="Amy Samuels">Despite legislation despite efforts that have been made we continue to see racial disparities.</span><br>
+<span title="14:32 - 14:39" data-start="00:14:31.958" data-end="00:14:39.024" data-spk="1" data-label="Amy Samuels">For students of color in our schools so it is very important that teachers understand,</span><br>
+<span title="14:39 - 14:47" data-start="00:14:39.187" data-end="00:14:46.523" data-spk="1" data-label="Amy Samuels">race has been connected with power and how that impacts access and opportunities and outcomes for our students.</span><br>
+<br>
+<b data-spk="0">Interviewer:</b><br>
+<small style="opacity: 0.5;">[14:48]</small> <span title="14:48 - 14:54" data-start="00:14:47.696" data-end="00:14:53.939" data-spk="0" data-label="Interviewer">Have you have you any of your I guess classes or the groups you've worked with.</span><br>
+<span title="14:55 - 15:05" data-start="00:14:54.696" data-end="00:15:05.133" data-spk="0" data-label="Interviewer">I tried teaching some of this critical race Theory or infusing that into your instruction and what if so like what have been the reactions from teachers.</span><br>
+<br>
+<b data-spk="1">Amy Samuels:</b><br>
+<small style="opacity: 0.5;">[15:06]</small> <span title="15:06 - 15:15" data-start="00:15:06.161" data-end="00:15:14.796" data-spk="1" data-label="Amy Samuels">So I've taught a course specifically on racism in America and it was an undergraduate course in higher ed higher ed level and we.</span><br>
+<span title="15:16 - 15:26" data-start="00:15:15.656" data-end="00:15:26.015" data-spk="1" data-label="Amy Samuels">Specifically explore the tenants now when working with K12 teachers I definitely drawn critical race theory has a tenant it's called counter stories</span><br>
+<span title="15:26 - 15:35" data-start="00:15:25.931" data-end="00:15:35.017" data-spk="1" data-label="Amy Samuels">and that connects with the idea that
+frequently stories that are told are connected to a.</span><br>
+<span title="15:36 - 15:40" data-start="00:15:35.600" data-end="00:15:39.938" data-spk="1" data-label="Amy Samuels">A certain narrative or a certain voice and there are historically</span><br>
+<span title="15:40 - 15:55" data-start="00:15:39.848" data-end="00:15:54.552" data-spk="1" data-label="Amy Samuels">voices and peoples who have been placed on the margins so as schools and as teachers we need to do a better job at ensuring that we have diverse and inclusive representation in our classrooms and I was talking with some,</span><br>
+<span title="15:55 - 16:03" data-start="00:15:54.709" data-end="00:16:02.983" data-spk="1" data-label="Amy Samuels">High School teachers and they went back and they reviewed some of the literature that they were using and they talked about how.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[16:04]</small> <span title="16:04 - 16:17" data-start="00:16:04.275" data-end="00:16:16.888" data-spk="1" data-label="Amy Samuels">People of color were not frequently the the protagonist in the book that they the books in the literature that they were using so I think it's important to consider how we can use this idea of counter stories to think about,</span><br>
+<span title="16:17 - 16:29" data-start="00:16:16.954" data-end="00:16:28.840" data-spk="1" data-label="Amy Samuels">who is represented in our curriculum how are those people represented in our curriculum and what type of message does that send to our students I also think the idea of another tenant is called the permanence of racism.</span><br>
+<span title="16:29 - 16:37" data-start="00:16:29.459" data-end="00:16:37.289" data-spk="1" data-label="Amy Samuels">And I think that is also really appropriate to bring into the K-12 classroom so.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[16:38]</small> <span title="16:38 - 16:48" data-start="00:16:37.956" data-end="00:16:47.829" data-spk="1" data-label="Amy Samuels">It's really difficult to
+talk about the current state of race relations in the United States or,</span><br>
+<span title="16:48 - 17:00" data-start="00:16:47.955" data-end="00:16:59.648" data-spk="1" data-label="Amy Samuels">the issue with mass incarceration without connecting to slavery without connecting to sharecropping without connecting to Jim Crow without connecting to school segregation</span><br>
+<span title="17:00 - 17:10" data-start="00:16:59.613" data-end="00:17:09.846" data-spk="1" data-label="Amy Samuels">and as you said earlier that Tulsa Race Massacre and you know people lost generations of wealth in Tulsa so thinking about the way that things are today.</span><br>
+<span title="17:10 - 17:23" data-start="00:17:10.159" data-end="00:17:23.264" data-spk="1" data-label="Amy Samuels">Native American communities it's difficult to talk about the status of today without talking about the impact of colonialism and access and resources and the the stories of.</span><br>
+<span title="17:24 - 17:35" data-start="00:17:23.859" data-end="00:17:35.336" data-spk="1" data-label="Amy Samuels">How resources were taken from people so I do think that there are tenants of critical race theory that naturally aligned with our work in K-12 particularly.</span><br>
+<span title="17:36 - 17:50" data-start="00:17:35.607" data-end="00:17:50.353" data-spk="1" data-label="Amy Samuels">Counter stories particularly the permanence of racism some others are a little complex and maybe a little more difficult and maybe not as appropriate to apply but I do believe it's important that those conversations are happening in those connections are being made.</span><br>
+<br>
+<b data-spk="0">Interviewer:</b><br>
+<small style="opacity: 0.5;">[17:50]</small> <span title="17:50 - 17:58" data-start="00:17:50.077" data-end="00:17:58.423" data-spk="0" data-label="Interviewer">Do you have any examples of how you might use counter story or the permanence of racism in.</span><br>
+<span title="17:59 - 18:11" data-start="00:17:58.766" data-end="00:18:11.493" data-spk="0" data-label="Interviewer">I guess it's like it's easy for me to understand and see it in social studies and English it's a it's more difficult for me to to think of it in like stem classrooms.</span><br>
+<br>
+<b data-spk="1">Amy Samuels:</b><br>
+<small style="opacity: 0.5;">[18:13]</small> <span title="18:13 - 18:21" data-start="00:18:13.068" data-end="00:18:20.897" data-spk="1" data-label="Amy Samuels">Yes I can definitely see that so a lot of people just naturally aligned with critical race theory in relation to</span><br>
+<span title="18:21 - 18:28" data-start="00:18:20.873" data-end="00:18:28.072" data-spk="1" data-label="Amy Samuels">English in relation to social studies courses because of multiple perspectives and history and literature</span><br>
+<span title="18:28 - 18:39" data-start="00:18:28.030" data-end="00:18:39.002" data-spk="1" data-label="Amy Samuels">but when you're thinking about culturally responsive teaching per se that is a pedagogical approach where you're making connections with students so in stem for example where we.</span><br>
+<span title="18:39 - 18:49" data-start="00:18:39.369" data-end="00:18:49.332" data-spk="1" data-label="Amy Samuels">Often see lack of representation of female students and students of color it's even more critical that we're making connections I think of,</span><br>
+<span title="18:50 - 18:56" data-start="00:18:49.513" data-end="00:18:55.701" data-spk="1" data-label="Amy Samuels">I went to a conference
+for a name conference National Association,</span><br>
+<span title="18:56 - 19:09" data-start="00:18:55.732" data-end="00:19:09.150" data-spk="1" data-label="Amy Samuels">for Multicultural education and there was a speaker at that conference and he talked about how he was with a group of students think they might have been in middle school and he asked them all to take out a posted or an index card and write down their name as well as,</span><br>
+<span title="19:09 - 19:15" data-start="00:19:09.150" data-end="00:19:15.399" data-spk="1" data-label="Amy Samuels">if they were to come back tomorrow and they were an adult and they had a job at this exact School</span><br>
+<span title="19:15 - 19:27" data-start="00:19:15.316" data-end="00:19:26.817" data-spk="1" data-label="Amy Samuels">what job would they have
+nearly every white student wrote down that they would be a teacher or an administrator nearly every student of color wrote down that they would work in some support capacity.</span><br>
+<span title="19:27 - 19:30" data-start="00:19:27.256" data-end="00:19:30.404" data-spk="1" data-label="Amy Samuels">And he was really troubled by this and reflected on.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[19:31]</small> <span title="19:31 - 19:42" data-start="00:19:30.915" data-end="00:19:42.338" data-spk="1" data-label="Amy Samuels">School makeup the school demographics and you realize that students essentially wrote down where they see people who look like them so in stem classes we need to ensure that our.</span><br>
+<span title="19:43 - 19:50" data-start="00:19:42.597" data-end="00:19:50.456" data-spk="1" data-label="Amy Samuels">Girls that are young women are seeing people who look like them being you know in scientific roles,</span><br>
+<span title="19:51 - 20:00" data-start="00:19:50.607" data-end="00:20:00.347" data-spk="1" data-label="Amy Samuels">and the work that they've done the same with students of color at the same with females of color it's really important to ensure that that representation is happening so when we're thinking of</span><br>
+<span title="20:00 - 20:03" data-start="00:20:00.288" data-end="00:20:02.991" data-spk="1" data-label="Amy Samuels">scientists that we are highlighting</span><br>
+<span title="20:03 - 20:15" data-start="00:20:02.950" data-end="00:20:15.093" data-spk="1" data-label="Amy Samuels">how do we ensure that we are bringing in diversity into representation into conversations and then back just to the idea of culturally responsive teaching how are we ensuring that kind of,</span><br>
+<span title="20:15 - 20:34" data-start="00:20:15.244" data-end="00:20:33.944" data-spk="1" data-label="Amy Samuels">we activate prior knowledge in a way that connects with the students who are inner rooms the students who are in front of us so we don't want it to be something that they automatically can't connect with how do we make robotics something that is immediately interesting because once it becomes interesting then I'm motivated to be engaged</span><br>
+<span title="20:34 - 20:43" data-start="00:20:33.782" data-end="00:20:43.102" data-spk="1" data-label="Amy Samuels">but if I'm not interested I'm not going to be motivated and I'm likely not going to excel at the same level I would have had the teacher connected it with my experience.</span><br>
+<br>
+<b data-spk="0">Interviewer:</b><br>
+<small style="opacity: 0.5;">[20:44]</small> <span title="20:44 - 20:53" data-start="00:20:44.466" data-end="00:20:53.269" data-spk="0" data-label="Interviewer">That's great yeah thank you so much for those examples and for sharing that I think I wish I could have taken one of your classes in my master's program.</span><br>
+<span title="20:54 - 21:02" data-start="00:20:53.666" data-end="00:21:01.916" data-spk="0" data-label="Interviewer">We're sort of coming to the end here I wanted to switch gears just to ask you some big picture philosophical questions.</span><br>
+<span title="21:03 - 21:08" data-start="00:21:02.511" data-end="00:21:07.973" data-spk="0" data-label="Interviewer">So the first one is from your perspective what is the purpose of Education.</span><br>
+<br>
+<b data-spk="1">Amy Samuels:</b><br>
+<small style="opacity: 0.5;">[21:12]</small> <span title="21:12 - 21:24" data-start="00:21:12.096" data-end="00:21:23.825" data-spk="1" data-label="Amy Samuels">That's a tough one I think after only my first answer is it's to allow students access and opportunity to develop into the best version of themselves,</span><br>
+<span title="21:24 - 21:36" data-start="00:21:23.982" data-end="00:21:35.663" data-spk="1" data-label="Amy Samuels">and also at the same time to contribute to society and meaningful ways now I realize we have subject some subjective terms and that definition but I think it's important to be subjective because,</span><br>
+<span title="21:36 - 21:44" data-start="00:21:35.693" data-end="00:21:43.895" data-spk="1" data-label="Amy Samuels">I don't know what's best for someone else and we need to allow students to explore multiple opportunities to,</span><br>
+<span title="21:44 - 21:57" data-start="00:21:43.986" data-end="00:21:57.290" data-spk="1" data-label="Amy Samuels">determine what that could be for them what I do know is I don't want to limit someone's life trajectory based on the access or opportunities provided so when I look at specific philosophies.</span><br>
+<span title="21:58 - 22:07" data-start="00:21:57.567" data-end="00:22:06.574" data-spk="1" data-label="Amy Samuels">It's hard to have an education conversation without talking about John Dewey I definitely drawn his social lens in his focus on social reconstruction.</span><br>
+<span title="22:07 - 22:18" data-start="00:22:06.862" data-end="00:22:17.594" data-spk="1" data-label="Amy Samuels">So School shouldn't just be this place to transmit knowledge and it's back to Paulo Ferreira it's not you know we're just not banking information and students but rather.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[22:18]</small> <span title="22:18 - 22:25" data-start="00:22:18.238" data-end="00:22:25.046" data-spk="1" data-label="Amy Samuels">Equipping them with knowledge skills and dispositions to see the world in different ways,</span><br>
+<span title="22:25 - 22:33" data-start="00:22:25.160" data-end="00:22:33.152" data-spk="1" data-label="Amy Samuels">to see social problems to examine social problems but then also to act on that that sense of agency.</span><br>
+<span title="22:34 - 22:48" data-start="00:22:33.579" data-end="00:22:47.772" data-spk="1" data-label="Amy Samuels">Thinking about how do we solve social and political problems now again that's subjective because my response to that might be different than your response and in society today we see a whole lot of different definitions for social problems in the way to solve them but.</span><br>
+<span title="22:48 - 23:02" data-start="00:22:48.199" data-end="00:23:01.617" data-spk="1" data-label="Amy Samuels">I'm not one about indoctrinating students with my ideology or the what the way that I think but I do think it is critical to equip students with the knowledge skills and dispositions to recognize that there are social issues</span><br>
+<span title="23:02 - 23:10" data-start="00:23:01.599" data-end="00:23:09.939" data-spk="1" data-label="Amy Samuels">recognize that there are multiple ways to approach them and allow them to consider how they might best do that.</span><br>
+<span title="23:10 - 23:19" data-start="00:23:10.318" data-end="00:23:18.899" data-spk="1" data-label="Amy Samuels">So critical thinking is very very important allowing students to take a problem and unpack it also allowing students to connect.</span><br>
+<span title="23:19 - 23:28" data-start="00:23:19.332" data-end="00:23:27.888" data-spk="1" data-label="Amy Samuels">The current situations to the past and consider how what happened 150 years ago or what happened 200 years ago.</span><br>
+<span title="23:29 - 23:31" data-start="00:23:28.694" data-end="00:23:31.193" data-spk="1" data-label="Amy Samuels">Impacts what is happening today.</span><br>
+<br>
+<b data-spk="5">Music</b><br>
+<br>
+<b data-spk="4">Rdb:</b><br>
+<small style="opacity: 0.5;">[23:49]</small> <span title="23:49 - 24:01" data-start="00:23:48.626" data-end="00:24:00.824" data-spk="4" data-label="RDB">To hear the full interview with dr. Samuels please consider supporting our work on patreon it takes us about 20 hours start to finish to create each episode and we do it because we care about education.</span><br>
+<span title="24:01 - 24:07" data-start="00:24:01.071" data-end="00:24:06.695" data-spk="4" data-label="RDB">But if you want to support us our subscribers get access to full interviews stickers,</span><br>
+<span title="24:07 - 24:15" data-start="00:24:06.773" data-end="00:24:15.390" data-spk="4" data-label="RDB">handwritten thank-you notes and of course our undying gratitude for helping us offset some of the cost of continuing to create this podcast.</span><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[24:17]</small> <span title="24:17 - 24:24" data-start="00:24:17.091" data-end="00:24:24.266" data-spk="2" data-label="NAL">Now it's time for our newest segment on the podcast we're calling this tentatively data town.</span><br>
+<br>
+<b data-spk="5">Music</b><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[24:25]</small> <span title="24:25 - 24:31" data-start="00:24:24.999" data-end="00:24:31.218" data-spk="2" data-label="NAL">We're going to share some data that is current and inform some of the topics that we're talking.</span><br>
+<span title="24:32 - 24:46" data-start="00:24:32.444" data-end="00:24:46.229" data-spk="2" data-label="NAL">So for this episode we pulled some data from the hechinger report from June 2020 which is on the demographics of principals in schools around the United States so I'll just read this to you.</span><br>
+<span title="24:47 - 24:50" data-start="00:24:46.608" data-end="00:24:50.068" data-spk="2" data-label="NAL">Educators who run US schools aren't a diverse group.</span><br>
+<span title="24:50 - 24:57" data-start="00:24:50.423" data-end="00:24:56.654" data-spk="2" data-label="NAL">Almost eighty percent of the nation's 90,000 principles identify as white almost 80%.</span><br>
+<span title="24:57 - 25:07" data-start="00:24:57.123" data-end="00:25:06.635" data-spk="2" data-label="NAL">And only 11% identify as black 9% as Latino and less than 1% of Administrators identified as Asian.</span><br>
+<span title="25:07 - 25:19" data-start="00:25:07.333" data-end="00:25:19.224" data-spk="2" data-label="NAL">And the demographics for teachers are very similar to this that doesn't come even close to reflecting the demographics of the nation's students of the 50 million public school children.</span><br>
+<span title="25:20 - 25:27" data-start="00:25:19.850" data-end="00:25:27.120" data-spk="2" data-label="NAL">46% identify as white 15 percent as black 28 percent is Latino and 6% as Asian.</span><br>
+<span title="25:28 - 25:36" data-start="00:25:27.890" data-end="00:25:35.515" data-spk="2" data-label="NAL">So this mismatch and demographics has to have huge implications for education and teacher training.</span><br>
+<span title="25:36 - 25:44" data-start="00:25:36.110" data-end="00:25:44.042" data-spk="2" data-label="NAL">In light of that data and the thoughts shared by dr. Amy Samuels where do you stand on on today's debate topic.</span><br>
+<br>
+<b data-spk="4">Rdb:</b><br>
+<small style="opacity: 0.5;">[25:45]</small> <span title="25:45 - 25:48" data-start="00:25:44.685" data-end="00:25:48.218" data-spk="4" data-label="RDB">Um Okay so.</span><br>
+<span title="25:49 - 25:59" data-start="00:25:48.820" data-end="00:25:58.548" data-spk="4" data-label="RDB">Another not to add fuel to the fire but to add fuel to the fire another thing that is a little bit startling about these numbers to is considering,</span><br>
+<span title="25:59 - 26:13" data-start="00:25:58.722" data-end="00:26:12.903" data-spk="4" data-label="RDB">um the effects that the pandemic has had on people so a lot of teachers and that includes diverse teachers as well a lot of them are more likely to retire early,</span><br>
+<span title="26:13 - 26:21" data-start="00:26:13.114" data-end="00:26:20.649" data-spk="4" data-label="RDB">or leave all together because of all of the challenges with the pandemic and then also.</span><br>
+<span title="26:22 - 26:30" data-start="00:26:21.527" data-end="00:26:30.450" data-spk="4" data-label="RDB">From the research that I've been doing with girl your own there seems to be a pretty big gap between.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[26:32]</small> <span title="26:32 - 26:45" data-start="00:26:32.157" data-end="00:26:45.202" data-spk="4" data-label="RDB">Teachers who are there now and then Generation Z teachers so they're Arjun Z students who want to be teachers but by and large Generation Z is not necessarily interested in teaching and so.</span><br>
+<span title="26:46 - 26:58" data-start="00:26:45.503" data-end="00:26:58.020" data-spk="4" data-label="RDB">Not only do I think that we're not in a good place right now with racial parity between our teachers and our school leaders in our students but I'm kind of afraid also that it's not getting better over time,</span><br>
+<span title="26:58 - 27:03" data-start="00:26:58.212" data-end="00:27:03.368" data-spk="4" data-label="RDB">and I also worry as well about the demographics of.</span><br>
+<span title="27:04 - 27:13" data-start="00:27:03.801" data-end="00:27:12.591" data-spk="4" data-label="RDB">Other types of school professionals including your counselors who also help students to choose their career paths.</span><br>
+<span title="27:14 - 27:20" data-start="00:27:13.523" data-end="00:27:19.682" data-spk="4" data-label="RDB">So I think
+the implications is that you.</span><br>
+<span title="27:20 - 27:34" data-start="00:27:20.097" data-end="00:27:34.206" data-spk="4" data-label="RDB">If the workforce doesn't reflect students then who's going to inspire and motivate students to even join the profession to begin with and I think we probably have to deal with that before we can even begin to deal with.</span><br>
+<span title="27:35 - 27:44" data-start="00:27:34.585" data-end="00:27:43.815" data-spk="4" data-label="RDB">Teacher training I do also believe too though that there is a way to kind of solve that issue in the middle of the pipeline.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[27:45]</small> <span title="27:45 - 27:58" data-start="00:27:44.897" data-end="00:27:57.515" data-spk="4" data-label="RDB">I have seen some programs that also work to prepare students to become counselors and prepare students to become School leaders and administration administrators are even like.</span><br>
+<span title="27:58 - 28:10" data-start="00:27:58.177" data-end="00:28:10.056" data-spk="4" data-label="RDB">Educational organization leaders and so there is some way we would have to follow those organizations but there is some way I think to kind of fast track students into these leadership positions.</span><br>
+<span title="28:11 - 28:16" data-start="00:28:10.586" data-end="00:28:15.627" data-spk="4" data-label="RDB">Um but I don't know it definitely is something that keeps me up at night.</span><br>
+<br>
+<b data-spk="3">Sss:</b><br>
+<small style="opacity: 0.5;">[28:16]</small> <span title="28:16 - 28:28" data-start="00:28:15.759" data-end="00:28:28.053" data-spk="3" data-label="SSS">That is just such a good point because I was thinking when dr. Samuels was talking about representation in the stem field just as you're saying Raven the representation in education,</span><br>
+<span title="28:28 - 28:33" data-start="00:28:28.156" data-end="00:28:33.155" data-spk="3" data-label="SSS">is a massive issue and so there are all these different professional sectors where we're just not,</span><br>
+<span title="28:33 - 28:40" data-start="00:28:33.282" data-end="00:28:40.426" data-spk="3" data-label="SSS">encouraging diversity by virtue of the fact that we're not providing programs that are responsive to who people are and getting them excited.</span><br>
+<span title="28:41 - 28:49" data-start="00:28:41.172" data-end="00:28:49.440" data-spk="3" data-label="SSS">About those careers and you know to your point about how slowly this is Shifting the the data that we looked at for,</span><br>
+<span title="28:50 - 28:58" data-start="00:28:49.615" data-end="00:28:58.033" data-spk="3" data-label="SSS">teacher demographics showed that over the course of almost two decades we barely see a shift there is a shift from and it's 84 percent.</span><br>
+<span title="28:58 - 29:04" data-start="00:28:58.364" data-end="00:29:03.645" data-spk="3" data-label="SSS">Of teachers in the 1999 2000 year wear white.</span><br>
+<span title="29:04 - 29:13" data-start="00:29:04.252" data-end="00:29:12.761" data-spk="3" data-label="SSS">And by 2017 2018 we're down to 79 percent but we're still talking effectively 80% of the teacher Workforce.</span><br>
+<span title="29:13 - 29:18" data-start="00:29:13.128" data-end="00:29:17.784" data-spk="3" data-label="SSS">Compared to less than fifty percent of the student body.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[29:19]</small> <span title="29:19 - 29:32" data-start="00:29:18.837" data-end="00:29:32.290" data-spk="3" data-label="SSS">And that is it has so many implications especially for and I think of my time as a teacher and Nathan's time is a teacher both of us really interested in going in and doing good work but both as white men in the field.</span><br>
+<span title="29:33 - 29:39" data-start="00:29:32.561" data-end="00:29:38.906" data-spk="3" data-label="SSS">Not providing that representation and so being preparing teachers for.</span><br>
+<span title="29:39 - 29:48" data-start="00:29:39.255" data-end="00:29:47.668" data-spk="3" data-label="SSS">This kind of work is so important but as you say finding teachers finding a diverse cohort of teachers to make sure that.</span><br>
+<span title="29:48 - 29:52" data-start="00:29:48.209" data-end="00:29:51.916" data-spk="3" data-label="SSS">Teachers look like students not in all cases not in every case but.</span><br>
+<span title="29:52 - 30:07" data-start="00:29:52.493" data-end="00:30:06.584" data-spk="3" data-label="SSS">But generally speaking the demographics match and I think that and all of us see this in other aspects of society I think about in politics how few politicians or how the body of politicians doesn't well represent.</span><br>
+<span title="30:07 - 30:15" data-start="00:30:06.831" data-end="00:30:15.285" data-spk="3" data-label="SSS">The population of the United States and so we can think of so many professional sectors where maybe this is the core issue.</span><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[30:15]</small> <span title="30:15 - 30:17" data-start="00:30:15.160" data-end="00:30:17.479" data-spk="2" data-label="NAL">You know one piece of,</span><br>
+<span title="30:18 - 30:25" data-start="00:30:17.611" data-end="00:30:25.194" data-spk="2" data-label="NAL">encouraging or increasing representation especially in something like teaching I mean I think there's lots of work to be done,</span><br>
+<span title="30:25 - 30:33" data-start="00:30:25.297" data-end="00:30:32.507" data-spk="2" data-label="NAL">at the teacher prep level at the pipeline level but even starting back in elementary school right maybe.</span><br>
+<span title="30:33 - 30:42" data-start="00:30:33.133" data-end="00:30:41.563" data-spk="2" data-label="NAL">Training teachers with some of these tenets of critical race Theory and encouraging them to develop their understanding of using counter story,</span><br>
+<span title="30:42 - 30:45" data-start="00:30:41.563" data-end="00:30:45.030" data-spk="2" data-label="NAL">to tell alternative you know or tell,</span><br>
+<span title="30:45 - 30:55" data-start="00:30:45.067" data-end="00:30:55.456" data-spk="2" data-label="NAL">multiple stories around history and helping teachers understand how to use representation in their classrooms so that their students can see themselves in these careers.</span><br>
+<span title="30:56 - 31:00" data-start="00:30:55.973" data-end="00:31:00.185" data-spk="2" data-label="NAL">That itself is actually a step towards widening that pipeline.</span><br>
+<br>
+<b data-spk="3">Sss:</b><br>
+<small style="opacity: 0.5;">[31:00]</small> <span title="31:00 - 31:16" data-start="00:31:00.270" data-end="00:31:16.494" data-spk="3" data-label="SSS">Such a good point I was thinking with the counter story example that there are really good opportunities in science class for example to provide sort of the raw science the way that it's traditionally taught and then to ask questions around how certain aspects of science have been used</span><br>
+<span title="31:16 - 31:26" data-start="00:31:16.290" data-end="00:31:25.964" data-spk="3" data-label="SSS">for or against different populations and to look at that fairly because that's a real question within science something that ought to be addressed within science</span><br>
+<span title="31:26 - 31:29" data-start="00:31:25.844" data-end="00:31:29.005" data-spk="3" data-label="SSS">as we're talking about how</span><br>
+<span title="31:29 - 31:41" data-start="00:31:28.975" data-end="00:31:41.011" data-spk="3" data-label="SSS">teaching you know Tuskegee experiments for example being really extreme example of this but even and you know representation of women for example in stem Fields there are</span><br>
+<span title="31:41 - 31:50" data-start="00:31:40.903" data-end="00:31:50.217" data-spk="3" data-label="SSS">good stories to tell that get students thinking about the questions beyond the science itself to questions around.</span><br>
+<span title="31:51 - 32:00" data-start="00:31:50.511" data-end="00:32:00.372" data-spk="3" data-label="SSS">We all should be participating in this not just it shouldn't just be this tiny group of people who all look the same doing this work we need everybody to participate in this important work.</span><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[32:01]</small> <span title="32:01 - 32:10" data-start="00:32:00.685" data-end="00:32:10.275" data-spk="2" data-label="NAL">Well I don't know that we'll be able to solve it on today's episode but I appreciate enjoy as always talking with both of you about these issues.</span><br>
+<br>
+<b data-spk="5">Music</b><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[32:11]</small> <span title="32:11 - 32:24" data-start="00:32:10.582" data-end="00:32:23.615" data-spk="2" data-label="NAL">That does bring us to the end of today's episode but we back next week with another guest this season we're focusing on critical race Theory and culturally responsive pedagogy so we have lots of great experts coming to share their opinions and I have a.</span><br>
+<span title="32:24 - 32:26" data-start="00:32:24.012" data-end="00:32:26.469" data-spk="2" data-label="NAL">We will continue to roll these ideas.</span><br>
+<br>
+<b data-spk="3">Sss:</b><br>
+<small style="opacity: 0.5;">[32:28]</small> <span title="32:28 - 32:32" data-start="00:32:28.182" data-end="00:32:31.913" data-spk="3" data-label="SSS">Don't forget to join us on Reddit or Twitter and share your opinion on this week's debate.</span><br>
+<br>
+<b data-spk="4">Rdb:</b><br>
+<small style="opacity: 0.5;">[32:33]</small> <span title="32:33 - 32:40" data-start="00:32:33.020" data-end="00:32:40.380" data-spk="4" data-label="RDB">And to learn more about this week's guests and to find out how to support the podcast visit learning machine podcast.com.</span><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[32:42]</small> <span title="32:42 - 32:47" data-start="00:32:41.817" data-end="00:32:47.015" data-spk="2" data-label="NAL">Thank you to all those who teach listen and learn see you next time.</span><br>
+
+<br>
+</div>
+
+
+<script type="text/javascript">
+
+function getBgAlpha(element) {
+    var currentColor = getComputedStyle(element).getPropertyValue('background-color');
+    var parts = currentColor.match(/[\d.]+/g);
+    var alpha = "0"
+
+    try {
+        alpha = parts[3];
+    }
+    catch(err) {
+        // on edge we don't get a color if RGBA is completely 0
+    }
+
+    return alpha;
+}
+
+function removeStyling() {
+    var elements = document.getElementsByTagName('span');
+    var newColorBase = 'rgba(255, 255, 255, ';
+    for (var i=0; i<elements.length; i++) {
+        var currentAlpha = getBgAlpha(elements[i]);
+        var newColor = newColorBase + currentAlpha + ')';
+        elements[i].style = 'background: ' + newColor + ';';
+    }
+
+    try {
+        var button = document.getElementById('toggle-styling');
+        button.innerText = 'Add Highlighting';
+        button.onclick = function() { addStyling(); } ;
+    }
+    catch(err) {
+        // no confidence available
+    }
+}
+
+function addStyling() {
+    var elements = document.getElementsByTagName('span');
+    var newColorBase = 'rgba(209, 72, 54, ';
+    for (var i=0; i<elements.length; i++) {
+        var currentAlpha = getBgAlpha(elements[i]);
+        var newColor = newColorBase + currentAlpha + ')';
+        elements[i].style = 'background: ' + newColor + ';';
+    }
+
+    try {
+        var button = document.getElementById('toggle-styling');
+        button.innerText = 'Remove Highlighting';
+        button.onclick = function() { removeStyling(); } ;
+    }
+    catch(err) {
+        // no confidence available
+    }
+}
+
+function enableEdit() {
+    var transcript = document.getElementById('transcript');
+    transcript.contentEditable = true;
+    transcript.classList.add("edit-mode");
+
+    var button = document.getElementById('edit-transcript');
+    button.innerText = 'Close Edit Mode';
+    button.onclick = function() { disableEdit(); } ;
+
+    var elements = document.querySelectorAll('b[data-spk]');
+    for (var i=0; i<elements.length; i++) {
+        elements[i].title = 'Change speaker name to edit all speakers at once!';
+    }
+}
+
+function disableEdit() {
+    var transcript = document.getElementById('transcript');
+    transcript.contentEditable = false;
+    transcript.classList.remove("edit-mode");
+
+    var button = document.getElementById('edit-transcript');
+    button.innerText = 'Edit Transcript';
+    button.onclick = function() { enableEdit(); } ;
+
+    var elements = document.querySelectorAll('b[data-spk]');
+    for (var i=0; i<elements.length; i++) {
+        elements[i].title = '';
+    }
+}
+
+function removeSpans(transcript) {
+    var removeSpans = new RegExp('</?span[^>]*>','gm');
+    transcript = transcript.replace(removeSpans, '');
+    transcript = transcript.replace(/&nbsp;/g, ' ');
+    return transcript;
+}
+
+function showExportButtons() {
+    var button = document.getElementById('show-export-buttons');
+    button.innerText = '>';
+    button.title = 'Close export buttons.';
+    button.classList.add("export-buttons-shown");
+    button.onclick = function() { hideExportButtons(); } ;
+
+    document.getElementById('export-html').style = '';
+    document.getElementById('export-pdf').style = '';
+    document.getElementById('export-webvtt').style = '';
+    document.getElementById('save-changes').style = '';
+    document.getElementById('show-help').style = 'display: none;';
+}
+
+function hideExportButtons() {
+    var button = document.getElementById('show-export-buttons');
+    button.innerText = 'Export...';
+    button.title = '';
+    button.classList.remove("export-buttons-shown");
+    button.onclick = function() { showExportButtons(); } ;
+
+    document.getElementById('export-html').style = 'display: none;';
+    document.getElementById('export-pdf').style = 'display: none;';
+    document.getElementById('export-webvtt').style = 'display: none;';
+    document.getElementById('save-changes').style = 'display: none;';
+    document.getElementById('show-help').style = '';
+}
+
+function saveChanges() {
+    disableEdit();
+    hideExportButtons();
+
+    var head = document.head.innerHTML;
+    var body = document.body.innerHTML;
+
+    var pageSource = '<!DOCTYPE html><html><head>' + head + '</head><body>' + body + '</body></html>';
+    var filename = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+
+    var bl = new Blob([pageSource], {type: "text/html"});
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(bl);
+    a.download = filename;
+    a.hidden = true;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+}
+
+function exportHTML() {
+    disableEdit();
+    removeStyling();
+
+    var head = document.head.innerHTML;
+    var metadata = document.getElementById('metadata').innerHTML;
+    var transcript = document.getElementById('transcript').innerHTML;
+
+    transcript = removeSpans(transcript);
+
+    var pageSource = '<!DOCTYPE html><html><head>' + head + '</head><body>' + metadata + '<div class="transcript-base">' + transcript + '</div></body></html>';
+    var filename = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+
+    var bl = new Blob([pageSource], {type: "text/html"});
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(bl);
+    a.download = filename;
+    a.hidden = true;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    hideExportButtons();
+}
+
+function exportWebVTT() {
+    disableEdit();
+
+    var pageSource = 'WEBVTT\n\n';
+
+    var segments = document.querySelectorAll('span[data-start]');
+    for (var i=0; i<segments.length; i++) {
+        pageSource += segments[i].getAttribute('data-start') + ' --> ';
+        pageSource += segments[i].getAttribute('data-end') + '\n';
+        if (segments[i].getAttribute('data-spk') !== null) {
+            pageSource += '<v ' + segments[i].getAttribute('data-label') + '>';
+        }
+        pageSource += removeSpans(segments[i].innerHTML);
+        pageSource += '\n\n';
+    }
+
+    var filename = location.pathname.substring(location.pathname.lastIndexOf('/') + 1);
+    filename = filename.substring(0, filename.lastIndexOf('.')) + '.vtt';
+
+    var bl = new Blob([pageSource], {type: 'text/vtt'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(bl);
+    a.download = filename;
+    a.hidden = true;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    hideExportButtons();
+}
+
+function getSecondsFromString(timeString) {
+    var splitStrg = timeString.split(":");
+    var seconds = 0;
+    for (var i=0; i<splitStrg.length; i++) {
+        if (i == 0) { seconds += parseInt(splitStrg[splitStrg.length - 1]); }
+        if (i == 1) { seconds += parseInt(splitStrg[splitStrg.length - 2]) * 60; }
+        if (i == 2) { seconds += parseInt(splitStrg[splitStrg.length - 3]) * 3600; }
+    }
+    return seconds;
+}
+
+function pad(num, size) {
+    var s = num + "";
+    while (s.length < size) s = "0" + s;
+    return s;
+}
+
+function secToTimeString(seconds) {
+    var ss = Math.round(seconds);
+    var cmin = Math.floor(ss / 60);
+    var csec = ss % 60;
+
+    if (cmin < 60) {
+        return cmin + ":" + pad(csec, 2);
+    } else {
+        var ch = Math.floor(cmin / 60);
+        var cm = cmin % 60;
+        return ch + ":" + pad(cm, 2) + ":" + pad(csec, 2);
+    }
+}
+
+function removeActiveClass() {
+    var elements = document.querySelectorAll('span.active');
+    for (var i=0; i<elements.length; i++) {
+        elements[i].classList.remove("active");
+        // elements[i].classList.add("listened");
+    }
+}
+
+function addAudioFile() {
+    var txt;
+    var url = prompt(
+        'Please enter complete URL for the audio file, which should be played along the transcript\n(a local path should start with "file:///"):',
+        'https://auphonic.com/media/audio-examples/03.auphonic-demo-denoise-100.m4a'
+    );
+    if (url == null || url == "") { return; }
+
+    var audio = document.getElementById('audio-player');
+    var oldSources = document.querySelectorAll('source');
+    for (var i=0; i<oldSources.length; i++) {
+        oldSources[i].remove();
+    }
+
+    var source = document.createElement('source');
+    source.src = url;
+    audio.appendChild(source);
+
+    addAudioPlayer();
+}
+
+function addAudioPlayer() {
+    var audio = document.getElementById('audio-player');
+
+    document.getElementById('add-audio-file').style = '';
+    document.getElementById('toggle-play-on-click').style = 'display: none;';
+
+    audio.oncanplay = function() {
+        AUDIO_PLAYER = audio;
+
+        // highlight current audio segment
+        if (HAVE_TIMESTAMPS) {
+            AUDIO_PLAYER.ontimeupdate = function() {
+                if (ARE_PLAYING) {
+                    removeActiveClass();
+                    var curTime = secToTimeString(AUDIO_PLAYER.currentTime);
+                    elements = document.querySelectorAll('span[title="' + curTime + '"]');
+                    for (var i=0; i<elements.length; i++) {
+                        elements[i].classList.add("active");
+                    }
+                }
+            };
+        }
+
+        // setup click handlers to play audio on mouse click
+        if (HAVE_TIMESTAMPS) {
+            var elements = document.getElementsByTagName('span');
+            for (var i=0; i<elements.length; i++) {
+                if (elements[i].getAttribute('data-start') === null) {  // no data-start attribute
+                    try {
+                        elements[i].removeEventListener("click", clickHandlerTimestamp);
+                    } catch(err) { }
+                    elements[i].addEventListener("click", clickHandlerTimestamp);
+                }
+            }
+        } else {
+            var elements = document.querySelectorAll('span[data-start]');
+            for (var i=0; i<elements.length; i++) {
+                try {
+                    elements[i].removeEventListener("click", clickHandlerSegment);
+                } catch(err) { }
+                elements[i].addEventListener("click", clickHandlerSegment);
+            }
+        }
+
+        enableAudioClickPlayback();
+
+        var button = document.getElementById('add-audio-file');
+        button.style = "display: none;";
+    }
+
+    audio.load();
+}
+
+function clickHandlerTimestamp(e) {
+    var target = (e.target) ? e.target : e.srcElement;
+    var timeString = target.title;
+    var timeSec = getSecondsFromString(timeString);
+    playAudioSegment(timeSec -0.6, timeSec + 3.4);
+}
+
+function clickHandlerSegment(e) {
+    if (PLAYBACK_ON_CLICK) {
+        var target = (e.target) ? e.target : e.srcElement;
+        removeActiveClass();
+        target.classList.add("active");
+        var startTimeStrg = target.getAttribute("data-start").split(".")[0];
+        var endTimeStrg = target.getAttribute("data-end").split(".")[0];
+        var startSec = getSecondsFromString(startTimeStrg);
+        var endSec = getSecondsFromString(endTimeStrg) + 1;
+        playAudioSegment(startSec, endSec);
+    }
+}
+
+function enableAudioClickPlayback() {
+    var button = document.getElementById('toggle-play-on-click');
+    button.innerText = 'Stop Play-on-click';
+    button.style = "";
+    button.onclick = function() { disableAudioClickPlayback(); } ;
+    PLAYBACK_ON_CLICK = true;
+}
+
+function disableAudioClickPlayback() {
+    AUDIO_PLAYER.pause();
+    ARE_PLAYING = false;
+    removeActiveClass();
+    var button = document.getElementById('toggle-play-on-click');
+    button.innerText = 'Activate Play-on-click';
+    button.style = "";
+    button.onclick = function() { enableAudioClickPlayback(); } ;
+    PLAYBACK_ON_CLICK = false;
+}
+
+function playAudioSegment(start_sec, end_sec) {
+    if (AUDIO_PLAYER !== null && PLAYBACK_ON_CLICK) {
+        if (PAUSE_TIMEOUT !== null) { clearTimeout(PAUSE_TIMEOUT); }
+
+        AUDIO_PLAYER.currentTime = start_sec;
+        AUDIO_PLAYER.play();
+        ARE_PLAYING = true;
+
+        var length_ms = (end_sec - start_sec) * 1000;
+        PAUSE_TIMEOUT= setTimeout(function(){
+            AUDIO_PLAYER.pause();
+            PAUSE_TIMEOUT = null;
+            ARE_PLAYING = false;
+            removeActiveClass();
+        }, length_ms);
+    }
+}
+
+function setupTranscriptChangeListeners() {
+    var trans = document.getElementById('transcript');
+    trans.addEventListener("keyup", function(e){
+        var editedNode = window.getSelection().anchorNode.parentNode;
+
+        // set background of already edited spans back to white
+        if (HAVE_TIMESTAMPS && HAVE_CONFIDENCE) {
+            var clearNode = editedNode;
+            if (clearNode.tagName == "SPAN") {
+                if (clearNode.getAttribute("data-start") !== null) {
+                    // if we click into the parent span, we have to get the next node!
+                    clearNode = window.getSelection().anchorNode.nextSibling;
+                }
+                if (clearNode.tagName == "SPAN" && clearNode.getAttribute("title") !== null) {
+                    clearNode.style = 'background: white;';
+                }
+            }
+        }
+
+        // change all speaker names if we change one speaker
+        if (editedNode.tagName == "B" && editedNode.getAttribute("data-spk") !== null) {
+            var curSpeaker = editedNode.getAttribute("data-spk");
+
+            var elements = document.querySelectorAll('b[data-spk="' + curSpeaker + '"]');
+            for (var i=0; i<elements.length; i++) {
+                if (elements[i] !== editedNode) {
+                    elements[i].innerText = editedNode.innerText;
+                }
+            }
+
+            // for WebVTT export
+            var elements = document.querySelectorAll('span[data-spk="' + curSpeaker + '"]');
+            var label = editedNode.innerText;
+            if (label[label.length -1] == ":") {
+                label = label.substring(0, label.length - 1);
+            }
+            for (var i=0; i<elements.length; i++) {
+                elements[i].setAttribute("data-label", label);
+            }
+        }
+    });
+}
+
+HAVE_CONFIDENCE = false;
+HAVE_TIMESTAMPS = HAVE_CONFIDENCE;  // for now ...
+
+AUDIO_PLAYER = null;
+PAUSE_TIMEOUT = null;
+PLAYBACK_ON_CLICK = false;
+ARE_PLAYING = false;
+
+window.addEventListener("load", function(){
+    if(!HAVE_CONFIDENCE) {
+        var button = document.getElementById('toggle-styling');
+        if (button !== null) { button.remove(); }
+    }
+
+    addAudioPlayer();
+    setupTranscriptChangeListeners();
+});
+</script>
+
+
+</body>
+</html>
