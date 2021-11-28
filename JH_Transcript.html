@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+    <title>Is Fear Over Crt Stopping The Conversation About Racism? W/ Jania Hoover</title>
+
+    <style>
+    body { margin: 0; }
+    #title, #subtitle, #info, #summary { text-align: center; }
+    #summary { margin: 0 10%; }
+    #chapter { margin-top: 1em; }
+
+    #edit-bar {
+        margin-top: 2em; display: flex; justify-content: space-between; flex-wrap: wrap;
+        position: -webkit-sticky; position: sticky; top: 0; left: 0;
+        background: white; z-index: 999;
+        font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+        -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; text-size-adjust: 100%;
+    }
+    #edit-bar-spacer { flex-grow: 1; }
+    .button {
+        background-color: #f5f5f5; color: #363636;
+        border: 1px solid #dbdbdb; border-radius: 4px; box-shadow: none;
+        margin: 0.5em; padding: 5px 12px;
+        cursor:pointer;font-size: 0.9em;
+        justify-content:center; text-align:center; white-space:nowrap;
+        display: inline-flex; position: relative; vertical-align: top;
+        user-select: none; text-decoration: none;
+    }
+    .button:hover{border-color:#b5b5b5;color:#363636;background-color:#eee;}
+    .button:active{border-color:#4a4a4a;color:#363636;background-color:#e8e8e8;}
+    .button.export-option { margin: 0.5em 0.2em 0.5em auto; }
+    .button.export-buttons-shown { margin-left: 0.2em; margin-left: auto; }
+
+    span.active { font-weight: bold; }
+    span.listened { font-weight: bold; font-style: italic; }
+    #transcript.edit-mode { border-style: dashed; padding: 10px; }
+    #transcript span { cursor: pointer; }
+    #transcript.edit-mode span { cursor: text; }
+    .transcript-base { margin: 0.5em; }
+
+    @media all and (max-width: 900px) {
+      .button.export-buttons-shown { margin: 0.5em; margin-left: auto; }
+      .button.export-option { margin: 0.5em; margin-left: auto; }
+    }
+
+    @media all and (max-width: 340px) {
+      .button { margin: 0.2em; }
+    }
+
+    @media print {
+        #edit-bar { display: none; }
+        .button { display: none; }
+        span { background: white; }
+        #transcript { border-style: none !important; padding: 0px !important; }
+    }
+    </style>
+</head>
+
+<body>
+
+
+<div id="metadata">
+<h1 id="title">Is Fear Over Crt Stopping The Conversation About Racism? W/ Jania Hoover</h1>
+
+<p id="info">
+2021, Learning Machine Podcast<br>
+Series 2<br>
+<a href="https://www.learningmachinepodcast.com" target="_blank">https://www.learningmachinepodcast.com</a>
+</p>
+
+<p id="summary">
+Dr. Jania Hoover is an educator and teacher coach with over 16 years of classroom experience. As an expert on social studies education, Dr. Hoover discussed how teachers can navigate controversial topics in the classroom with their students. In her words, "students will ask you the tough questions" so you should probably prepare to answer them. Dr. Hoover wrote an article in July 2021 on the importance of teaching kids about racism regardless of the current debate around critical race theory. In this episode, we discuss representing diverse authors in the classroom, teaching authentic social studies, and how teachers can facilitate critical reading of controversial texts in the classroom.
+
+You can follow Dr. Jania Hoover on Twitter @drjhoov
+</p>
+
+
+</div>
+
+<div id="edit-bar">
+    <a class="button" id="edit-transcript" onclick="enableEdit();" title="Enable/disable edit mode.">Edit Transcript</a>
+    <a class="button" id="toggle-styling" onclick="removeStyling();" title="Words with low recognition confidence will be highlighted in red.">Remove Highlighting</a>
+    <a class="button" id="add-audio-file" onclick="addAudioFile();" title="Add audio file which should be played along the transcript.">Add Audio File</a>
+    <a class="button" id="toggle-play-on-click" title="Enable/disable click on word for audio playback." style="display: none;">Stop Play-on-click</a>
+
+    <div id="edit-bar-spacer"></div>
+
+    <a class="button export-option" id="save-changes" onclick="saveChanges();" style="display: none;" title="Save transcript editor with current changes for further editing or sharing.">Save Editor</a>
+    <a class="button export-option" id="export-html" onclick="exportHTML();" style="display: none;" title="Export transcript as HTML for Word, Wordpress, etc.">Export HTML</a>
+    <a class="button export-option" id="export-pdf" onclick="window.print(); hideExportButtons();" style="display: none;" title="Export transcript as PDF or to printer.">Export PDF</a>
+    <a class="button export-option" id="export-webvtt" onclick="exportWebVTT();" style="display: none;" title="Export transcript as WebVTT for web players.">Export WebVTT</a>
+    <a class="button" id="show-export-buttons" onclick="showExportButtons();">Export...</a>
+    <a class="button" id="show-help" href="https://auphonic.com/help/algorithms/speech_recognition.html#auphonic-transcript-editor" target="_blank" title="Show transcript editor help.">?</a>
+
+    <audio id="audio-player" preload="auto" style="display: none;">
+        <source src="https://pdcn.co/e/www.buzzsprout.com/1720583/9623945-is-fear-over-crt-stopping-the-conversation-about-racism-w-jania-hoover.mp3?download=true">
+    </audio>
+</div>
+
+<div id="transcript" class="transcript-base">
+
+<h2 id="chapter">Transcript</h2>
+<b data-spk="5">Music</b><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[0:03]</small> <span title="0:03 - 0:12" data-start="00:00:02.782" data-end="00:00:12.077" data-spk="2" data-label="NAL">Welcome everyone to learning machine a podcast about the uncertain future of Education this is Nathan Levin Our Guest today is dr. janilla.</span><br>
+<br>
+<b data-spk="1">Guest:</b><br>
+<small style="opacity: 0.5;">[0:17]</small> <span title="0:17 - 0:30" data-start="00:00:16.561" data-end="00:00:30.009" data-spk="1" data-label="Guest">Yeah so I didn't intend on being a teacher at all I thought I was going to be a doctor until I took AP biology and 11th grade and.</span><br>
+<span title="0:30 - 0:41" data-start="00:00:30.394" data-end="00:00:41.233" data-spk="1" data-label="Guest">I was struggling and the teacher I think was frustrated with me because I was going to see him every day he was like what do you want to do anyway and I was like I'm going to be a doctor and he was like well you know you have to take,</span><br>
+<span title="0:42 - 0:51" data-start="00:00:41.534" data-end="00:00:50.704" data-spk="1" data-label="Guest">more classes like this I went home about daddy I don't want to be a doctor anymore I need to drop this class so I went to college Loyola Marymount La undecided,</span><br>
+<span title="0:51 - 0:53" data-start="00:00:50.963" data-end="00:00:53.366" data-spk="1" data-label="Guest">and once I took.</span><br>
+<span title="0:54 - 1:04" data-start="00:00:53.835" data-end="00:01:03.810" data-spk="1" data-label="Guest">And show the African-American studies the spring of my freshman year it just like sparked that interest for me I.</span><br>
+<span title="1:04 - 1:15" data-start="00:01:04.369" data-end="00:01:15.071" data-spk="1" data-label="Guest">I had always enjoyed you know learning about black people learning about black history and my grandparents on my mom's side they used to give me books all the time I had a hole,</span><br>
+<span title="1:15 - 1:20" data-start="00:01:15.269" data-end="00:01:20.455" data-spk="1" data-label="Guest">series I wish I still had it but I would have enjoyed reading and learning,</span><br>
+<span title="1:21 - 1:29" data-start="00:01:20.605" data-end="00:01:29.438" data-spk="1" data-label="Guest">and I knew you know my grandma told me then that you know I'm not going to learn my history in school so I needed to you know learn it on my own.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[1:30]</small> <span title="1:30 - 1:40" data-start="00:01:30.148" data-end="00:01:39.960" data-spk="1" data-label="Guest">So when I took that class in college that was the first time where I actually was you know learning about black people in a meaningful way,</span><br>
+<span title="1:40 - 1:46" data-start="00:01:40.309" data-end="00:01:46.083" data-spk="1" data-label="Guest">so I decided oh I'm going to be a teacher so I can teach history the way that it's supposed to be.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[1:48]</small> <span title="1:48 - 2:01" data-start="00:01:48.469" data-end="00:02:00.932" data-spk="1" data-label="Guest">Not knowing all the crazy stuff that goes along with actually teaching in a classroom like I thought I would just be able to teach you know what I thought was important.</span><br>
+<br>
+<b data-spk="5">Music</b><br>
+<br>
+<b data-spk="4">Rdb:</b><br>
+<small style="opacity: 0.5;">[2:12]</small> <span title="2:12 - 2:23" data-start="00:02:11.803" data-end="00:02:23.358" data-spk="4" data-label="RDB">Dr. Jenea Hoover is an accomplished social studies teacher who wrote an article about how the recent hysteria around critical race theory has overshadowed the importance of teaching kids about racism.</span><br>
+<br>
+<b data-spk="3">Sss:</b><br>
+<small style="opacity: 0.5;">[2:24]</small> <span title="2:24 - 2:33" data-start="00:02:24.109" data-end="00:02:32.576" data-spk="3" data-label="SSS">Today we're discussing how social studies teachers can talk to students about race because they will ask and how school districts can support teachers in doing so.</span><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[2:34]</small> <span title="2:34 - 2:36" data-start="00:02:34.096" data-end="00:02:35.580" data-spk="2" data-label="NAL">Thanks for joining us.</span><br>
+<br>
+<b data-spk="5">Music</b><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[2:45]</small> <span title="2:45 - 2:46" data-start="00:02:45.219" data-end="00:02:46.360" data-spk="2" data-label="NAL">Hey everyone</span><br>
+<span title="2:46 - 2:57" data-start="00:02:46.337" data-end="00:02:57.411" data-spk="2" data-label="NAL">I had the chance to sit down with Janea Hoover and she had some awesome advice for teachers and school districts about how to talk with students about racism and how to be an advocate for equity,</span><br>
+<span title="2:58 - 3:06" data-start="00:02:57.592" data-end="00:03:06.316" data-spk="2" data-label="NAL">Janine and I talked about her own journey to becoming a teacher and how she incorporates discussions about race and racism in her own classroom.</span><br>
+<span title="3:07 - 3:09" data-start="00:03:06.840" data-end="00:03:08.858" data-spk="2" data-label="NAL">One of the questions that,</span><br>
+<span title="3:09 - 3:18" data-start="00:03:08.865" data-end="00:03:17.608" data-spk="2" data-label="NAL">came up for us in our conversation was how can teachers grapple with this tension of teaching students about history in America when</span><br>
+<span title="3:18 - 3:24" data-start="00:03:17.506" data-end="00:03:24.109" data-spk="2" data-label="NAL">so many of the major figures are tied up in the problematic history of slaveholding</span><br>
+<span title="3:24 - 3:31" data-start="00:03:24.098" data-end="00:03:31.440" data-spk="2" data-label="NAL">and many of these figures committed what really can only be described as racially motivated atrocities so,</span><br>
+<span title="3:32 - 3:40" data-start="00:03:31.609" data-end="00:03:39.829" data-spk="2" data-label="NAL">our debate topic for today's episode is
+should some historical figures who were racist.</span><br>
+<span title="3:40 - 3:50" data-start="00:03:40.238" data-end="00:03:50.207" data-spk="2" data-label="NAL">Be cancelled from our elementary or secondary Social Studies classrooms like are there any historical figures who are just too problematic for students to be learning about.</span><br>
+<span title="3:51 - 4:00" data-start="00:03:50.868" data-end="00:03:59.797" data-spk="2" data-label="NAL">And I'll start by saying sort of how I think about this topic because you know I've been thinking about a lot over the last weekend.</span><br>
+<span title="4:00 - 4:09" data-start="00:04:00.411" data-end="00:04:09.021" data-spk="2" data-label="NAL">In particular in light of the recent sort of conversation around Banning books in in classrooms and.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[4:10]</small> <span title="4:10 - 4:19" data-start="00:04:09.857" data-end="00:04:18.870" data-spk="2" data-label="NAL">In my conversation with with doctors you know Hoover I've been thinking about that like students are going to engage with history,</span><br>
+<span title="4:19 - 4:29" data-start="00:04:19.057" data-end="00:04:29.272" data-spk="2" data-label="NAL">like it's out there they have the internet they're going to find out about Christopher Columbus they're going to find out about Thomas Jefferson and they're going to find out about Hitler,</span><br>
+<span title="4:30 - 4:38" data-start="00:04:29.500" data-end="00:04:38.039" data-spk="2" data-label="NAL">they're going to find out about these figures who did horrible things in history the question is really like in what frame and with what guidance</span><br>
+<span title="4:38 - 4:52" data-start="00:04:37.823" data-end="00:04:52.298" data-spk="2" data-label="NAL">are they in countering those topics and I'd much rather students encounter those topics in a classroom setting with a teacher who they trust with a teacher who can help to guide them through understanding the nuance and understanding the</span><br>
+<span title="4:52 - 5:00" data-start="00:04:52.203" data-end="00:04:59.972" data-spk="2" data-label="NAL">your perspective with which the story is being told to help them gain a fuller understanding of these figures than you know,</span><br>
+<span title="5:00 - 5:05" data-start="00:05:00.225" data-end="00:05:04.509" data-spk="2" data-label="NAL">the flip side of that would be if they just never heard about them at all and then discovered it on their own.</span><br>
+<br>
+<b data-spk="3">Sss:</b><br>
+<small style="opacity: 0.5;">[5:06]</small> <span title="5:06 - 5:17" data-start="00:05:06.282" data-end="00:05:16.665" data-spk="3" data-label="SSS">Yeah it's a great point and you know I think this question rests a lot on the idea of what do we mean by cancelled which is just one of these really charged political terms,</span><br>
+<span title="5:17 - 5:19" data-start="00:05:16.882" data-end="00:05:19.105" data-spk="3" data-label="SSS">nose idea being canceled do we mean,</span><br>
+<span title="5:19 - 5:34" data-start="00:05:19.202" data-end="00:05:33.923" data-spk="3" data-label="SSS">just completely washing it from the pages of History if we meet if I cancel we mean wash these historical figures from the pages of History because they committed atrocities against people of color I don't think anybody's advocating for that we don't want to erase,</span><br>
+<span title="5:34 - 5:36" data-start="00:05:34.086" data-end="00:05:35.666" data-spk="3" data-label="SSS">them from history.</span><br>
+<span title="5:36 - 5:51" data-start="00:05:36.087" data-end="00:05:50.947" data-spk="3" data-label="SSS">Students need to learn about the history the good parts of History the bad parts of History they need to learn about the facts and I think draw their own judgments from the facts presented accurately from the honest truth being shared with them.</span><br>
+<span title="5:52 - 6:00" data-start="00:05:51.596" data-end="00:06:00.261" data-spk="3" data-label="SSS">So I think of you know I figure like Andrew Jackson who is hugely problematic in this treatment of indigenous peoples is horrific.</span><br>
+<span title="6:01 - 6:15" data-start="00:06:01.079" data-end="00:06:14.581" data-spk="3" data-label="SSS">Should he be canceled for what he did does that mean should we criticize what he did definitely if that's what you mean yes if we mean should we wash them from the pages of history no because we need to know what he did,</span><br>
+<span title="6:15 - 6:23" data-start="00:06:14.852" data-end="00:06:23.258" data-spk="3" data-label="SSS">and how he participated in the problems so we can learn from that and and I'll just say one more thing I think you know students.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[6:24]</small> <span title="6:24 - 6:30" data-start="00:06:24.160" data-end="00:06:29.754" data-spk="3" data-label="SSS">Should get the information should get all sides of a story and be encouraged to draw their own ideas,</span><br>
+<span title="6:30 - 6:42" data-start="00:06:30.060" data-end="00:06:41.814" data-spk="3" data-label="SSS">from that I think that students will bring up these questions you know we said in the intro students are going to want to ask about racism about the mistreatment of all different kinds of communities throughout history.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[6:43]</small> <span title="6:43 - 6:52" data-start="00:06:42.884" data-end="00:06:52.354" data-spk="3" data-label="SSS">And the history classroom is a place to have those conversations so I wouldn't say don't remove anything provide the place to have difficult discussions.</span><br>
+<br>
+<b data-spk="4">Rdb:</b><br>
+<small style="opacity: 0.5;">[6:54]</small> <span title="6:54 - 7:02" data-start="00:06:54.085" data-end="00:07:01.830" data-spk="4" data-label="RDB">I agree with that um ethically if we're Educators we need to educate and we need to tell the kids to truth.</span><br>
+<span title="7:02 - 7:14" data-start="00:07:02.239" data-end="00:07:14.239" data-spk="4" data-label="RDB">But there is another layer of complexity here that I just learned today like even at my age so I'm going to talk about Tick Tock but it's going to be relevant I was looking,</span><br>
+<span title="7:14 - 7:21" data-start="00:07:14.335" data-end="00:07:20.710" data-spk="4" data-label="RDB">um at Tic Toc for some funny videos to like spam my husband's dm with so we could,</span><br>
+<span title="7:21 - 7:31" data-start="00:07:20.867" data-end="00:07:30.649" data-spk="4" data-label="RDB">watch them together because that's what we do late at night it's watch Tik toks but today I discovered when I got on there that.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[7:32]</small> <span title="7:32 - 7:46" data-start="00:07:32.002" data-end="00:07:46.231" data-spk="4" data-label="RDB">A bunch of white tick talkers had anonymously admitted to having to their families having slave records and things that look like slave records and receipts were bodies and stuff like that.</span><br>
+<span title="7:47 - 7:54" data-start="00:07:46.628" data-end="00:07:53.935" data-spk="4" data-label="RDB">And other artifacts like including furniture
+from that time period that they were.</span><br>
+<span title="7:54 - 8:00" data-start="00:07:54.380" data-end="00:07:59.866" data-spk="4" data-label="RDB">Holding onto and so this person.</span><br>
+<span title="8:00 - 8:05" data-start="00:08:00.461" data-end="00:08:05.346" data-spk="4" data-label="RDB">As or put out a call asking people that if they have that kind of stuff,</span><br>
+<span title="8:05 - 8:13" data-start="00:08:05.430" data-end="00:08:13.236" data-spk="4" data-label="RDB">to send it in to museums or send it in to him anonymously so that it can go to the right institutions</span><br>
+<span title="8:13 - 8:23" data-start="00:08:13.212" data-end="00:08:23.493" data-spk="4" data-label="RDB">um and so that history doesn't get lost in can be told and so a lot of people were angry about that like why should I have to give up these kinds of things,</span><br>
+<span title="8:24 - 8:29" data-start="00:08:23.602" data-end="00:08:28.637" data-spk="4" data-label="RDB">that are that belong to my family and they're here but there were a lot of.</span><br>
+<span title="8:30 - 8:38" data-start="00:08:29.521" data-end="00:08:37.795" data-spk="4" data-label="RDB">Tick talkers mainly black took talkers who said we need these documents in these records because.</span><br>
+<span title="8:38 - 8:41" data-start="00:08:38.390" data-end="00:08:41.244" data-spk="4" data-label="RDB">We aren't able to even figure out,</span><br>
+<span title="8:41 - 8:55" data-start="00:08:41.287" data-end="00:08:54.981" data-spk="4" data-label="RDB">who our ancestors are or what happened to some people in our family because these records are lost and now you're holding them so they need to go to the to the right institutions and so it just made me think about.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[8:56]</small> <span title="8:56 - 9:07" data-start="00:08:56.129" data-end="00:09:07.257" data-spk="4" data-label="RDB">A long time ago when the University of Virginia wrote about Thomas Jefferson and then a lot of Sally hemings descendants.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[9:08]</small> <span title="9:08 - 9:14" data-start="00:09:07.925" data-end="00:09:14.150" data-spk="4" data-label="RDB">Publicly announced that they were her descendants and that there was added history or the way that,</span><br>
+<span title="9:14 - 9:23" data-start="00:09:14.421" data-end="00:09:22.538" data-spk="4" data-label="RDB">Thomas Jefferson's relationship with her was described wasn't necessarily correct and that there was some Reckoning to be had with history there and had.</span><br>
+<span title="9:23 - 9:25" data-start="00:09:23.116" data-end="00:09:24.563" data-spk="4" data-label="RDB">Boehner.</span><br>
+<span title="9:25 - 9:38" data-start="00:09:25.015" data-end="00:09:37.946" data-spk="4" data-label="RDB">Talked about that have had they not talked about Thomas Jefferson or even brought that critique up or anything or had the space to have that conversation there would have been people who were lost super disconnected from their Roots because of that and I think.</span><br>
+<span title="9:39 - 9:44" data-start="00:09:38.601" data-end="00:09:44.490" data-spk="4" data-label="RDB">Even Beyond it being ethical educationally speaking it is.</span><br>
+<span title="9:45 - 9:56" data-start="00:09:45.031" data-end="00:09:56.219" data-spk="4" data-label="RDB">Unethical to take away any resources that might possibly disconnect our students from their roots or their own identities and so I think this complicates the whole.</span><br>
+<span title="9:57 - 10:11" data-start="00:09:56.616" data-end="00:10:11.200" data-spk="4" data-label="RDB">This complicates the whole idea of CRT and culturally responsive teaching and stuff like that like now it's not necessarily a matter of me of who we're keeping comfortable or not it goes beyond,</span><br>
+<span title="10:11 - 10:19" data-start="00:10:11.411" data-end="00:10:19.372" data-spk="4" data-label="RDB">whether we want to have uncomfortable scary conversations or not now it now it's are we allowing our students to really learn,</span><br>
+<span title="10:20 - 10:29" data-start="00:10:19.511" data-end="00:10:28.981" data-spk="4" data-label="RDB">and accept who they are as humans if we're taking away their resources and historical documents that might allow them to see you.</span><br>
+<span title="10:30 - 10:33" data-start="00:10:29.534" data-end="00:10:32.712" data-spk="4" data-label="RDB">Who they are and what their place is what their story is in this world.</span><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[10:34]</small> <span title="10:34 - 10:44" data-start="00:10:33.728" data-end="00:10:43.697" data-spk="2" data-label="NAL">Yeah it I think that what you're talking about is such an important aspect of the question of like.</span><br>
+<span title="10:44 - 10:49" data-start="00:10:44.058" data-end="00:10:48.847" data-spk="2" data-label="NAL">Denying The History of the United States and,</span><br>
+<span title="10:49 - 10:57" data-start="00:10:48.985" data-end="00:10:57.079" data-spk="2" data-label="NAL">it is just I think there's an irony here right to be pointed out when we talk about cancel culture because so often it's,</span><br>
+<span title="10:57 - 11:05" data-start="00:10:57.182" data-end="00:11:05.372" data-spk="2" data-label="NAL">from the political right criticizing the political left for canceling things but there is a huge amount of American history that has been canceled.</span><br>
+<span title="11:06 - 11:11" data-start="00:11:05.751" data-end="00:11:10.792" data-spk="2" data-label="NAL">And largely it has to do with racism and slavery.</span><br>
+<span title="11:12 - 11:22" data-start="00:11:11.513" data-end="00:11:22.467" data-spk="2" data-label="NAL">And like by opening up those doors we can begin you know I don't think there's any way you can say that oh this is going to somehow like you know.</span><br>
+<span title="11:23 - 11:33" data-start="00:11:22.822" data-end="00:11:33.338" data-spk="2" data-label="NAL">It's not reparations right reparations would be reparations but it is in some way opening up the door to providing a channel to like at least help people discover</span><br>
+<span title="11:33 - 11:39" data-start="00:11:33.248" data-end="00:11:38.530" data-spk="2" data-label="NAL">their past and discover and learn more about how our country ended up the way that it is.</span><br>
+<br>
+<b data-spk="3">Sss:</b><br>
+<small style="opacity: 0.5;">[11:41]</small> <span title="11:41 - 11:50" data-start="00:11:41.114" data-end="00:11:50.265" data-spk="3" data-label="SSS">Yeah and to take an honest look at what history actually says for for good or for bad and and you know to really you know I think we think about,</span><br>
+<span title="11:50 - 12:04" data-start="00:11:50.440" data-end="00:12:03.606" data-spk="3" data-label="SSS">people who are it's hard to look at the difficult parts of history people are bothered by roaming you here critiques of CRT when we hear people trying to push for anti CRT legislation you know one of the points that they make is that,</span><br>
+<span title="12:04 - 12:11" data-start="00:12:03.918" data-end="00:12:11.489" data-spk="3" data-label="SSS">kids feel bad learning about the difficult History of the United States oh it's really it is hard to learn that,</span><br>
+<span title="12:12 - 12:22" data-start="00:12:11.670" data-end="00:12:22.107" data-spk="3" data-label="SSS">these awful things happen but just because it's hard to learn doesn't mean that we don't need to shine a light in those areas and provide a space to have those important conversations.</span><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[12:25]</small> <span title="12:25 - 12:37" data-start="00:12:24.662" data-end="00:12:37.130" data-spk="2" data-label="NAL">Absolutely they providing the space is what we're really talking about here there is sort of another part of this conversation which we haven't really touched on yet but maybe we can continue after we listen to the interview,</span><br>
+<span title="12:37 - 12:42" data-start="00:12:37.209" data-end="00:12:41.997" data-spk="2" data-label="NAL">which is that you know some I think teachers have.</span><br>
+<span title="12:43 - 12:53" data-start="00:12:42.677" data-end="00:12:53.289" data-spk="2" data-label="NAL">A question as to whether students who are younger are able to fully grasp the Nuance of a person in a history book being.</span><br>
+<span title="12:54 - 13:02" data-start="00:12:53.692" data-end="00:13:01.695" data-spk="2" data-label="NAL">You know not just good or evil and and having elements of both and so there's a question of whether there is a time.</span><br>
+<span title="13:02 - 13:17" data-start="00:13:02.284" data-end="00:13:16.754" data-spk="2" data-label="NAL">In elementary school when it becomes more appropriate to start teaching about historical figures in a holistic way versus maybe you know early on in an elementary to present more of like a binary view of History.</span><br>
+<span title="13:17 - 13:23" data-start="00:13:17.169" data-end="00:13:22.721" data-spk="2" data-label="NAL">But I think
+you know that's something for.</span><br>
+<span title="13:23 - 13:28" data-start="00:13:23.250" data-end="00:13:27.678" data-spk="2" data-label="NAL">After this interview and dr. Hoover actually talks a little bit about this as well so,</span><br>
+<span title="13:28 - 13:41" data-start="00:13:27.955" data-end="00:13:41.487" data-spk="2" data-label="NAL">before we get into the interview I did want to mention that we'd love to hear thoughts from our listeners as well remember you can join the conversation on Reddit and Twitter simply go to learning machine podcast.com to find out more and now let's hear from dr. Janea Hoover.</span><br>
+<br>
+<b data-spk="5">Music</b><br>
+<br>
+<b data-spk="1">Guest:</b><br>
+<small style="opacity: 0.5;">[13:59]</small> <span title="13:59 - 14:07" data-start="00:13:59.473" data-end="00:14:07.410" data-spk="1" data-label="Guest">I don't personally worry about it just because I've been getting pushed back about how I teach about race.</span><br>
+<span title="14:08 - 14:17" data-start="00:14:08.300" data-end="00:14:16.772" data-spk="1" data-label="Guest">Since I started teaching at a school where most of the students are white but in in in response,</span><br>
+<span title="14:17 - 14:20" data-start="00:14:17.019" data-end="00:14:20.228" data-spk="1" data-label="Guest">especially if you're talking about a history class.</span><br>
+<span title="14:21 - 14:28" data-start="00:14:21.454" data-end="00:14:28.100" data-spk="1" data-label="Guest">I just try to refer to the documents as much as possible right I'm not interpreting,</span><br>
+<span title="14:28 - 14:42" data-start="00:14:28.407" data-end="00:14:41.908" data-spk="1" data-label="Guest">this information for the student write the idea is they are reading these sources and developing their own interpretation.</span><br>
+<span title="14:43 - 14:57" data-start="00:14:42.894" data-end="00:14:57.009" data-spk="1" data-label="Guest">As well as reading other people's interpretations with the knowledge that this is someone else's interpretation of what this person said happened.</span><br>
+<span title="14:58 - 15:09" data-start="00:14:57.845" data-end="00:15:08.955" data-spk="1" data-label="Guest">So I think what gets teachers into trouble is when we just start talking off the top of our head and you know just sharing our interpretation and our beliefs.</span><br>
+<span title="15:09 - 15:14" data-start="00:15:09.370" data-end="00:15:13.540" data-spk="1" data-label="Guest">But I think it's our job to,</span><br>
+<span title="15:14 - 15:25" data-start="00:15:13.889" data-end="00:15:25.492" data-spk="1" data-label="Guest">you know acknowledge you know like if if I'm sharing my interpretation say that try to make it explicit and when they're reading other interpretations like help them.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[15:27]</small> <span title="15:27 - 15:36" data-start="00:15:26.731" data-end="00:15:36.315" data-spk="1" data-label="Guest">Understand the difference between what happened and what this Source says happened.</span><br>
+<span title="15:37 - 15:47" data-start="00:15:36.916" data-end="00:15:46.524" data-spk="1" data-label="Guest">Right and and very often kids will read the book and then think okay American history is this book like this is,</span><br>
+<span title="15:47 - 15:57" data-start="00:15:46.741" data-end="00:15:56.878" data-spk="1" data-label="Guest">this is what happened I read this book I answer these questions at the end and now I know everything you know that I need to know about this particular.</span><br>
+<span title="15:57 - 16:00" data-start="00:15:57.251" data-end="00:16:00.303" data-spk="1" data-label="Guest">This particular event so I think that.</span><br>
+<span title="16:01 - 16:16" data-start="00:16:00.892" data-end="00:16:15.818" data-spk="1" data-label="Guest">What teachers can do is be much more you know encourage the kids to analyze encourage the kids to dig in encourage the kids to really immerse themselves like I don't have to tell the kids that the Civil War was about slavery,</span><br>
+<span title="16:16 - 16:26" data-start="00:16:16.071" data-end="00:16:25.793" data-spk="1" data-label="Guest">right we can read the Cornerstone speech from Alexander Stephens we can read the Declaration of causes for Texas,</span><br>
+<span title="16:26 - 16:36" data-start="00:16:25.932" data-end="00:16:35.780" data-spk="1" data-label="Guest">and I can ask the student what the cause of the Civil War was and they can answer that with evidence from the document,</span><br>
+<span title="16:36 - 16:50" data-start="00:16:35.985" data-end="00:16:49.559" data-spk="1" data-label="Guest">so I don't have to say oh the United States is a racist country I can just say okay what was the reason for the Civil War and according to whom like what did this person say how does that compare to what that person said.</span><br>
+<br>
+<b data-spk="0">Interviewer:</b><br>
+<small style="opacity: 0.5;">[16:51]</small> <span title="16:51 - 16:57" data-start="00:16:50.912" data-end="00:16:57.323" data-spk="0" data-label="Interviewer">Right is there a line that you draw in terms of.</span><br>
+<span title="16:58 - 17:08" data-start="00:16:58.020" data-end="00:17:07.616" data-spk="0" data-label="Interviewer">Because I think sometimes there's also a fear that if you teach about a certain person say you know Thomas Jefferson that that students may take.</span><br>
+<span title="17:09 - 17:18" data-start="00:17:08.524" data-end="00:17:17.688" data-spk="0" data-label="Interviewer">You know a certain they may take some of the things that align with their beliefs that they already currently hold and maybe not take some of the you know.</span><br>
+<span title="17:18 - 17:28" data-start="00:17:18.055" data-end="00:17:27.795" data-spk="0" data-label="Interviewer">They met they may not take up the other evidence that's there so is there a line you draw between like oh I'm not going to present this because like this is just too this person's too,</span><br>
+<span title="17:28 - 17:33" data-start="00:17:27.994" data-end="00:17:33.125" data-spk="0" data-label="Interviewer">racist to offensive or I guess how do you approach like teaching about something like that.</span><br>
+<br>
+<b data-spk="1">Guest:</b><br>
+<small style="opacity: 0.5;">[17:34]</small> <span title="17:34 - 17:47" data-start="00:17:34.105" data-end="00:17:47.174" data-spk="1" data-label="Guest">Yeah we actually I'm using a book where they have like several different case studies where they ask questions and so one of them was about Thomas Jefferson.</span><br>
+<span title="17:48 - 17:57" data-start="00:17:47.974" data-end="00:17:57.011" data-spk="1" data-label="Guest">I can't remember the name of it but basically it was about reconciling the man with the myth you know the fact that he was this.</span><br>
+<span title="17:58 - 18:06" data-start="00:17:57.648" data-end="00:18:06.277" data-spk="1" data-label="Guest">Slaveholder one of the biggest you know during during his lifetime and he,</span><br>
+<span title="18:07 - 18:15" data-start="00:18:06.524" data-end="00:18:15.441" data-spk="1" data-label="Guest">wrestled with this tension around it right and so in terms of a line I.</span><br>
+<span title="18:16 - 18:25" data-start="00:18:16.036" data-end="00:18:25.091" data-spk="1" data-label="Guest">I don't necessarily have one in that sense but I do try to.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[18:26]</small> <span title="18:26 - 18:36" data-start="00:18:26.197" data-end="00:18:35.896" data-spk="1" data-label="Guest">Be very specific about what it is that I want the students to come away from from the lesson with right so.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[18:37]</small> <span title="18:37 - 18:40" data-start="00:18:36.713" data-end="00:18:39.976" data-spk="1" data-label="Guest">The goal is not to.</span><br>
+<span title="18:41 - 18:54" data-start="00:18:40.625" data-end="00:18:54.446" data-spk="1" data-label="Guest">Throw out all of Thomas Jefferson's achievements and just say okay he's this horrible person he raped the person he enslaved he father kids you know blah blah blah but the idea is to kind of help the students to understand and reconcile that,</span><br>
+<span title="18:55 - 18:58" data-start="00:18:54.608" data-end="00:18:58.171" data-spk="1" data-label="Guest">it's not an either or it's more of like a both and.</span><br>
+<span title="18:59 - 19:07" data-start="00:18:58.881" data-end="00:19:07.065" data-spk="1" data-label="Guest">So that's you know that's kind of what I try to do you know definitely sometimes more successfully than others,</span><br>
+<span title="19:07 - 19:16" data-start="00:19:07.263" data-end="00:19:15.682" data-spk="1" data-label="Guest">but also encouraging them to expand their thinking</span><br>
+<span title="19:16 - 19:19" data-start="00:19:15.610" data-end="00:19:19.299" data-spk="1" data-label="Guest">you know because we're given especially in elementary school</span><br>
+<span title="19:19 - 19:31" data-start="00:19:19.228" data-end="00:19:30.879" data-spk="1" data-label="Guest">you know we're just given Oh Thomas Jefferson wrote the Declaration of Independence he's this amazing person he's on money he did Louisiana Purchase and then there was Sacagawea and Lewis and Clark and</span><br>
+<span title="19:31 - 19:36" data-start="00:19:30.867" data-end="00:19:35.644" data-spk="1" data-label="Guest">you know we tell a very narrow.</span><br>
+<span title="19:36 - 19:45" data-start="00:19:36.053" data-end="00:19:44.561" data-spk="1" data-label="Guest">Image you know this at this very narrow story and students can handle more they can handle nuance and I think.</span><br>
+<span title="19:45 - 19:50" data-start="00:19:44.934" data-end="00:19:50.192" data-spk="1" data-label="Guest">If you're crafting your questions in a way where they have to provide.</span><br>
+<span title="19:51 - 19:58" data-start="00:19:50.583" data-end="00:19:57.505" data-spk="1" data-label="Guest">Evidence from specific document that can that can help you too.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[19:58]</small> <span title="19:58 - 20:09" data-start="00:19:58.352" data-end="00:20:08.964" data-spk="1" data-label="Guest">Even if they choose to disregard it then they're not really going to accomplish the goals of that learning task right so the ones that are trying to check the box okay they're at least going to have to read it they might not believe it,</span><br>
+<span title="20:09 - 20:22" data-start="00:20:09.061" data-end="00:20:21.950" data-spk="1" data-label="Guest">right and as a teacher I can't worry about their beliefs I can just worry about okay what are you saying what are you writing what are you you know what are you contributing what type of evidence are you using what type of claims are you providing,</span><br>
+<span title="20:22 - 20:30" data-start="00:20:22.184" data-end="00:20:29.786" data-spk="1" data-label="Guest">you know I hope they change their minds but that takes you know that takes time it could be 10 you know 15 years down the line and they're like.</span><br>
+<span title="20:30 - 20:32" data-start="00:20:30.201" data-end="00:20:32.207" data-spk="1" data-label="Guest">That's what she meant.</span><br>
+<br>
+<b data-spk="0">Interviewer:</b><br>
+<small style="opacity: 0.5;">[20:32]</small> <span title="20:32 - 20:38" data-start="00:20:31.907" data-end="00:20:38.270" data-spk="0" data-label="Interviewer">Right there hit you up on LinkedIn they'll be like hey I had this moment I realized what you were trying to teach us.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[20:40]</small> <span title="20:40 - 20:49" data-start="00:20:40.170" data-end="00:20:49.099" data-spk="0" data-label="Interviewer">That's that's so I mean it's I absolutely I think that's completely true like this education that happens in elementary school right is so,</span><br>
+<span title="20:49 - 21:01" data-start="00:20:49.351" data-end="00:21:00.570" data-spk="0" data-label="Interviewer">good and evil right it's like you have Heroes and you have enemies like that's that's it you got that's there's nothing in between there's no Nuance like.</span><br>
+<span title="21:01 - 21:07" data-start="00:21:01.291" data-end="00:21:06.940" data-spk="0" data-label="Interviewer">What is there an appropriate age to start those conversations or do we need to start that like from day one.</span><br>
+<br>
+<b data-spk="1">Guest:</b><br>
+<small style="opacity: 0.5;">[21:08]</small> <span title="21:08 - 21:18" data-start="00:21:07.619" data-end="00:21:17.876" data-spk="1" data-label="Guest">I would say they won and I wish I remembered who said this but this question came up in something that I read or listening to about,</span><br>
+<span title="21:18 - 21:24" data-start="00:21:17.937" data-end="00:21:24.204" data-spk="1" data-label="Guest">you know how young is too young or when to introduce it and the person said</span><br>
+<span title="21:24 - 21:32" data-start="00:21:24.150" data-end="00:21:32.406" data-spk="1" data-label="Guest">that if a if a child is old enough to experience racism then they're old enough to learn about racism.</span><br>
+<span title="21:33 - 21:36" data-start="00:21:33.344" data-end="00:21:35.741" data-spk="1" data-label="Guest">And when you're talking about younger kids.</span><br>
+<span title="21:37 - 21:44" data-start="00:21:36.841" data-end="00:21:43.601" data-spk="1" data-label="Guest">Anyone that's been around a two year old or a three-year-old they know what's fair and they know what's not fair.</span><br>
+<span title="21:44 - 21:50" data-start="00:21:43.986" data-end="00:21:50.427" data-spk="1" data-label="Guest">Right and and when you're talking about racism you're just talking about a lot of unfair situations.</span><br>
+<span title="21:51 - 22:02" data-start="00:21:51.149" data-end="00:22:01.610" data-spk="1" data-label="Guest">So I don't I think that you know if you're teaching anything that's related to to history and I think you should then you start early and then that way you don't have to.</span><br>
+<span title="22:03 - 22:18" data-start="00:22:02.716" data-end="00:22:17.546" data-spk="1" data-label="Guest">They don't have to unlearn when you know when they get older feel like you know they were lied to like James low in may he you know rest in peace you know best-selling book about lies my teacher told me because of you know those,</span><br>
+<span title="22:18 - 22:24" data-start="00:22:17.799" data-end="00:22:24.276" data-spk="1" data-label="Guest">activities we did in information that we learned in those younger years because,</span><br>
+<span title="22:25 - 22:31" data-start="00:22:24.547" data-end="00:22:30.904" data-spk="1" data-label="Guest">oh they can't handle you know learning about this but they can
+they absolutely.</span><br>
+<br>
+<b data-spk="0">Interviewer:</b><br>
+<small style="opacity: 0.5;">[22:32]</small> <span title="22:32 - 22:42" data-start="00:22:32.407" data-end="00:22:41.589" data-spk="0" data-label="Interviewer">Yeah I feel like yeah I had one of those moments myself like I think it was when I was like,</span><br>
+<span title="22:42 - 22:55" data-start="00:22:41.811" data-end="00:22:54.887" data-spk="0" data-label="Interviewer">in second grade or something I was given like a biography of Robert E Lee and the whole story was like about him being this Genius Like hero you know and I mean probably wasn't honestly until,</span><br>
+<span title="22:55 - 23:03" data-start="00:22:55.169" data-end="00:23:03.335" data-spk="0" data-label="Interviewer">AP History like US history that I started to be like oh wait a minute like and it was there was a real like.</span><br>
+<span title="23:05 - 23:19" data-start="00:23:04.574" data-end="00:23:19.373" data-spk="0" data-label="Interviewer">Violent changing of like I had to change my perspective on that and who he was and it yeah I guess it started earlier than it would have been out of understood that from the beginning you at the end of your article that.</span><br>
+<span title="23:20 - 23:23" data-start="00:23:19.981" data-end="00:23:22.799" data-spk="0" data-label="Interviewer">You were planning a class.</span><br>
+<span title="23:23 - 23:32" data-start="00:23:23.292" data-end="00:23:32.017" data-spk="0" data-label="Interviewer">This year for talking about deeper analysis of racial issues in your African American history class I wanted to ask you how is it going this year.</span><br>
+<br>
+<b data-spk="1">Guest:</b><br>
+<small style="opacity: 0.5;">[23:32]</small> <span title="23:32 - 23:41" data-start="00:23:32.059" data-end="00:23:40.634" data-spk="1" data-label="Guest">Yes so with my American history class it's kind of something that we just.</span><br>
+<span title="23:41 - 23:53" data-start="00:23:41.049" data-end="00:23:52.940" data-spk="1" data-label="Guest">It will be kind of embedded throughout the year so like we talked about that case study I mentioned talking about Thomas Jefferson as an in flavor and and that so,</span><br>
+<span title="23:53 - 24:07" data-start="00:23:53.229" data-end="00:24:06.857" data-spk="1" data-label="Guest">I'm hoping this is a thread that I can continue and then towards the end of the year I'll have a unit on diversity and discrimination where we'll be able to kind of dig in specifically to some of those specific event.</span><br>
+<span title="24:07 - 24:17" data-start="00:24:07.302" data-end="00:24:17.331" data-spk="1" data-label="Guest">And then in my elective courses right now I'm teaching Native American history and it's funny you talked about the.</span><br>
+<span title="24:18 - 24:25" data-start="00:24:18.239" data-end="00:24:25.191" data-spk="1" data-label="Guest">What you learned later challenging what you learned early on and today,</span><br>
+<span title="24:25 - 24:39" data-start="00:24:25.269" data-end="00:24:38.982" data-spk="1" data-label="Guest">in that class we had a discussion and the kids just were calling out specific things that they learned in elementary school whether it was wearing the feathers for Thanksgiving and the headdress and,</span><br>
+<span title="24:39 - 24:49" data-start="00:24:39.048" data-end="00:24:48.542" data-spk="1" data-label="Guest">you know how what we're reading now we're reading an indigenous peoples history about Roxanne's and by Ortiz and like the chapters that we read,</span><br>
+<span title="24:49 - 24:55" data-start="00:24:48.711" data-end="00:24:54.677" data-spk="1" data-label="Guest">for today's reading it was just non-stop like brutal violence,</span><br>
+<span title="24:55 - 25:00" data-start="00:24:54.780" data-end="00:25:00.050" data-spk="1" data-label="Guest">right like just page after page it was tough for me so.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[25:02]</small> <span title="25:02 - 25:09" data-start="00:25:01.546" data-end="00:25:08.528" data-spk="1" data-label="Guest">And in that case that's a brand new course so just kind of walking through that and helping them to,</span><br>
+<span title="25:09 - 25:15" data-start="00:25:08.847" data-end="00:25:14.964" data-spk="1" data-label="Guest">reconcile that with those stories that they've learned about American history previously.</span><br>
+<span title="25:16 - 25:20" data-start="00:25:15.571" data-end="00:25:19.705" data-spk="1" data-label="Guest">And in African-American history it's,</span><br>
+<span title="25:20 - 25:30" data-start="00:25:19.970" data-end="00:25:30.221" data-spk="1" data-label="Guest">just like Native American it's more of like a thematic kind of case study approach but we'll really get into like.</span><br>
+<span title="25:31 - 25:36" data-start="00:25:30.750" data-end="00:25:35.761" data-spk="1" data-label="Guest">Critical race Theory and and some of these issues related to,</span><br>
+<span title="25:36 - 25:43" data-start="00:25:35.930" data-end="00:25:43.279" data-spk="1" data-label="Guest">racism and white supremacy in the last course which is about racial issues in American society,</span><br>
+<span title="25:43 - 25:51" data-start="00:25:43.333" data-end="00:25:51.247" data-spk="1" data-label="Guest">so that's where we'll talk about critical race Theory will talk about taking down monuments even though we'll do that a little bit in US history as well,</span><br>
+<span title="25:51 - 26:00" data-start="00:25:51.361" data-end="00:26:00.212" data-spk="1" data-label="Guest">so that's kind of where we are at this point in the year I'm just teaching us and Native American history.</span><br>
+<br>
+<b data-spk="3">Sss:</b><br>
+<small style="opacity: 0.5;">[26:04]</small> <span title="26:04 - 26:19" data-start="00:26:04.299" data-end="00:26:19.105" data-spk="3" data-label="SSS">To hear the full interview at doctor's new Hoover please consider supporting us on patreon if you have the means our subscribers get access to full interviews stickers handwritten thank-you notes and of course our undying gratitude.</span><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[26:21]</small> <span title="26:21 - 26:31" data-start="00:26:20.535" data-end="00:26:31.273" data-spk="2" data-label="NAL">And now it's time for a journey to a distant Land of Village of bars and where the food is all pies.</span><br>
+<span title="26:33 - 26:42" data-start="00:26:32.578" data-end="00:26:41.963" data-spk="2" data-label="NAL">And where the crap where the roads move steadily along lines trending upward or at least we'd like to Hope.</span><br>
+<span title="26:43 - 26:52" data-start="00:26:42.637" data-end="00:26:52.035" data-spk="2" data-label="NAL">It's time for data town
+today's data Town we're going to be talking about.</span><br>
+<br>
+<b data-spk="5">Music</b><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[26:53]</small> <span title="26:53 - 26:58" data-start="00:26:53.069" data-end="00:26:57.557" data-spk="2" data-label="NAL">Data that was released by University of Wisconsin's Cooperative children's book Center.</span><br>
+<span title="26:58 - 27:06" data-start="00:26:58.224" data-end="00:27:05.994" data-spk="2" data-label="NAL">Which shows the percentage of non-white authors who published books annually in the United States.</span><br>
+<span title="27:06 - 27:12" data-start="00:27:06.463" data-end="00:27:11.720" data-spk="2" data-label="NAL">And looking at this chart we can see that this is the graph for the last.</span><br>
+<span title="27:12 - 27:27" data-start="00:27:12.250" data-end="00:27:26.791" data-spk="2" data-label="NAL">Twenty years the last two decades because really prior to 2000 the numbers were either lower or fairly stagnant but we can see on this chart is that authors who are black or African indigenous Asian and Latin X.</span><br>
+<span title="27:28 - 27:37" data-start="00:27:27.789" data-end="00:27:36.958" data-spk="2" data-label="NAL">Made up less than 2.5 percent of all books published by non-white authors up until about 2015,</span><br>
+<span title="27:37 - 27:43" data-start="00:27:37.199" data-end="00:27:42.565" data-spk="2" data-label="NAL">now we to see some trending upwards after 2015,</span><br>
+<span title="27:43 - 27:55" data-start="00:27:42.836" data-end="00:27:55.202" data-spk="2" data-label="NAL">but the reality is that even today in 2020 the the percentages of books that are published by non-white authors does not get even close to the reflecting the demographics of the students,</span><br>
+<span title="27:55 - 28:03" data-start="00:27:55.413" data-end="00:28:03.458" data-spk="2" data-label="NAL">in schools in the United States so what do you think this lack of representation in literature how does that impact.</span><br>
+<br>
+<b data-spk="4">Rdb:</b><br>
+<small style="opacity: 0.5;">[28:09]</small> <span title="28:09 - 28:16" data-start="00:28:09.119" data-end="00:28:15.909" data-spk="4" data-label="RDB">Well that question is a really difficult one to answer Nathan.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[28:18]</small> <span title="28:18 - 28:27" data-start="00:28:17.844" data-end="00:28:26.918" data-spk="4" data-label="RDB">I think it definitely does the disservice to them for sure and I actually I would love to see this chart.</span><br>
+<span title="28:28 - 28:32" data-start="00:28:27.693" data-end="00:28:31.557" data-spk="4" data-label="RDB">Next to a chart.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[28:33]</small> <span title="28:33 - 28:40" data-start="00:28:32.921" data-end="00:28:40.342" data-spk="4" data-label="RDB">That shows the reading lists or something like that or even just like look at the curricula that we uphold as.</span><br>
+<span title="28:41 - 28:50" data-start="00:28:40.895" data-end="00:28:49.536" data-spk="4" data-label="RDB">Really well done and really well written like the AP exam lists and stuff like that the classics as you would say.</span><br>
+<span title="28:50 - 29:02" data-start="00:28:50.360" data-end="00:29:01.993" data-spk="4" data-label="RDB">Um because it seems like yeah it seems like from this chart that definitely since 2015 I don't know what happened in 2015 to make this happen but there.</span><br>
+<span title="29:02 - 29:09" data-start="00:29:02.366" data-end="00:29:09.312" data-spk="4" data-label="RDB">Has been a huge increase in by POC authors
+publishing more,</span><br>
+<span title="29:10 - 29:14" data-start="00:29:09.643" data-end="00:29:14.263" data-spk="4" data-label="RDB">and I definitely would say that in 2021 for sure,</span><br>
+<span title="29:14 - 29:28" data-start="00:29:14.474" data-end="00:29:28.463" data-spk="4" data-label="RDB">like with all that the virtual space through this pandemic has allowed all the opportunities it has allowed I have seen like a lot more bipod authors being able to publish and then promo their work as well.</span><br>
+<span title="29:29 - 29:32" data-start="00:29:29.022" data-end="00:29:31.912" data-spk="4" data-label="RDB">But that also comes at a time where like people are.</span><br>
+<span title="29:33 - 29:42" data-start="00:29:32.760" data-end="00:29:42.073" data-spk="4" data-label="RDB">You know arguing about critical race Theory and then conflating it with culturally responsive teaching and then I also am a Virginia now.</span><br>
+<span title="29:43 - 29:56" data-start="00:29:42.692" data-end="00:29:55.966" data-spk="4" data-label="RDB">And you know we or Virginia just to liked it young canned governor and one of his most popular stances that kind of got that kind of resonated with people was.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[29:57]</small> <span title="29:57 - 30:05" data-start="00:29:57.054" data-end="00:30:05.100" data-spk="4" data-label="RDB">Getting rid of critical race theory in schools and one of the things that he said that he supported was from a while back but.</span><br>
+<span title="30:06 - 30:20" data-start="00:30:05.749" data-end="00:30:19.564" data-spk="4" data-label="RDB">This woman wanted to she said that beloved by Toni Morrison gave her teenage son nightmares and she wanted to have that band and the last Governor didn't do anything about that but young can promise that he would support parents and that way and so.</span><br>
+<span title="30:20 - 30:28" data-start="00:30:20.009" data-end="00:30:28.361" data-spk="4" data-label="RDB">I'm just I think I'm just a little scared and I think that it to go back to your first question it just puts the burden I guess.</span><br>
+<span title="30:29 - 30:37" data-start="00:30:28.920" data-end="00:30:37.110" data-spk="4" data-label="RDB">On it puts the burden back on by POC people like if I mean for decades children haven't gotten what they.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[30:38]</small> <span title="30:38 - 30:46" data-start="00:30:38.108" data-end="00:30:45.685" data-spk="4" data-label="RDB">Teaching children of color haven't gotten what they needed in schools or the history or access to the books that they need.</span><br>
+<span title="30:46 - 30:56" data-start="00:30:46.064" data-end="00:30:56.327" data-spk="4" data-label="RDB">That affirm them in their history and so parents have to teach them that and churches and Community organizations and so I think that's just where we're going now I mean.</span><br>
+<span title="30:57 - 30:58" data-start="00:30:56.929" data-end="00:30:58.028" data-spk="4" data-label="RDB">I'm even,</span><br>
+<span title="30:58 - 31:09" data-start="00:30:58.179" data-end="00:31:08.916" data-spk="4" data-label="RDB">I was going to get rid of some of my books but I decided to keep a lot of them especially the ones that I've annotated over the years because I was like if we're going to live in Virginia which I do love this state in our city,</span><br>
+<span title="31:09 - 31:22" data-start="00:31:09.013" data-end="00:31:21.812" data-spk="4" data-label="RDB">so if we're going to stay here and there's a chance that my kids will go to middle and high school and not be able to bring Toni Morrison Into the school then I better keep that stuff at home so we can talk to them about that at home.</span><br>
+<span title="31:22 - 31:26" data-start="00:31:22.293" data-end="00:31:26.289" data-spk="4" data-label="RDB">And I believe that I do believe that there's like.</span><br>
+<span title="31:27 - 31:41" data-start="00:31:27.034" data-end="00:31:41.293" data-spk="4" data-label="RDB">Kids especially little kids don't have the like their concrete thinkers so they're not able to understand the nuke the entire new ones of everything all at one time but they can understand new ones in pieces for sure,</span><br>
+<span title="31:42 - 31:44" data-start="00:31:41.516" data-end="00:31:43.667" data-spk="4" data-label="RDB">um and if the school isn't.</span><br>
+<span title="31:44 - 31:57" data-start="00:31:44.052" data-end="00:31:56.755" data-spk="4" data-label="RDB">Does it give it to them then they just have to learn it at home I mean that's how I learned a lot of the conflict complicated things about history as a young kid like 5 and 6 years old from my family because I wasn't taught that stuff in schools and so.</span><br>
+<span title="31:57 - 31:59" data-start="00:31:57.170" data-end="00:31:59.092" data-spk="4" data-label="RDB">They are smarter than what we think.</span><br>
+<br>
+<b data-spk="3">Sss:</b><br>
+<small style="opacity: 0.5;">[32:01]</small> <span title="32:01 - 32:10" data-start="00:32:00.703" data-end="00:32:10.119" data-spk="3" data-label="SSS">It's just so ironic right because you know we framed the question here as is there some desire to cancel.</span><br>
+<span title="32:10 - 32:20" data-start="00:32:10.468" data-end="00:32:20.340" data-spk="3" data-label="SSS">Historical figures like Andrew Jackson Thomas Jefferson because of the atrocities they committed against people of color and there's this you know white fear,</span><br>
+<span title="32:21 - 32:30" data-start="00:32:20.545" data-end="00:32:29.792" data-spk="3" data-label="SSS">I love that there's this establishment fear of oh the you're going to wash these important figures from the pages of History because they did things wrong but the reality is.</span><br>
+<span title="32:30 - 32:38" data-start="00:32:30.201" data-end="00:32:37.580" data-spk="3" data-label="SSS">What kind of work is actually canceled what kind of work is actually prevented from seeing the light of day what kind of laws actually make it to the books that say,</span><br>
+<span title="32:38 - 32:46" data-start="00:32:37.737" data-end="00:32:45.777" data-spk="3" data-label="SSS">you can't read Toni Morrison in high school I mean it's just it's it's wild to think that that's where we actually see censorship,</span><br>
+<span title="32:46 - 32:51" data-start="00:32:46.029" data-end="00:32:50.800" data-spk="3" data-label="SSS">happening and that's why I can't take arguments from people who say oh you know.</span><br>
+<span title="32:51 - 33:02" data-start="00:32:51.269" data-end="00:33:01.947" data-spk="3" data-label="SSS">In fighting against criticizing Thomas Jefferson or energy action is just you know fighting for against cancellation and and,</span><br>
+<span title="33:02 - 33:08" data-start="00:33:02.050" data-end="00:33:08.112" data-spk="3" data-label="SSS">you know white watching these ideas from history it's like no it's an attempt to actually have a real conversation.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[33:10]</small> <span title="33:10 - 33:13" data-start="00:33:09.705" data-end="00:33:12.697" data-spk="3" data-label="SSS">Looking at a chart like this you know you think about.</span><br>
+<span title="33:13 - 33:22" data-start="00:33:13.443" data-end="00:33:21.645" data-spk="3" data-label="SSS">It's like it's so obvious why we need to take books like The Great Gatsby and say hey let's take a break from reading this,</span><br>
+<span title="33:22 - 33:32" data-start="00:33:21.669" data-end="00:33:31.560" data-spk="3" data-label="SSS">in the AP classes not because we want to cancel The Great Gatsby just because I we noticed that it is it's a white book written about a white community and.</span><br>
+<span title="33:32 - 33:34" data-start="00:33:31.993" data-end="00:33:33.789" data-spk="3" data-label="SSS">You know for a.</span><br>
+<span title="33:34 - 33:47" data-start="00:33:34.300" data-end="00:33:47.261" data-spk="3" data-label="SSS">Audience of white teachers who are teaching this to their students that I think is an important point but we're not talking about removing Great Gatsby from the world we're not talking about banning the book we're saying can we make space for some other books.</span><br>
+<span title="33:48 - 33:52" data-start="00:33:47.610" data-end="00:33:52.411" data-spk="3" data-label="SSS">In here because the demographics of our students the demographics of our country don't look like.</span><br>
+<span title="33:53 - 34:06" data-start="00:33:52.838" data-end="00:34:06.232" data-spk="3" data-label="SSS">The books that were putting on these lists the the authors of the books that we're putting on these lists there is a not they're not they don't match up in an honest way and so I think that there's this idea that when we talk about.</span><br>
+<span title="34:07 - 34:10" data-start="00:34:07.350" data-end="00:34:10.450" data-spk="3" data-label="SSS">Canceling something a lot of times,</span><br>
+<span title="34:11 - 34:19" data-start="00:34:10.709" data-end="00:34:18.959" data-spk="3" data-label="SSS">there's a critique that things are being canceled when really were saying can we just take a break from those texts that have been so it's been pushed so much over the years.</span><br>
+<span title="34:21 - 34:25" data-start="00:34:20.510" data-end="00:34:25.443" data-spk="3" data-label="SSS">And make space for some other authors and make space for some other perspectives.</span><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[34:27]</small> <span title="34:27 - 34:39" data-start="00:34:27.258" data-end="00:34:39.324" data-spk="2" data-label="NAL">Yeah thank you both for sitting with me on this topic I think it's super important you know I did just want to mention one thing to teachers out there which is that we know that,</span><br>
+<span title="34:39 - 34:44" data-start="00:34:39.384" data-end="00:34:44.347" data-spk="2" data-label="NAL">you may not always be in control of the books that are read in your classrooms,</span><br>
+<span title="34:45 - 34:53" data-start="00:34:44.642" data-end="00:34:52.844" data-spk="2" data-label="NAL">you know sometimes that's out of your control but one thing that dr. Hoover mentioned that you can do is you know read,</span><br>
+<span title="34:53 - 35:05" data-start="00:34:53.073" data-end="00:35:05.355" data-spk="2" data-label="NAL">with your students in a way that is critical of what's what's being presented to them even if they are forced to read The Great Gatsby you as a teacher can point out okay you know this book is about who and who's not,</span><br>
+<span title="35:05 - 35:12" data-start="00:35:05.488" data-end="00:35:11.532" data-spk="2" data-label="NAL">in this book you know who do you notice is missing and why do you think they're missing why do you think that story is not being told.</span><br>
+<span title="35:12 - 35:22" data-start="00:35:12.170" data-end="00:35:21.808" data-spk="2" data-label="NAL">That's that's one way to potentially engage with a curriculum that maybe whitewashed and still try to read it in a critical way.</span><br>
+<span title="35:22 - 35:32" data-start="00:35:22.169" data-end="00:35:31.549" data-spk="2" data-label="NAL">That's unfortunately all the time that we have for today's episode but we would love to hear from you our audience members and would love to hear what you think.</span><br>
+<br>
+<b data-spk="5">Music</b><br>
+<br>
+<b data-spk="3">Sss:</b><br>
+<small style="opacity: 0.5;">[35:32]</small> <span title="35:32 - 35:38" data-start="00:35:32.288" data-end="00:35:37.852" data-spk="3" data-label="SSS">Yeah so don't forget to join us on Reddit or Twitter or Instagram and share your opinion on this week's debate and.</span><br>
+<br>
+<b data-spk="4">Rdb:</b><br>
+<small style="opacity: 0.5;">[35:39]</small> <span title="35:39 - 35:45" data-start="00:35:38.724" data-end="00:35:45.496" data-spk="4" data-label="RDB">And to learn more about this week's guests and to find out how to support the podcast visit learning machine pods.</span><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[35:48]</small> <span title="35:48 - 35:51" data-start="00:35:47.636" data-end="00:35:51.259" data-spk="2" data-label="NAL">It's all who teach listen and learn we'll see you next time.</span><br>
+
+<br>
+</div>
+
+
+<script type="text/javascript">
+
+function getBgAlpha(element) {
+    var currentColor = getComputedStyle(element).getPropertyValue('background-color');
+    var parts = currentColor.match(/[\d.]+/g);
+    var alpha = "0"
+
+    try {
+        alpha = parts[3];
+    }
+    catch(err) {
+        // on edge we don't get a color if RGBA is completely 0
+    }
+
+    return alpha;
+}
+
+function removeStyling() {
+    var elements = document.getElementsByTagName('span');
+    var newColorBase = 'rgba(255, 255, 255, ';
+    for (var i=0; i<elements.length; i++) {
+        var currentAlpha = getBgAlpha(elements[i]);
+        var newColor = newColorBase + currentAlpha + ')';
+        elements[i].style = 'background: ' + newColor + ';';
+    }
+
+    try {
+        var button = document.getElementById('toggle-styling');
+        button.innerText = 'Add Highlighting';
+        button.onclick = function() { addStyling(); } ;
+    }
+    catch(err) {
+        // no confidence available
+    }
+}
+
+function addStyling() {
+    var elements = document.getElementsByTagName('span');
+    var newColorBase = 'rgba(209, 72, 54, ';
+    for (var i=0; i<elements.length; i++) {
+        var currentAlpha = getBgAlpha(elements[i]);
+        var newColor = newColorBase + currentAlpha + ')';
+        elements[i].style = 'background: ' + newColor + ';';
+    }
+
+    try {
+        var button = document.getElementById('toggle-styling');
+        button.innerText = 'Remove Highlighting';
+        button.onclick = function() { removeStyling(); } ;
+    }
+    catch(err) {
+        // no confidence available
+    }
+}
+
+function enableEdit() {
+    var transcript = document.getElementById('transcript');
+    transcript.contentEditable = true;
+    transcript.classList.add("edit-mode");
+
+    var button = document.getElementById('edit-transcript');
+    button.innerText = 'Close Edit Mode';
+    button.onclick = function() { disableEdit(); } ;
+
+    var elements = document.querySelectorAll('b[data-spk]');
+    for (var i=0; i<elements.length; i++) {
+        elements[i].title = 'Change speaker name to edit all speakers at once!';
+    }
+}
+
+function disableEdit() {
+    var transcript = document.getElementById('transcript');
+    transcript.contentEditable = false;
+    transcript.classList.remove("edit-mode");
+
+    var button = document.getElementById('edit-transcript');
+    button.innerText = 'Edit Transcript';
+    button.onclick = function() { enableEdit(); } ;
+
+    var elements = document.querySelectorAll('b[data-spk]');
+    for (var i=0; i<elements.length; i++) {
+        elements[i].title = '';
+    }
+}
+
+function removeSpans(transcript) {
+    var removeSpans = new RegExp('</?span[^>]*>','gm');
+    transcript = transcript.replace(removeSpans, '');
+    transcript = transcript.replace(/&nbsp;/g, ' ');
+    return transcript;
+}
+
+function showExportButtons() {
+    var button = document.getElementById('show-export-buttons');
+    button.innerText = '>';
+    button.title = 'Close export buttons.';
+    button.classList.add("export-buttons-shown");
+    button.onclick = function() { hideExportButtons(); } ;
+
+    document.getElementById('export-html').style = '';
+    document.getElementById('export-pdf').style = '';
+    document.getElementById('export-webvtt').style = '';
+    document.getElementById('save-changes').style = '';
+    document.getElementById('show-help').style = 'display: none;';
+}
+
+function hideExportButtons() {
+    var button = document.getElementById('show-export-buttons');
+    button.innerText = 'Export...';
+    button.title = '';
+    button.classList.remove("export-buttons-shown");
+    button.onclick = function() { showExportButtons(); } ;
+
+    document.getElementById('export-html').style = 'display: none;';
+    document.getElementById('export-pdf').style = 'display: none;';
+    document.getElementById('export-webvtt').style = 'display: none;';
+    document.getElementById('save-changes').style = 'display: none;';
+    document.getElementById('show-help').style = '';
+}
+
+function saveChanges() {
+    disableEdit();
+    hideExportButtons();
+
+    var head = document.head.innerHTML;
+    var body = document.body.innerHTML;
+
+    var pageSource = '<!DOCTYPE html><html><head>' + head + '</head><body>' + body + '</body></html>';
+    var filename = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+
+    var bl = new Blob([pageSource], {type: "text/html"});
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(bl);
+    a.download = filename;
+    a.hidden = true;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+}
+
+function exportHTML() {
+    disableEdit();
+    removeStyling();
+
+    var head = document.head.innerHTML;
+    var metadata = document.getElementById('metadata').innerHTML;
+    var transcript = document.getElementById('transcript').innerHTML;
+
+    transcript = removeSpans(transcript);
+
+    var pageSource = '<!DOCTYPE html><html><head>' + head + '</head><body>' + metadata + '<div class="transcript-base">' + transcript + '</div></body></html>';
+    var filename = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+
+    var bl = new Blob([pageSource], {type: "text/html"});
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(bl);
+    a.download = filename;
+    a.hidden = true;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    hideExportButtons();
+}
+
+function exportWebVTT() {
+    disableEdit();
+
+    var pageSource = 'WEBVTT\n\n';
+
+    var segments = document.querySelectorAll('span[data-start]');
+    for (var i=0; i<segments.length; i++) {
+        pageSource += segments[i].getAttribute('data-start') + ' --> ';
+        pageSource += segments[i].getAttribute('data-end') + '\n';
+        if (segments[i].getAttribute('data-spk') !== null) {
+            pageSource += '<v ' + segments[i].getAttribute('data-label') + '>';
+        }
+        pageSource += removeSpans(segments[i].innerHTML);
+        pageSource += '\n\n';
+    }
+
+    var filename = location.pathname.substring(location.pathname.lastIndexOf('/') + 1);
+    filename = filename.substring(0, filename.lastIndexOf('.')) + '.vtt';
+
+    var bl = new Blob([pageSource], {type: 'text/vtt'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(bl);
+    a.download = filename;
+    a.hidden = true;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    hideExportButtons();
+}
+
+function getSecondsFromString(timeString) {
+    var splitStrg = timeString.split(":");
+    var seconds = 0;
+    for (var i=0; i<splitStrg.length; i++) {
+        if (i == 0) { seconds += parseInt(splitStrg[splitStrg.length - 1]); }
+        if (i == 1) { seconds += parseInt(splitStrg[splitStrg.length - 2]) * 60; }
+        if (i == 2) { seconds += parseInt(splitStrg[splitStrg.length - 3]) * 3600; }
+    }
+    return seconds;
+}
+
+function pad(num, size) {
+    var s = num + "";
+    while (s.length < size) s = "0" + s;
+    return s;
+}
+
+function secToTimeString(seconds) {
+    var ss = Math.round(seconds);
+    var cmin = Math.floor(ss / 60);
+    var csec = ss % 60;
+
+    if (cmin < 60) {
+        return cmin + ":" + pad(csec, 2);
+    } else {
+        var ch = Math.floor(cmin / 60);
+        var cm = cmin % 60;
+        return ch + ":" + pad(cm, 2) + ":" + pad(csec, 2);
+    }
+}
+
+function removeActiveClass() {
+    var elements = document.querySelectorAll('span.active');
+    for (var i=0; i<elements.length; i++) {
+        elements[i].classList.remove("active");
+        // elements[i].classList.add("listened");
+    }
+}
+
+function addAudioFile() {
+    var txt;
+    var url = prompt(
+        'Please enter complete URL for the audio file, which should be played along the transcript\n(a local path should start with "file:///"):',
+        'https://auphonic.com/media/audio-examples/03.auphonic-demo-denoise-100.m4a'
+    );
+    if (url == null || url == "") { return; }
+
+    var audio = document.getElementById('audio-player');
+    var oldSources = document.querySelectorAll('source');
+    for (var i=0; i<oldSources.length; i++) {
+        oldSources[i].remove();
+    }
+
+    var source = document.createElement('source');
+    source.src = url;
+    audio.appendChild(source);
+
+    addAudioPlayer();
+}
+
+function addAudioPlayer() {
+    var audio = document.getElementById('audio-player');
+
+    document.getElementById('add-audio-file').style = '';
+    document.getElementById('toggle-play-on-click').style = 'display: none;';
+
+    audio.oncanplay = function() {
+        AUDIO_PLAYER = audio;
+
+        // highlight current audio segment
+        if (HAVE_TIMESTAMPS) {
+            AUDIO_PLAYER.ontimeupdate = function() {
+                if (ARE_PLAYING) {
+                    removeActiveClass();
+                    var curTime = secToTimeString(AUDIO_PLAYER.currentTime);
+                    elements = document.querySelectorAll('span[title="' + curTime + '"]');
+                    for (var i=0; i<elements.length; i++) {
+                        elements[i].classList.add("active");
+                    }
+                }
+            };
+        }
+
+        // setup click handlers to play audio on mouse click
+        if (HAVE_TIMESTAMPS) {
+            var elements = document.getElementsByTagName('span');
+            for (var i=0; i<elements.length; i++) {
+                if (elements[i].getAttribute('data-start') === null) {  // no data-start attribute
+                    try {
+                        elements[i].removeEventListener("click", clickHandlerTimestamp);
+                    } catch(err) { }
+                    elements[i].addEventListener("click", clickHandlerTimestamp);
+                }
+            }
+        } else {
+            var elements = document.querySelectorAll('span[data-start]');
+            for (var i=0; i<elements.length; i++) {
+                try {
+                    elements[i].removeEventListener("click", clickHandlerSegment);
+                } catch(err) { }
+                elements[i].addEventListener("click", clickHandlerSegment);
+            }
+        }
+
+        enableAudioClickPlayback();
+
+        var button = document.getElementById('add-audio-file');
+        button.style = "display: none;";
+    }
+
+    audio.load();
+}
+
+function clickHandlerTimestamp(e) {
+    var target = (e.target) ? e.target : e.srcElement;
+    var timeString = target.title;
+    var timeSec = getSecondsFromString(timeString);
+    playAudioSegment(timeSec -0.6, timeSec + 3.4);
+}
+
+function clickHandlerSegment(e) {
+    if (PLAYBACK_ON_CLICK) {
+        var target = (e.target) ? e.target : e.srcElement;
+        removeActiveClass();
+        target.classList.add("active");
+        var startTimeStrg = target.getAttribute("data-start").split(".")[0];
+        var endTimeStrg = target.getAttribute("data-end").split(".")[0];
+        var startSec = getSecondsFromString(startTimeStrg);
+        var endSec = getSecondsFromString(endTimeStrg) + 1;
+        playAudioSegment(startSec, endSec);
+    }
+}
+
+function enableAudioClickPlayback() {
+    var button = document.getElementById('toggle-play-on-click');
+    button.innerText = 'Stop Play-on-click';
+    button.style = "";
+    button.onclick = function() { disableAudioClickPlayback(); } ;
+    PLAYBACK_ON_CLICK = true;
+}
+
+function disableAudioClickPlayback() {
+    AUDIO_PLAYER.pause();
+    ARE_PLAYING = false;
+    removeActiveClass();
+    var button = document.getElementById('toggle-play-on-click');
+    button.innerText = 'Activate Play-on-click';
+    button.style = "";
+    button.onclick = function() { enableAudioClickPlayback(); } ;
+    PLAYBACK_ON_CLICK = false;
+}
+
+function playAudioSegment(start_sec, end_sec) {
+    if (AUDIO_PLAYER !== null && PLAYBACK_ON_CLICK) {
+        if (PAUSE_TIMEOUT !== null) { clearTimeout(PAUSE_TIMEOUT); }
+
+        AUDIO_PLAYER.currentTime = start_sec;
+        AUDIO_PLAYER.play();
+        ARE_PLAYING = true;
+
+        var length_ms = (end_sec - start_sec) * 1000;
+        PAUSE_TIMEOUT= setTimeout(function(){
+            AUDIO_PLAYER.pause();
+            PAUSE_TIMEOUT = null;
+            ARE_PLAYING = false;
+            removeActiveClass();
+        }, length_ms);
+    }
+}
+
+function setupTranscriptChangeListeners() {
+    var trans = document.getElementById('transcript');
+    trans.addEventListener("keyup", function(e){
+        var editedNode = window.getSelection().anchorNode.parentNode;
+
+        // set background of already edited spans back to white
+        if (HAVE_TIMESTAMPS && HAVE_CONFIDENCE) {
+            var clearNode = editedNode;
+            if (clearNode.tagName == "SPAN") {
+                if (clearNode.getAttribute("data-start") !== null) {
+                    // if we click into the parent span, we have to get the next node!
+                    clearNode = window.getSelection().anchorNode.nextSibling;
+                }
+                if (clearNode.tagName == "SPAN" && clearNode.getAttribute("title") !== null) {
+                    clearNode.style = 'background: white;';
+                }
+            }
+        }
+
+        // change all speaker names if we change one speaker
+        if (editedNode.tagName == "B" && editedNode.getAttribute("data-spk") !== null) {
+            var curSpeaker = editedNode.getAttribute("data-spk");
+
+            var elements = document.querySelectorAll('b[data-spk="' + curSpeaker + '"]');
+            for (var i=0; i<elements.length; i++) {
+                if (elements[i] !== editedNode) {
+                    elements[i].innerText = editedNode.innerText;
+                }
+            }
+
+            // for WebVTT export
+            var elements = document.querySelectorAll('span[data-spk="' + curSpeaker + '"]');
+            var label = editedNode.innerText;
+            if (label[label.length -1] == ":") {
+                label = label.substring(0, label.length - 1);
+            }
+            for (var i=0; i<elements.length; i++) {
+                elements[i].setAttribute("data-label", label);
+            }
+        }
+    });
+}
+
+HAVE_CONFIDENCE = false;
+HAVE_TIMESTAMPS = HAVE_CONFIDENCE;  // for now ...
+
+AUDIO_PLAYER = null;
+PAUSE_TIMEOUT = null;
+PLAYBACK_ON_CLICK = false;
+ARE_PLAYING = false;
+
+window.addEventListener("load", function(){
+    if(!HAVE_CONFIDENCE) {
+        var button = document.getElementById('toggle-styling');
+        if (button !== null) { button.remove(); }
+    }
+
+    addAudioPlayer();
+    setupTranscriptChangeListeners();
+});
+</script>
+
+
+</body>
+</html>
