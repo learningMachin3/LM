@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+    <title>Equality Not Sameness</title>
+
+    <style>
+    body { margin: 0; }
+    #title, #subtitle, #info, #summary { text-align: center; }
+    #summary { margin: 0 10%; }
+    #chapter { margin-top: 1em; }
+
+    #edit-bar {
+        margin-top: 2em; display: flex; justify-content: space-between; flex-wrap: wrap;
+        position: -webkit-sticky; position: sticky; top: 0; left: 0;
+        background: white; z-index: 999;
+        font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+        -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; text-size-adjust: 100%;
+    }
+    #edit-bar-spacer { flex-grow: 1; }
+    .button {
+        background-color: #f5f5f5; color: #363636;
+        border: 1px solid #dbdbdb; border-radius: 4px; box-shadow: none;
+        margin: 0.5em; padding: 5px 12px;
+        cursor:pointer;font-size: 0.9em;
+        justify-content:center; text-align:center; white-space:nowrap;
+        display: inline-flex; position: relative; vertical-align: top;
+        user-select: none; text-decoration: none;
+    }
+    .button:hover{border-color:#b5b5b5;color:#363636;background-color:#eee;}
+    .button:active{border-color:#4a4a4a;color:#363636;background-color:#e8e8e8;}
+    .button.export-option { margin: 0.5em 0.2em 0.5em auto; }
+    .button.export-buttons-shown { margin-left: 0.2em; margin-left: auto; }
+
+    span.active { font-weight: bold; }
+    span.listened { font-weight: bold; font-style: italic; }
+    #transcript.edit-mode { border-style: dashed; padding: 10px; }
+    #transcript span { cursor: pointer; }
+    #transcript.edit-mode span { cursor: text; }
+    .transcript-base { margin: 0.5em; }
+
+    @media all and (max-width: 900px) {
+      .button.export-buttons-shown { margin: 0.5em; margin-left: auto; }
+      .button.export-option { margin: 0.5em; margin-left: auto; }
+    }
+
+    @media all and (max-width: 340px) {
+      .button { margin: 0.2em; }
+    }
+
+    @media print {
+        #edit-bar { display: none; }
+        .button { display: none; }
+        span { background: white; }
+        #transcript { border-style: none !important; padding: 0px !important; }
+    }
+    </style>
+</head>
+
+<body>
+
+
+<div id="metadata">
+<h1 id="title">Equality Not Sameness</h1>
+<h4 id="subtitle">Feature Dr. Kathryn Paige Harden</h4>
+
+<p id="info">
+2021, Learning Machine Podcast<br>
+Series 2<br>
+<a href="https://www.learningmachinepodcast.com" target="_blank">https://www.learningmachinepodcast.com</a>
+</p>
+
+<p id="summary">
+Dr. Kathryn Paige Harden recently published her first book, The Genetic Lottery: Why DNA Matters for Social Equality where she makes an urgent case for acknowledging people's individual genetic differences as a necessary precursor to achieving social equality. Dr. Harden compares genetic differences to socioeconomic inequality and argues that her research is an anti-eugenic reclaiming of genetics. In this episode we discuss the implications of Harden's work for teachers, researchers, and policy makers in the field of education where inequality is still very much an unsolved challenge.
+</p>
+
+
+</div>
+
+<div id="edit-bar">
+    <a class="button" id="edit-transcript" onclick="enableEdit();" title="Enable/disable edit mode.">Edit Transcript</a>
+    <a class="button" id="toggle-styling" onclick="removeStyling();" title="Words with low recognition confidence will be highlighted in red.">Remove Highlighting</a>
+    <a class="button" id="add-audio-file" onclick="addAudioFile();" title="Add audio file which should be played along the transcript.">Add Audio File</a>
+    <a class="button" id="toggle-play-on-click" title="Enable/disable click on word for audio playback." style="display: none;">Stop Play-on-click</a>
+
+    <div id="edit-bar-spacer"></div>
+
+    <a class="button export-option" id="save-changes" onclick="saveChanges();" style="display: none;" title="Save transcript editor with current changes for further editing or sharing.">Save Editor</a>
+    <a class="button export-option" id="export-html" onclick="exportHTML();" style="display: none;" title="Export transcript as HTML for Word, Wordpress, etc.">Export HTML</a>
+    <a class="button export-option" id="export-pdf" onclick="window.print(); hideExportButtons();" style="display: none;" title="Export transcript as PDF or to printer.">Export PDF</a>
+    <a class="button export-option" id="export-webvtt" onclick="exportWebVTT();" style="display: none;" title="Export transcript as WebVTT for web players.">Export WebVTT</a>
+    <a class="button" id="show-export-buttons" onclick="showExportButtons();">Export...</a>
+    <a class="button" id="show-help" href="https://auphonic.com/help/algorithms/speech_recognition.html#auphonic-transcript-editor" target="_blank" title="Show transcript editor help.">?</a>
+
+    <audio id="audio-player" preload="auto" style="display: none;">
+        <source src="https://pdcn.co/e/www.buzzsprout.com/1720583/9705923-equality-not-sameness-w-dr-kathryn-paige-harden.mp3?download=true">
+    </audio>
+</div>
+
+<div id="transcript" class="transcript-base">
+
+<h2 id="chapter">Transcript</h2>
+<b data-spk="5">Music</b><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[0:03]</small> <span title="0:03 - 0:05" data-start="00:00:02.812" data-end="00:00:04.788" data-spk="2" data-label="NAL">Cast about the uncertain future of.</span><br>
+<span title="0:07 - 0:17" data-start="00:00:06.652" data-end="00:00:17.438" data-spk="2" data-label="NAL">Here with salmon Raven and our guest today is dr. Catherine page Harden the author of the genetic Lottery y-dna matters for social equality thanks for joining us.</span><br>
+<br>
+<b data-spk="1">Guest:</b><br>
+<small style="opacity: 0.5;">[0:26]</small> <span title="0:26 - 0:40" data-start="00:00:26.151" data-end="00:00:40.242" data-spk="1" data-label="Guest">So I mean I think one way to think about it as like for for your listeners who do any sort of educational research or consume educational research and their imagine if every dataset in in the world of Education.</span><br>
+<span title="0:41 - 0:46" data-start="00:00:41.240" data-end="00:00:45.710" data-spk="1" data-label="Guest">The the variable for student income got deleted.</span><br>
+<span title="0:46 - 0:53" data-start="00:00:46.119" data-end="00:00:52.807" data-spk="1" data-label="Guest">You just didn't know you were trying to do education research in America and you never knew,</span><br>
+<span title="0:53 - 1:08" data-start="00:00:53.102" data-end="00:01:07.962" data-spk="1" data-label="Guest">whether students came from low-income are high income families right and you tried to do all of your research on like how to improve schools and which teachers and like like the whole landscape or you were trying to consume research.</span><br>
+<span title="1:09 - 1:18" data-start="00:01:08.792" data-end="00:01:18.111" data-spk="1" data-label="Guest">And the whole time it was a complete mystery
+whether kids came from Rich families or poor families.</span><br>
+<span title="1:19 - 1:32" data-start="00:01:18.995" data-end="00:01:32.479" data-spk="1" data-label="Guest">That is so hard to imagine and that is the exact situation that education researches in with regards to genetics even though genetics is just as strongly related to how kids doing school social class,</span><br>
+<span title="1:33 - 1:36" data-start="00:01:32.786" data-end="00:01:35.568" data-spk="1" data-label="Guest">that's you know that is.</span><br>
+<span title="1:37 - 1:51" data-start="00:01:36.680" data-end="00:01:50.704" data-spk="1" data-label="Guest">I want us to make that information more visible at the research level which sounds very dry and boring until you think about how hard your job would be if SES information disappeared.</span><br>
+<br>
+<b data-spk="5">Music</b><br>
+<br>
+<b data-spk="3">Sss:</b><br>
+<small style="opacity: 0.5;">[2:00]</small> <span title="2:00 - 2:10" data-start="00:02:00.403" data-end="00:02:09.717" data-spk="3" data-label="SSS">The voice you just heard was our education expert today dr. Catherine page Harden who was a tenured professor in the department of psychology at the University of Texas in Austin.</span><br>
+<br>
+<b data-spk="4">Rdb:</b><br>
+<small style="opacity: 0.5;">[2:11]</small> <span title="2:11 - 2:17" data-start="00:02:10.619" data-end="00:02:16.694" data-spk="4" data-label="RDB">Dr. Hardin leaves the developmental Behavior genetics lab and co-directs the Texas twin.</span><br>
+<span title="2:17 - 2:29" data-start="00:02:17.097" data-end="00:02:29.222" data-spk="4" data-label="RDB">She recently published her first book the genetic Lottery where she makes an urgent case for developing an egalitarian anti Eugenics that acknowledges the reality of genetic differences between people.</span><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[2:31]</small> <span title="2:31 - 2:43" data-start="00:02:30.527" data-end="00:02:43.476" data-spk="2" data-label="NAL">Well dr. Hardin is primarily a geneticist she's also an educator and much of her work on genetics ties directly to educational outcomes and education research stay with us.</span><br>
+<br>
+<b data-spk="5">Music</b><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[2:50]</small> <span title="2:50 - 3:01" data-start="00:02:50.357" data-end="00:03:00.914" data-spk="2" data-label="NAL">Our debate topic for today is a question that I posed to dr. Hardin during our interview and I'll save her take until after we've had a chance to discuss but.</span><br>
+<span title="3:01 - 3:10" data-start="00:03:01.371" data-end="00:03:09.748" data-spk="2" data-label="NAL">The question came up when we were talking about how teachers are already implicitly aware of vast amounts of information about their students,</span><br>
+<span title="3:10 - 3:16" data-start="00:03:10.000" data-end="00:03:16.496" data-spk="2" data-label="NAL">in generally we assume that access to information helps teachers to be more Catholic culturally responsive,</span><br>
+<span title="3:17 - 3:27" data-start="00:03:16.550" data-end="00:03:26.519" data-spk="2" data-label="NAL">so the question that I wanted to pose for today's episode is should teachers also be privy to genetic information about their students.</span><br>
+<span title="3:27 - 3:31" data-start="00:03:27.481" data-end="00:03:31.314" data-spk="2" data-label="NAL">And I'll turn to you Sam first because I'm curious to hear your thoughts.</span><br>
+<br>
+<b data-spk="3">Sss:</b><br>
+<small style="opacity: 0.5;">[3:32]</small> <span title="3:32 - 3:44" data-start="00:03:31.579" data-end="00:03:43.915" data-spk="3" data-label="SSS">Yeah I mean this is complicated because on the one hand that idea that more access to information allows teachers to be more culturally responsive really resonates with me,</span><br>
+<span title="3:44 - 3:58" data-start="00:03:44.288" data-end="00:03:58.427" data-spk="3" data-label="SSS">I know that thinking about serving students in my classroom I always wanted to know what's your language background your cultural background how can I make sure that I know enough to create a classroom environment that is,</span><br>
+<span title="3:59 - 4:05" data-start="00:03:58.728" data-end="00:04:05.025" data-spk="3" data-label="SSS">comfortable and supportive
+to those students and the information helps you.</span><br>
+<span title="4:06 - 4:09" data-start="00:04:05.644" data-end="00:04:09.123" data-spk="3" data-label="SSS">At the same time I'm keenly aware that</span><br>
+<span title="4:09 - 4:21" data-start="00:04:09.034" data-end="00:04:20.619" data-spk="3" data-label="SSS">the idea of someone like a teacher having access to genetic information about students feels problematic that feels like a gigantic minefield</span><br>
+<span title="4:20 - 4:26" data-start="00:04:20.487" data-end="00:04:26.087" data-spk="3" data-label="SSS">of legal and scientific problems many of which feel way above my pay grade but.</span><br>
+<span title="4:26 - 4:31" data-start="00:04:26.478" data-end="00:04:30.786" data-spk="3" data-label="SSS">For the sake of the argument I guess I would say allowing for.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[4:32]</small> <span title="4:32 - 4:46" data-start="00:04:31.970" data-end="00:04:46.043" data-spk="3" data-label="SSS">Parents and students together to make a decision about what information is shared along with you know support and expertise from the school school district educational experts to say what genetic information is actually relevant.</span><br>
+<span title="4:47 - 4:57" data-start="00:04:46.614" data-end="00:04:57.124" data-spk="3" data-label="SSS">How that genetic information should be shared you know I don't think that the you know a student's genome should be shared directly with a teacher.</span><br>
+<span title="4:58 - 5:03" data-start="00:04:58.140" data-end="00:05:02.688" data-spk="3" data-label="SSS">But a teacher knowing this student may.</span><br>
+<span title="5:04 - 5:13" data-start="00:05:03.518" data-end="00:05:13.426" data-spk="3" data-label="SSS">Right and we have to remember that this stuff is probabilities it's not definitive anything this student may need more support or help in,</span><br>
+<span title="5:14 - 5:24" data-start="00:05:13.751" data-end="00:05:23.504" data-spk="3" data-label="SSS">math or may need some kinda mean if there is if there is an ability to give some kind of targeted support and know more about the student to serve them better.</span><br>
+<span title="5:24 - 5:26" data-start="00:05:23.907" data-end="00:05:26.304" data-spk="3" data-label="SSS">And we communicate that information carefully.</span><br>
+<span title="5:27 - 5:36" data-start="00:05:26.719" data-end="00:05:35.858" data-spk="3" data-label="SSS">And we check in with the family the to make sure this is okay and give them the right of refusal then yes under all those conditions I do think that.</span><br>
+<span title="5:36 - 5:43" data-start="00:05:36.472" data-end="00:05:43.309" data-spk="3" data-label="SSS">Maybe we should we should have teachers you know knowing genetic information about that suit their students that makes sense.</span><br>
+<span title="5:44 - 5:49" data-start="00:05:43.983" data-end="00:05:48.748" data-spk="3" data-label="SSS">With a lot of context Raven I don't know what do you what do you think about this.</span><br>
+<br>
+<b data-spk="4">Rdb:</b><br>
+<small style="opacity: 0.5;">[5:49]</small> <span title="5:49 - 5:53" data-start="00:05:48.766" data-end="00:05:53.381" data-spk="4" data-label="RDB">I feel like the way that you use student information is the way that we want.</span><br>
+<span title="5:54 - 6:02" data-start="00:05:53.904" data-end="00:06:01.733" data-spk="4" data-label="RDB">Teachers to use student information like in order to get to know the students better so that they can offer more support.</span><br>
+<span title="6:02 - 6:06" data-start="00:06:02.148" data-end="00:06:06.084" data-spk="4" data-label="RDB">And I feel like a lot of teachers do that I also feel like a lot of teachers.</span><br>
+<span title="6:07 - 6:14" data-start="00:06:06.643" data-end="00:06:14.400" data-spk="4" data-label="RDB">Um take that information and go ahead and make genetic assumptions about those students based on that so.</span><br>
+<span title="6:15 - 6:26" data-start="00:06:15.032" data-end="00:06:25.794" data-spk="4" data-label="RDB">When you like you know you already get a list when you get your roster you are able to a lot of times able to see your kids pictures you're able to see even there like.</span><br>
+<span title="6:26 - 6:30" data-start="00:06:26.485" data-end="00:06:30.000" data-spk="4" data-label="RDB">Guardian contact information like if it's their parents,</span><br>
+<span title="6:30 - 6:43" data-start="00:06:30.367" data-end="00:06:42.703" data-spk="4" data-label="RDB">or if the parents are together you can see from the contact information in the mailing addresses and everything and especially if you live in that Community you know where the students live and where they work even and.</span><br>
+<span title="6:43 - 6:50" data-start="00:06:43.449" data-end="00:06:50.130" data-spk="4" data-label="RDB">Based on their names to you can sometimes tell especially if they have names that are traditional to their culture.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[6:51]</small> <span title="6:51 - 6:55" data-start="00:06:51.032" data-end="00:06:55.070" data-spk="4" data-label="RDB">And a lot of times people make genetic assumptions on that like.</span><br>
+<span title="6:56 - 7:06" data-start="00:06:55.617" data-end="00:07:05.934" data-spk="4" data-label="RDB">Assuming that for instance bullies are less mature than girls and they already decide like we're not going to hold them to the same kind of standard.</span><br>
+<span title="7:06 - 7:16" data-start="00:07:06.331" data-end="00:07:15.999" data-spk="4" data-label="RDB">Or push them as hard necessarily likewise they might assume that white boys automatically are going to have behavior problems or.</span><br>
+<span title="7:16 - 7:24" data-start="00:07:16.432" data-end="00:07:23.979" data-spk="4" data-label="RDB">ADHD you know or even when you're talking about
+Able Body.</span><br>
+<span title="7:25 - 7:36" data-start="00:07:24.503" data-end="00:07:35.907" data-spk="4" data-label="RDB">Versus not able bodied as we Define it you know people assumed that like for instance if the student has Down syndrome that they can't operate at a certain level,</span><br>
+<span title="7:36 - 7:46" data-start="00:07:36.184" data-end="00:07:45.576" data-spk="4" data-label="RDB">in certain subjects the same as other students and so that's what I'm afraid of I'm afraid of giving that genetic information to people who are.</span><br>
+<span title="7:46 - 7:50" data-start="00:07:46.051" data-end="00:07:49.572" data-spk="4" data-label="RDB">Um a lot of times going to just use that too.</span><br>
+<span title="7:51 - 8:03" data-start="00:07:50.516" data-end="00:08:03.153" data-spk="4" data-label="RDB">To justify their their own assumptions that they already make and I'm also not sure like even if a lot of teachers want to do they want to do well with that information and want to support students.</span><br>
+<span title="8:04 - 8:09" data-start="00:08:03.718" data-end="00:08:09.498" data-spk="4" data-label="RDB">We can't just make them privy to it we also have to show them how to use that information and pick it apart,</span><br>
+<span title="8:10 - 8:19" data-start="00:08:09.811" data-end="00:08:19.419" data-spk="4" data-label="RDB">um and understand all the context as Sam said in order to best support students so I think that's a really sticky situation it has me glitching.</span><br>
+<br>
+<b data-spk="3">Sss:</b><br>
+<small style="opacity: 0.5;">[8:19]</small> <span title="8:19 - 8:28" data-start="00:08:19.353" data-end="00:08:27.898" data-spk="3" data-label="SSS">Yeah right it's like the idea of like giving them raw letting them use RAV raw genetic information just seems so problematic on its face.</span><br>
+<br>
+<b data-spk="4">Rdb:</b><br>
+<small style="opacity: 0.5;">[8:28]</small> <span title="8:28 - 8:29" data-start="00:08:27.598" data-end="00:08:29.430" data-spk="4" data-label="RDB">Right.</span><br>
+<br>
+<b data-spk="3">Sss:</b><br>
+<small style="opacity: 0.5;">[8:29]</small> <span title="8:29 - 8:39" data-start="00:08:29.196" data-end="00:08:39.063" data-spk="3" data-label="SSS">You know again yeah I totally agree with you Raven in a way that if we can train teachers if we can show them how if we can you know again communicate to them clearly.</span><br>
+<span title="8:40 - 8:53" data-start="00:08:40.055" data-end="00:08:52.529" data-spk="3" data-label="SSS">How this can be used to support students I would hope that it could maybe work against some of the tendencies that you were talking about assuming that you know because I just am looking at this student I can know.</span><br>
+<span title="8:53 - 9:02" data-start="00:08:53.389" data-end="00:09:01.999" data-spk="3" data-label="SSS">What type of a behavioral person they're going to be
+you know I think that this could work against it and allow us to get to a point where we say.</span><br>
+<span title="9:03 - 9:06" data-start="00:09:02.811" data-end="00:09:05.821" data-spk="3" data-label="SSS">We can we can we know where these students need support.</span><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[9:07]</small> <span title="9:07 - 9:16" data-start="00:09:06.729" data-end="00:09:16.397" data-spk="2" data-label="NAL">Right which is I think that support is the key key word there right because as you both mentioned there's a history of using difference,</span><br>
+<span title="9:17 - 9:18" data-start="00:09:16.578" data-end="00:09:17.737" data-spk="2" data-label="NAL">to exclude.</span><br>
+<span title="9:18 - 9:30" data-start="00:09:18.206" data-end="00:09:29.707" data-spk="2" data-label="NAL">And to you know gate keep certain students from Gaining access to gifted classrooms or advanced math programs or you know even,</span><br>
+<span title="9:30 - 9:36" data-start="00:09:30.050" data-end="00:09:35.644" data-spk="2" data-label="NAL">pushing ships you know students because of their demographics into.</span><br>
+<span title="9:36 - 9:43" data-start="00:09:36.053" data-end="00:09:42.573" data-spk="2" data-label="NAL">You know learning disabled labels or a variety of other ways that,</span><br>
+<span title="9:43 - 9:53" data-start="00:09:42.831" data-end="00:09:53.353" data-spk="2" data-label="NAL">what is sort of like a demographic information has been used to exclude if we instead can sort of shift I think there is a shift in education away from equality and towards equity,</span><br>
+<span title="9:54 - 10:01" data-start="00:09:53.570" data-end="00:10:00.984" data-spk="2" data-label="NAL">and thinking about okay like how can we provide affordances how we provide support to students based on their needs.</span><br>
+<span title="10:02 - 10:16" data-start="00:10:01.676" data-end="00:10:16.404" data-spk="2" data-label="NAL">In if it's used in that way then maybe there's there's a way that people could be trained or so our teachers could be given genetic information and it might be somewhat helpful or you know to the school district but again historically.</span><br>
+<span title="10:17 - 10:26" data-start="00:10:16.987" data-end="00:10:26.403" data-spk="2" data-label="NAL">I think we have to be very careful because it has not been used that way and I hate to say this but as a somewhat pessimistic person I think that we have to worry that.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[10:27]</small> <span title="10:27 - 10:37" data-start="00:10:27.425" data-end="00:10:36.678" data-spk="2" data-label="NAL">If it can be used for evil it will be used for evil so I guess they're sort of a follow-up question here which is.</span><br>
+<span title="10:37 - 10:50" data-start="00:10:37.153" data-end="00:10:49.712" data-spk="2" data-label="NAL">About educational research because this is the other the end dr. Hardin was talking about this in her interview that she doesn't see this as useful information for teachers she sees it as useful for Education researchers,</span><br>
+<span title="10:50 - 11:00" data-start="00:10:49.754" data-end="00:10:59.735" data-spk="2" data-label="NAL">so I'm curious to hear your thoughts on whether you think educational researchers should make it standard practice to collect genetic information about the students they're studying.</span><br>
+<br>
+<b data-spk="3">Sss:</b><br>
+<small style="opacity: 0.5;">[11:01]</small> <span title="11:01 - 11:14" data-start="00:11:01.322" data-end="00:11:14.295" data-spk="3" data-label="SSS">I mean I we sort of rub on this or touched on this moments ago but you know the big issue to me is whether or not this stuff becomes determinant for students if,</span><br>
+<span title="11:15 - 11:18" data-start="00:11:14.614" data-end="00:11:18.315" data-spk="3" data-label="SSS">if by sharing their genetic information with anyone.</span><br>
+<span title="11:19 - 11:31" data-start="00:11:18.874" data-end="00:11:30.778" data-spk="3" data-label="SSS">Someone tries to box the student in and say well this is the path that you're going to go down now because we know something about you that you don't even know about yourself because we've seen it in your genetic code I mean that feels.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[11:32]</small> <span title="11:32 - 11:44" data-start="00:11:31.950" data-end="00:11:44.322" data-spk="3" data-label="SSS">You know wrong and it feels inhuman in some ways it feels like not something that we would do in a free and open Society where we really want to support students when I think about what we want to do in schools,</span><br>
+<span title="11:45 - 11:52" data-start="00:11:44.515" data-end="00:11:51.882" data-spk="3" data-label="SSS">we really want to provide an opportunity for students to succeed in a way that works for them I think,</span><br>
+<span title="11:52 - 12:04" data-start="00:11:52.014" data-end="00:12:03.587" data-spk="3" data-label="SSS">to think about who they are and give them the support that they need to build the skills that they need to live the lives that they want to live and there are a lot of complicated questions tied up and doing that</span><br>
+<span title="12:04 - 12:09" data-start="00:12:03.546" data-end="00:12:08.737" data-spk="3" data-label="SSS">and maybe educational research can elucidate some of that maybe we can get a clearer picture,</span><br>
+<span title="12:09 - 12:17" data-start="00:12:08.768" data-end="00:12:17.006" data-spk="3" data-label="SSS">of how to support students with this information and I think in a world where technology is advancing quickly,</span><br>
+<span title="12:17 - 12:22" data-start="00:12:17.229" data-end="00:12:22.011" data-spk="3" data-label="SSS">it's almost a moot point to ask the question because we know this is going to happen.</span><br>
+<span title="12:23 - 12:33" data-start="00:12:22.847" data-end="00:12:32.665" data-spk="3" data-label="SSS">And so I would really hope that since it's going to happen since genetic information is going to be in play that we can do it in a an ethical way that we can be careful.</span><br>
+<span title="12:33 - 12:43" data-start="00:12:33.225" data-end="00:12:42.725" data-spk="3" data-label="SSS">About how we do this but I am just as both of you have brought up I'm fearful that the use of genetic information in this way will lead to.</span><br>
+<span title="12:43 - 12:50" data-start="00:12:43.332" data-end="00:12:49.563" data-spk="3" data-label="SSS">That kind of determinism boxing people in
+justification for,</span><br>
+<span title="12:50 - 12:55" data-start="00:12:49.918" data-end="00:12:54.701" data-spk="3" data-label="SSS">the excluding that we used to do on the basis of just the way that somebody look.</span><br>
+<br>
+<b data-spk="4">Rdb:</b><br>
+<small style="opacity: 0.5;">[12:57]</small> <span title="12:57 - 13:05" data-start="00:12:57.213" data-end="00:13:05.253" data-spk="4" data-label="RDB">Yeah I agree with Sam 100% actually the way that he described it as such a good way of describing it but.</span><br>
+<span title="13:06 - 13:15" data-start="00:13:06.106" data-end="00:13:14.981" data-spk="4" data-label="RDB">Um I'm a little bit fearful to I do believe that if genetic information is used in an ethical way like he like he said,</span><br>
+<span title="13:15 - 13:24" data-start="00:13:15.318" data-end="00:13:24.223" data-spk="4" data-label="RDB">then maybe it could actually offer us a little more insight on what happens between when a person is born and then,</span><br>
+<span title="13:24 - 13:31" data-start="00:13:24.482" data-end="00:13:30.635" data-spk="4" data-label="RDB">how Society treats them I think that's what I would be more interested in seeing is.</span><br>
+<span title="13:31 - 13:35" data-start="00:13:31.410" data-end="00:13:34.595" data-spk="4" data-label="RDB">Not necessarily anybody make the argument that like you know.</span><br>
+<span title="13:35 - 13:44" data-start="00:13:35.190" data-end="00:13:43.939" data-spk="4" data-label="RDB">These jeans are predisposed to this kind of you know educational success or not but more so.</span><br>
+<span title="13:45 - 13:50" data-start="00:13:45.087" data-end="00:13:49.551" data-spk="4" data-label="RDB">People with with these kind of characteristics.</span><br>
+<span title="13:50 - 14:02" data-start="00:13:50.009" data-end="00:14:02.164" data-spk="4" data-label="RDB">How are they nor how do they normally navigate society and how are they normally treated in society and how are those how do those kind of things maybe come into play with.</span><br>
+<span title="14:03 - 14:12" data-start="00:14:02.550" data-end="00:14:12.452" data-spk="4" data-label="RDB">What they do and how they perform in education I think in that way if you ask all those contextual questions to it could be really useful.</span><br>
+<span title="14:14 - 14:16" data-start="00:14:13.732" data-end="00:14:16.442" data-spk="4" data-label="RDB">But we would have to see I'm kind of a pessimist to.</span><br>
+<br>
+<b data-spk="3">Sss:</b><br>
+<small style="opacity: 0.5;">[14:17]</small> <span title="14:17 - 14:19" data-start="00:14:17.007" data-end="00:14:19.128" data-spk="3" data-label="SSS">Easy to be one.</span><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[14:20]</small> <span title="14:20 - 14:23" data-start="00:14:19.717" data-end="00:14:23.370" data-spk="2" data-label="NAL">Especially given the history of genetics in education right I mean.</span><br>
+<br>
+<b data-spk="4">Rdb:</b><br>
+<small style="opacity: 0.5;">[14:23]</small> <span title="14:23 - 14:24" data-start="00:14:23.070" data-end="00:14:24.278" data-spk="4" data-label="RDB">Right.</span><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[14:24]</small> <span title="14:24 - 14:30" data-start="00:14:23.978" data-end="00:14:30.113" data-spk="2" data-label="NAL">The the quote that I used at the beginning was from a New York Times review of this of this book which is,</span><br>
+<span title="14:30 - 14:44" data-start="00:14:30.462" data-end="00:14:44.492" data-spk="2" data-label="NAL">dr. Barnes trying to make an anti Eugenics stance here because genetics is absolutely Taboo in education research in education circles because of the history of eugenics and,</span><br>
+<span title="14:45 - 14:51" data-start="00:14:44.655" data-end="00:14:50.916" data-spk="2" data-label="NAL">her point that she made during our conversation was sort of like look if you read an education study,</span><br>
+<span title="14:51 - 14:56" data-start="00:14:51.085" data-end="00:14:55.555" data-spk="2" data-label="NAL">and it said this math intervention works amazingly well,</span><br>
+<span title="14:56 - 15:03" data-start="00:14:55.856" data-end="00:15:03.283" data-spk="2" data-label="NAL">but we didn't consider the fact that all of our students were from super wealthy all-white neighborhood,</span><br>
+<span title="15:04 - 15:10" data-start="00:15:03.644" data-end="00:15:09.556" data-spk="2" data-label="NAL">right and they never even mentioned the demographic to the students or the you know the socioeconomic status you'd be like wait a minute,</span><br>
+<span title="15:10 - 15:19" data-start="00:15:09.863" data-end="00:15:19.213" data-spk="2" data-label="NAL">like does this intervention work for all students like who is it working for and her point was genetics is another factor that should be considered in that research.</span><br>
+<span title="15:20 - 15:24" data-start="00:15:19.592" data-end="00:15:24.260" data-spk="2" data-label="NAL">But you're both kind of I think touched on that and.</span><br>
+<span title="15:25 - 15:32" data-start="00:15:24.675" data-end="00:15:32.367" data-spk="2" data-label="NAL">I do you know think that we could continue this conversation but we do want to hear from our listeners as well so if you,</span><br>
+<span title="15:33 - 15:42" data-start="00:15:32.613" data-end="00:15:41.735" data-spk="2" data-label="NAL">want to join in on this conversation or you have some thoughts on this debate please feel free to join the conversation online and now we're going to move into hearing the segment of our interview from dr. Hardin.</span><br>
+<br>
+<b data-spk="5">Music</b><br>
+<br>
+<b data-spk="1">Guest:</b><br>
+<small style="opacity: 0.5;">[15:50]</small> <span title="15:50 - 15:58" data-start="00:15:50.388" data-end="00:15:58.356" data-spk="1" data-label="Guest">We typically study children between the ages of 8 and 18 and if you think about that period of the lifespan.</span><br>
+<span title="15:59 - 16:06" data-start="00:15:59.300" data-end="00:16:06.282" data-spk="1" data-label="Guest">It's kind of amazing how much change happens I mean I think we're a little bit in nerd too,</span><br>
+<span title="16:07 - 16:16" data-start="00:16:06.559" data-end="00:16:16.119" data-spk="1" data-label="Guest">the radicalness of puberty because we see it and because everyone has to go through it but if you think about you know where an 18 year old is in life,</span><br>
+<span title="16:16 - 16:21" data-start="00:16:16.305" data-end="00:16:21.497" data-spk="1" data-label="Guest">versus an eight-year-old is in life and what individual differences have,</span><br>
+<span title="16:22 - 16:31" data-start="00:16:21.804" data-end="00:16:30.595" data-spk="1" data-label="Guest">emerged and catalyzed in that period of time right so by the time someone's 18 there are differences in.</span><br>
+<span title="16:31 - 16:38" data-start="00:16:31.046" data-end="00:16:38.130" data-spk="1" data-label="Guest">When they went through puberty what are their experiences with sex and childbearing what are their experiences with.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[16:39]</small> <span title="16:39 - 16:54" data-start="00:16:39.086" data-end="00:16:53.886" data-spk="1" data-label="Guest">Secondary School are they going on to University have they had contact with the criminal justice system have they started smoking have they started drinking what is their BMI what is their health status that they're bringing into adult life.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[16:55]</small> <span title="16:55 - 17:07" data-start="00:16:54.589" data-end="00:17:07.046" data-spk="1" data-label="Guest">What is their personality how conscientious are neurotic are they what is their level of executive functioning and you can easily imagine that people differ in those those characteristics at age 18,</span><br>
+<span title="17:07 - 17:16" data-start="00:17:07.232" data-end="00:17:16.480" data-spk="1" data-label="Guest">have very different life chances for the rest of adulthood right so you know I think my first order goal is as a scientist,</span><br>
+<span title="17:17 - 17:24" data-start="00:17:16.679" data-end="00:17:24.334" data-spk="1" data-label="Guest">how do we understand
+what is it about a person's biology that shapes</span><br>
+<span title="17:24 - 17:38" data-start="00:17:24.310" data-end="00:17:38.155" data-spk="1" data-label="Guest">that developmental trajectory in the second decade of life and then what is it about people social environments and this could be you know their relationships with their parents or their peers or this could be like the level of material resources and their neighbor,</span><br>
+<span title="17:38 - 17:40" data-start="00:17:38.191" data-end="00:17:39.981" data-spk="1" data-label="Guest">school that,</span><br>
+<span title="17:40 - 17:53" data-start="00:17:40.342" data-end="00:17:52.985" data-spk="1" data-label="Guest">a buffer people who are maybe biologically at risk from poor outcomes or push people who even have advantages in terms of their psychology towards negative outcomes how are we being,</span><br>
+<span title="17:53 - 17:58" data-start="00:17:53.153" data-end="00:17:57.990" data-spk="1" data-label="Guest">sort of swayed by social Fortune you know even before we're like.</span><br>
+<span title="17:58 - 18:10" data-start="00:17:58.388" data-end="00:18:09.684" data-spk="1" data-label="Guest">Really considered you know fully morally culpable for our choices right we're talking about 13 year olds but we're you know even at that stage of life people are really buffeted by.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[18:11]</small> <span title="18:11 - 18:23" data-start="00:18:10.616" data-end="00:18:23.222" data-spk="1" data-label="Guest">By life so I you know my goal is ultimately and in primarily one of scientific understanding of human development as a second-order goal you know,</span><br>
+<span title="18:23 - 18:27" data-start="00:18:23.439" data-end="00:18:26.672" data-spk="1" data-label="Guest">we're not just interested in observing how middle school and high school.</span><br>
+<br>
+<b data-spk="0">Interviewer:</b><br>
+<small style="opacity: 0.5;">[18:26]</small> <span title="18:26 - 18:28" data-start="00:18:26.372" data-end="00:18:27.625" data-spk="0" data-label="Interviewer">Yes and.</span><br>
+<br>
+<b data-spk="1">Guest:</b><br>
+<small style="opacity: 0.5;">[18:27]</small> <span title="18:27 - 18:29" data-start="00:18:27.375" data-end="00:18:29.334" data-spk="1" data-label="Guest">People like we want to make it better for.</span><br>
+<br>
+<b data-spk="0">Interviewer:</b><br>
+<small style="opacity: 0.5;">[18:29]</small> <span title="18:29 - 18:31" data-start="00:18:29.084" data-end="00:18:31.395" data-spk="0" data-label="Interviewer">I think step towards taking.</span><br>
+<br>
+<b data-spk="1">Guest:</b><br>
+<small style="opacity: 0.5;">[18:31]</small> <span title="18:31 - 18:36" data-start="00:18:31.431" data-end="00:18:35.649" data-spk="1" data-label="Guest">If you are you know if you're a parent of a 14 year old and you are thinking.</span><br>
+<br>
+<b data-spk="0">Interviewer:</b><br>
+<small style="opacity: 0.5;">[18:34]</small> <span title="18:34 - 18:42" data-start="00:18:34.256" data-end="00:18:41.710" data-spk="0" data-label="Interviewer">Bye what is been a historically problematic use of genetics right in the form of eugenics.</span><br>
+<br>
+<b data-spk="1">Guest:</b><br>
+<small style="opacity: 0.5;">[18:41]</small> <span title="18:41 - 18:43" data-start="00:18:40.818" data-end="00:18:42.896" data-spk="1" data-label="Guest">Face or the beginning of a.</span><br>
+<br>
+<b data-spk="0">Interviewer:</b><br>
+<small style="opacity: 0.5;">[18:43]</small> <span title="18:43 - 18:45" data-start="00:18:43.073" data-end="00:18:44.981" data-spk="0" data-label="Interviewer">However you separated your work like work.</span><br>
+<br>
+<b data-spk="1">Guest:</b><br>
+<small style="opacity: 0.5;">[18:45]</small> <span title="18:45 - 18:57" data-start="00:18:44.681" data-end="00:18:57.414" data-spk="1" data-label="Guest">What is the best therapy for that child right or if you are a parent of a nine-year-old who has whose Mass kills have just like.</span><br>
+<span title="18:58 - 19:06" data-start="00:18:58.310" data-end="00:19:05.827" data-spk="1" data-label="Guest">Cratered in the eye during covid because like virtual learning while you were trying to work from home,</span><br>
+<span title="19:06 - 19:21" data-start="00:19:05.990" data-end="00:19:20.543" data-spk="1" data-label="Guest">um for a child who was already struggling with math went really really poorly and now there are two grade levels behind like what is the best thing that their teachers are could do to like put a quote catch that child up I think many people.</span><br>
+<span title="19:22 - 19:36" data-start="00:19:21.547" data-end="00:19:35.884" data-spk="1" data-label="Guest">Outside of the world of Education think that we have like really good ready answers to those questions and you're smiling with your listeners can he see you smiling right now but I think we've you're in education or in Psychology you know that</span><br>
+<span title="19:36 - 19:44" data-start="00:19:35.722" data-end="00:19:43.774" data-spk="1" data-label="Guest">like there isn't actually like amazing answers to those questions and so you're just as kind of,</span><br>
+<span title="19:44 - 19:48" data-start="00:19:43.937" data-end="00:19:48.299" data-spk="1" data-label="Guest">as a basic belief I think helping.</span><br>
+<span title="19:49 - 19:56" data-start="00:19:49.092" data-end="00:19:56.417" data-spk="1" data-label="Guest">Understanding the world helps us intervene to change it and desirable ways and studying humans,</span><br>
+<span title="19:57 - 20:09" data-start="00:19:56.652" data-end="00:20:08.501" data-spk="1" data-label="Guest">he's a really hard scientific problem and any improvements in our knowledge of human development I think ultimately contribute to that ability to.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[20:10]</small> <span title="20:10 - 20:20" data-start="00:20:09.824" data-end="00:20:20.141" data-spk="1" data-label="Guest">So improve people's lives which you know it's kind of our our ultimate calling as social scientists are as Educators even though it's really difficult to do.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[20:39]</small> <span title="20:39 - 20:49" data-start="00:20:38.842" data-end="00:20:49.177" data-spk="1" data-label="Guest">Yeah so we can I think we can think about it now touring in kind of two different ways and the first way that I DNA matters,</span><br>
+<span title="20:49 - 20:58" data-start="00:20:49.351" data-end="00:20:57.590" data-spk="1" data-label="Guest">it's sort of DNA matters for thinking about social equality
+so I think people are very used to.</span><br>
+<span title="20:58 - 21:12" data-start="00:20:58.185" data-end="00:21:12.378" data-spk="1" data-label="Guest">To looking at how people's life chances differ according to something like family and come right so people from wealthy homes graduate from college at you know this much higher rate than children from low-income homes</span><br>
+<span title="21:12 - 21:13" data-start="00:21:12.228" data-end="00:21:13.201" data-spk="1" data-label="Guest">and.</span><br>
+<span title="21:14 - 21:23" data-start="00:21:13.592" data-end="00:21:22.840" data-spk="1" data-label="Guest">We can look at those kinds of disparities in people's life outcomes according to what kind of family environment they happened to be born into,</span><br>
+<span title="21:23 - 21:33" data-start="00:21:23.129" data-end="00:21:32.707" data-spk="1" data-label="Guest">and we think of that is morally and politically important right like it says something about the way inequality is structured in the US and.</span><br>
+<span title="21:34 - 21:48" data-start="00:21:33.530" data-end="00:21:47.861" data-spk="1" data-label="Guest">You know we might disagree ideologically in America about whether or not that's a problem or how big of a problem it is or what we should do to fix it but I think most people would agree that it's like a statistic to which we pay attention right like,</span><br>
+<span title="21:48 - 21:52" data-start="00:21:47.976" data-end="00:21:51.966" data-spk="1" data-label="Guest">to what extent do where people end up in life.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[22:01]</small> <span title="22:01 - 22:06" data-start="00:22:00.529" data-end="00:22:06.231" data-spk="1" data-label="Guest">One part of main argument of the book as such ascribed to readers how.</span><br>
+<span title="22:07 - 22:15" data-start="00:22:06.700" data-end="00:22:15.341" data-spk="1" data-label="Guest">Where people end up in life is also related to another measure of where they start in life and that is their DNA their genetic measure,</span><br>
+<span title="22:15 - 22:25" data-start="00:22:15.395" data-end="00:22:24.715" data-spk="1" data-label="Guest">so if we look again to go back to that example of college completion if we look at rates of college completion by DNA variants.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[22:26]</small> <span title="22:26 - 22:35" data-start="00:22:25.815" data-end="00:22:35.471" data-spk="1" data-label="Guest">The disparity between people who have like a low polygenic score and we can get back back to what that is in a second a low polygenic score versus a high polygenic score.</span><br>
+<span title="22:36 - 22:46" data-start="00:22:36.079" data-end="00:22:45.759" data-spk="1" data-label="Guest">That discrepancy in college education is just as big as the income disparity in college education so what I'm inviting readers to do in this book,</span><br>
+<span title="22:46 - 22:48" data-start="00:22:46.030" data-end="00:22:48.283" data-spk="1" data-label="Guest">is to take the genome.</span><br>
+<span title="22:49 - 22:57" data-start="00:22:48.854" data-end="00:22:56.689" data-spk="1" data-label="Guest">As another measure of where people start in life and as another dimension of inequality,</span><br>
+<span title="22:57 - 23:07" data-start="00:22:56.876" data-end="00:23:07.295" data-spk="1" data-label="Guest">that intersects with the other dimensions of inequality that I think were more used to thinking about so you know we can think about inequalities along racial lines we can think about inequalities along.</span><br>
+<span title="23:08 - 23:16" data-start="00:23:07.999" data-end="00:23:15.882" data-spk="1" data-label="Guest">Economic class lines along gender lines along and disability status,</span><br>
+<span title="23:16 - 23:21" data-start="00:23:16.255" data-end="00:23:21.050" data-spk="1" data-label="Guest">and I'm saying those things do matter and also.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[23:22]</small> <span title="23:22 - 23:31" data-start="00:23:22.054" data-end="00:23:31.301" data-spk="1" data-label="Guest">The genome is another dimension of inequality that intersects with these other kind of more visible ones can can we take that,</span><br>
+<span title="23:31 - 23:46" data-start="00:23:31.368" data-end="00:23:45.838" data-spk="1" data-label="Guest">seriously and if we do I think it invites a lot of questions about what you know the nature of fair versus unfair inequality which I think the country is kind of grappling with more broadly right now so that's the first way do you name outers for equality because</span><br>
+<span title="23:46 - 23:49" data-start="00:23:45.796" data-end="00:23:48.746" data-spk="1" data-label="Guest">The genome is is a starting point in life,</span><br>
+<span title="23:49 - 23:56" data-start="00:23:48.872" data-end="00:23:55.842" data-spk="1" data-label="Guest">that is a strongly related to our life chances as many of the other things that were perhaps more used to thinking about like income.</span><br>
+<span title="23:57 - 24:10" data-start="00:23:56.516" data-end="00:24:10.415" data-spk="1" data-label="Guest">The second way that DNA matters for social inequality is back to what we were just talking about which is in what way does research that incorporates The genome or incorporates genetics.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[24:12]</small> <span title="24:12 - 24:23" data-start="00:24:11.881" data-end="00:24:23.496" data-spk="1" data-label="Guest">Better suited to understanding human development and in so doing holds the promise of improving our ability to intervene in people's lives,</span><br>
+<span title="24:24 - 24:32" data-start="00:24:23.839" data-end="00:24:32.047" data-spk="1" data-label="Guest">you know as many of your listeners know often hung what you're doing when you're trying to come up with like an education intervention is you're trying to.</span><br>
+<span title="24:32 - 24:41" data-start="00:24:32.492" data-end="00:24:41.488" data-spk="1" data-label="Guest">Kind of reverse engineer bright spots if I'm going to mix my metaphors here right it's like okay this school or this teacher this parent seems to be doing well.</span><br>
+<span title="24:42 - 24:50" data-start="00:24:42.419" data-end="00:24:49.738" data-spk="1" data-label="Guest">What are they doing how can I scale that how can I broaden it and as Educators also know,</span><br>
+<span title="24:50 - 25:04" data-start="00:24:50.003" data-end="00:25:03.703" data-spk="1" data-label="Guest">that's really difficult to do because you know students don't end up at classrooms at random parents don't end up with their children at random your children's environments are correlated with them in their family and he's really systematic ways,</span><br>
+<span title="25:04 - 25:12" data-start="00:25:04.046" data-end="00:25:12.194" data-spk="1" data-label="Guest">part of the reason that the standardized testing movement one of the many reasons that it faced backlash is because Educators were like.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[25:13]</small> <span title="25:13 - 25:26" data-start="00:25:13.204" data-end="00:25:25.792" data-spk="1" data-label="Guest">You know so much goes into my students test score that's not me right that is their their home environment there it's the you know material disadvantage in their neighborhood it's their lack of clean water like why am I on the hook for.</span><br>
+<span title="25:26 - 25:36" data-start="00:25:26.291" data-end="00:25:36.428" data-spk="1" data-label="Guest">The fact that I have a concentration of students who face certain adversities and that that sent in an intuitive understanding of this problem of,</span><br>
+<span title="25:37 - 25:42" data-start="00:25:36.717" data-end="00:25:42.131" data-spk="1" data-label="Guest">and people can differ in their classroom environments,</span><br>
+<span title="25:42 - 25:50" data-start="00:25:42.456" data-end="00:25:50.003" data-spk="1" data-label="Guest">with in ways that are correlated with the teacher that what the teacher is doing but that aren't caused by what the teacher is doing right,</span><br>
+<span title="25:50 - 25:55" data-start="00:25:50.340" data-end="00:25:54.552" data-spk="1" data-label="Guest">um and so in the same way that you know.</span><br>
+<span title="25:55 - 26:00" data-start="00:25:55.243" data-end="00:26:00.399" data-spk="1" data-label="Guest">It would be kind of almost impossible to do educational research without taking into account,</span><br>
+<span title="26:01 - 26:14" data-start="00:26:00.543" data-end="00:26:13.817" data-spk="1" data-label="Guest">what is the income level of the students that you're that you're studying how does that potentially confound your results or the correlations that you're observing robust to the fact that they're you know that,</span><br>
+<span title="26:16 - 26:31" data-start="00:26:16.047" data-end="00:26:30.564" data-spk="1" data-label="Guest">poor students and affluent students differ in their likelihood of Jones will doing well in school we can take the same sort of lends to thinking about genetic research tools really as a as another tool to bring to bear to the question of.</span><br>
+<span title="26:31 - 26:33" data-start="00:26:30.955" data-end="00:26:33.166" data-spk="1" data-label="Guest">What specific things.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[26:34]</small> <span title="26:34 - 26:45" data-start="00:26:33.966" data-end="00:26:44.896" data-spk="1" data-label="Guest">Our kind of the most kind of potent or effective environmental levers for change if we want to if we want to intervene to improve something,</span><br>
+<span title="26:45 - 26:51" data-start="00:26:45.010" data-end="00:26:51.121" data-spk="1" data-label="Guest">right so but I think that we can't you know we can't,</span><br>
+<span title="26:51 - 27:04" data-start="00:26:51.338" data-end="00:27:03.716" data-spk="1" data-label="Guest">get to a place where we think about using genetics in a way that's really about improving people's environments unless we take seriously the idea that genes matter for people's lives in the first place.</span><br>
+<br>
+<b data-spk="0">Interviewer:</b><br>
+<small style="opacity: 0.5;">[27:06]</small> <span title="27:06 - 27:17" data-start="00:27:05.724" data-end="00:27:16.906" data-spk="0" data-label="Interviewer">Yes and that I think step towards taking Jean seriously is somewhat blocked at this point by what is been a historically,</span><br>
+<span title="27:17 - 27:25" data-start="00:27:17.123" data-end="00:27:25.036" data-spk="0" data-label="Interviewer">problematic use of genetics in the form of eugenics so how have you separated your work like work from that history.</span><br>
+<br>
+<b data-spk="1">Guest:</b><br>
+<small style="opacity: 0.5;">[27:25]</small> <span title="27:25 - 27:31" data-start="00:27:25.211" data-end="00:27:31.118" data-spk="1" data-label="Guest">Yeah well I mean all genetics work is necessarily.</span><br>
+<span title="27:32 - 27:41" data-start="00:27:31.755" data-end="00:27:40.948" data-spk="1" data-label="Guest">Has to contend with that history because it is such a kind of a you know if we're thinking about who were the people who.</span><br>
+<span title="27:42 - 27:44" data-start="00:27:41.586" data-end="00:27:43.977" data-spk="1" data-label="Guest">We're first using twins to study,</span><br>
+<span title="27:44 - 28:00" data-start="00:27:43.977" data-end="00:28:00.460" data-spk="1" data-label="Guest">human heredity in relation to psychological traits who were the people inventing the statistical tools that we still use in all educational research not just genetic research you know who was the inventor of the correlation coefficient or the variance or the F tester</span><br>
+<span title="28:00 - 28:05" data-start="00:28:00.262" data-end="00:28:04.696" data-spk="1" data-label="Guest">you know these were people who didn't just,</span><br>
+<span title="28:05 - 28:17" data-start="00:28:05.039" data-end="00:28:16.750" data-spk="1" data-label="Guest">kind of invent the field of biostatistics and they didn't just revolutionize the study of human heredity they also very deliberately,</span><br>
+<span title="28:17 - 28:21" data-start="00:28:17.009" data-end="00:28:20.855" data-spk="1" data-label="Guest">M advocated for.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[28:22]</small> <span title="28:22 - 28:29" data-start="00:28:22.327" data-end="00:28:28.955" data-spk="1" data-label="Guest">Four things that we now recognize as atrocities right and in the u.s. that was kind of most notorious</span><br>
+<span title="28:29 - 28:35" data-start="00:28:28.925" data-end="00:28:34.549" data-spk="1" data-label="Guest">listen to Taurus Lee came to a head in terms of involuntary sterilization,</span><br>
+<span title="28:35 - 28:43" data-start="00:28:34.616" data-end="00:28:43.310" data-spk="1" data-label="Guest">of women who were deemed to be quote unquote feeble-minded so this was the buck V Bell Supreme Court case.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[28:45]</small> <span title="28:45 - 28:58" data-start="00:28:44.717" data-end="00:28:57.942" data-spk="1" data-label="Guest">And you know when we're thinking about some of the Nazis laws they were modeled directly on us eugenic oh loss right they took the text of what American eugenicists</span><br>
+<span title="28:58 - 29:04" data-start="00:28:57.883" data-end="00:29:04.360" data-spk="1" data-label="Guest">how to craft it and we're like oh that that's what we should do right and then you know if we look at America,</span><br>
+<span title="29:04 - 29:12" data-start="00:29:04.385" data-end="00:29:11.757" data-spk="1" data-label="Guest">they were complaining you know the Germans are beating us at our own game in quote I mean this was this was not it subtle</span><br>
+<span title="29:12 - 29:18" data-start="00:29:11.704" data-end="00:29:17.845" data-spk="1" data-label="Guest">sort of parallels between Nazi Germany and the particularly the American South.</span><br>
+<span title="29:18 - 29:24" data-start="00:29:18.278" data-end="00:29:23.938" data-spk="1" data-label="Guest">So in my book I mean this is a big part of the book which is saying.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[29:24]</small> <span title="29:24 - 29:35" data-start="00:29:24.419" data-end="00:29:35.091" data-spk="1" data-label="Guest">We can see that there are genetic differences between people how do we understand and genetic difference without justifying,</span><br>
+<span title="29:35 - 29:41" data-start="00:29:35.277" data-end="00:29:40.649" data-spk="1" data-label="Guest">hierarchy between humans and without it and trenching,</span><br>
+<span title="29:41 - 29:55" data-start="00:29:40.950" data-end="00:29:55.377" data-spk="1" data-label="Guest">inequalities between people and their freedoms whether that be their reproductive freedoms or their welfare their resources I think separating genetics from Eugenics is extremely important and we and we've done it in some ways right like there are</span><br>
+<span title="29:55 - 29:58" data-start="00:29:55.318" data-end="00:29:57.607" data-spk="1" data-label="Guest">you know if you look out anything.</span><br>
+<span title="29:58 - 30:13" data-start="00:29:58.004" data-end="00:30:12.798" data-spk="1" data-label="Guest">Related to sort of D stigmatization efforts in American regarding American mental illness right the idea that depression or schizophrenia or are influenced by the genetics,</span><br>
+<span title="30:13 - 30:17" data-start="00:30:13.159" data-end="00:30:16.746" data-spk="1" data-label="Guest">that people inherit and.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[30:17]</small> <span title="30:17 - 30:24" data-start="00:30:17.359" data-end="00:30:24.449" data-spk="1" data-label="Guest">We have to take that seriously if we want to understand this conditions and intervene on them in ways that are helpful to people and also,</span><br>
+<span title="30:25 - 30:35" data-start="00:30:24.612" data-end="00:30:34.917" data-spk="1" data-label="Guest">you know the ways in which the biology has been embraced by people trying to combat Sigma and blame like this is not a deficiency of character or will this is you know this is</span><br>
+<span title="30:35 - 30:43" data-start="00:30:34.857" data-end="00:30:42.969" data-spk="1" data-label="Guest">a genetic difference that you know is related to some socially valued traits but also makes your risk of experiencing these symptoms higher</span><br>
+<span title="30:50 - 31:04" data-start="00:30:50.174" data-end="00:31:03.742" data-spk="1" data-label="Guest">but not around intelligence and education right and I you know part of that is like How Deeply entrenched this idea of meritocracy or education as Worth or a striving whereas even the word achievement</span><br>
+<span title="31:04 - 31:09" data-start="00:31:03.689" data-end="00:31:09.139" data-spk="1" data-label="Guest">has made it really hard to separate genetic difference from genetic superiority inferiority,</span><br>
+<span title="31:09 - 31:17" data-start="00:31:09.361" data-end="00:31:16.956" data-spk="1" data-label="Guest">so I think it's really important to do that and that's part of the case that I'm building in my book when people.</span><br>
+<span title="31:17 - 31:31" data-start="00:31:17.347" data-end="00:31:30.951" data-spk="1" data-label="Guest">You know if you ask or you know Les americains non-scientists like how much do you think jeans make a difference for something like intelligence they almost never say 90 right like most Americans already think that genes make a difference</span><br>
+<span title="31:31 - 31:40" data-start="00:31:30.862" data-end="00:31:39.995" data-spk="1" data-label="Guest">for people's lives including how well they do in school and I think Scholars have done a really poor job of giving people.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[31:41]</small> <span title="31:41 - 31:49" data-start="00:31:40.699" data-end="00:31:48.564" data-spk="1" data-label="Guest">And kind of a framework for making sense of that intuition in a way that's consonant with,</span><br>
+<span title="31:49 - 31:56" data-start="00:31:48.943" data-end="00:31:56.184" data-spk="1" data-label="Guest">egalitarians ISM with with this idea of
+you know all people are created equal.</span><br>
+<span title="31:57 - 32:06" data-start="00:31:56.737" data-end="00:32:06.387" data-spk="1" data-label="Guest">All people are not born the same right and how is it quality not the same as sameness is is I think a really important idea throughout the book.</span><br>
+<br>
+<b data-spk="5">Music</b><br>
+<br>
+<b data-spk="4">Rdb:</b><br>
+<small style="opacity: 0.5;">[32:17]</small> <span title="32:17 - 32:31" data-start="00:32:16.993" data-end="00:32:31.066" data-spk="4" data-label="RDB">If you're enjoying today's episode we'd love to hear from you feel free to send us an email or reach out on social media also don't forget to subscribe to our podcast on Apple Spotify or wherever you get your podcasts.</span><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[32:33]</small> <span title="32:33 - 32:37" data-start="00:32:33.080" data-end="00:32:37.460" data-spk="2" data-label="NAL">Now it's time for our newest segment data town.</span><br>
+<br>
+<b data-spk="5">Music</b><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[32:43]</small> <span title="32:43 - 32:53" data-start="00:32:43.241" data-end="00:32:52.843" data-spk="2" data-label="NAL">On today's data Town we're going to be talking about a body of research that has been looking at associations with educational.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[32:54]</small> <span title="32:54 - 33:01" data-start="00:32:53.721" data-end="00:33:01.454" data-spk="2" data-label="NAL">And educational attainment is defined basically as how far a person goes in the education system does a person,</span><br>
+<span title="33:02 - 33:13" data-start="00:33:01.515" data-end="00:33:13.034" data-spk="2" data-label="NAL">not finish High School do they finish high school did they end up you know going all the way through to getting a PhD or getting a you know a j.d. becoming a lawyer and you know you can sort of look at,</span><br>
+<span title="33:13 - 33:18" data-start="00:33:13.076" data-end="00:33:17.607" data-spk="2" data-label="NAL">how far people go through the education system as a pretty good marker of,</span><br>
+<span title="33:18 - 33:26" data-start="00:33:17.968" data-end="00:33:26.440" data-spk="2" data-label="NAL">lifetime earnings How likely they are to end up in the upper middle class or the upper class of society you know education in a lot of ways is this,</span><br>
+<span title="33:27 - 33:29" data-start="00:33:26.795" data-end="00:33:28.777" data-spk="2" data-label="NAL">gatekeeping device that that,</span><br>
+<span title="33:29 - 33:37" data-start="00:33:29.126" data-end="00:33:37.455" data-spk="2" data-label="NAL">basically dictates where you're going to end up in you know a capitalist hierarchy so according to considerable amounts of research,</span><br>
+<span title="33:38 - 33:42" data-start="00:33:37.755" data-end="00:33:42.063" data-spk="2" data-label="NAL">there are many factors that are significantly correlated with educational.</span><br>
+<span title="33:42 - 33:52" data-start="00:33:42.455" data-end="00:33:51.978" data-spk="2" data-label="NAL">And I want to read a few of these factors to you and see if you find any of them surprising or if this may be changes your opinion on the topics we've been discussing today,</span><br>
+<span title="33:52 - 33:59" data-start="00:33:52.063" data-end="00:33:58.787" data-spk="2" data-label="NAL">so the first thing the first Factor correlated with educational attainment was Middle School grades.</span><br>
+<span title="33:59 - 34:04" data-start="00:33:59.250" data-end="00:34:04.315" data-spk="2" data-label="NAL">Previous performance is one of the best predictors of future performance in school.</span><br>
+<span title="34:05 - 34:16" data-start="00:34:04.742" data-end="00:34:16.177" data-spk="2" data-label="NAL">Second factor is socioeconomic status right do you grow up in a poor neighborhood Europe in a wealthy neighborhood that is a significant factor.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[34:17]</small> <span title="34:17 - 34:26" data-start="00:34:16.712" data-end="00:34:26.344" data-spk="2" data-label="NAL">Gender has also been correlated significantly with educational attainment also height whether you live in an urban versus rural environment.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[34:27]</small> <span title="34:27 - 34:36" data-start="00:34:26.946" data-end="00:34:36.163" data-spk="2" data-label="NAL">Your parents professions and then as dr. Hardin has shown in her research your DNA
+so.</span><br>
+<span title="34:37 - 34:45" data-start="00:34:36.993" data-end="00:34:44.900" data-spk="2" data-label="NAL">Understanding that these correlations have been established how do you both feel about this does it provide a more Rich description</span><br>
+<span title="34:45 - 34:54" data-start="00:34:44.787" data-end="00:34:54.208" data-spk="2" data-label="NAL">of social factors at play when trying to understand educational inequality or inequity and arrogance how do you react to hearing these these data points.</span><br>
+<br>
+<b data-spk="4">Rdb:</b><br>
+<small style="opacity: 0.5;">[34:56]</small> <span title="34:56 - 35:05" data-start="00:34:56.414" data-end="00:35:05.109" data-spk="4" data-label="RDB">First one I was looking at this list I thought it like for instance with height I was like what but then I thought about it.</span><br>
+<span title="35:06 - 35:13" data-start="00:35:05.818" data-end="00:35:13.179" data-spk="4" data-label="RDB">In terms of like how I view people of different heights and everything and then the kind of.</span><br>
+<span title="35:14 - 35:28" data-start="00:35:13.798" data-end="00:35:28.328" data-spk="4" data-label="RDB">Ways that they participate in society and participate in school and everything and I thought wait that actually makes a lot of sense especially when you consider gender or socioeconomic status and so.</span><br>
+<span title="35:29 - 35:33" data-start="00:35:29.278" data-end="00:35:32.630" data-spk="4" data-label="RDB">For instance like if you're a poor black kid.</span><br>
+<span title="35:33 - 35:42" data-start="00:35:33.123" data-end="00:35:41.975" data-spk="4" data-label="RDB">Who is male but happens to be really tall like you might not you might be interested in art but when you get to school everybody might be like oh you should play basketball right.</span><br>
+<span title="35:42 - 35:52" data-start="00:35:42.378" data-end="00:35:52.226" data-spk="4" data-label="RDB">But if you are a rich white girl who's very tall then people might say oh you should go for modeling you know like they're so I think that for me.</span><br>
+<span title="35:53 - 35:53" data-start="00:35:52.629" data-end="00:35:53.301" data-spk="4" data-label="RDB">The.</span><br>
+<span title="35:54 - 36:08" data-start="00:35:53.807" data-end="00:36:07.531" data-spk="4" data-label="RDB">The rich description of the social factors at play as you said really get spotlighted for me when I think of how all of these different things intersect and I think that alludes to what I was.</span><br>
+<span title="36:08 - 36:16" data-start="00:36:08.012" data-end="00:36:16.076" data-spk="4" data-label="RDB">Saying a little bit earlier about factoring in DNA when considering a person's educational attainment I.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[36:17]</small> <span title="36:17 - 36:23" data-start="00:36:17.164" data-end="00:36:22.950" data-spk="4" data-label="RDB">Looking at any of these things on their own and then making a conclusion based off of that,</span><br>
+<span title="36:23 - 36:37" data-start="00:36:23.299" data-end="00:36:37.083" data-spk="4" data-label="RDB">can be pretty superficial but when you consider how all of them interact in a person's life and everything I think they really can tell a full story about where people go in education.</span><br>
+<span title="36:38 - 36:39" data-start="00:36:37.703" data-end="00:36:39.097" data-spk="4" data-label="RDB">But what do you think Sam.</span><br>
+<br>
+<b data-spk="3">Sss:</b><br>
+<small style="opacity: 0.5;">[36:39]</small> <span title="36:39 - 36:53" data-start="00:36:39.217" data-end="00:36:52.851" data-spk="3" data-label="SSS">Yeah I mean I was gonna I was gonna say something along those lines about the Confluence of these factors write that
+you can definitely get a lot of information about a person and if your aim was to support.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[36:53]</small> <span title="36:53 - 37:06" data-start="00:36:53.423" data-end="00:37:06.474" data-spk="3" data-label="SSS">If you had a truly altruistic aim to help that person or assist that student this information would help you in doing that the other thing that occurred to me Raven as you were sort of you know describing the way that we.</span><br>
+<span title="37:07 - 37:20" data-start="00:37:06.859" data-end="00:37:20.211" data-spk="3" data-label="SSS">You know perceive people of different you know Heights and genders and the sort of combination of factors we already have stereotypes for if you fit in these different boxes you know you're a tall white lady a tall black man,</span><br>
+<span title="37:20 - 37:26" data-start="00:37:20.331" data-end="00:37:25.889" data-spk="3" data-label="SSS">how those people end up being perceived in society and what I considered what I thought about was.</span><br>
+<span title="37:26 - 37:41" data-start="00:37:26.377" data-end="00:37:40.852" data-spk="3" data-label="SSS">A lot of these things are not so different than the problem in genetics which is that any of these things or even a group of these things can be misused to stereotype people or put them in a box again determinism again to sort of write their story before they've had a chance,</span><br>
+<span title="37:41 - 37:46" data-start="00:37:41.105" data-end="00:37:45.779" data-spk="3" data-label="SSS">to you know live it for themselves to make decisions for themselves to be,</span><br>
+<span title="37:46 - 37:52" data-start="00:37:46.014" data-end="00:37:52.281" data-spk="3" data-label="SSS">you know the driving force in their own education and and their own lives and so.</span><br>
+<span title="37:53 - 38:01" data-start="00:37:52.756" data-end="00:38:01.157" data-spk="3" data-label="SSS">I do really worried about genetics being misused and because genetics has a layer of complexity,</span><br>
+<span title="38:01 - 38:11" data-start="00:38:01.493" data-end="00:38:10.585" data-spk="3" data-label="SSS">that a lot of these other factors don't not that you know socioeconomic status or whatever that there's not a lot of complexity there but you know height for example.</span><br>
+<span title="38:11 - 38:20" data-start="00:38:11.090" data-end="00:38:19.568" data-spk="3" data-label="SSS">It's not the same as when we talk about DNA when we talk about genes and the genome we get outside of a lot of folks comfort zone.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[38:20]</small> <span title="38:20 - 38:23" data-start="00:38:20.368" data-end="00:38:23.216" data-spk="3" data-label="SSS">And there is a sense of.</span><br>
+<span title="38:24 - 38:38" data-start="00:38:23.727" data-end="00:38:38.088" data-spk="3" data-label="SSS">You're telling me something that I can't see or touch or feel or understand and that's the thing that's going to do the determinism and so I think that's scarier than some of these other factors for that reason it's newer it's more frightening,</span><br>
+<span title="38:38 - 38:46" data-start="00:38:38.329" data-end="00:38:46.471" data-spk="3" data-label="SSS">but in a lot of ways it's not so much different than any of them you know we take information and again this is information that we have now whether we like it or not.</span><br>
+<span title="38:47 - 38:57" data-start="00:38:47.162" data-end="00:38:57.491" data-spk="3" data-label="SSS">Genetic information is going to become more readily available and accessible so knowing that knowing that that's the context that we're in
+it strikes me that,</span><br>
+<span title="38:58 - 39:05" data-start="00:38:57.690" data-end="00:39:05.411" data-spk="3" data-label="SSS">any of these things could be misused I'm going to really comes down to our good policies safe laws you know.</span><br>
+<span title="39:06 - 39:16" data-start="00:39:06.440" data-end="00:39:15.675" data-spk="3" data-label="SSS">Good training for teachers and best practices that support teachers administrators schools the whole system to use this information for the good.</span><br>
+<span title="39:17 - 39:21" data-start="00:39:16.986" data-end="00:39:20.831" data-spk="3" data-label="SSS">But you know there's me The Optimist and.</span><br>
+<span title="39:22 - 39:25" data-start="00:39:22.123" data-end="00:39:24.863" data-spk="3" data-label="SSS">I'm looms large in this conversation.</span><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[39:25]</small> <span title="39:25 - 39:30" data-start="00:39:24.563" data-end="00:39:29.850" data-spk="2" data-label="NAL">Well I the one thing I definitely agree with Sam is that this is coming,</span><br>
+<span title="39:30 - 39:40" data-start="00:39:29.977" data-end="00:39:39.687" data-spk="2" data-label="NAL">the genetic data is upon us we're getting more and more information about it and you know it's going to be a question of not whether it's there but but how we react to it.</span><br>
+<br>
+<b data-spk="5">Music</b><br>
+<br>
+<b data-spk="3">Sss:</b><br>
+<small style="opacity: 0.5;">[39:45]</small> <span title="39:45 - 39:55" data-start="00:39:45.240" data-end="00:39:54.608" data-spk="3" data-label="SSS">For those out there don't forget to join Reddit or Twitter or Instagram to share your opinion respond to our debate question for the week we'd love to hear from.</span><br>
+<br>
+<b data-spk="4">Rdb:</b><br>
+<small style="opacity: 0.5;">[39:55]</small> <span title="39:55 - 40:02" data-start="00:39:54.981" data-end="00:40:01.861" data-spk="4" data-label="RDB">And to learn more about this week's guests and to find out how to support this podcast visit learning machine.</span><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[40:03]</small> <span title="40:03 - 40:07" data-start="00:40:02.991" data-end="00:40:07.371" data-spk="2" data-label="NAL">Thank you to all those who teach listen and learn see you next time.</span><br>
+
+<br>
+</div>
+
+
+<script type="text/javascript">
+
+function getBgAlpha(element) {
+    var currentColor = getComputedStyle(element).getPropertyValue('background-color');
+    var parts = currentColor.match(/[\d.]+/g);
+    var alpha = "0"
+
+    try {
+        alpha = parts[3];
+    }
+    catch(err) {
+        // on edge we don't get a color if RGBA is completely 0
+    }
+
+    return alpha;
+}
+
+function removeStyling() {
+    var elements = document.getElementsByTagName('span');
+    var newColorBase = 'rgba(255, 255, 255, ';
+    for (var i=0; i<elements.length; i++) {
+        var currentAlpha = getBgAlpha(elements[i]);
+        var newColor = newColorBase + currentAlpha + ')';
+        elements[i].style = 'background: ' + newColor + ';';
+    }
+
+    try {
+        var button = document.getElementById('toggle-styling');
+        button.innerText = 'Add Highlighting';
+        button.onclick = function() { addStyling(); } ;
+    }
+    catch(err) {
+        // no confidence available
+    }
+}
+
+function addStyling() {
+    var elements = document.getElementsByTagName('span');
+    var newColorBase = 'rgba(209, 72, 54, ';
+    for (var i=0; i<elements.length; i++) {
+        var currentAlpha = getBgAlpha(elements[i]);
+        var newColor = newColorBase + currentAlpha + ')';
+        elements[i].style = 'background: ' + newColor + ';';
+    }
+
+    try {
+        var button = document.getElementById('toggle-styling');
+        button.innerText = 'Remove Highlighting';
+        button.onclick = function() { removeStyling(); } ;
+    }
+    catch(err) {
+        // no confidence available
+    }
+}
+
+function enableEdit() {
+    var transcript = document.getElementById('transcript');
+    transcript.contentEditable = true;
+    transcript.classList.add("edit-mode");
+
+    var button = document.getElementById('edit-transcript');
+    button.innerText = 'Close Edit Mode';
+    button.onclick = function() { disableEdit(); } ;
+
+    var elements = document.querySelectorAll('b[data-spk]');
+    for (var i=0; i<elements.length; i++) {
+        elements[i].title = 'Change speaker name to edit all speakers at once!';
+    }
+}
+
+function disableEdit() {
+    var transcript = document.getElementById('transcript');
+    transcript.contentEditable = false;
+    transcript.classList.remove("edit-mode");
+
+    var button = document.getElementById('edit-transcript');
+    button.innerText = 'Edit Transcript';
+    button.onclick = function() { enableEdit(); } ;
+
+    var elements = document.querySelectorAll('b[data-spk]');
+    for (var i=0; i<elements.length; i++) {
+        elements[i].title = '';
+    }
+}
+
+function removeSpans(transcript) {
+    var removeSpans = new RegExp('</?span[^>]*>','gm');
+    transcript = transcript.replace(removeSpans, '');
+    transcript = transcript.replace(/&nbsp;/g, ' ');
+    return transcript;
+}
+
+function showExportButtons() {
+    var button = document.getElementById('show-export-buttons');
+    button.innerText = '>';
+    button.title = 'Close export buttons.';
+    button.classList.add("export-buttons-shown");
+    button.onclick = function() { hideExportButtons(); } ;
+
+    document.getElementById('export-html').style = '';
+    document.getElementById('export-pdf').style = '';
+    document.getElementById('export-webvtt').style = '';
+    document.getElementById('save-changes').style = '';
+    document.getElementById('show-help').style = 'display: none;';
+}
+
+function hideExportButtons() {
+    var button = document.getElementById('show-export-buttons');
+    button.innerText = 'Export...';
+    button.title = '';
+    button.classList.remove("export-buttons-shown");
+    button.onclick = function() { showExportButtons(); } ;
+
+    document.getElementById('export-html').style = 'display: none;';
+    document.getElementById('export-pdf').style = 'display: none;';
+    document.getElementById('export-webvtt').style = 'display: none;';
+    document.getElementById('save-changes').style = 'display: none;';
+    document.getElementById('show-help').style = '';
+}
+
+function saveChanges() {
+    disableEdit();
+    hideExportButtons();
+
+    var head = document.head.innerHTML;
+    var body = document.body.innerHTML;
+
+    var pageSource = '<!DOCTYPE html><html><head>' + head + '</head><body>' + body + '</body></html>';
+    var filename = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+
+    var bl = new Blob([pageSource], {type: "text/html"});
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(bl);
+    a.download = filename;
+    a.hidden = true;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+}
+
+function exportHTML() {
+    disableEdit();
+    removeStyling();
+
+    var head = document.head.innerHTML;
+    var metadata = document.getElementById('metadata').innerHTML;
+    var transcript = document.getElementById('transcript').innerHTML;
+
+    transcript = removeSpans(transcript);
+
+    var pageSource = '<!DOCTYPE html><html><head>' + head + '</head><body>' + metadata + '<div class="transcript-base">' + transcript + '</div></body></html>';
+    var filename = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+
+    var bl = new Blob([pageSource], {type: "text/html"});
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(bl);
+    a.download = filename;
+    a.hidden = true;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    hideExportButtons();
+}
+
+function exportWebVTT() {
+    disableEdit();
+
+    var pageSource = 'WEBVTT\n\n';
+
+    var segments = document.querySelectorAll('span[data-start]');
+    for (var i=0; i<segments.length; i++) {
+        pageSource += segments[i].getAttribute('data-start') + ' --> ';
+        pageSource += segments[i].getAttribute('data-end') + '\n';
+        if (segments[i].getAttribute('data-spk') !== null) {
+            pageSource += '<v ' + segments[i].getAttribute('data-label') + '>';
+        }
+        pageSource += removeSpans(segments[i].innerHTML);
+        pageSource += '\n\n';
+    }
+
+    var filename = location.pathname.substring(location.pathname.lastIndexOf('/') + 1);
+    filename = filename.substring(0, filename.lastIndexOf('.')) + '.vtt';
+
+    var bl = new Blob([pageSource], {type: 'text/vtt'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(bl);
+    a.download = filename;
+    a.hidden = true;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    hideExportButtons();
+}
+
+function getSecondsFromString(timeString) {
+    var splitStrg = timeString.split(":");
+    var seconds = 0;
+    for (var i=0; i<splitStrg.length; i++) {
+        if (i == 0) { seconds += parseInt(splitStrg[splitStrg.length - 1]); }
+        if (i == 1) { seconds += parseInt(splitStrg[splitStrg.length - 2]) * 60; }
+        if (i == 2) { seconds += parseInt(splitStrg[splitStrg.length - 3]) * 3600; }
+    }
+    return seconds;
+}
+
+function pad(num, size) {
+    var s = num + "";
+    while (s.length < size) s = "0" + s;
+    return s;
+}
+
+function secToTimeString(seconds) {
+    var ss = Math.round(seconds);
+    var cmin = Math.floor(ss / 60);
+    var csec = ss % 60;
+
+    if (cmin < 60) {
+        return cmin + ":" + pad(csec, 2);
+    } else {
+        var ch = Math.floor(cmin / 60);
+        var cm = cmin % 60;
+        return ch + ":" + pad(cm, 2) + ":" + pad(csec, 2);
+    }
+}
+
+function removeActiveClass() {
+    var elements = document.querySelectorAll('span.active');
+    for (var i=0; i<elements.length; i++) {
+        elements[i].classList.remove("active");
+        // elements[i].classList.add("listened");
+    }
+}
+
+function addAudioFile() {
+    var txt;
+    var url = prompt(
+        'Please enter complete URL for the audio file, which should be played along the transcript\n(a local path should start with "file:///"):',
+        'https://auphonic.com/media/audio-examples/03.auphonic-demo-denoise-100.m4a'
+    );
+    if (url == null || url == "") { return; }
+
+    var audio = document.getElementById('audio-player');
+    var oldSources = document.querySelectorAll('source');
+    for (var i=0; i<oldSources.length; i++) {
+        oldSources[i].remove();
+    }
+
+    var source = document.createElement('source');
+    source.src = url;
+    audio.appendChild(source);
+
+    addAudioPlayer();
+}
+
+function addAudioPlayer() {
+    var audio = document.getElementById('audio-player');
+
+    document.getElementById('add-audio-file').style = '';
+    document.getElementById('toggle-play-on-click').style = 'display: none;';
+
+    audio.oncanplay = function() {
+        AUDIO_PLAYER = audio;
+
+        // highlight current audio segment
+        if (HAVE_TIMESTAMPS) {
+            AUDIO_PLAYER.ontimeupdate = function() {
+                if (ARE_PLAYING) {
+                    removeActiveClass();
+                    var curTime = secToTimeString(AUDIO_PLAYER.currentTime);
+                    elements = document.querySelectorAll('span[title="' + curTime + '"]');
+                    for (var i=0; i<elements.length; i++) {
+                        elements[i].classList.add("active");
+                    }
+                }
+            };
+        }
+
+        // setup click handlers to play audio on mouse click
+        if (HAVE_TIMESTAMPS) {
+            var elements = document.getElementsByTagName('span');
+            for (var i=0; i<elements.length; i++) {
+                if (elements[i].getAttribute('data-start') === null) {  // no data-start attribute
+                    try {
+                        elements[i].removeEventListener("click", clickHandlerTimestamp);
+                    } catch(err) { }
+                    elements[i].addEventListener("click", clickHandlerTimestamp);
+                }
+            }
+        } else {
+            var elements = document.querySelectorAll('span[data-start]');
+            for (var i=0; i<elements.length; i++) {
+                try {
+                    elements[i].removeEventListener("click", clickHandlerSegment);
+                } catch(err) { }
+                elements[i].addEventListener("click", clickHandlerSegment);
+            }
+        }
+
+        enableAudioClickPlayback();
+
+        var button = document.getElementById('add-audio-file');
+        button.style = "display: none;";
+    }
+
+    audio.load();
+}
+
+function clickHandlerTimestamp(e) {
+    var target = (e.target) ? e.target : e.srcElement;
+    var timeString = target.title;
+    var timeSec = getSecondsFromString(timeString);
+    playAudioSegment(timeSec -0.6, timeSec + 3.4);
+}
+
+function clickHandlerSegment(e) {
+    if (PLAYBACK_ON_CLICK) {
+        var target = (e.target) ? e.target : e.srcElement;
+        removeActiveClass();
+        target.classList.add("active");
+        var startTimeStrg = target.getAttribute("data-start").split(".")[0];
+        var endTimeStrg = target.getAttribute("data-end").split(".")[0];
+        var startSec = getSecondsFromString(startTimeStrg);
+        var endSec = getSecondsFromString(endTimeStrg) + 1;
+        playAudioSegment(startSec, endSec);
+    }
+}
+
+function enableAudioClickPlayback() {
+    var button = document.getElementById('toggle-play-on-click');
+    button.innerText = 'Stop Play-on-click';
+    button.style = "";
+    button.onclick = function() { disableAudioClickPlayback(); } ;
+    PLAYBACK_ON_CLICK = true;
+}
+
+function disableAudioClickPlayback() {
+    AUDIO_PLAYER.pause();
+    ARE_PLAYING = false;
+    removeActiveClass();
+    var button = document.getElementById('toggle-play-on-click');
+    button.innerText = 'Activate Play-on-click';
+    button.style = "";
+    button.onclick = function() { enableAudioClickPlayback(); } ;
+    PLAYBACK_ON_CLICK = false;
+}
+
+function playAudioSegment(start_sec, end_sec) {
+    if (AUDIO_PLAYER !== null && PLAYBACK_ON_CLICK) {
+        if (PAUSE_TIMEOUT !== null) { clearTimeout(PAUSE_TIMEOUT); }
+
+        AUDIO_PLAYER.currentTime = start_sec;
+        AUDIO_PLAYER.play();
+        ARE_PLAYING = true;
+
+        var length_ms = (end_sec - start_sec) * 1000;
+        PAUSE_TIMEOUT= setTimeout(function(){
+            AUDIO_PLAYER.pause();
+            PAUSE_TIMEOUT = null;
+            ARE_PLAYING = false;
+            removeActiveClass();
+        }, length_ms);
+    }
+}
+
+function setupTranscriptChangeListeners() {
+    var trans = document.getElementById('transcript');
+    trans.addEventListener("keyup", function(e){
+        var editedNode = window.getSelection().anchorNode.parentNode;
+
+        // set background of already edited spans back to white
+        if (HAVE_TIMESTAMPS && HAVE_CONFIDENCE) {
+            var clearNode = editedNode;
+            if (clearNode.tagName == "SPAN") {
+                if (clearNode.getAttribute("data-start") !== null) {
+                    // if we click into the parent span, we have to get the next node!
+                    clearNode = window.getSelection().anchorNode.nextSibling;
+                }
+                if (clearNode.tagName == "SPAN" && clearNode.getAttribute("title") !== null) {
+                    clearNode.style = 'background: white;';
+                }
+            }
+        }
+
+        // change all speaker names if we change one speaker
+        if (editedNode.tagName == "B" && editedNode.getAttribute("data-spk") !== null) {
+            var curSpeaker = editedNode.getAttribute("data-spk");
+
+            var elements = document.querySelectorAll('b[data-spk="' + curSpeaker + '"]');
+            for (var i=0; i<elements.length; i++) {
+                if (elements[i] !== editedNode) {
+                    elements[i].innerText = editedNode.innerText;
+                }
+            }
+
+            // for WebVTT export
+            var elements = document.querySelectorAll('span[data-spk="' + curSpeaker + '"]');
+            var label = editedNode.innerText;
+            if (label[label.length -1] == ":") {
+                label = label.substring(0, label.length - 1);
+            }
+            for (var i=0; i<elements.length; i++) {
+                elements[i].setAttribute("data-label", label);
+            }
+        }
+    });
+}
+
+HAVE_CONFIDENCE = false;
+HAVE_TIMESTAMPS = HAVE_CONFIDENCE;  // for now ...
+
+AUDIO_PLAYER = null;
+PAUSE_TIMEOUT = null;
+PLAYBACK_ON_CLICK = false;
+ARE_PLAYING = false;
+
+window.addEventListener("load", function(){
+    if(!HAVE_CONFIDENCE) {
+        var button = document.getElementById('toggle-styling');
+        if (button !== null) { button.remove(); }
+    }
+
+    addAudioPlayer();
+    setupTranscriptChangeListeners();
+});
+</script>
+
+
+</body>
+</html>
