@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+    <title>What Is Quantcrit?</title>
+
+    <style>
+    body { margin: 0; }
+    #title, #subtitle, #info, #summary { text-align: center; }
+    #summary { margin: 0 10%; }
+    #chapter { margin-top: 1em; }
+
+    #edit-bar {
+        margin-top: 2em; display: flex; justify-content: space-between; flex-wrap: wrap;
+        position: -webkit-sticky; position: sticky; top: 0; left: 0;
+        background: white; z-index: 999;
+        font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+        -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; text-size-adjust: 100%;
+    }
+    #edit-bar-spacer { flex-grow: 1; }
+    .button {
+        background-color: #f5f5f5; color: #363636;
+        border: 1px solid #dbdbdb; border-radius: 4px; box-shadow: none;
+        margin: 0.5em; padding: 5px 12px;
+        cursor:pointer;font-size: 0.9em;
+        justify-content:center; text-align:center; white-space:nowrap;
+        display: inline-flex; position: relative; vertical-align: top;
+        user-select: none; text-decoration: none;
+    }
+    .button:hover{border-color:#b5b5b5;color:#363636;background-color:#eee;}
+    .button:active{border-color:#4a4a4a;color:#363636;background-color:#e8e8e8;}
+    .button.export-option { margin: 0.5em 0.2em 0.5em auto; }
+    .button.export-buttons-shown { margin-left: 0.2em; margin-left: auto; }
+
+    span.active { font-weight: bold; }
+    span.listened { font-weight: bold; font-style: italic; }
+    #transcript.edit-mode { border-style: dashed; padding: 10px; }
+    #transcript span { cursor: pointer; }
+    #transcript.edit-mode span { cursor: text; }
+    .transcript-base { margin: 0.5em; }
+
+    @media all and (max-width: 900px) {
+      .button.export-buttons-shown { margin: 0.5em; margin-left: auto; }
+      .button.export-option { margin: 0.5em; margin-left: auto; }
+    }
+
+    @media all and (max-width: 340px) {
+      .button { margin: 0.2em; }
+    }
+
+    @media print {
+        #edit-bar { display: none; }
+        .button { display: none; }
+        span { background: white; }
+        #transcript { border-style: none !important; padding: 0px !important; }
+    }
+    </style>
+</head>
+
+<body>
+
+
+<div id="metadata">
+<h1 id="title">What Is Quantcrit?</h1>
+<h4 id="subtitle">How do numbers and data reinforce inequality?</h4>
+
+<p id="info">
+2022, Learning Machine Podcast<br>
+Series 2<br>
+<a href="https://www.learningmachinepodcast.com" target="_blank">https://www.learningmachinepodcast.com</a>
+</p>
+
+<p id="summary">
+How do our biases shape the way that we think about numbers? Is data an unbiased source of truth? Dr. Wendy Castillo joins us on this episode to talk about these issues and the work she is doing to promote #Data4SocialJustice. We discuss the tenets of Quantitative Critical Race Theory (QuantCrit) and spend some time investigating our own biases about education.
+
+Homework: Write your own positionality statement acknowledging the personal biases you carry with you and how those might impact your production and consumption of data.
+</p>
+
+
+</div>
+
+<div id="edit-bar">
+    <a class="button" id="edit-transcript" onclick="enableEdit();" title="Enable/disable edit mode.">Edit Transcript</a>
+    <a class="button" id="toggle-styling" onclick="removeStyling();" title="Words with low recognition confidence will be highlighted in red.">Remove Highlighting</a>
+    <a class="button" id="add-audio-file" onclick="addAudioFile();" title="Add audio file which should be played along the transcript.">Add Audio File</a>
+    <a class="button" id="toggle-play-on-click" title="Enable/disable click on word for audio playback." style="display: none;">Stop Play-on-click</a>
+
+    <div id="edit-bar-spacer"></div>
+
+    <a class="button export-option" id="save-changes" onclick="saveChanges();" style="display: none;" title="Save transcript editor with current changes for further editing or sharing.">Save Editor</a>
+    <a class="button export-option" id="export-html" onclick="exportHTML();" style="display: none;" title="Export transcript as HTML for Word, Wordpress, etc.">Export HTML</a>
+    <a class="button export-option" id="export-pdf" onclick="window.print(); hideExportButtons();" style="display: none;" title="Export transcript as PDF or to printer.">Export PDF</a>
+    <a class="button export-option" id="export-webvtt" onclick="exportWebVTT();" style="display: none;" title="Export transcript as WebVTT for web players.">Export WebVTT</a>
+    <a class="button" id="show-export-buttons" onclick="showExportButtons();">Export...</a>
+    <a class="button" id="show-help" href="https://auphonic.com/help/algorithms/speech_recognition.html#auphonic-transcript-editor" target="_blank" title="Show transcript editor help.">?</a>
+
+    <audio id="audio-player" preload="auto" style="display: none;">
+        <source src="https://auphonic.com/engine/download/audio-result/EfdAa5v4npiZCcpqsSHu8e/Nathan.mp3?ms=337153">
+    </audio>
+</div>
+
+<div id="transcript" class="transcript-base">
+
+<h2 id="chapter">Transcript</h2>
+<b data-spk="5">Music</b><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[0:07]</small> <span title="0:07 - 0:15" data-start="00:00:07.223" data-end="00:00:15.190" data-spk="2" data-label="NAL">I'm Nathan here with Sam and Raven Our Guest today is dr. Wendy Castillo thanks for joining us.</span><br>
+<br>
+<b data-spk="1">Guest:</b><br>
+<small style="opacity: 0.5;">[0:16]</small> <span title="0:16 - 0:25" data-start="00:00:15.755" data-end="00:00:25.141" data-spk="1" data-label="Guest">Yes so Concord is basically derived from critical race Theory and it's a one way to put it as a spin-off so just like theirs,</span><br>
+<span title="0:25 - 0:34" data-start="00:00:25.358" data-end="00:00:33.722" data-spk="1" data-label="Guest">discret which is critical race Theory looking at disabilities there's lag Crea critical race Theory looking at Latinos,</span><br>
+<span title="0:34 - 0:42" data-start="00:00:33.801" data-end="00:00:41.852" data-spk="1" data-label="Guest">you know there's intersectionality thinking about the aspect of being a woman this is</span><br>
+<span title="0:42 - 0:46" data-start="00:00:41.721" data-end="00:00:46.059" data-spk="1" data-label="Guest">one of those spin-offs so quantcrit is looking at,</span><br>
+<span title="0:46 - 0:53" data-start="00:00:46.125" data-end="00:00:52.639" data-spk="1" data-label="Guest">numbers through a critical race Theory perspective and people have been doing this,</span><br>
+<span title="0:53 - 1:00" data-start="00:00:52.705" data-end="00:01:00.126" data-spk="1" data-label="Guest">for a long time but what quantcrit does is it intentionally and explicitly verbalizes.</span><br>
+<span title="1:02 - 1:14" data-start="00:01:01.641" data-end="00:01:13.628" data-spk="1" data-label="Guest">Which is looking at numbers through how racism potentially influences every aspect of the quantitative data collection and Analysis.</span><br>
+<br>
+<b data-spk="5">Music</b><br>
+<br>
+<b data-spk="3">Sss:</b><br>
+<small style="opacity: 0.5;">[1:23]</small> <span title="1:23 - 1:29" data-start="00:01:22.739" data-end="00:01:28.801" data-spk="3" data-label="SSS">The voice you just heard was our education expert dr. Wendy Castillo the senior director of equity,</span><br>
+<span title="1:29 - 1:39" data-start="00:01:28.910" data-end="00:01:39.239" data-spk="3" data-label="SSS">data and impact at the National Urban League on today's episode she shares her expertise in using data for social justice and making the invisible,</span><br>
+<span title="1:39 - 1:40" data-start="00:01:39.384" data-end="00:01:40.104" data-spk="3" data-label="SSS">visible.</span><br>
+<br>
+<b data-spk="4">Rdb:</b><br>
+<small style="opacity: 0.5;">[1:42]</small> <span title="1:42 - 1:56" data-start="00:01:41.865" data-end="00:01:55.824" data-spk="4" data-label="RDB">Dr. Castillo is also an expert on quantcrit a research method for incorporating a critical race Theory lens in quantitative research typically we think of critical race Theory as a tool that is used in qualitative research.</span><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[1:58]</small> <span title="1:58 - 2:08" data-start="00:01:58.024" data-end="00:02:07.548" data-spk="2" data-label="NAL">Dr. Castillo described quantcrit to me as a way to view the societal inequity caused by numbers.</span><br>
+<span title="2:08 - 2:23" data-start="00:02:08.498" data-end="00:02:22.534" data-spk="2" data-label="NAL">On today's episode we're going to dig deeper into this idea and spend some time looking at how we as podcast hosts can apply the tenants of quantcrit to our work.</span><br>
+<span title="2:24 - 2:25" data-start="00:02:23.622" data-end="00:02:24.614" data-spk="2" data-label="NAL">Stay with us.</span><br>
+<br>
+<b data-spk="5">Music</b><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[2:34]</small> <span title="2:34 - 2:41" data-start="00:02:33.958" data-end="00:02:41.259" data-spk="2" data-label="NAL">So the first tenant of quantcrit is acknowledging the centrality of racism.</span><br>
+<span title="2:42 - 2:51" data-start="00:02:41.986" data-end="00:02:50.615" data-spk="2" data-label="NAL">And one way to do this is that many quantcrit researchers write a position ality statement at the beginning of their work.</span><br>
+<span title="2:51 - 2:59" data-start="00:02:51.306" data-end="00:02:58.931" data-spk="2" data-label="NAL">The idea of a positionality statement is that it is an acknowledgement of the biases that you might be bringing to your work.</span><br>
+<span title="2:59 - 3:07" data-start="00:02:59.467" data-end="00:03:07.260" data-spk="2" data-label="NAL">So I thought it would be interesting for us as both podcast hosts and education professionals to engage in this practice.</span><br>
+<span title="3:08 - 3:12" data-start="00:03:08.036" data-end="00:03:12.432" data-spk="2" data-label="NAL">So my topic for us to discuss today is how do you think,</span><br>
+<span title="3:13 - 3:19" data-start="00:03:12.725" data-end="00:03:19.086" data-spk="2" data-label="NAL">your positionality impacts your opinions as an educator and as a podcaster.</span><br>
+<span title="3:20 - 3:24" data-start="00:03:19.501" data-end="00:03:23.875" data-spk="2" data-label="NAL">Or in other words what biases are you bringing to the work that you did.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[3:25]</small> <span title="3:25 - 3:38" data-start="00:03:24.945" data-end="00:03:37.972" data-spk="2" data-label="NAL">And I can start us off here I was thinking about this a little bit and I'll just start with one bias to sort of kick us off I haven't really thought about this before but.</span><br>
+<span title="3:38 - 3:42" data-start="00:03:38.381" data-end="00:03:42.257" data-spk="2" data-label="NAL">Both of my parents have advanced degrees.</span><br>
+<span title="3:43 - 3:50" data-start="00:03:42.924" data-end="00:03:49.546" data-spk="2" data-label="NAL">And they were both practicing lawyers so I really look at education.</span><br>
+<span title="3:50 - 4:00" data-start="00:03:50.105" data-end="00:03:59.617" data-spk="2" data-label="NAL">From a very young age of age I've looked at it as like indisputably a good thing and and something that I will.</span><br>
+<span title="4:00 - 4:09" data-start="00:04:00.014" data-end="00:04:09.183" data-spk="2" data-label="NAL">Go through and and you know it was a given that I would attend college and it was a given that I would probably continue to even pursue school after,</span><br>
+<span title="4:09 - 4:17" data-start="00:04:09.484" data-end="00:04:16.514" data-spk="2" data-label="NAL">you know a four-year degree and I hadn't really thought about the fact that that probably impacts.</span><br>
+<span title="4:17 - 4:26" data-start="00:04:16.869" data-end="00:04:25.672" data-spk="2" data-label="NAL">How I asked questions and who I talk to about education and really impacts the way that I'm understanding.</span><br>
+<span title="4:26 - 4:32" data-start="00:04:26.165" data-end="00:04:32.288" data-spk="2" data-label="NAL">How even my students think about whether or not they want to pursue a college degree.</span><br>
+<br>
+<b data-spk="3">Sss:</b><br>
+<small style="opacity: 0.5;">[4:36]</small> <span title="4:36 - 4:47" data-start="00:04:36.110" data-end="00:04:47.377" data-spk="3" data-label="SSS">Yeah you know that that's such a good point and I think Nathan I'm in a similar position as you having parents with Advanced degrees and not ever questioning that doctrine that.</span><br>
+<span title="4:48 - 4:55" data-start="00:04:47.984" data-end="00:04:55.087" data-spk="3" data-label="SSS">Education
+is good and you know I think maybe sometimes having.</span><br>
+<span title="4:56 - 5:09" data-start="00:04:55.700" data-end="00:05:08.914" data-spk="3" data-label="SSS">A bit of a classist perspective for that at least I'll speak for myself not for you Nathan with that statement but but the other thing that I think I just have to say is I think a lot and I did as a teacher I thought a lot about the idea that.</span><br>
+<span title="5:10 - 5:20" data-start="00:05:09.653" data-end="00:05:20.355" data-spk="3" data-label="SSS">You know I wanted to work in inner-city schools and I couldn't get away from the idea that hey you're a white guy who went to mostly white schools you had a.</span><br>
+<span title="5:21 - 5:30" data-start="00:05:21.191" data-end="00:05:30.228" data-spk="3" data-label="SSS">Good good upbringing you had a you went to a really good set of schools as you were growing up and.</span><br>
+<span title="5:31 - 5:43" data-start="00:05:30.595" data-end="00:05:43.315" data-spk="3" data-label="SSS">Sometimes I felt like I was bringing my desire to like want to help people that I thought needed my help some kind of white savior complex to my work and you know I worry about that.</span><br>
+<br>
+<b data-spk="4">Rdb:</b><br>
+<small style="opacity: 0.5;">[5:46]</small> <span title="5:46 - 5:50" data-start="00:05:45.942" data-end="00:05:50.172" data-spk="4" data-label="RDB">Sometimes I feel like.</span><br>
+<span title="5:51 - 5:58" data-start="00:05:50.863" data-end="00:05:58.302" data-spk="4" data-label="RDB">I have a pessimistic view of Education because of my background and a lot of,</span><br>
+<span title="5:58 - 6:12" data-start="00:05:58.495" data-end="00:06:11.907" data-spk="4" data-label="RDB">the success I did have in school it was because I had people advocating for me and a lot of support that like maybe my classmates who didn't look like me didn't need to have and so I have to be careful about that,</span><br>
+<span title="6:12 - 6:20" data-start="00:06:11.949" data-end="00:06:19.508" data-spk="4" data-label="RDB">I have to be careful about not trusting people especially Educators who are diverse,</span><br>
+<span title="6:20 - 6:30" data-start="00:06:19.803" data-end="00:06:29.820" data-spk="4" data-label="RDB">and actually like listening and not coming with my own negative experiences from school when I'm asking questions and listening to what people have to say,</span><br>
+<span title="6:30 - 6:42" data-start="00:06:30.084" data-end="00:06:41.664" data-spk="4" data-label="RDB">and being open-minded to lots of people from lots of different cultures and backgrounds even if they had a good time in school being open to their ideas being good and them,</span><br>
+<span title="6:42 - 6:48" data-start="00:06:41.670" data-end="00:06:48.376" data-spk="4" data-label="RDB">being able to love and care for their students the same way diverse people might be able to care for those students of color.</span><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[6:51]</small> <span title="6:51 - 6:54" data-start="00:06:51.357" data-end="00:06:54.409" data-spk="2" data-label="NAL">Yeah wow that's I mean I think.</span><br>
+<span title="6:56 - 7:04" data-start="00:06:56.172" data-end="00:07:04.358" data-spk="2" data-label="NAL">A wise way to think and to really hold on to that perspective I also feel like I have been shaped by,</span><br>
+<span title="7:05 - 7:08" data-start="00:07:04.584" data-end="00:07:08.386" data-spk="2" data-label="NAL">the experiences of having attention.</span><br>
+<span title="7:09 - 7:16" data-start="00:07:08.861" data-end="00:07:15.867" data-spk="2" data-label="NAL">Like have it having been given attention when I was in school in a couple of ways like I.</span><br>
+<span title="7:16 - 7:31" data-start="00:07:16.288" data-end="00:07:30.854" data-spk="2" data-label="NAL">Recognize that as a white cisgender man in school I was encouraged anytime I would speak up anytime I would raise my hand in class like it was sort of this you know given that like oh you're being.</span><br>
+<span title="7:31 - 7:39" data-start="00:07:31.473" data-end="00:07:39.218" data-spk="2" data-label="NAL">Curious and you're seeking knowledge and like you should continue to do those things and you know even when I.</span><br>
+<span title="7:40 - 7:48" data-start="00:07:40.012" data-end="00:07:47.667" data-spk="2" data-label="NAL">I was talking to some friends about starting this podcast you know their initial reaction was oh well of course because you're a white man</span><br>
+<span title="7:48 - 7:58" data-start="00:07:47.614" data-end="00:07:58.081" data-spk="2" data-label="NAL">here in the pandemic you should start a podcast like that's you know they were mocking me but I think that is very true that like I've never really questioned whether I should be.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[7:59]</small> <span title="7:59 - 8:01" data-start="00:07:58.959" data-end="00:08:00.623" data-spk="2" data-label="NAL">Putting my voice out there.</span><br>
+<span title="8:01 - 8:09" data-start="00:08:01.122" data-end="00:08:09.486" data-spk="2" data-label="NAL">I just sort of assumed that like hey I feel like it would be useful to create this thing and let's let's try to do it but.</span><br>
+<span title="8:10 - 8:11" data-start="00:08:10.003" data-end="00:08:11.451" data-spk="2" data-label="NAL">You know I.</span><br>
+<span title="8:12 - 8:24" data-start="00:08:12.221" data-end="00:08:24.160" data-spk="2" data-label="NAL">In thinking about this wonder if my and this is something that I think about a lot is like is my taking up space subtracting from the space that other people could be taking up.</span><br>
+<br>
+<b data-spk="4">Rdb:</b><br>
+<small style="opacity: 0.5;">[8:26]</small> <span title="8:26 - 8:27" data-start="00:08:26.228" data-end="00:08:27.435" data-spk="4" data-label="RDB">Hmm.</span><br>
+<br>
+<b data-spk="3">Sss:</b><br>
+<small style="opacity: 0.5;">[8:28]</small> <span title="8:28 - 8:39" data-start="00:08:28.379" data-end="00:08:39.039" data-spk="3" data-label="SSS">And it's just so hard to know if your motives are kind of pure you know I think I worry about this all the time I think about this with my work and</span><br>
+<span title="8:39 - 8:44" data-start="00:08:39.009" data-end="00:08:43.654" data-spk="3" data-label="SSS">are we participating in this thing because we think that.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[8:45]</small> <span title="8:45 - 8:55" data-start="00:08:45.006" data-end="00:08:54.698" data-spk="3" data-label="SSS">We'll get something out of it for ourselves that it will say something about ourselves versus are we participating in it because we actually want to do good and help</span><br>
+<span title="8:55 - 9:08" data-start="00:08:54.615" data-end="00:09:07.594" data-spk="3" data-label="SSS">support change and I think that in many ways that ends up being you know because human beings are complex and there's a lot going on inside each of us it ends up being a cocktail of all those things together right it's hard to pull one thing apart from another,</span><br>
+<span title="9:08 - 9:13" data-start="00:09:07.739" data-end="00:09:13.092" data-spk="3" data-label="SSS">and I think about my time and the reasons that I got into education who I was when I started teaching,</span><br>
+<span title="9:13 - 9:27" data-start="00:09:13.405" data-end="00:09:26.589" data-spk="3" data-label="SSS">more than 10 years ago the things that pulled me in I'm a different person now than I was then but looking back on that person some of my motivation was a sense that I knew what was I knew how to fix things.</span><br>
+<span title="9:27 - 9:36" data-start="00:09:27.112" data-end="00:09:35.854" data-spk="3" data-label="SSS">I had a sense of how to make things better and I think that's a bias that I bring to my work sometimes is that I think I know how to how to fix problems.</span><br>
+<span title="9:36 - 9:37" data-start="00:09:36.197" data-end="00:09:37.158" data-spk="3" data-label="SSS">And.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[9:38]</small> <span title="9:38 - 9:48" data-start="00:09:38.217" data-end="00:09:48.011" data-spk="3" data-label="SSS">That I mean I may not know or whether I know or not as kind of a side the point it's that feeling that I know and that therefore I should impose that fix.</span><br>
+<span title="9:49 - 9:56" data-start="00:09:48.883" data-end="00:09:55.696" data-spk="3" data-label="SSS">Where I can and I think that there are aspects of that that are that are positive and helpful and I've drawn that and I try to be helpful.</span><br>
+<span title="9:56 - 10:07" data-start="00:09:56.087" data-end="00:10:06.519" data-spk="3" data-label="SSS">But I think that there are aspects of that that come from a place of wanting to project being a certain kind of person and I feel like I'm getting off into a little bit of where I'm tethering myself from a specific conversation.</span><br>
+<span title="10:07 - 10:10" data-start="00:10:07.000" data-end="00:10:09.854" data-spk="3" data-label="SSS">Somewhere in the like psychology and.</span><br>
+<span title="10:10 - 10:15" data-start="00:10:10.389" data-end="00:10:14.565" data-spk="3" data-label="SSS">Something a little bit beyond this debate topic but I think that's a bias that I bring.</span><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[10:18]</small> <span title="10:18 - 10:25" data-start="00:10:18.063" data-end="00:10:24.684" data-spk="2" data-label="NAL">Are there any biases that we held together as a group of podcasters.</span><br>
+<br>
+<b data-spk="4">Rdb:</b><br>
+<small style="opacity: 0.5;">[10:29]</small> <span title="10:29 - 10:40" data-start="00:10:28.663" data-end="00:10:40.128" data-spk="4" data-label="RDB">I definitely think so for sure I believe that we are privileged in that we have the education that we have and.</span><br>
+<span title="10:41 - 10:48" data-start="00:10:41.318" data-end="00:10:47.987" data-spk="4" data-label="RDB">I'm sure all of y'all feel the same way that I do like as educators.</span><br>
+<span title="10:49 - 10:54" data-start="00:10:48.631" data-end="00:10:54.093" data-spk="4" data-label="RDB">Because our boots were on the ground at some point or are still are.</span><br>
+<span title="10:55 - 11:01" data-start="00:10:55.253" data-end="00:11:00.576" data-spk="4" data-label="RDB">Sometimes we tend to think that we can be experts on certain topics because we've dealt with them.</span><br>
+<span title="11:01 - 11:10" data-start="00:11:01.190" data-end="00:11:10.065" data-spk="4" data-label="RDB">Specifically from students but I have to remind myself especially when educational leaders are speaking.</span><br>
+<span title="11:11 - 11:23" data-start="00:11:10.534" data-end="00:11:22.606" data-spk="4" data-label="RDB">Um and they haven't been in the classroom I have to really be careful and think you know like even though we've been in the classroom and a lot of our knowledge is important it's still one View,</span><br>
+<span title="11:23 - 11:36" data-start="00:11:22.919" data-end="00:11:36.060" data-spk="4" data-label="RDB">it's one classroom one view of a certain body of students versus all the kids in the country and so we can also stand to learn a lot to about education I try to frame it as perspective.</span><br>
+<span title="11:37 - 11:44" data-start="00:11:36.553" data-end="00:11:44.310" data-spk="4" data-label="RDB">Now instead of like my knowledge my experience in the classroom and I try to now say like my perspective.</span><br>
+<span title="11:45 - 11:48" data-start="00:11:45.290" data-end="00:11:47.718" data-spk="4" data-label="RDB">Because it's different.</span><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[11:47]</small> <span title="11:47 - 11:49" data-start="00:11:47.418" data-end="00:11:48.799" data-spk="2" data-label="NAL">It really is.</span><br>
+<br>
+<b data-spk="3">Sss:</b><br>
+<small style="opacity: 0.5;">[11:48]</small> <span title="11:48 - 11:50" data-start="00:11:48.499" data-end="00:11:49.562" data-spk="3" data-label="SSS">Honest way.</span><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[11:51]</small> <span title="11:51 - 12:03" data-start="00:11:50.735" data-end="00:12:03.185" data-spk="2" data-label="NAL">That's exactly right to even though on all of our episodes we probably come across sounding like we have knowledge or we think that we have knowledge what we are really bringing is just perspective and,</span><br>
+<span title="12:03 - 12:12" data-start="00:12:03.348" data-end="00:12:12.012" data-spk="2" data-label="NAL">hopefully you know we bring in experts because we want to acknowledge the things that we don't know and to learn from them so.</span><br>
+<span title="12:13 - 12:19" data-start="00:12:12.565" data-end="00:12:19.487" data-spk="2" data-label="NAL">Just to put this out there the three of us were all teachers we are holding a little bit of that teacher bias we all.</span><br>
+<span title="12:20 - 12:30" data-start="00:12:20.263" data-end="00:12:30.003" data-spk="2" data-label="NAL">Had a college education and we hold that the biases that come with that and certainly I think we all value education.</span><br>
+<span title="12:30 - 12:35" data-start="00:12:30.364" data-end="00:12:34.973" data-spk="2" data-label="NAL">To some degree so we're going to keep those in mind</span><br>
+<span title="12:35 - 12:45" data-start="00:12:34.907" data-end="00:12:45.080" data-spk="2" data-label="NAL">as we continue this podcast and as always remember that we will continue this conversation online we'd love to hear from some of our listeners about your own positionality,</span><br>
+<span title="12:45 - 12:53" data-start="00:12:45.213" data-end="00:12:53.445" data-spk="2" data-label="NAL">you know our guest this week dr. Castillo mentioned that this is an exercise that can be useful for not just teachers and researchers but for anyone,</span><br>
+<span title="12:54 - 13:00" data-start="00:12:53.607" data-end="00:12:59.730" data-spk="2" data-label="NAL">on a team or in a corporate setting to spend a little time considering what might be your personal biases,</span><br>
+<span title="13:00 - 13:14" data-start="00:12:59.977" data-end="00:13:14.356" data-spk="2" data-label="NAL">and if you do write one of these positionality statements please share it with us send us an email and we'd love to continue this conversation so now we're going to move into the segment where we listen to the interview with dr. Wendy Castillo.</span><br>
+<br>
+<b data-spk="5">Music</b><br>
+<br>
+<b data-spk="0">Interviewer:</b><br>
+<small style="opacity: 0.5;">[13:29]</small> <span title="13:29 - 13:38" data-start="00:13:29.151" data-end="00:13:38.158" data-spk="0" data-label="Interviewer">Okay so let's get into these five pillars of quantitative critic because I think people do have an idea that like numbers can be biased</span><br>
+<span title="13:38 - 13:48" data-start="00:13:38.081" data-end="00:13:47.677" data-spk="0" data-label="Interviewer">and understanding that but I think there's also a whole Camp of people that would say oh well numbers are numbers they can't be biased they exist in a neutral context so how do we.</span><br>
+<span title="13:48 - 13:50" data-start="00:13:48.290" data-end="00:13:49.978" data-spk="0" data-label="Interviewer">Argue against that with quantcrit.</span><br>
+<br>
+<b data-spk="1">Guest:</b><br>
+<small style="opacity: 0.5;">[13:50]</small> <span title="13:50 - 14:01" data-start="00:13:49.967" data-end="00:14:01.497" data-spk="1" data-label="Guest">Quantcrit has five principles five tenants the first one is acknowledging the centrality of racism which is really what critical race theory is you know the</span><br>
+<span title="14:01 - 14:09" data-start="00:14:01.474" data-end="00:14:09.273" data-spk="1" data-label="Guest">racist systems that exist in this country that perpetuate any qualities based on race that's the very first,</span><br>
+<span title="14:09 - 14:15" data-start="00:14:09.466" data-end="00:14:15.493" data-spk="1" data-label="Guest">tenant and in my paper I talked about how do you put this into practice,</span><br>
+<span title="14:16 - 14:23" data-start="00:14:15.553" data-end="00:14:22.776" data-spk="1" data-label="Guest">so the way you can think about putting the centrality of racism into practices thinking about a positionality statement</span><br>
+<span title="14:23 - 14:31" data-start="00:14:22.626" data-end="00:14:31.236" data-spk="1" data-label="Guest">that is something that is well known and written as a qualitative researcher but quantitative researchers never right one</span><br>
+<span title="14:31 - 14:34" data-start="00:14:31.141" data-end="00:14:34.367" data-spk="1" data-label="Guest">I don't want to say never but it is not common practice to</span><br>
+<span title="14:34 - 14:44" data-start="00:14:34.223" data-end="00:14:44.072" data-spk="1" data-label="Guest">right one but thinking about our own background and our own biases and how those May influence our data collection</span><br>
+<span title="14:44 - 14:53" data-start="00:14:44.024" data-end="00:14:52.941" data-spk="1" data-label="Guest">the development of our data instruments the way we analyze the data for example if my experience,</span><br>
+<span title="14:53 - 15:00" data-start="00:14:53.212" data-end="00:14:59.611" data-spk="1" data-label="Guest">with because I'm a Latina for me it's really important to think about,</span><br>
+<span title="15:00 - 15:10" data-start="00:14:59.942" data-end="00:15:09.772" data-spk="1" data-label="Guest">how Latinos are not a monolith and how within the Latino Community they're just inequities and disparities that exist and so.</span><br>
+<span title="15:10 - 15:18" data-start="00:15:10.140" data-end="00:15:17.729" data-spk="1" data-label="Guest">That is something that's really important to me so when I think about my position ality a lot of people like to lump in.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[15:18]</small> <span title="15:18 - 15:25" data-start="00:15:18.396" data-end="00:15:25.360" data-spk="1" data-label="Guest">All Asian people all black people but for me it's really important to disaggregate that data so.</span><br>
+<span title="15:26 - 15:37" data-start="00:15:25.703" data-end="00:15:36.976" data-spk="1" data-label="Guest">Practice that you can do is start collecting data that way so start collecting data in ways that are more nuanced and represent people's identities and then.</span><br>
+<span title="15:37 - 15:50" data-start="00:15:37.337" data-end="00:15:50.460" data-spk="1" data-label="Guest">How you analyze the data and present it later on the line those are other decisions that are going to be made and it's just really important to acknowledge your biases up front.</span><br>
+<span title="15:51 - 16:05" data-start="00:15:51.091" data-end="00:16:04.864" data-spk="1" data-label="Guest">And to re visit them over and over again as a team if you have a team of researchers to revisit what your Collective by sees our blind spots as a team maybe and that's how you can apply that.</span><br>
+<br>
+<b data-spk="0">Interviewer:</b><br>
+<small style="opacity: 0.5;">[16:07]</small> <span title="16:07 - 16:15" data-start="00:16:06.931" data-end="00:16:14.700" data-spk="0" data-label="Interviewer">Yeah that's that's really helpful to think about as an example of quantcrit what right is because.</span><br>
+<span title="16:15 - 16:19" data-start="00:16:15.152" data-end="00:16:19.424" data-spk="0" data-label="Interviewer">I think we're all sort of familiar with the classic.</span><br>
+<span title="16:20 - 16:28" data-start="00:16:19.977" data-end="00:16:28.083" data-spk="0" data-label="Interviewer">Ethnicity and racial background statistics which you see as right black Latin X Asian.</span><br>
+<span title="16:29 - 16:36" data-start="00:16:28.570" data-end="00:16:36.423" data-spk="0" data-label="Interviewer">And and then more recently you've seen like Native American Pacific Islander thrown in there and white but yeah it's very rare to see any desegregation,</span><br>
+<span title="16:37 - 16:50" data-start="00:16:36.730" data-end="00:16:50.112" data-spk="0" data-label="Interviewer">of those of those identities so have you seen I guess the in your work with researchers and funding different projects are people starting to push more for this this type of data collection.</span><br>
+<br>
+<b data-spk="1">Guest:</b><br>
+<small style="opacity: 0.5;">[16:51]</small> <span title="16:51 - 16:59" data-start="00:16:50.912" data-end="00:16:59.162" data-spk="1" data-label="Guest">The senses that was supposed to be funded that did not get funded was going to be more nuanced in that way.</span><br>
+<br>
+<b data-spk="0">Interviewer:</b><br>
+<small style="opacity: 0.5;">[16:59]</small> <span title="16:59 - 17:01" data-start="00:16:59.018" data-end="00:17:01.077" data-spk="0" data-label="Interviewer">The national then the like National.</span><br>
+<br>
+<b data-spk="1">Guest:</b><br>
+<small style="opacity: 0.5;">[17:01]</small> <span title="17:01 - 17:03" data-start="00:17:00.827" data-end="00:17:02.983" data-spk="1" data-label="Guest">A 2020 census yeah.</span><br>
+<span title="17:03 - 17:15" data-start="00:17:03.332" data-end="00:17:15.392" data-spk="1" data-label="Guest">But that did not happen I know that New York City collects this data I know that New York City Department of Education collects this data some Departments of Education collect that data</span><br>
+<span title="17:15 - 17:20" data-start="00:17:15.339" data-end="00:17:19.719" data-spk="1" data-label="Guest">I know that you see system in California collects</span><br>
+<span title="17:20 - 17:31" data-start="00:17:19.611" data-end="00:17:30.805" data-spk="1" data-label="Guest">really nuanced ETA of their students so I'm not sure what they're doing with the data or how they're analyzing it but they're the first step is to at least have it</span><br>
+<span title="17:31 - 17:35" data-start="00:17:30.626" data-end="00:17:34.699" data-spk="1" data-label="Guest">and so the U C system and the US Census was supposed to happen.</span><br>
+<br>
+<b data-spk="0">Interviewer:</b><br>
+<small style="opacity: 0.5;">[17:37]</small> <span title="17:37 - 17:50" data-start="00:17:36.611" data-end="00:17:50.016" data-spk="0" data-label="Interviewer">Well that's sad to hear that it didn't happen but I guess good to hear that it's started something that is being considered do you have any advice for how teams can like go about.</span><br>
+<span title="17:52 - 17:59" data-start="00:17:51.922" data-end="00:17:58.676" data-spk="0" data-label="Interviewer">Voicing their biases and relate like documenting and formalizing that.</span><br>
+<br>
+<b data-spk="1">Guest:</b><br>
+<small style="opacity: 0.5;">[17:59]</small> <span title="17:59 - 18:12" data-start="00:17:58.904" data-end="00:18:11.817" data-spk="1" data-label="Guest">Yeah I have written a positionality statement I think it changes depending on your project and you have to create a safe space within your team so for example if I was doing a project on higher education,</span><br>
+<span title="18:12 - 18:19" data-start="00:18:11.908" data-end="00:18:18.794" data-spk="1" data-label="Guest">versus a project on K12 my advice these might be completely different so if I miss doing a K-12.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[18:19]</small> <span title="18:19 - 18:31" data-start="00:18:19.221" data-end="00:18:31.287" data-spk="1" data-label="Guest">Research study my background as a student was in public school education and underfunded School District so my biases and what I think of a school and what I think of as high-quality might,</span><br>
+<span title="18:31 - 18:42" data-start="00:18:31.383" data-end="00:18:41.893" data-spk="1" data-label="Guest">different verses in higher education I've only intended private schools and Elite institutions so my biases on what an experiences in higher education,</span><br>
+<span title="18:42 - 18:46" data-start="00:18:41.923" data-end="00:18:45.504" data-spk="1" data-label="Guest">might be different and it's just important for me to be up front with those,</span><br>
+<span title="18:46 - 18:53" data-start="00:18:45.529" data-end="00:18:53.130" data-spk="1" data-label="Guest">so when I'm doing research and it might be on state schools are underfunded knowing that I don't know what that experience is like because I never had it</span><br>
+<span title="18:53 - 19:05" data-start="00:18:52.998" data-end="00:19:05.094" data-spk="1" data-label="Guest">and making sure that I'm not making assumptions along the way that students had particular resources or didn't have particular resources either way because of My My by sees that I may have towards State schools</span><br>
+<span title="19:05 - 19:08" data-start="00:19:04.896" data-end="00:19:07.984" data-spk="1" data-label="Guest">based on my experience in Elite schools so it's just,</span><br>
+<span title="19:08 - 19:20" data-start="00:19:08.045" data-end="00:19:20.255" data-spk="1" data-label="Guest">being very open and having a safe environment I think it's important to document that and I think that a way to make people feel safe as to do it as a team so you can do an individual positionality statement,</span><br>
+<span title="19:20 - 19:30" data-start="00:19:20.381" data-end="00:19:29.635" data-spk="1" data-label="Guest">for you and I think that's when people are very comfortable was just explaining their biases but if as a team you have your vices and you don't feel singled out and I think that could be the first step.</span><br>
+<br>
+<b data-spk="0">Interviewer:</b><br>
+<small style="opacity: 0.5;">[19:31]</small> <span title="19:31 - 19:41" data-start="00:19:30.783" data-end="00:19:40.740" data-spk="0" data-label="Interviewer">Got it is this something that you think could be implemented in in secondary schools like would it be important for teachers to also write these positionality statements.</span><br>
+<br>
+<b data-spk="1">Guest:</b><br>
+<small style="opacity: 0.5;">[19:41]</small> <span title="19:41 - 19:49" data-start="00:19:40.950" data-end="00:19:49.194" data-spk="1" data-label="Guest">Yeah that's a really good point yeah I don't see why not I you can apply the same idea.</span><br>
+<span title="19:50 - 19:58" data-start="00:19:49.579" data-end="00:19:58.094" data-spk="1" data-label="Guest">To multiple settings even at work I can see that being applied I think about it in research because we're making you know decisions on,</span><br>
+<span title="19:58 - 20:08" data-start="00:19:58.202" data-end="00:20:07.895" data-spk="1" data-label="Guest">data so it's important to know how your decisions might affect your background but you know you're making decisions on how you are sorting students.</span><br>
+<span title="20:08 - 20:18" data-start="00:20:08.322" data-end="00:20:17.996" data-spk="1" data-label="Guest">So I think it would be important to have a positionality statement and with that I'm going to go to the second tenant which are numbers are not neutral</span><br>
+<span title="20:18 - 20:25" data-start="00:20:17.960" data-end="00:20:24.510" data-spk="1" data-label="Guest">um which again it's your making statements on you know sorting students and if</span><br>
+<span title="20:24 - 20:31" data-start="00:20:24.486" data-end="00:20:30.711" data-spk="1" data-label="Guest">you're making decisions based on a particular test s 10 is that numbers are not neutral,</span><br>
+<span title="20:31 - 20:36" data-start="00:20:30.760" data-end="00:20:36.047" data-spk="1" data-label="Guest">and that means that you can be using tests that you know are not intro so therefore there.</span><br>
+<span title="20:36 - 20:45" data-start="00:20:36.384" data-end="00:20:45.181" data-spk="1" data-label="Guest">The results of those tests on the data from those tests will not be neutral because they may be biased test and then who gets to take certain.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[20:46]</small> <span title="20:46 - 20:57" data-start="00:20:45.650" data-end="00:20:57.085" data-spk="1" data-label="Guest">Test and go into certain classes like AP classes and be tracked all those things just funnel into that so numbers are not neutral because we as humans are deciding you know.</span><br>
+<span title="20:58 - 21:13" data-start="00:20:57.548" data-end="00:21:12.510" data-spk="1" data-label="Guest">What those numbers are were deciding what the denominator is who is counting in that denominator we're deciding to the numerator as who's counting in that average and we're deciding which test people are taking whether those tests are biased or not so.</span><br>
+<span title="21:13 - 21:17" data-start="00:21:12.919" data-end="00:21:17.377" data-spk="1" data-label="Guest">That's the second tenant which I think applies to teachers because.</span><br>
+<span title="21:18 - 21:27" data-start="00:21:17.829" data-end="00:21:27.340" data-spk="1" data-label="Guest">They make a lot of decisions based on formative data and it's important for them to take a step back and think about that formative data was.</span><br>
+<span title="21:28 - 21:40" data-start="00:21:27.882" data-end="00:21:40.188" data-spk="1" data-label="Guest">Formed by humans and it might be biased so you don't want to make you know an important life changing decision based on data that might be biased so you want to just re-evaluate it.</span><br>
+<br>
+<b data-spk="0">Interviewer:</b><br>
+<small style="opacity: 0.5;">[21:42]</small> <span title="21:42 - 21:48" data-start="00:21:41.937" data-end="00:21:48.108" data-spk="0" data-label="Interviewer">Wow yeah that's
+I mean especially in a climate of.</span><br>
+<span title="21:49 - 22:02" data-start="00:21:48.571" data-end="00:22:02.199" data-spk="0" data-label="Interviewer">Standardized testing like I feel like that's such a powerful way to apply this theory is to say like look these numbers or you needs a I keep coming back to this idea that it's not necessarily like.</span><br>
+<span title="22:03 - 22:07" data-start="00:22:02.800" data-end="00:22:07.499" data-spk="0" data-label="Interviewer">A none of these are like hard and fast rules like don't do this do this it's more like.</span><br>
+<span title="22:08 - 22:17" data-start="00:22:08.293" data-end="00:22:16.753" data-spk="0" data-label="Interviewer">By keeping these things in mind by starting from a different place you gain a perspective that is going to inform you about.</span><br>
+<span title="22:17 - 22:21" data-start="00:22:17.408" data-end="00:22:21.362" data-spk="0" data-label="Interviewer">The inequality that's that that's impacting your students.</span><br>
+<br>
+<b data-spk="1">Guest:</b><br>
+<small style="opacity: 0.5;">[22:22]</small> <span title="22:22 - 22:25" data-start="00:22:22.222" data-end="00:22:24.919" data-spk="1" data-label="Guest">And the third tenant which is,</span><br>
+<span title="22:25 - 22:34" data-start="00:22:24.998" data-end="00:22:33.608" data-spk="1" data-label="Guest">categories are neither natural nor given for race three-d-- racism if your numbers or your tests are correlated,</span><br>
+<span title="22:34 - 22:40" data-start="00:22:33.891" data-end="00:22:40.290" data-spk="1" data-label="Guest">with race it's important to think about how it's not being black or</span><br>
+<span title="22:40 - 22:47" data-start="00:22:40.201" data-end="00:22:46.516" data-spk="1" data-label="Guest">being Latino or being Asian that makes you more correlated with higher SAT scores its</span><br>
+<span title="22:46 - 23:00" data-start="00:22:46.450" data-end="00:22:59.880" data-spk="1" data-label="Guest">racism it's a systemic racism that exists within the systems and within that test so how you read the data and how you present the data is really important when you see in your data whether it's formative.</span><br>
+<span title="23:00 - 23:13" data-start="00:23:00.283" data-end="00:23:13.202" data-spk="1" data-label="Guest">Assessments or like standardized assessments at the end of the year if they're related to race then it's really important for us to be thinking about how it's related to racism whether it's.</span><br>
+<span title="23:14 - 23:27" data-start="00:23:13.713" data-end="00:23:27.125" data-spk="1" data-label="Guest">The systemic racism or you know stereotype threat there's something in in that test in our schools in our systems that is making up certain race be related to that.</span><br>
+<span title="23:27 - 23:35" data-start="00:23:27.462" data-end="00:23:34.709" data-spk="1" data-label="Guest">To that score and it's not because you're born black that you're related that you're automatically you know related to lower SAT scores.</span><br>
+<br>
+<b data-spk="0">Interviewer:</b><br>
+<small style="opacity: 0.5;">[23:36]</small> <span title="23:36 - 23:41" data-start="00:23:35.526" data-end="00:23:41.066" data-spk="0" data-label="Interviewer">Can you say a little more about stereotype threat I think that's such an important concept and I want to make sure we don't miss that.</span><br>
+<br>
+<b data-spk="1">Guest:</b><br>
+<small style="opacity: 0.5;">[23:41]</small> <span title="23:41 - 23:49" data-start="00:23:41.109" data-end="00:23:49.311" data-spk="1" data-label="Guest">Yes so at least for me growing up.</span><br>
+<span title="23:50 - 23:59" data-start="00:23:49.900" data-end="00:23:58.679" data-spk="1" data-label="Guest">I was always good at math
+but no one ever told me and I never saw people that looked like me be good at math.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[23:59]</small> <span title="23:59 - 24:09" data-start="00:23:59.442" data-end="00:24:08.978" data-spk="1" data-label="Guest">And I gave up on math in high school I never took math again and I think.</span><br>
+<span title="24:09 - 24:21" data-start="00:24:09.381" data-end="00:24:21.105" data-spk="1" data-label="Guest">I because I didn't see females being good at math because I didn't see Latina women being good at math I you know I fell into the stereotype that you know I'm just we're just not good at that,</span><br>
+<span title="24:21 - 24:28" data-start="00:24:21.189" data-end="00:24:27.570" data-spk="1" data-label="Guest">that's just not cool we are so that it's the idea of living up to these expectations of society,</span><br>
+<span title="24:28 - 24:33" data-start="00:24:27.685" data-end="00:24:32.510" data-spk="1" data-label="Guest">puts towards a particular group so.</span><br>
+<span title="24:33 - 24:41" data-start="00:24:33.015" data-end="00:24:40.574" data-spk="1" data-label="Guest">That's a huge one where women don't think they're good at math particularly women of color and teachers might.</span><br>
+<span title="24:41 - 24:47" data-start="00:24:41.193" data-end="00:24:47.154" data-spk="1" data-label="Guest">Also project stereotype threat I do feel like my teachers never.</span><br>
+<span title="24:48 - 25:01" data-start="00:24:47.521" data-end="00:25:00.747" data-spk="1" data-label="Guest">Sami as a bright mathematician I think they might have projected some of their own stereotypes of what a mathematician looks like on me and I might have internalized them and therefore decided I'm not good at math and I'm never going to</span><br>
+<span title="25:01 - 25:07" data-start="00:25:00.651" data-end="00:25:07.380" data-spk="1" data-label="Guest">be a mathematician so I stop taking math after my sophomore year where I took calculus,</span><br>
+<span title="25:08 - 25:11" data-start="00:25:07.711" data-end="00:25:10.914" data-spk="1" data-label="Guest">and I didn't take math again until graduate school.</span><br>
+<br>
+<b data-spk="5">Music</b><br>
+<br>
+<b data-spk="3">Sss:</b><br>
+<small style="opacity: 0.5;">[25:20]</small> <span title="25:20 - 25:34" data-start="00:25:19.892" data-end="00:25:33.628" data-spk="3" data-label="SSS">If you're enjoying today's episode we'd love to hear from you feel free to send us an email or reach out on social media also don't forget to subscribe to our podcast on Apple Spotify or wherever you get your podcast.</span><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[25:35]</small> <span title="25:35 - 25:41" data-start="00:25:35.407" data-end="00:25:40.953" data-spk="2" data-label="NAL">And now it's time for data town this is.</span><br>
+<br>
+<b data-spk="5">Music</b><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[25:41]</small> <span title="25:41 - 25:46" data-start="00:25:41.134" data-end="00:25:46.313" data-spk="2" data-label="NAL">One of our last data towns I'm going to describe a couple of tables that we have,</span><br>
+<span title="25:46 - 25:57" data-start="00:25:46.434" data-end="00:25:56.613" data-spk="2" data-label="NAL">for some data that came from a paper by some quantitative critical race Theory researchers and basically what they looked at here is some data that was collected on,</span><br>
+<span title="25:57 - 26:00" data-start="00:25:56.613" data-end="00:26:00.465" data-spk="2" data-label="NAL">hot college graduation rates and how,</span><br>
+<span title="26:01 - 26:10" data-start="00:26:00.627" data-end="00:26:09.574" data-spk="2" data-label="NAL">biases in terms of how the data was collected might be shaping or framing some of the opinions and conclusions that could be drawn from,</span><br>
+<span title="26:10 - 26:24" data-start="00:26:09.677" data-end="00:26:24.297" data-spk="2" data-label="NAL">so the first table is from the original data collection and its statistics on graduation rates it has two districts for female students white students black students Hispanic American Indian Asian and low-income students.</span><br>
+<span title="26:25 - 26:34" data-start="00:26:24.676" data-end="00:26:34.464" data-spk="2" data-label="NAL">It has their you know percent graduation rates from this college and the research took a look at this and then they presented a alternative table,</span><br>
+<span title="26:35 - 26:47" data-start="00:26:34.693" data-end="00:26:46.542" data-spk="2" data-label="NAL">that they say would improve on some of the biases that are present in the way the data was collected originally so their improvement shows data collected and presented for.</span><br>
+<span title="26:47 - 26:49" data-start="00:26:46.975" data-end="00:26:48.916" data-spk="2" data-label="NAL">Intersectional identities.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[26:49]</small> <span title="26:49 - 27:01" data-start="00:26:49.475" data-end="00:27:01.349" data-spk="2" data-label="NAL">Basically looking at much smaller grain sizes to avoid grouping people together into some kind of these large monoliths because not all low-income students,</span><br>
+<span title="27:02 - 27:14" data-start="00:27:01.613" data-end="00:27:13.595" data-spk="2" data-label="NAL">are the same not all female students are the same right not all black students are the same and so what they did was they came up with smaller categories like white low-income women,</span><br>
+<span title="27:14 - 27:20" data-start="00:27:13.866" data-end="00:27:19.604" data-spk="2" data-label="NAL">white high-income men white low-income Man black high income women,</span><br>
+<span title="27:20 - 27:28" data-start="00:27:19.767" data-end="00:27:27.722" data-spk="2" data-label="NAL">and they listed out a much larger table but it gives us a much more granular look at this these graduation rates</span><br>
+<span title="27:28 - 27:39" data-start="00:27:27.669" data-end="00:27:39.278" data-spk="2" data-label="NAL">and really it allows us to pinpoint where there might be challenges where there might be places for improvement or you know systemic issues that are present at the schools and</span><br>
+<span title="27:39 - 27:46" data-start="00:27:39.230" data-end="00:27:46.050" data-spk="2" data-label="NAL">the researchers are pointing out that if we simply looked at the base level data we would never have gotten to these deeper.</span><br>
+<span title="27:47 - 27:56" data-start="00:27:46.802" data-end="00:27:56.235" data-spk="2" data-label="NAL">So I'm curious what you both think about this data collection and whether you think this is something that could be done.</span><br>
+<span title="27:57 - 27:59" data-start="00:27:56.632" data-end="00:27:59.210" data-spk="2" data-label="NAL">Going forward on larger scale.</span><br>
+<br>
+<b data-spk="4">Rdb:</b><br>
+<small style="opacity: 0.5;">[28:05]</small> <span title="28:05 - 28:14" data-start="00:28:05.370" data-end="00:28:14.088" data-spk="4" data-label="RDB">I feel like it's necessary I mean if you are I know people don't want to do it I know that when you're actually,</span><br>
+<span title="28:14 - 28:23" data-start="00:28:14.143" data-end="00:28:23.408" data-spk="4" data-label="RDB">I mean I've done it I've sat down and done statistics and it's hard it's hard when you factor in all these intersectional categories and,</span><br>
+<span title="28:24 - 28:31" data-start="00:28:23.589" data-end="00:28:30.836" data-spk="4" data-label="RDB">then you have to actually write narratives about all these correlations and everything and that's hard but I don't believe that,</span><br>
+<span title="28:31 - 28:41" data-start="00:28:31.016" data-end="00:28:41.099" data-spk="4" data-label="RDB">we really would be doing our research Justice even if you didn't care about people you wouldn't be doing your research Justice if you didn't really pick it apart as much as you possibly could,</span><br>
+<span title="28:41 - 28:50" data-start="00:28:41.382" data-end="00:28:49.962" data-spk="4" data-label="RDB">um and especially in education and educational research if you're gonna sink to serve students and you want to put out information.</span><br>
+<span title="28:51 - 28:52" data-start="00:28:50.540" data-end="00:28:52.006" data-spk="4" data-label="RDB">That other people.</span><br>
+<span title="28:53 - 29:05" data-start="00:28:52.535" data-end="00:29:04.655" data-spk="4" data-label="RDB">Are whether you like it or not going to take and create policy out of and put money towards or take away money from you better make sure that you're giving them the most information that they can work with.</span><br>
+<span title="29:05 - 29:15" data-start="00:29:05.382" data-end="00:29:14.912" data-spk="4" data-label="RDB">And maybe that's my bias talking right like maybe me as a former low-income black woman now as a higher income black woman.</span><br>
+<span title="29:15 - 29:24" data-start="00:29:15.351" data-end="00:29:23.794" data-spk="4" data-label="RDB">Knowing all of the different challenges that I faced in different supports that I needed to get to the point that I am now maybe that's why I feel like this is so important but.</span><br>
+<span title="29:24 - 29:31" data-start="00:29:24.233" data-end="00:29:31.143" data-spk="4" data-label="RDB">I definitely champion this kind of you know very deep very complex research.</span><br>
+<br>
+<b data-spk="3">Sss:</b><br>
+<small style="opacity: 0.5;">[29:33]</small> <span title="29:33 - 29:38" data-start="00:29:33.282" data-end="00:29:37.855" data-spk="3" data-label="SSS">Yeah and you know I think the thing that this also really hits on is that,</span><br>
+<span title="29:38 - 29:47" data-start="00:29:38.162" data-end="00:29:46.676" data-spk="3" data-label="SSS">there's a lot of nuance when we talk about race or any Factor having an impact on some statistic like your graduation rate.</span><br>
+<br>
+
+<small style="opacity: 0.5;">[29:48]</small> <span title="29:48 - 29:58" data-start="00:29:47.927" data-end="00:29:58.021" data-spk="3" data-label="SSS">There's a lot of nuance that that is not captured by a single lens and so looking at more than one lens just gives us more of that information allows us to get at the details more and it.</span><br>
+<span title="29:58 - 30:09" data-start="00:29:58.418" data-end="00:30:09.499" data-spk="3" data-label="SSS">Prevent I think the kind of like confusion and Broad brush painting our broad brush stroke in that people like to do in arguments where they say you know.</span><br>
+<span title="30:10 - 30:24" data-start="00:30:10.118" data-end="00:30:24.233" data-spk="3" data-label="SSS">Black men this white men this there are statistics that are really helpful when we look at just that lens but when we break it down further a lot of stuff that I think people get upset about or confused about ends up kind of going away you can see that,</span><br>
+<span title="30:24 - 30:33" data-start="00:30:24.233" data-end="00:30:32.694" data-spk="3" data-label="SSS">obviously race and income have an impact and certainly so you know looking I'm looking at this data table right now the the.</span><br>
+<span title="30:33 - 30:36" data-start="00:30:33.103" data-end="00:30:35.788" data-spk="3" data-label="SSS">The more granular look is race and,</span><br>
+<span title="30:36 - 30:45" data-start="00:30:35.963" data-end="00:30:45.499" data-spk="3" data-label="SSS">income but we could go even further right and look at geography or neighborhood or there are so many different things that we could look at with this,</span><br>
+<span title="30:46 - 30:56" data-start="00:30:45.638" data-end="00:30:55.768" data-spk="3" data-label="SSS">and it helps to paint the picture that I think some people are afraid gets lost when we're talking about oh you just want to talk about race you just want to you know,</span><br>
+<span title="30:56 - 31:05" data-start="00:30:56.081" data-end="00:31:05.137" data-spk="3" data-label="SSS">look through this one lens it's like yeah I mean we do want to have that conversation but we also want to look at the new one so I love this for all that detail.</span><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[31:06]</small> <span title="31:06 - 31:11" data-start="00:31:05.768" data-end="00:31:10.611" data-spk="2" data-label="NAL">Yeah this is so important and we do will,</span><br>
+<span title="31:11 - 31:16" data-start="00:31:10.846" data-end="00:31:16.422" data-spk="2" data-label="NAL">put some of these tables out so that you can see them on Instagram Twitter because,</span><br>
+<span title="31:16 - 31:31" data-start="00:31:16.452" data-end="00:31:31.342" data-spk="2" data-label="NAL">what's important about these data tables is not just that the researchers are collecting this data right because there are places throughout the entire process from data collection to data analysis to data presentation at which many of these categories get reduced down</span><br>
+<span title="31:31 - 31:36" data-start="00:31:31.282" data-end="00:31:35.897" data-spk="2" data-label="NAL">and it might be that all this data was collected but then when the,</span><br>
+<span title="31:36 - 31:51" data-start="00:31:36.138" data-end="00:31:51.064" data-spk="2" data-label="NAL">you know a newspaper took this article and wrote a piece about it or you know someone synthesize this paper it to present it to like Raven you were saying you know a policy maker that they synthesized it down as it all we'll just group these numbers together it's like but when you do that.</span><br>
+<br>
+<b data-spk="5">Music</b><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[31:51]</small> <span title="31:51 - 32:01" data-start="00:31:51.184" data-end="00:32:00.780" data-spk="2" data-label="NAL">You are reducing and you are erasing some individual lived experiences and that's that's what this is really about so yes the complexity is warranted,</span><br>
+<span title="32:01 - 32:03" data-start="00:32:00.955" data-end="00:32:03.437" data-spk="2" data-label="NAL">that brings us to the end of today's episode.</span><br>
+<br>
+<b data-spk="3">Sss:</b><br>
+<small style="opacity: 0.5;">[32:04]</small> <span title="32:04 - 32:09" data-start="00:32:03.948" data-end="00:32:08.677" data-spk="3" data-label="SSS">Don't forget to join Reddit or Twitter and share your opinion on this week's debate and education.</span><br>
+<br>
+<b data-spk="4">Rdb:</b><br>
+<small style="opacity: 0.5;">[32:10]</small> <span title="32:10 - 32:22" data-start="00:32:09.536" data-end="00:32:22.497" data-spk="4" data-label="RDB">And to learn more about this week's guests and to find out how to support this podcast visit learning machine podcast.com you can also follow ND Castillo on Twitter at w Castillo PhD.</span><br>
+<br>
+<b data-spk="2">Nal:</b><br>
+<small style="opacity: 0.5;">[32:24]</small> <span title="32:24 - 32:29" data-start="00:32:24.186" data-end="00:32:29.360" data-spk="2" data-label="NAL">Thank you to all those who teach listen and learn see you next time.</span><br>
+
+<br>
+</div>
+
+
+<script type="text/javascript">
+
+function getBgAlpha(element) {
+    var currentColor = getComputedStyle(element).getPropertyValue('background-color');
+    var parts = currentColor.match(/[\d.]+/g);
+    var alpha = "0"
+
+    try {
+        alpha = parts[3];
+    }
+    catch(err) {
+        // on edge we don't get a color if RGBA is completely 0
+    }
+
+    return alpha;
+}
+
+function removeStyling() {
+    var elements = document.getElementsByTagName('span');
+    var newColorBase = 'rgba(255, 255, 255, ';
+    for (var i=0; i<elements.length; i++) {
+        var currentAlpha = getBgAlpha(elements[i]);
+        var newColor = newColorBase + currentAlpha + ')';
+        elements[i].style = 'background: ' + newColor + ';';
+    }
+
+    try {
+        var button = document.getElementById('toggle-styling');
+        button.innerText = 'Add Highlighting';
+        button.onclick = function() { addStyling(); } ;
+    }
+    catch(err) {
+        // no confidence available
+    }
+}
+
+function addStyling() {
+    var elements = document.getElementsByTagName('span');
+    var newColorBase = 'rgba(209, 72, 54, ';
+    for (var i=0; i<elements.length; i++) {
+        var currentAlpha = getBgAlpha(elements[i]);
+        var newColor = newColorBase + currentAlpha + ')';
+        elements[i].style = 'background: ' + newColor + ';';
+    }
+
+    try {
+        var button = document.getElementById('toggle-styling');
+        button.innerText = 'Remove Highlighting';
+        button.onclick = function() { removeStyling(); } ;
+    }
+    catch(err) {
+        // no confidence available
+    }
+}
+
+function enableEdit() {
+    var transcript = document.getElementById('transcript');
+    transcript.contentEditable = true;
+    transcript.classList.add("edit-mode");
+
+    var button = document.getElementById('edit-transcript');
+    button.innerText = 'Close Edit Mode';
+    button.onclick = function() { disableEdit(); } ;
+
+    var elements = document.querySelectorAll('b[data-spk]');
+    for (var i=0; i<elements.length; i++) {
+        elements[i].title = 'Change speaker name to edit all speakers at once!';
+    }
+}
+
+function disableEdit() {
+    var transcript = document.getElementById('transcript');
+    transcript.contentEditable = false;
+    transcript.classList.remove("edit-mode");
+
+    var button = document.getElementById('edit-transcript');
+    button.innerText = 'Edit Transcript';
+    button.onclick = function() { enableEdit(); } ;
+
+    var elements = document.querySelectorAll('b[data-spk]');
+    for (var i=0; i<elements.length; i++) {
+        elements[i].title = '';
+    }
+}
+
+function removeSpans(transcript) {
+    var removeSpans = new RegExp('</?span[^>]*>','gm');
+    transcript = transcript.replace(removeSpans, '');
+    transcript = transcript.replace(/&nbsp;/g, ' ');
+    return transcript;
+}
+
+function showExportButtons() {
+    var button = document.getElementById('show-export-buttons');
+    button.innerText = '>';
+    button.title = 'Close export buttons.';
+    button.classList.add("export-buttons-shown");
+    button.onclick = function() { hideExportButtons(); } ;
+
+    document.getElementById('export-html').style = '';
+    document.getElementById('export-pdf').style = '';
+    document.getElementById('export-webvtt').style = '';
+    document.getElementById('save-changes').style = '';
+    document.getElementById('show-help').style = 'display: none;';
+}
+
+function hideExportButtons() {
+    var button = document.getElementById('show-export-buttons');
+    button.innerText = 'Export...';
+    button.title = '';
+    button.classList.remove("export-buttons-shown");
+    button.onclick = function() { showExportButtons(); } ;
+
+    document.getElementById('export-html').style = 'display: none;';
+    document.getElementById('export-pdf').style = 'display: none;';
+    document.getElementById('export-webvtt').style = 'display: none;';
+    document.getElementById('save-changes').style = 'display: none;';
+    document.getElementById('show-help').style = '';
+}
+
+function saveChanges() {
+    disableEdit();
+    hideExportButtons();
+
+    var head = document.head.innerHTML;
+    var body = document.body.innerHTML;
+
+    var pageSource = '<!DOCTYPE html><html><head>' + head + '</head><body>' + body + '</body></html>';
+    var filename = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+
+    var bl = new Blob([pageSource], {type: "text/html"});
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(bl);
+    a.download = filename;
+    a.hidden = true;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+}
+
+function exportHTML() {
+    disableEdit();
+    removeStyling();
+
+    var head = document.head.innerHTML;
+    var metadata = document.getElementById('metadata').innerHTML;
+    var transcript = document.getElementById('transcript').innerHTML;
+
+    transcript = removeSpans(transcript);
+
+    var pageSource = '<!DOCTYPE html><html><head>' + head + '</head><body>' + metadata + '<div class="transcript-base">' + transcript + '</div></body></html>';
+    var filename = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+
+    var bl = new Blob([pageSource], {type: "text/html"});
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(bl);
+    a.download = filename;
+    a.hidden = true;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    hideExportButtons();
+}
+
+function exportWebVTT() {
+    disableEdit();
+
+    var pageSource = 'WEBVTT\n\n';
+
+    var segments = document.querySelectorAll('span[data-start]');
+    for (var i=0; i<segments.length; i++) {
+        pageSource += segments[i].getAttribute('data-start') + ' --> ';
+        pageSource += segments[i].getAttribute('data-end') + '\n';
+        if (segments[i].getAttribute('data-spk') !== null) {
+            pageSource += '<v ' + segments[i].getAttribute('data-label') + '>';
+        }
+        pageSource += removeSpans(segments[i].innerHTML);
+        pageSource += '\n\n';
+    }
+
+    var filename = location.pathname.substring(location.pathname.lastIndexOf('/') + 1);
+    filename = filename.substring(0, filename.lastIndexOf('.')) + '.vtt';
+
+    var bl = new Blob([pageSource], {type: 'text/vtt'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(bl);
+    a.download = filename;
+    a.hidden = true;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    hideExportButtons();
+}
+
+function getSecondsFromString(timeString) {
+    var splitStrg = timeString.split(":");
+    var seconds = 0;
+    for (var i=0; i<splitStrg.length; i++) {
+        if (i == 0) { seconds += parseInt(splitStrg[splitStrg.length - 1]); }
+        if (i == 1) { seconds += parseInt(splitStrg[splitStrg.length - 2]) * 60; }
+        if (i == 2) { seconds += parseInt(splitStrg[splitStrg.length - 3]) * 3600; }
+    }
+    return seconds;
+}
+
+function pad(num, size) {
+    var s = num + "";
+    while (s.length < size) s = "0" + s;
+    return s;
+}
+
+function secToTimeString(seconds) {
+    var ss = Math.round(seconds);
+    var cmin = Math.floor(ss / 60);
+    var csec = ss % 60;
+
+    if (cmin < 60) {
+        return cmin + ":" + pad(csec, 2);
+    } else {
+        var ch = Math.floor(cmin / 60);
+        var cm = cmin % 60;
+        return ch + ":" + pad(cm, 2) + ":" + pad(csec, 2);
+    }
+}
+
+function removeActiveClass() {
+    var elements = document.querySelectorAll('span.active');
+    for (var i=0; i<elements.length; i++) {
+        elements[i].classList.remove("active");
+        // elements[i].classList.add("listened");
+    }
+}
+
+function addAudioFile() {
+    var txt;
+    var url = prompt(
+        'Please enter complete URL for the audio file, which should be played along the transcript\n(a local path should start with "file:///"):',
+        'https://auphonic.com/media/audio-examples/03.auphonic-demo-denoise-100.m4a'
+    );
+    if (url == null || url == "") { return; }
+
+    var audio = document.getElementById('audio-player');
+    var oldSources = document.querySelectorAll('source');
+    for (var i=0; i<oldSources.length; i++) {
+        oldSources[i].remove();
+    }
+
+    var source = document.createElement('source');
+    source.src = url;
+    audio.appendChild(source);
+
+    addAudioPlayer();
+}
+
+function addAudioPlayer() {
+    var audio = document.getElementById('audio-player');
+
+    document.getElementById('add-audio-file').style = '';
+    document.getElementById('toggle-play-on-click').style = 'display: none;';
+
+    audio.oncanplay = function() {
+        AUDIO_PLAYER = audio;
+
+        // highlight current audio segment
+        if (HAVE_TIMESTAMPS) {
+            AUDIO_PLAYER.ontimeupdate = function() {
+                if (ARE_PLAYING) {
+                    removeActiveClass();
+                    var curTime = secToTimeString(AUDIO_PLAYER.currentTime);
+                    elements = document.querySelectorAll('span[title="' + curTime + '"]');
+                    for (var i=0; i<elements.length; i++) {
+                        elements[i].classList.add("active");
+                    }
+                }
+            };
+        }
+
+        // setup click handlers to play audio on mouse click
+        if (HAVE_TIMESTAMPS) {
+            var elements = document.getElementsByTagName('span');
+            for (var i=0; i<elements.length; i++) {
+                if (elements[i].getAttribute('data-start') === null) {  // no data-start attribute
+                    try {
+                        elements[i].removeEventListener("click", clickHandlerTimestamp);
+                    } catch(err) { }
+                    elements[i].addEventListener("click", clickHandlerTimestamp);
+                }
+            }
+        } else {
+            var elements = document.querySelectorAll('span[data-start]');
+            for (var i=0; i<elements.length; i++) {
+                try {
+                    elements[i].removeEventListener("click", clickHandlerSegment);
+                } catch(err) { }
+                elements[i].addEventListener("click", clickHandlerSegment);
+            }
+        }
+
+        enableAudioClickPlayback();
+
+        var button = document.getElementById('add-audio-file');
+        button.style = "display: none;";
+    }
+
+    audio.load();
+}
+
+function clickHandlerTimestamp(e) {
+    var target = (e.target) ? e.target : e.srcElement;
+    var timeString = target.title;
+    var timeSec = getSecondsFromString(timeString);
+    playAudioSegment(timeSec -0.6, timeSec + 3.4);
+}
+
+function clickHandlerSegment(e) {
+    if (PLAYBACK_ON_CLICK) {
+        var target = (e.target) ? e.target : e.srcElement;
+        removeActiveClass();
+        target.classList.add("active");
+        var startTimeStrg = target.getAttribute("data-start").split(".")[0];
+        var endTimeStrg = target.getAttribute("data-end").split(".")[0];
+        var startSec = getSecondsFromString(startTimeStrg);
+        var endSec = getSecondsFromString(endTimeStrg) + 1;
+        playAudioSegment(startSec, endSec);
+    }
+}
+
+function enableAudioClickPlayback() {
+    var button = document.getElementById('toggle-play-on-click');
+    button.innerText = 'Stop Play-on-click';
+    button.style = "";
+    button.onclick = function() { disableAudioClickPlayback(); } ;
+    PLAYBACK_ON_CLICK = true;
+}
+
+function disableAudioClickPlayback() {
+    AUDIO_PLAYER.pause();
+    ARE_PLAYING = false;
+    removeActiveClass();
+    var button = document.getElementById('toggle-play-on-click');
+    button.innerText = 'Activate Play-on-click';
+    button.style = "";
+    button.onclick = function() { enableAudioClickPlayback(); } ;
+    PLAYBACK_ON_CLICK = false;
+}
+
+function playAudioSegment(start_sec, end_sec) {
+    if (AUDIO_PLAYER !== null && PLAYBACK_ON_CLICK) {
+        if (PAUSE_TIMEOUT !== null) { clearTimeout(PAUSE_TIMEOUT); }
+
+        AUDIO_PLAYER.currentTime = start_sec;
+        AUDIO_PLAYER.play();
+        ARE_PLAYING = true;
+
+        var length_ms = (end_sec - start_sec) * 1000;
+        PAUSE_TIMEOUT= setTimeout(function(){
+            AUDIO_PLAYER.pause();
+            PAUSE_TIMEOUT = null;
+            ARE_PLAYING = false;
+            removeActiveClass();
+        }, length_ms);
+    }
+}
+
+function setupTranscriptChangeListeners() {
+    var trans = document.getElementById('transcript');
+    trans.addEventListener("keyup", function(e){
+        var editedNode = window.getSelection().anchorNode.parentNode;
+
+        // set background of already edited spans back to white
+        if (HAVE_TIMESTAMPS && HAVE_CONFIDENCE) {
+            var clearNode = editedNode;
+            if (clearNode.tagName == "SPAN") {
+                if (clearNode.getAttribute("data-start") !== null) {
+                    // if we click into the parent span, we have to get the next node!
+                    clearNode = window.getSelection().anchorNode.nextSibling;
+                }
+                if (clearNode.tagName == "SPAN" && clearNode.getAttribute("title") !== null) {
+                    clearNode.style = 'background: white;';
+                }
+            }
+        }
+
+        // change all speaker names if we change one speaker
+        if (editedNode.tagName == "B" && editedNode.getAttribute("data-spk") !== null) {
+            var curSpeaker = editedNode.getAttribute("data-spk");
+
+            var elements = document.querySelectorAll('b[data-spk="' + curSpeaker + '"]');
+            for (var i=0; i<elements.length; i++) {
+                if (elements[i] !== editedNode) {
+                    elements[i].innerText = editedNode.innerText;
+                }
+            }
+
+            // for WebVTT export
+            var elements = document.querySelectorAll('span[data-spk="' + curSpeaker + '"]');
+            var label = editedNode.innerText;
+            if (label[label.length -1] == ":") {
+                label = label.substring(0, label.length - 1);
+            }
+            for (var i=0; i<elements.length; i++) {
+                elements[i].setAttribute("data-label", label);
+            }
+        }
+    });
+}
+
+HAVE_CONFIDENCE = false;
+HAVE_TIMESTAMPS = HAVE_CONFIDENCE;  // for now ...
+
+AUDIO_PLAYER = null;
+PAUSE_TIMEOUT = null;
+PLAYBACK_ON_CLICK = false;
+ARE_PLAYING = false;
+
+window.addEventListener("load", function(){
+    if(!HAVE_CONFIDENCE) {
+        var button = document.getElementById('toggle-styling');
+        if (button !== null) { button.remove(); }
+    }
+
+    addAudioPlayer();
+    setupTranscriptChangeListeners();
+});
+</script>
+
+
+</body>
+</html>
