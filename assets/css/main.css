@@ -2124,7 +2124,7 @@ input, select, textarea {
 
 	#promo-wrapper {
 		position: relative;
-		background:linear-gradient(100deg,#ccc 50%, #007d5b 100%);
+		background:linear-gradient(100deg,#ccc 50%, #5ABFB3 100%);
 		background-position: top left, center center;
 		color: #fff;
 		text-align: center;
@@ -2133,7 +2133,7 @@ input, select, textarea {
 	}
 	#listen-wrapper {
 		position: relative;
-		background:linear-gradient(100deg,#ccc 50%, #007d5b 100%);
+		background:linear-gradient(100deg,#ccc 50%, #5ABFB3 100%);
 		background-position: top left, center center;
 		color: #fff;
 		text-align: center;
@@ -2142,14 +2142,14 @@ input, select, textarea {
 
 	#mailing-wrapper {
 		position: relative;
-		background:linear-gradient(100deg,#ccc 50%, #007d5b 100%);
+		background:linear-gradient(100deg,#ccc 50%, #5ABFB3 100%);
 		background-position: top left, center center;
 		margin:1em;
 		padding: 1em 1em 1em 1em;
 	}
 	#mailing-wrapper h2
 	{
-		color: #7920a0;
+		color: #B173E2;
 	}
 
 
@@ -2174,7 +2174,7 @@ input, select, textarea {
 }
 #episodes h2
 {
-	color: #7920a0;
+	color: #B173E2;
 }
 
 #episodes img
@@ -2193,7 +2193,7 @@ input, select, textarea {
 
 #about h2
 {
-	color: #7920a0;
+	color: #B173E2;
 }
 
 #us .image_and_text .profile
@@ -2309,42 +2309,42 @@ input, select, textarea {
 			float:none;
 			margin: 2em;
 			border:transparent;
-			border-bottom: 3px solid #7920a0;
+			border-bottom: 3px solid #B173E2;
 			background-color:#84ab9e;
-			color: #7920a0;
+			color: #B173E2;
 			font-weight: bold;
 			border-radius:10px;
 			border-width:2px;
-			border-color:#007d5b;
+			border-color:#5ABFB3;
 			padding: 7px;
 		}
 
 		#featured_episode #more_info:visited{
 			float:none;
 			margin: 2em;
-			border-bottom: 3px solid #7920a0;
-			color: #7920a0;
+			border-bottom: 3px solid #B173E2;
+			color: #B173E2;
 			font-weight: bold;
 			border-radius:10px;
 			border-width:2px;
-			border-color:#007d5b;
+			border-color:#5ABFB3;
 			padding: 7px;
 		}
 		#featured_episode #more_info:active
 		{
 			float:none;
-			border-bottom: 3px solid #7920a0;
+			border-bottom: 3px solid #B173E2;
 			color: white;
 			font-weight: bold;
 			border-radius:10px;
 			border-width:2px;
-			border-color:#007d5b;
+			border-color:#5ABFB3;
 			padding: 7px;
 		}
 
 		#featured_episode #more_info:hover
 		{
-			background-color:#7920a0;
+			background-color:#B173E2;
 			color: white;
 		}
 		#featured_episode .blurb
@@ -2407,7 +2407,7 @@ input, select, textarea {
 		}
 /*button hover effects based on the work by Anna Danilec. https://www.blog.duomly.com/html-button-hover-effects/*/
 		#hero .button1{
-			border: 3px solid #7920a0;
+			border: 3px solid #B173E2;
 			background: transparent;
 			font-size: 1em;
 			text-transform: uppercase;
@@ -2418,7 +2418,7 @@ input, select, textarea {
 			position: relative;
 		}
 			#hero .button2{
-			  border: 3px solid #007d5b;
+			  border: 3px solid #5ABFB3;
 				margin-left: 3.5em;
 			  background: transparent;
 				font-size: 1em;
@@ -2477,7 +2477,7 @@ input, select, textarea {
 
 
 		#promo h2 {
-			color: #7920a0;
+			color: #B173E2;
 			display: inline-block;
 			font-variant: small-caps;
 			width:100%;
@@ -2503,12 +2503,12 @@ input, select, textarea {
 			font-size: 2em;
 		}
 		#promo #season_1{
-			background: #7920a0;
+			background: #B173E2;
 			color: #fff;
 
 		}
 		#promo #season_2{
-			background: #007d5b;
+			background: #5ABFB3;
 			color: #fff;
 		}
 
@@ -2554,14 +2554,14 @@ input, select, textarea {
 	}
 	#listen  a:hover
 	{
-		color: #7920a0;
+		color: #B173E2;
 		background-color: rgba(200,200,200,0.2);
 	}
 	#listen  a:focus, #listen a:active
 	{
 		margin:0;
 		padding:0;
-		color: #7920a0;
+		color: #B173E2;
 		background-color: rgba(200,200,200,0.4);
 	}
 
@@ -2594,20 +2594,20 @@ input, select, textarea {
 		font-size: 0.35em;
 		text-transform: uppercase;
 		border:transparent;
-		border-bottom: 3px solid #7920a0;
+		border-bottom: 3px solid #B173E2;
 		background-color:#84ab9e;
-		color: #7920a0;
+		color: #B173E2;
 		font-weight: bold;
 		border-radius:10px;
 		border-width:2px;
-		border-color:#007d5b;
+		border-color:#5ABFB3;
 		padding: 0.5em 1em;
 		outline: none;
 		overflow: hidden;
 		position: relative;
 	}
 	#mc_embed_signup .button:hover {
-		background-color:#7920a0;
+		background-color:#B173E2;
 		color: white;
 	}
 	#mc_field_group
@@ -2731,7 +2731,7 @@ input, select, textarea {
 		}
 /* Navbar */
 #navbar {
-	background-image: linear-gradient(to bottom right, #7920a0, #ffffff);
+	background-image: linear-gradient(to bottom right, #B173E2, #ffffff);
 	position: fixed;
 	top: -150px;
 	width: 100%;
@@ -2770,7 +2770,7 @@ input, select, textarea {
 }
 
 #navbar a:hover {
-	color: #007d5b;
+	color: #5ABFB3;
 }
 #navbar a.button {
 	padding:0.2em 0.75em 0.2em 0.75em;
@@ -2801,7 +2801,7 @@ input, select, textarea {
 }
 
 #navbar .button1{
-	border: 3px solid #7920a0;
+	border: 3px solid #B173E2;
 	background: transparent;
 	font-size: 0.75em;
 	text-transform: uppercase;
@@ -2813,7 +2813,7 @@ input, select, textarea {
 }
 
 #navbar .button2{
-	border: 3px solid #007d5b;
+	border: 3px solid #5ABFB3;
 	background: transparent;
 	font-size: 0.75em;
 	text-transform: uppercase;
@@ -3255,7 +3255,7 @@ input, select, textarea {
 
 		/* Header */
 		#navbar {
-			background-image: linear-gradient(to bottom right, #7920a0, #ffffff);
+			background-image: linear-gradient(to bottom right, #B173E2, #ffffff);
 			position: fixed;
 			top: 0px;
 			width: 100%;
@@ -3266,7 +3266,7 @@ input, select, textarea {
 			transition: top 0.3s;
 		}
 		#navbar a:hover {
-			color: #007d5b;
+			color: #5ABFB3;
 		}
 		#hero a, #hero a:focus, #hero a:active {
 			float: left;
@@ -3316,7 +3316,7 @@ input, select, textarea {
 		}
 
 		#navbar .button1{
-			border: 1px solid #7920a0;
+			border: 1px solid #B173E2;
 			background: transparent;
 			font-size: 0.55em;
 			text-transform: uppercase;
@@ -3328,7 +3328,7 @@ input, select, textarea {
 		}
 
 		#navbar .button2{
-			border: 1px solid #007d5b;
+			border: 1px solid #5ABFB3;
 			background: transparent;
 			font-size: 0.55em;
 			text-transform: uppercase;
